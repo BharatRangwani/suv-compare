@@ -1,6 +1,8 @@
 import { loadCarsData } from './modules/data.js';
 import { renderHome } from './modules/ui-home.js';
 import { renderEMICalculator, calcOnRoadPrice } from './modules/emi.js';
+import { renderCompare } from './modules/ui-compare.js';
+import { renderDetailPanel, closeDetailPanel } from './modules/ui-detail.js';
 
 const TABS = ['home', 'compare', 'ranking', 'jodhpur'];
 let activeTab = 'home';
@@ -23,7 +25,7 @@ function switchTab(tabId) {
     renderHome(document.getElementById('tab-home'));
   }
   if (tabId === 'jodhpur') renderJodhpurTab();
-  if (tabId === 'compare') renderComparePlaceholder();
+  if (tabId === 'compare') renderCompareTab();
   if (tabId === 'ranking') renderRankingPlaceholder();
 }
 
@@ -77,17 +79,11 @@ function renderJodhpurTab() {
   }).catch(() => {});
 }
 
-function renderComparePlaceholder() {
+function renderCompareTab() {
   const pane = document.getElementById('tab-compare');
   if (pane.dataset.rendered) return;
   pane.dataset.rendered = '1';
-  pane.innerHTML = `
-    <div style="text-align:center;padding:3rem 1rem;color:var(--text-muted)">
-      <div style="font-size:2rem;margin-bottom:1rem">⚖️</div>
-      <h2 style="margin-bottom:0.5rem">Compare Cars</h2>
-      <p>Side-by-side comparison coming in Plan 2.</p>
-    </div>
-  `;
+  renderCompare(pane);
 }
 
 function renderRankingPlaceholder() {
@@ -158,6 +154,27 @@ function init() {
   }).catch(() => {});
 
   switchTab('home');
+
+  // Auto-open detail panel if ?car=id is in URL (for shareable links)
+  const carId = new URLSearchParams(window.location.search).get('car');
+  if (carId) _openCarById(carId);
+}
+}
+
+async function _openCarById(carId) {
+  try {
+    const [data, { rankCars, getBestVariantPerBrand }, { getProfile }, { getBaselineCar, getCarsForRanking }] =
+      await Promise.all([
+        loadCarsData(),
+        import('./modules/ranking.js'),
+        import('./modules/profile.js'),
+        import('./modules/data.js')
+      ]);
+    const baseline = getBaselineCar(data);
+    const ranked = getBestVariantPerBrand(rankCars(getCarsForRanking(data), getProfile(), baseline));
+    const target = ranked.find(c => c.id === carId) || data.cars.find(c => c.id === carId);
+    if (target) renderDetailPanel(target, ranked, baseline);
+  } catch (_) {}
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -4,6 +4,7 @@ import { loadCarsData, getBaselineCar, getCarsForRanking } from './data.js';
 import { getProfile } from './profile.js';
 import { rankCars, getVFMTag, getBestVariantPerBrand } from './ranking.js';
 import { renderFilters, applyFilters, getStoredFilters } from './ui-filters.js';
+import { renderDetailPanel } from './ui-detail.js';
 
 // ─── Public entry point ───────────────────────────────────────────────────────
 
@@ -80,6 +81,10 @@ function renderCarCard(car, allRanked, baseline) {
 
   const card = document.createElement('div');
   card.className = 'car-card' + (isBaseline ? ' baseline-card' : '');
+  if (!isBaseline) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => renderDetailPanel(car, allRanked, baseline));
+  }
 
   // ── Header ──────────────────────────────────────────────────────────────────
   const header = document.createElement('div');
