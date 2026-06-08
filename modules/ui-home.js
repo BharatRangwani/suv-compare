@@ -28,6 +28,22 @@ export async function renderHome(container) {
   // Build page structure
   container.innerHTML = '';
 
+  // Hero section
+  const hero = document.createElement('div');
+  hero.className = 'hero-section';
+  hero.innerHTML = `
+    <p class="hero-eyebrow">Jodhpur, Rajasthan</p>
+    <h2 class="hero-title">Find Your Next SUV</h2>
+    <p class="hero-sub">Ranked for your budget &amp; must-haves</p>
+    <div class="hero-pill-row">
+      <span class="hero-pill">₹20L Budget</span>
+      <span class="hero-pill">Petrol Turbo</span>
+      <span class="hero-pill">6 Airbags</span>
+      <span class="hero-pill">Ventilated Seats</span>
+    </div>
+  `;
+  container.appendChild(hero);
+
   const filterContainer = document.createElement('div');
   filterContainer.className = 'filter-bar-wrapper';
   container.appendChild(filterContainer);
@@ -82,6 +98,7 @@ function renderCarCard(car, allRanked, baseline) {
   const card = document.createElement('div');
   card.className = 'car-card' + (isBaseline ? ' baseline-card' : '');
   if (!isBaseline) {
+    if (car.rank) card.dataset.rank = car.rank;
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => renderDetailPanel(car, allRanked, baseline));
   }

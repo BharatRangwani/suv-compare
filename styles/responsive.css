@@ -1,15 +1,15 @@
 @media (max-width: 600px) {
-  #app-content { padding: 0.75rem; }
-  .car-card { padding: 0.75rem; }
-  .tab-btn { font-size: 0.72rem; padding: 0.6rem 0.4rem; }
+  #app-content { padding: 0 0.75rem 7rem; }
+  .car-card { padding: 0.85rem; }
   .emi-breakdown { grid-template-columns: 1fr; }
+  .tab-nav { width: calc(100vw - 1.5rem); }
 }
 
 @media (min-width: 601px) {
-  .tab-nav { justify-content: center; }
-  .tab-btn { flex: none; padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+  .tab-btn { flex: none; min-width: 80px; }
 }
 
 @media (min-width: 900px) {
   .car-card-header { align-items: center; }
+  .tab-nav { bottom: 1.75rem; }
 }

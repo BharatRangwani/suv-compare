@@ -1,29 +1,57 @@
-[data-theme="light"] {
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --surface-2: #f0f0f0;
-  --border: #e0e0e0;
-  --text: #1a1a1a;
-  --text-muted: #666666;
-  --accent: #1d6fce;
-  --accent-light: #e8f0fe;
-  --green: #16a34a;
-  --yellow: #ca8a04;
-  --red: #dc2626;
-  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+/* ── Gradient Hero + Glass Cards theme ── */
+
+:root {
+  /* Hero gradient (deep blue → purple) */
+  --hero-from: #1a1a4e;
+  --hero-to: #6b21a8;
+  --hero-gradient: linear-gradient(135deg, var(--hero-from) 0%, var(--hero-to) 100%);
+
+  /* Glass card system */
+  --glass-bg: rgba(255, 255, 255, 0.10);
+  --glass-bg-hover: rgba(255, 255, 255, 0.16);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255,255,255,0.1) inset;
+  --glass-blur: 24px;
+
+  /* Accent */
+  --accent: #a78bfa;           /* purple-400 — readable on dark */
+  --accent-solid: #7c3aed;     /* purple-600 — CTA buttons */
+  --accent-light: rgba(167,139,250,0.18);
+  --accent-glow: 0 0 20px rgba(124, 58, 237, 0.4);
+
+  /* Semantic colours */
+  --green: #4ade80;
+  --green-bg: rgba(74, 222, 128, 0.15);
+  --yellow: #fbbf24;
+  --yellow-bg: rgba(251, 191, 36, 0.15);
+  --red: #f87171;
+  --red-bg: rgba(248, 113, 113, 0.15);
+  --orange: #fb923c;
+  --orange-bg: rgba(251, 146, 60, 0.15);
 }
 
-[data-theme="dark"] {
-  --bg: #1a1a1a;
-  --surface: #242424;
-  --surface-2: #2e2e2e;
-  --border: #3a3a3a;
-  --text: #f0f0f0;
-  --text-muted: #999999;
-  --accent: #4d9de0;
-  --accent-light: #1a2a3a;
-  --green: #22c55e;
-  --yellow: #eab308;
-  --red: #f87171;
-  --shadow: 0 2px 8px rgba(0,0,0,0.4);
+[data-theme="light"], [data-theme="dark"] {
+  /* Shared — both themes use the same deep gradient base */
+  --bg: #0d0d2b;
+  --bg-mesh: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(107,33,168,0.45) 0%, transparent 70%),
+             radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26,26,78,0.6) 0%, transparent 70%),
+             linear-gradient(160deg, #0d0d2b 0%, #130d2e 40%, #0d1a3a 100%);
+  --surface: var(--glass-bg);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-solid: rgba(15, 15, 45, 0.85);
+  --border: var(--glass-border);
+  --text: #f0eeff;
+  --text-muted: rgba(200, 190, 240, 0.65);
+  --text-dim: rgba(200, 190, 240, 0.4);
+  --shadow: var(--glass-shadow);
+  --header-blur: 20px;
+}
+
+/* Light variant — slightly warmer, less purple */
+[data-theme="light"] {
+  --bg-mesh: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(107,33,168,0.35) 0%, transparent 70%),
+             radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26,26,78,0.5) 0%, transparent 70%),
+             linear-gradient(160deg, #12103a 0%, #1a1050 40%, #0f1e45 100%);
+  --text: #ece8ff;
+  --text-muted: rgba(210,200,255,0.6);
 }

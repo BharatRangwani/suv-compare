@@ -159,7 +159,6 @@ function init() {
   const carId = new URLSearchParams(window.location.search).get('car');
   if (carId) _openCarById(carId);
 }
-}
 
 async function _openCarById(carId) {
   try {
