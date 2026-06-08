@@ -101,6 +101,18 @@ export function rankCars(cars, profile, baseline) {
   return scored.map((car, i) => ({ ...car, rank: i + 1 }));
 }
 
+export function getBestVariantPerBrand(rankedCars) {
+  const bestByBrand = {};
+  for (const car of rankedCars) {
+    const brand = car.brand;
+    if (!bestByBrand[brand] || car.score > bestByBrand[brand].score) {
+      bestByBrand[brand] = car;
+    }
+  }
+  const bestIds = new Set(Object.values(bestByBrand).map(c => c.id));
+  return rankedCars.map(car => ({ ...car, is_best_variant_for_user: bestIds.has(car.id) }));
+}
+
 export function getVFMTag(rankedCar, allRanked) {
   const ratios = allRanked
     .filter(c => c.ex_showroom_jodhpur > 0)
