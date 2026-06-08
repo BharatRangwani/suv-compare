@@ -1,0 +1,164 @@
+/* Car cards */
+.car-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.car-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+.car-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.car-rank {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 2rem;
+}
+
+.car-name { font-size: 1rem; font-weight: 700; }
+.car-variant { font-size: 0.85rem; color: var(--text-muted); }
+
+.car-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.car-score {
+  font-size: 0.8rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+/* VFM tags */
+.vfm-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.vfm-excellent { background: #dcfce7; color: var(--green); }
+.vfm-fair { background: #fef9c3; color: var(--yellow); }
+.vfm-overpriced { background: #fee2e2; color: var(--red); }
+
+[data-theme="dark"] .vfm-excellent { background: #14532d; }
+[data-theme="dark"] .vfm-fair { background: #713f12; }
+[data-theme="dark"] .vfm-overpriced { background: #7f1d1d; }
+
+/* Best for you badge */
+.best-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Spec chips */
+.spec-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.spec-chip {
+  font-size: 0.75rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 2px 8px;
+  color: var(--text-muted);
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.filter-chip {
+  white-space: nowrap;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+.filter-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+/* Tooltip */
+.tooltip-trigger { border-bottom: 1px dotted var(--text-muted); cursor: help; }
+
+/* EMI Calculator */
+.emi-calculator {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+.emi-result {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  padding: 0.75rem 0;
+}
+.emi-breakdown {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+.emi-row { display: flex; justify-content: space-between; }
+.emi-row span:last-child { font-weight: 600; }
+.down-payment-band {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.band-green { background: #dcfce7; color: var(--green); }
+.band-yellow { background: #fef9c3; color: var(--yellow); }
+.band-red { background: #fee2e2; color: var(--red); }
+[data-theme="dark"] .band-green { background: #14532d; }
+[data-theme="dark"] .band-yellow { background: #713f12; }
+[data-theme="dark"] .band-red { background: #7f1d1d; }
