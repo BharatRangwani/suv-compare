@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUV Compare — Jodhpur</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+  <header class="app-header">
+    <span class="app-title">SUV Compare</span>
+    <div class="header-actions">
+      <button id="refresh-btn" class="btn-icon" title="Refresh database">↻</button>
+      <button id="theme-toggle" class="btn-icon" title="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="home">🏠 Home</button>
+    <button class="tab-btn" data-tab="compare">⚖️ Compare</button>
+    <button class="tab-btn" data-tab="ranking">🏆 Ranking</button>
+    <button class="tab-btn" data-tab="jodhpur">📍 Jodhpur</button>
+  </nav>
+
+  <main id="app-content">
+    <div id="tab-home" class="tab-pane active"></div>
+    <div id="tab-compare" class="tab-pane hidden"></div>
+    <div id="tab-ranking" class="tab-pane hidden"></div>
+    <div id="tab-jodhpur" class="tab-pane hidden"></div>
+  </main>
+
+  <div id="data-timestamp" class="data-timestamp"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
