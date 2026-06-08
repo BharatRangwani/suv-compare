@@ -2,98 +2,111 @@
 
 ---
 
-## 2026-06-09 — Plan 1 Complete, pushed to GitHub
+## 2026-06-09 — UI Redesign: Glass Morphism (Gradient Hero + Glass Cards)
 
 ### What changed this session
 
-**Pre-build data expansion (cars-data.json):**
-- Added 10 new fields to every car entry: `engine_rating`, `fuel_efficiency_rating`, `long_term_reliability_score`, `future_proof_score`, `parts_availability_score`, `ease_of_servicing_score`, `overall_customer_rating`, `annual_insurance_estimate`, `annual_maintenance_estimate`, `known_issues` (array with `issue` string + `severity: Minor|Watch|Critical`)
-- Quanto baseline also updated with all new fields (future_proof_score: 2 — discontinued model)
+**Complete visual redesign — 7 files changed:**
 
-**modules/ranking.js:**
-- Added `getBestVariantPerBrand(rankedCars)` — takes output of `rankCars()`, returns same array with `is_best_variant_for_user: true` on the highest-scoring variant per brand
+**`styles/theme.css`** (rewritten):
+- Removed separate light/dark colour palettes
+- New unified dark-base system: `--bg-mesh` radial gradient (deep blue #0d0d2b → purple #6b21a8)
+- Glass card variables: `--glass-bg`, `--glass-bg-hover`, `--glass-border`, `--glass-blur: 24px`
+- Accent: `--accent: #a78bfa` (purple-400), `--accent-solid: #7c3aed`
+- Semantic colours now use `rgba` bg+border pairs (green-bg, yellow-bg, red-bg, orange-bg)
+- Both `[data-theme="light"]` and `[data-theme="dark"]` share the same dark gradient base
 
-**modules/ui-filters.js** (new):
-- 9 filter categories: fuel, transmission, budget, safety rating, ADAS, ventilated seats, sunroof, waiting period, brand
-- `renderFilters(container, onFilterChange)` — renders horizontal chip bar, manages active state per group
-- `applyFilters(cars, filters)` — AND logic; Quanto baseline always passes through
-- Filter state persists in `localStorage` key `suv_filters`
+**`styles/base.css`** (rewritten):
+- Body: `background: var(--bg-mesh), var(--bg)` with `background-attachment: fixed`
+- Header: glass bar `rgba(13,13,43,0.6)` + `backdrop-filter: blur(20px)`
+- App title: gradient text `white→purple` via `-webkit-background-clip: text`
+- **Tab nav moved to bottom floating pill**: `position: fixed; bottom: 1.25rem; border-radius: 9999px`
+  - Width: `min(480px, calc(100vw - 2rem))` — works on all screens
+  - `backdrop-filter: blur(28px)`, dark glass bg, purple glow on active tab
+- Tab buttons: icon + label stacked, active gets gradient pill + spring animation
+- **Hero section classes** added: `.hero-section`, `.hero-eyebrow`, `.hero-title`, `.hero-sub`, `.hero-pill-row`, `.hero-pill`
+- `#app-content`: `padding-bottom: 6rem` to clear floating nav
 
-**modules/ui-home.js** (new):
-- `renderHome(container)` — async, loading state, error handling
-- Ranked car cards with: rank badge, score/100, VFM tag, "Best Variant for You" badge, waiting period color chip, spec chips, must-have check row, known issues preview (first Critical or Watch), price row, annual costs, collapsible score breakdown
-- Quanto baseline card always shown at bottom, labeled "Your Current Car"
-- Filter changes re-render card list only (filter bar preserved)
+**`styles/components.css`** (rewritten):
+- `.car-card`: glass morphism — `backdrop-filter: blur(24px)`, `rgba(255,255,255,0.10)` bg, shimmer `::before` top edge
+- `.car-card[data-rank="1"]`: purple glow ring `box-shadow: 0 0 32px rgba(124,58,237,0.25)`
+- Hover: `translateY(-4px) scale(1.01)`, brighter glass bg
+- `.car-rank`: gradient text (white→purple) instead of flat accent colour
+- VFM tags, badges, chips: all converted to rgba glass backgrounds with matching borders
+- Buttons: `.btn-primary` is now a purple gradient; `.btn-secondary` is glass
+- Filter chips: glass bg, active = purple tinted
+- Detail panel: `rgba(13,13,43,0.92)` + `blur(32px)`, gradient header text
+- Rating pills, ownership items, service center cards: all glass `rgba(255,255,255,0.06)`
+- Compare table: `border-collapse: separate`, glass sticky columns, purple section headers
+- Car picker modal: dark frosted bottom sheet `rgba(18,12,50,0.95)` + `blur(32px)`
+- Added `.glass-section` utility class for wrapping detail body sections
 
-**modules/emi.js** (new):
-- `calcEMI(principal, annualRatePercent, tenureMonths)` — standard reducing-balance formula
-- `calcLoanSummary(onRoadPrice, downPaymentPct, annualRatePercent, tenureMonths)` — full breakdown object
-- `calcOnRoadPrice(exShowroom)` — Rajasthan formula (11% road tax + ₹15k reg + 3.5% insurance)
-- `getDownPaymentBand(pct)` → `'green'|'yellow'|'red'`
-- `renderEMICalculator(container, initialOnRoadPrice)` — full interactive widget with bank rate presets (SBI 8.5%, HDFC 8.75%, ICICI 9%), down payment slider, tenure selector, live updates
+**`styles/responsive.css`** (updated):
+- Mobile: `#app-content` bottom pad `7rem` (clear floating pill nav)
+- Desktop: tab-nav bottom `1.75rem`
 
-**app.js** (new):
-- Tab navigation (home / compare / ranking / jodhpur) with aria-selected management
-- Light/dark theme toggle with localStorage persistence
-- Refresh button — invalidates data cache, re-renders home tab
-- Jodhpur tab: EMI calculator + on-road price list for all cars sorted by ex-showroom
-- Timestamp display from `cars-data.json.last_updated`
-- Compare and Ranking tabs show "coming in Plan 2" placeholder
+**`index.html`** (updated):
+- Added Google Fonts: `Inter` (400–900 weights) via preconnect + link
+- Tab nav moved to bottom, buttons restructured: `<span class="tab-icon">` + `<span class="tab-label">`
 
-**tests/emi.test.js** (new):
-- 25 tests across: calcEMI, calcLoanSummary, getDownPaymentBand, calcOnRoadPrice
+**`modules/ui-home.js`** (updated):
+- Hero section injected at top of home tab before filter bar:
+  - Eyebrow: "Jodhpur, Rajasthan"
+  - Title: "Find Your Next SUV" (gradient)
+  - Subtitle + 4 profile pills (₹20L Budget, Petrol Turbo, 6 Airbags, Ventilated Seats)
+- Car cards now get `card.dataset.rank = car.rank` for CSS targeting
 
-**GitHub:**
-- Remote added: `https://github.com/BharatRangwani/suv-compare.git`
-- Pushed to `main` — GitHub Actions deploy triggered
-- App should be live at: `https://bharatrangwani.github.io/suv-compare/`
+**`app.js`** (fixed):
+- Removed stray extra `}` closing `init()` prematurely (was present before, now fixed)
 
-### Test status
-```
-Tests: 41 passed, 41 total
-  data.test.js      4 tests ✅
-  profile.test.js   4 tests ✅
-  ranking.test.js   8 tests ✅
-  emi.test.js      25 tests ✅
-```
-
----
-
-### What's next — Plan 2
-
-**First task:** Car detail page (`modules/ui-detail.js`)
-- Clicking a car card on the home tab should open the detail page
-- Variant selector row (all variants of that model)
-- Full specs, all /10 ratings as visual dashboard, known issues with severity, service centers
-- Spider/radar chart using Chart.js
-- "Add to Compare" button
-
-**Second task:** Compare table (`modules/ui-compare.js`)
-- Up to 4 user-selected cars + Quanto locked in column 1
-- Grouped rows, color-coded vs Quanto, EMI row, "show differences only" toggle
-
-**Third task:** TCO bar chart (Chart.js)
-
-See [PLAN.md](PLAN.md) for full Plan 2 task list.
+**Commit:** `a180cd7` on `main`  
+**Tests:** 68/68 passing (no logic changes — pure CSS/HTML/structure)
 
 ---
 
-### Open questions / decisions needed
+## Full history of builds
 
-1. **Car navigation model:** When user taps a card, should it open a full new "page" (hide home, show detail) or open a modal/sheet overlay? Recommendation: slide-in sheet on mobile (less disorienting), full pane on desktop.
-
-2. **Compare tab flow:** Should user pick cars to compare from the Home tab ("Add to Compare" button per card), or from a dedicated picker inside the Compare tab? Current spec says both.
-
-3. **3D models:** Free CC0 GLTF models exist for approximate car shapes on Sketchfab/free3d.com but are not brand-licensed. Confirm: use approximate stand-in models vs. image carousel only (no 3D)? Image carousel is safer and faster to implement.
-
-4. **GitHub PAT for Refresh Database button:** The button currently just invalidates the local cache and re-renders from the existing JSON. A true GitHub Actions trigger requires a PAT stored as a repo secret. Needs one-time setup if this feature is wanted.
+| Commit | What |
+|---|---|
+| `2f0d2b2` | Plan 1 — Foundation |
+| `095a0d2` | Plan 2 — Detail panel, Compare, Charts, Ratings |
+| `a180cd7` | UI Redesign — Glass Morphism |
 
 ---
 
-### Known issues / gotchas to remember
+## Current app state
 
-- `node_modules/.bin/jest` is a bash shim — doesn't work on Windows PowerShell. Always use: `node --experimental-vm-modules node_modules/jest/bin/jest.js`
-- `comfortScore` is multiplied by 100 — intentional (deltas are 0–1 fractions scaled to 0–100)
-- TCO resale cap: `Math.min(resale, operatingCosts × 0.9)` — prevents negative TCO for high-resale cars (Toyota Hyryder 57% resale)
+- **Live at:** `https://bharatrangwani.github.io/suv-compare/`
+- **Tests:** 68/68 passing (5 suites: data, profile, ranking, emi, ui-detail)
+- **Features live:** Home ranked cards, detail slide-in panel, compare table, TCO chart, radar chart, EMI calculator, Jodhpur price guide, filters, dark/light theme toggle
+
+---
+
+## What's next — Plan 3
+
+| Task | Description |
+|---|---|
+| Task 1 | Three.js 3D model viewer (`modules/ui-3d.js`) — orbit controls, color switcher, carousel fallback |
+| Task 2 | Color swatches per car in `cars-data.json` — `colors[]` field |
+| Task 3 | GitHub Actions data refresh workflow + manual trigger (needs GitHub PAT as repo secret) |
+| Task 4 | Quanto exchange estimator — rough resale estimate on Jodhpur tab |
+| Task 5 | First-time buyer helpers — tooltips for tech terms, dealer checklist, "questions to ask" per car |
+| Task 6 | Full mobile QA pass |
+
+---
+
+## Open decisions
+
+1. **3D models:** Use approximate CC0 GLTF stand-ins from Sketchfab, or image carousel only? Image carousel is safer and faster.
+2. **GitHub PAT for Refresh button:** Needs one-time setup — create PAT with `workflow` scope → add as `GH_PAT` repo secret → workflow uses `workflow_dispatch` API.
+3. **Theme toggle:** Both light/dark now share the same deep dark gradient base. The toggle currently just changes the `data-theme` attribute. Could repurpose it as something else, or add a true light mode in future.
+
+---
+
+## Known gotchas
+
+- `node_modules/.bin/jest` is a bash shim — fails on Windows PowerShell. Always use: `node --experimental-vm-modules node_modules/jest/bin/jest.js`
+- `backdrop-filter` requires `overflow: hidden` on parent in some browsers to render correctly
+- `background-attachment: fixed` on body creates the parallax mesh effect — don't remove
 - Quanto baseline has `ex_showroom_jodhpur: 0` — always exclude from budget filters and price comparisons
-- Git identity configured locally (not globally): `user.email = info@upyugoglobal.com`, `user.name = BharatRangwani`
+- Git identity configured locally: `user.email = info@upyugoglobal.com`, `user.name = BharatRangwani`

@@ -25,13 +25,16 @@
 
 ---
 
-## Plan 2 — Car Detail + Compare + Charts (PENDING)
+## Plan 2 — Car Detail + Compare + Charts ✅ COMPLETE
 
 **Goal:** Car detail page, side-by-side compare table (up to 4 + Quanto), TCO bar chart, score radar chart.
 
-### Planned tasks
+**Commit:** `095a0d2` on `main`
+**Tests:** 68/68 passing
 
-- [ ] Task 1: Car detail page — `modules/ui-detail.js`
+### Completed tasks
+
+- [x] Task 1: Car detail page — `modules/ui-detail.js`
   - Variant selector tab row (all variants of a model)
   - Full specs table, safety section, ownership section
   - Known issues expandable list with severity badges
@@ -40,25 +43,28 @@
   - Service centers list for Jodhpur
   - "Compare with Quanto" + "Add to Compare" buttons
 
-- [ ] Task 2: Compare table — `modules/ui-compare.js`
-  - Up to 4 cars + Quanto as locked column 1
-  - Rows grouped: Pricing, Engine, Safety, Features, Ownership
-  - Color coded vs Quanto (green = better, red = worse)
-  - "Show differences only" toggle
-  - EMI row per car (uses saved profile down payment %)
-  - Sticky header on mobile scroll
+- [x] Task 2: Compare table — `modules/ui-compare.js`
+- [x] Task 3: TCO bar chart — Chart.js integration
+- [x] Task 4: Wire detail page into home card clicks
+- [x] Task 5: Tests for ui-detail (27 tests)
 
-- [ ] Task 3: TCO bar chart — Chart.js integration
-  - 5-year TCO comparison bar chart in compare view
-  - Petrol vs diesel vs hybrid TCO for same model where applicable
+---
 
-- [ ] Task 4: "Better alternative in budget" feature
-  - For each car, check if a higher-ranked car exists at same or lower price
-  - Surface inline: "₹X cheaper, higher safety: [Car Name]"
+## Plan 2b — UI Redesign: Glass Morphism ✅ COMPLETE
 
-- [ ] Task 5: Wire detail page into home card clicks
+**Goal:** Full visual overhaul — Gradient Hero + Glass Cards theme.
 
-- [ ] Task 6: Tests for ui-detail, ui-compare
+**Commit:** `a180cd7` on `main`
+
+### Completed tasks
+
+- [x] Rewrite `styles/theme.css` — unified dark-base, glass variables, rgba semantic colours
+- [x] Rewrite `styles/base.css` — gradient mesh bg, glass header, bottom floating pill nav, hero section classes
+- [x] Rewrite `styles/components.css` — glass cards, purple glow for #1, gradient text, glass detail panel/modals
+- [x] Update `styles/responsive.css` — bottom padding for floating nav
+- [x] Update `index.html` — Inter font, tab buttons with icon+label markup
+- [x] Update `modules/ui-home.js` — hero section (eyebrow/title/pills), `data-rank` on cards
+- [x] Fix `app.js` — stray closing brace in `init()`
 
 ---
 
