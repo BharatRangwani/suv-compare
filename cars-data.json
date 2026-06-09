@@ -67,6 +67,15 @@
       "waiting_weeks_jodhpur": 5,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": "previews/hyundai creta.glb",
+      "colors": [
+        { "name": "Atlas White",    "hex": "#f2f2f2" },
+        { "name": "Abyss Black",    "hex": "#1e1e1e" },
+        { "name": "Fiery Red",      "hex": "#cc1a1a" },
+        { "name": "Robust Emerald", "hex": "#1e6641" },
+        { "name": "Starry Night",   "hex": "#1c2b80" },
+        { "name": "Titan Grey",     "hex": "#5e7585" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Hyundai Pawan Motors",
@@ -150,6 +159,15 @@
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": "previews/hyundai creta.glb",
+      "colors": [
+        { "name": "Atlas White",    "hex": "#f2f2f2" },
+        { "name": "Abyss Black",    "hex": "#1e1e1e" },
+        { "name": "Fiery Red",      "hex": "#cc1a1a" },
+        { "name": "Robust Emerald", "hex": "#1e6641" },
+        { "name": "Starry Night",   "hex": "#1c2b80" },
+        { "name": "Titan Grey",     "hex": "#5e7585" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Hyundai Pawan Motors",
@@ -226,6 +244,16 @@
       "waiting_weeks_jodhpur": 4,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": "previews/2021-kia-seltos-sx/2021+Kia+Seltos+SX.glb",
+      "colors": [
+        { "name": "Glacier White Pearl", "hex": "#f0efeb" },
+        { "name": "Aurora Black Pearl",  "hex": "#1a1a1a" },
+        { "name": "Intense Red",         "hex": "#b81c1c" },
+        { "name": "Imperial Blue",       "hex": "#1a3a6b" },
+        { "name": "Pewter Olive",        "hex": "#5a5e3a" },
+        { "name": "Gravity Grey",        "hex": "#4a4e52" },
+        { "name": "Beige Gold",          "hex": "#c9a96e" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Kia Jodhpur - Shree Motors",
@@ -301,6 +329,16 @@
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": "previews/2021-kia-seltos-sx/2021+Kia+Seltos+SX.glb",
+      "colors": [
+        { "name": "Glacier White Pearl", "hex": "#f0efeb" },
+        { "name": "Aurora Black Pearl",  "hex": "#1a1a1a" },
+        { "name": "Intense Red",         "hex": "#b81c1c" },
+        { "name": "Imperial Blue",       "hex": "#1a3a6b" },
+        { "name": "Pewter Olive",        "hex": "#5a5e3a" },
+        { "name": "Gravity Grey",        "hex": "#4a4e52" },
+        { "name": "Beige Gold",          "hex": "#c9a96e" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Kia Jodhpur - Shree Motors",
@@ -378,6 +416,13 @@
       "launch_year": 2012,
       "is_new_model": false,
       "is_baseline": true,
+      "glb": null,
+      "colors": [
+        { "name": "Pearl White",   "hex": "#f0f0ec" },
+        { "name": "Midnight Black","hex": "#1c1c1c" },
+        { "name": "Silver",        "hex": "#a8a8a8" },
+        { "name": "Fiery Orange",  "hex": "#c94e1a" }
+      ],
       "service_centers_jodhpur": []
     },
     {
@@ -445,6 +490,15 @@
       "waiting_weeks_jodhpur": 6,
       "launch_year": 2022,
       "is_new_model": false,
+      "glb": "previews/suzuki_grand_vitara.glb",
+      "colors": [
+        { "name": "Pearl Arctic White", "hex": "#f4f4f0" },
+        { "name": "Midnight Black",     "hex": "#1a1a1a" },
+        { "name": "Splendid Silver",    "hex": "#a0a4a8" },
+        { "name": "Opulent Red",        "hex": "#9e1a1a" },
+        { "name": "Grandeur Grey",      "hex": "#5a5e62" },
+        { "name": "Khaki Green",        "hex": "#5a6642" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Maruti Suzuki True Value - Basni",
@@ -529,6 +583,14 @@
       "waiting_weeks_jodhpur": 8,
       "launch_year": 2022,
       "is_new_model": false,
+      "glb": null,
+      "colors": [
+        { "name": "Enticing Silver",   "hex": "#b0b4b8" },
+        { "name": "Midnight Black",    "hex": "#1a1a1a" },
+        { "name": "Cafe White",        "hex": "#f0eeea" },
+        { "name": "Sporting Red",      "hex": "#9e1a1a" },
+        { "name": "Lush Forest Green", "hex": "#2a5040" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Toyota Jodhpur - Shri Ram Auto",
@@ -605,6 +667,14 @@
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": null,
+      "colors": [
+        { "name": "Pristine White",  "hex": "#f2f0ec" },
+        { "name": "Daytona Grey",    "hex": "#5a5e62" },
+        { "name": "Flame Red",       "hex": "#c01a1a" },
+        { "name": "Midnight Black",  "hex": "#1a1a1a" },
+        { "name": "Seaweed Green",   "hex": "#2a5a4a" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Tata Motors - Authorized Jodhpur",
@@ -681,6 +751,14 @@
       "waiting_weeks_jodhpur": 1,
       "launch_year": 2022,
       "is_new_model": false,
+      "glb": null,
+      "colors": [
+        { "name": "Candy White",     "hex": "#f2f2f0" },
+        { "name": "Starry Black",    "hex": "#1e1e1e" },
+        { "name": "Aurora Silver",   "hex": "#a8acb0" },
+        { "name": "Glaze Red",       "hex": "#b01a1a" },
+        { "name": "Fossil Grey",     "hex": "#6a6e72" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "MG Motors Jodhpur",
@@ -757,6 +835,14 @@
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
+      "glb": null,
+      "colors": [
+        { "name": "Platinum White Pearl", "hex": "#f0efeb" },
+        { "name": "Meteoroid Grey",       "hex": "#5a5e64" },
+        { "name": "Lunar Silver",         "hex": "#aab0b4" },
+        { "name": "Radiant Red",          "hex": "#9e1a1a" },
+        { "name": "Obsidian Blue",        "hex": "#1a2a5a" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "Honda Cars Jodhpur - Sangam Auto",
@@ -833,6 +919,14 @@
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2022,
       "is_new_model": false,
+      "glb": null,
+      "colors": [
+        { "name": "Reflex Silver",    "hex": "#a8aaae" },
+        { "name": "Deep Black",       "hex": "#1a1a1a" },
+        { "name": "White Silver",     "hex": "#e8e8e4" },
+        { "name": "Tornado Red",      "hex": "#b81c1c" },
+        { "name": "Rising Blue",      "hex": "#1a3a6b" }
+      ],
       "service_centers_jodhpur": [
         {
           "name": "VW Jodhpur - Bagga Link Motors",

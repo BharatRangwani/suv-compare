@@ -1,8 +1,7 @@
 @media (max-width: 600px) {
-  #app-content { padding: 0 0.75rem 7rem; }
+  #app-content { padding: 0 0 5.5rem; }
   .car-card { padding: 0.85rem; }
   .emi-breakdown { grid-template-columns: 1fr; }
-  .tab-nav { width: calc(100vw - 1.5rem); }
 
   /* Detail panel takes full width on mobile */
   .detail-panel { max-width: 100%; }
@@ -50,5 +49,6 @@
 
 @media (min-width: 900px) {
   .car-card-header { align-items: center; }
-  .tab-nav { bottom: 1.75rem; }
+  .hero-split { margin: 1.25rem 1.5rem 0; }
+  .car-list { padding: 0 1.5rem; }
 }

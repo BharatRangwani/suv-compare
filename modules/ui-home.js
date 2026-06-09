@@ -28,21 +28,45 @@ export async function renderHome(container) {
   // Build page structure
   container.innerHTML = '';
 
-  // Hero section
+  // Hero section — split grid matching option-final design
+  const topCount = allRanked.filter(c => !c.is_baseline).length;
   const hero = document.createElement('div');
-  hero.className = 'hero-section';
+  hero.className = 'hero-split';
   hero.innerHTML = `
-    <p class="hero-eyebrow">Jodhpur, Rajasthan</p>
-    <h2 class="hero-title">Find Your Next SUV</h2>
-    <p class="hero-sub">Ranked for your budget &amp; must-haves</p>
-    <div class="hero-pill-row">
-      <span class="hero-pill">₹20L Budget</span>
-      <span class="hero-pill">Petrol Turbo</span>
-      <span class="hero-pill">6 Airbags</span>
-      <span class="hero-pill">Ventilated Seats</span>
+    <div class="hero-left">
+      <p class="hero-eyebrow">Jodhpur, Rajasthan</p>
+      <h2 class="hero-title">Find Your <strong>Next SUV</strong></h2>
+      <p class="hero-sub">Ranked for your budget &amp; must-haves. Updated June 2025.</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <span class="hs-num">${topCount}</span>
+        <span class="hs-label">SUVs ranked</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hs-num">₹12–22L</span>
+        <span class="hs-label">Price range</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <span class="hs-num">6</span>
+        <span class="hs-label">Criteria scored</span>
+      </div>
     </div>
   `;
   container.appendChild(hero);
+
+  // Must-have chips row
+  const chipsRow = document.createElement('div');
+  chipsRow.className = 'chips-row';
+  chipsRow.innerHTML = `
+    <span class="mchip">₹20L Budget</span>
+    <span class="mchip">Petrol Turbo</span>
+    <span class="mchip">6 Airbags</span>
+    <span class="mchip">Ventilated Seats</span>
+  `;
+  container.appendChild(chipsRow);
 
   const filterContainer = document.createElement('div');
   filterContainer.className = 'filter-bar-wrapper';
@@ -78,10 +102,19 @@ export async function renderHome(container) {
 function renderCarList(container, rankedCars, baseline, allRanked) {
   container.innerHTML = '';
 
-  // Render non-baseline ranked cars
-  const ranked = rankedCars.filter(c => !c.is_baseline);
-  ranked.forEach(car => {
-    container.appendChild(renderCarCard(car, allRanked, baseline));
+  // Show only the best variant per brand+model, maintaining rank order
+  const seen = new Set();
+  const deduped = rankedCars.filter(c => {
+    if (c.is_baseline) return false;
+    const key = `${c.brand}||${c.model}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  // Re-number ranks after dedup
+  deduped.forEach((car, i) => {
+    container.appendChild(renderCarCard({ ...car, rank: i + 1 }, allRanked, baseline));
   });
 
   // Always render baseline card at the bottom
@@ -90,226 +123,140 @@ function renderCarList(container, rankedCars, baseline, allRanked) {
   }
 }
 
-// ─── Single car card ──────────────────────────────────────────────────────────
+// ─── Single car card (option-final bar-row style) ────────────────────────────
+
+const FUEL_LABELS = {
+  petrol_turbo: 'Petrol Turbo', diesel: 'Diesel',
+  strong_hybrid: 'Strong Hybrid', mild_hybrid: 'Mild Hybrid', petrol: 'Petrol'
+};
 
 function renderCarCard(car, allRanked, baseline) {
   const isBaseline = !!car.is_baseline;
-
   const card = document.createElement('div');
-  card.className = 'car-card' + (isBaseline ? ' baseline-card' : '');
+  const isTop = !isBaseline && car.rank === 1;
+
+  card.className = isBaseline ? 'car-card baseline-card' : `car-card${isTop ? '' : ''}`;
   if (!isBaseline) {
     if (car.rank) card.dataset.rank = car.rank;
-    card.style.cursor = 'pointer';
     card.addEventListener('click', () => renderDetailPanel(car, allRanked, baseline));
   }
 
-  // ── Header ──────────────────────────────────────────────────────────────────
-  const header = document.createElement('div');
-  header.className = 'car-card-header';
+  // ── Rank number ─────────────────────────────────────────────────────────────
+  const rankEl = document.createElement('div');
+  rankEl.className = 'rank-badge' + (isTop ? '' : '');
+  rankEl.innerHTML = isBaseline
+    ? '<span class="baseline-rank">Baseline</span>'
+    : `${car.rank}`;
 
-  if (isBaseline) {
-    const baselineLabel = document.createElement('div');
-    baselineLabel.className = 'rank-badge baseline-rank';
-    baselineLabel.textContent = 'Baseline';
-    header.appendChild(baselineLabel);
+  // ── Centre info block ────────────────────────────────────────────────────────
+  const info = document.createElement('div');
+  info.className = 'car-name';
+
+  // Brand (small caps above model)
+  const brandEl = document.createElement('div');
+  brandEl.className = 'car-brand-label';
+  brandEl.style.cssText = 'font-size:0.62rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.1rem';
+  brandEl.textContent = car.brand || '';
+
+  // Model + variant
+  const modelRow = document.createElement('div');
+  modelRow.style.cssText = 'display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.35rem';
+  const modelEl = document.createElement('span');
+  modelEl.style.cssText = 'font-size:1.05rem;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1.2';
+  modelEl.textContent = car.model || '';
+  const variantEl = document.createElement('span');
+  variantEl.style.cssText = 'font-size:0.72rem;color:var(--text-muted);font-weight:400';
+  variantEl.textContent = car.variant || '';
+  modelRow.appendChild(modelEl);
+  if (!isBaseline) modelRow.appendChild(variantEl);
+
+  // Score bar
+  const barTrack = document.createElement('div');
+  barTrack.className = 'score-bar-track';
+  const barFill = document.createElement('div');
+  barFill.className = 'score-bar-fill';
+  barFill.style.width = isBaseline ? '0%' : `${car.score || 0}%`;
+  barTrack.appendChild(barFill);
+
+  // Feature tags
+  const tagsRow = document.createElement('div');
+  tagsRow.className = 'bar-tags';
+
+  if (!isBaseline) {
+    const mustHaveTags = [
+      { label: '6 Airbags', hit: (car.airbags || 0) >= 6 },
+      { label: 'Vent. Seats', hit: !!car.ventilated_seats },
+      { label: 'Connected Car', hit: !!car.connected_car },
+    ];
+    mustHaveTags.forEach(({ label, hit }) => {
+      const t = document.createElement('span');
+      t.className = 'btag' + (hit ? ' hit' : '');
+      t.textContent = label;
+      tagsRow.appendChild(t);
+    });
+
+    const vfmTag = getVFMTag(car, allRanked);
+    const vfmLabels = { excellent: 'Excellent VFM', fair: 'Fair VFM', overpriced: 'Overpriced' };
+    const vt = document.createElement('span');
+    vt.className = `btag${vfmTag === 'excellent' ? ' hit' : ''}`;
+    vt.textContent = vfmLabels[vfmTag] || vfmTag;
+    tagsRow.appendChild(vt);
   } else {
-    const rankBadge = document.createElement('div');
-    rankBadge.className = 'rank-badge';
-    rankBadge.textContent = `#${car.rank || '—'}`;
-    header.appendChild(rankBadge);
+    const fuel = FUEL_LABELS[car.fuel] || car.fuel || '';
+    [fuel, `${car.engine_cc || 0}cc`, 'Baseline'].forEach(t => {
+      const el = document.createElement('span');
+      el.className = 'btag';
+      el.textContent = t;
+      tagsRow.appendChild(el);
+    });
   }
 
-  const nameBlock = document.createElement('div');
-  nameBlock.className = 'car-name';
-  const h3 = document.createElement('h3');
-  h3.textContent = `${car.brand || ''} ${car.model || ''}`.trim();
-  const variantP = document.createElement('p');
-  variantP.className = 'variant-name';
-  variantP.textContent = car.variant || '';
-  nameBlock.appendChild(h3);
-  nameBlock.appendChild(variantP);
-  header.appendChild(nameBlock);
+  info.appendChild(brandEl);
+  info.appendChild(modelRow);
+  if (!isBaseline) info.appendChild(barTrack);
+  info.appendChild(tagsRow);
+
+  // ── Right column: score + price ──────────────────────────────────────────────
+  const right = document.createElement('div');
+  right.style.cssText = 'text-align:right;flex-shrink:0;min-width:52px';
 
   if (!isBaseline) {
     const scoreEl = document.createElement('div');
     scoreEl.className = 'car-score';
-    scoreEl.textContent = `${car.score != null ? car.score : '—'}/100`;
-    header.appendChild(scoreEl);
-  }
+    scoreEl.textContent = car.score != null ? Math.round(car.score) : '—';
 
-  card.appendChild(header);
-
-  // ── Badges row ──────────────────────────────────────────────────────────────
-  const badgeRow = document.createElement('div');
-  badgeRow.className = 'badge-row';
-
-  if (!isBaseline) {
-    // VFM tag
-    const vfmTag = getVFMTag(car, allRanked);
-    const vfmEl = document.createElement('span');
-    vfmEl.className = `vfm-tag vfm-${vfmTag}`;
-    const vfmLabels = { excellent: 'Excellent VFM', fair: 'Fair VFM', overpriced: 'Overpriced' };
-    vfmEl.textContent = vfmLabels[vfmTag] || vfmTag;
-    badgeRow.appendChild(vfmEl);
-
-    // Best variant badge
-    if (car.is_best_variant_for_user) {
-      const bestBadge = document.createElement('span');
-      bestBadge.className = 'best-badge';
-      bestBadge.textContent = 'Best Variant for You';
-      badgeRow.appendChild(bestBadge);
-    }
-  }
-
-  // Waiting badge (shown for all cars including baseline if data present)
-  const weeks = car.waiting_weeks_jodhpur;
-  if (weeks != null) {
-    const colorSuffix = waitingColor(weeks);
-    const waitBadge = document.createElement('span');
-    waitBadge.className = `spec-chip waiting-chip waiting-${colorSuffix}`;
-    waitBadge.textContent = weeks === 0 ? 'Available Now' : `${weeks} wk${weeks !== 1 ? 's' : ''} wait`;
-    badgeRow.appendChild(waitBadge);
-  }
-
-  if (badgeRow.children.length > 0) {
-    card.appendChild(badgeRow);
-  }
-
-  // ── Spec chips ──────────────────────────────────────────────────────────────
-  const specChips = document.createElement('div');
-  specChips.className = 'spec-chips';
-
-  const fuelLabels = {
-    petrol_turbo: 'Petrol Turbo',
-    diesel: 'Diesel',
-    strong_hybrid: 'Strong Hybrid',
-    mild_hybrid: 'Mild Hybrid',
-    petrol: 'Petrol'
-  };
-
-  const specs = [
-    fuelLabels[car.fuel] || (car.fuel || 'Unknown'),
-    car.transmission || 'Unknown',
-    `${car.airbags || 0} airbags`,
-    `${car.engine_cc || 0} cc / ${car.power_bhp || 0} bhp`,
-    ...(car.ncap_stars ? [`${car.ncap_stars}★ NCAP`] : []),
-    `${car.realworld_kmpl || 0} kmpl real`,
-    `${car.boot_litres || 0} L boot`
-  ];
-
-  specs.forEach(text => {
-    const chip = document.createElement('span');
-    chip.className = 'spec-chip';
-    chip.textContent = text;
-    specChips.appendChild(chip);
-  });
-
-  card.appendChild(specChips);
-
-  // ── Must-have check row (non-baseline only) ─────────────────────────────────
-  if (!isBaseline) {
-    const mustHaveChecks = [
-      { key: '6_airbags', label: '6 Airbags', met: (car.airbags || 0) >= 6 },
-      { key: 'ventilated_seats', label: 'Ventilated Seats', met: !!car.ventilated_seats },
-      { key: 'connected_car', label: 'Connected Car', met: !!car.connected_car }
-    ];
-
-    const mustHaveRow = document.createElement('div');
-    mustHaveRow.className = 'must-have-row';
-
-    mustHaveChecks.forEach(({ label, met }) => {
-      const item = document.createElement('span');
-      item.className = `must-have-item ${met ? 'met' : 'unmet'}`;
-      item.textContent = `${met ? '✓' : '✗'} ${label}`;
-      mustHaveRow.appendChild(item);
-    });
-
-    card.appendChild(mustHaveRow);
-  }
-
-  // ── Known issues preview ─────────────────────────────────────────────────────
-  const issues = car.known_issues || [];
-  const topIssue = issues.find(i => i.severity === 'Critical') ||
-                   issues.find(i => i.severity === 'Watch');
-  if (topIssue) {
-    const issueEl = document.createElement('div');
-    issueEl.className = `issues-preview severity-${topIssue.severity.toLowerCase()}`;
-    issueEl.textContent = `⚠ ${topIssue.issue}`;
-    card.appendChild(issueEl);
-  }
-
-  // ── Price row ────────────────────────────────────────────────────────────────
-  const priceRow = document.createElement('div');
-  priceRow.className = 'price-row';
-
-  if (isBaseline) {
-    const currentCarLabel = document.createElement('span');
-    currentCarLabel.className = 'current-car-label';
-    currentCarLabel.textContent = 'Current car — no purchase price';
-    priceRow.appendChild(currentCarLabel);
-  } else {
     const exSR = car.ex_showroom_jodhpur || 0;
     const onRoad = exSR * 1.11 + 15000 + exSR * 0.035;
+    const priceEl = document.createElement('div');
+    priceEl.style.cssText = 'font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem';
+    priceEl.textContent = exSR ? `₹${formatLakh(onRoad)}L` : '—';
 
-    // TCO: use pre-computed value on ranked car if available, else omit
-    const tco = car.tco;
-
-    const exEl = document.createElement('span');
-    exEl.className = 'ex-showroom';
-    exEl.textContent = `Ex-sh: ₹${formatLakh(exSR)}L`;
-    priceRow.appendChild(exEl);
-
-    const onRoadEl = document.createElement('span');
-    onRoadEl.className = 'on-road';
-    onRoadEl.textContent = `On-road: ~₹${formatLakh(onRoad)}L`;
-    priceRow.appendChild(onRoadEl);
-
-    if (tco != null) {
-      const tcoEl = document.createElement('span');
-      tcoEl.className = 'tco-5yr';
-      tcoEl.textContent = `5yr TCO: ₹${formatLakh(tco)}L`;
-      priceRow.appendChild(tcoEl);
+    const weeks = car.waiting_weeks_jodhpur;
+    if (weeks != null) {
+      const waitEl = document.createElement('div');
+      waitEl.style.cssText = `font-size:0.65rem;margin-top:0.2rem;font-weight:600;color:var(--${waitingColor(weeks) === 'green' ? 'green' : waitingColor(weeks) === 'yellow' ? 'yellow' : 'orange'})`;
+      waitEl.textContent = weeks === 0 ? 'In stock' : `${weeks}w wait`;
+      right.appendChild(scoreEl);
+      right.appendChild(priceEl);
+      right.appendChild(waitEl);
+    } else {
+      right.appendChild(scoreEl);
+      right.appendChild(priceEl);
     }
+  } else {
+    const label = document.createElement('div');
+    label.style.cssText = 'font-size:0.68rem;color:var(--text-dim);text-align:right';
+    label.textContent = 'Your car';
+    right.appendChild(label);
   }
 
-  card.appendChild(priceRow);
-
-  // ── Annual costs row (non-baseline) ─────────────────────────────────────────
-  if (!isBaseline) {
-    const ins = car.annual_insurance_estimate || 0;
-    const svc = car.annual_maintenance_estimate || 0;
-    if (ins > 0 || svc > 0) {
-      const annualRow = document.createElement('div');
-      annualRow.className = 'annual-costs';
-      annualRow.textContent = `Ins: ₹${ins.toLocaleString('en-IN')}/yr · Service: ₹${svc.toLocaleString('en-IN')}/yr`;
-      card.appendChild(annualRow);
-    }
-  }
-
-  // ── Score breakdown (non-baseline, collapsible) ──────────────────────────────
-  if (!isBaseline && car.breakdown) {
-    const bd = car.breakdown;
-    const details = document.createElement('details');
-    details.className = 'score-breakdown';
-
-    const summary = document.createElement('summary');
-    summary.textContent = 'Score breakdown';
-    details.appendChild(summary);
-
-    const breakdownText = document.createElement('p');
-    breakdownText.className = 'breakdown-content';
-    breakdownText.textContent = [
-      `Safety: ${bd.safety ?? '—'}`,
-      `VFM: ${bd.value_for_money ?? '—'}`,
-      `Features: ${bd.features ?? '—'}`,
-      `Service: ${bd.service ?? '—'}`,
-      `Comfort: ${bd.comfort ?? '—'}`,
-      `Reliability: ${bd.reliability ?? '—'}`
-    ].join(' · ');
-    details.appendChild(breakdownText);
-
-    card.appendChild(details);
-  }
+  // ── Assemble ─────────────────────────────────────────────────────────────────
+  const inner = document.createElement('div');
+  inner.className = 'car-card-header';
+  inner.appendChild(rankEl);
+  inner.appendChild(info);
+  inner.appendChild(right);
+  card.appendChild(inner);
 
   return card;
 }

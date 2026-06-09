@@ -1,10 +1,11 @@
 // modules/ui-compare.js
-// Compare tab — up to 3 cars vs Quanto baseline
+// Compare tab — 3D viewer + spec table vs Quanto baseline
 
 import { loadCarsData, getBaselineCar, getCarsForRanking } from './data.js';
 import { rankCars, calcTCO, getBestVariantPerBrand } from './ranking.js';
 import { getProfile } from './profile.js';
 import { calcOnRoadPrice, calcEMI } from './emi.js';
+import { createCarViewer } from './ui-3d.js';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -569,6 +570,40 @@ export async function renderCompare(container) {
 
   // ── outer structure ──
   container.innerHTML = `
+    <div id="compare-viewer-section">
+      <div class="cmp-viewer-wrap">
+        <button class="cmp-csel-arrow" id="cmp-csel-prev" disabled>‹</button>
+        <button class="cmp-csel-arrow" id="cmp-csel-next">›</button>
+        <div class="cmp-car-selector">
+          <div class="cmp-csel-track-wrap">
+            <div class="cmp-csel-track" id="cmp-csel-track"></div>
+          </div>
+        </div>
+        <div class="cmp-viewer-container" id="cmp-viewer-container">
+          <canvas class="viewer-canvas"></canvas>
+          <div class="viewer-loading" style="display:none">
+            <div class="viewer-loading-ring"></div>
+            <div class="viewer-loading-text">Loading 3D model…</div>
+          </div>
+          <div class="viewer-hint" id="cmp-drag-hint">Drag to rotate &nbsp;·&nbsp; Pinch to zoom</div>
+        </div>
+        <div class="cmp-cv-row">
+          <div class="cmp-cv-block">
+            <div class="cmp-cv-label">Color</div>
+            <div class="cmp-color-dots" id="cmp-color-dots"></div>
+          </div>
+          <div class="cmp-cv-block cmp-cv-flex">
+            <div class="cmp-cv-label">Variant</div>
+            <div class="cmp-variant-chips" id="cmp-variant-chips"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cmp-score-strip" id="cmp-score-strip">
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-price">—</div><div class="cmp-ss-label">On-road</div></div>
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-score">—</div><div class="cmp-ss-label">Match score</div></div>
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-wait">—</div><div class="cmp-ss-label">Wait time</div></div>
+      </div>
+    </div>
     <div id="compare-controls-root"></div>
     <div id="compare-table-root"></div>
     <div id="compare-chart-root"></div>
@@ -579,6 +614,149 @@ export async function renderCompare(container) {
   const tableRoot    = container.querySelector('#compare-table-root');
   const chartRoot    = container.querySelector('#compare-chart-root');
   const pickerRoot   = container.querySelector('#compare-picker-root');
+
+  // ── 3D viewer setup ──
+  let viewer = null;
+  let viewerActiveCar = null;
+
+  const viewerContainerEl = container.querySelector('#cmp-viewer-container');
+
+  // Initialise the viewer after the DOM is painted so clientWidth/Height are set
+  requestAnimationFrame(() => {
+    try {
+      viewer = createCarViewer(viewerContainerEl);
+    } catch (e) {
+      console.warn('3D viewer init failed:', e);
+    }
+  });
+
+  function _buildCarTabs() {
+    const track = container.querySelector('#cmp-csel-track');
+    const prev  = container.querySelector('#cmp-csel-prev');
+    const next  = container.querySelector('#cmp-csel-next');
+
+    // Show ranked cars + baseline in order
+    const tabCars = [...allCars, baselineWithTCO];
+
+    track.innerHTML = tabCars.map((car, i) => `
+      <button class="cmp-csel-btn${i === 0 ? ' active' : ''}" data-car-id="${car.id}">
+        <div class="cmp-csel-brand">${car.brand}</div>
+        <div class="cmp-csel-model">${car.model}</div>
+        <div class="cmp-csel-score">${car.score != null ? Math.round(car.score) : '—'}</div>
+      </button>
+    `).join('');
+
+    // Carousel state
+    let offset = 0;
+    const VISIBLE = 2;
+    const total   = tabCars.length;
+
+    function updateCarousel() {
+      const btnW = track.parentElement.clientWidth / VISIBLE;
+      track.style.transform = `translateX(-${offset * btnW}px)`;
+      prev.disabled = offset === 0;
+      next.disabled = offset >= total - VISIBLE;
+    }
+
+    prev.addEventListener('click', () => {
+      if (offset > 0) { offset--; updateCarousel(); _activateFirst(); }
+    });
+    next.addEventListener('click', () => {
+      if (offset < total - VISIBLE) { offset++; updateCarousel(); _activateFirst(); }
+    });
+
+    function _activateFirst() {
+      const btns = track.querySelectorAll('.cmp-csel-btn');
+      const visibleBtn = btns[offset];
+      if (visibleBtn) _selectCar(visibleBtn, tabCars[offset]);
+    }
+
+    track.querySelectorAll('.cmp-csel-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => _selectCar(btn, tabCars[i]));
+    });
+
+    // Activate the first car immediately
+    const firstBtn = track.querySelector('.cmp-csel-btn');
+    if (firstBtn) _selectCar(firstBtn, tabCars[0]);
+
+    updateCarousel();
+  }
+
+  function _selectCar(btn, car) {
+    container.querySelectorAll('.cmp-csel-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    viewerActiveCar = car;
+
+    // Color dots
+    _renderColorDots(car);
+
+    // Variant chips (reuse allCars which has the best variant; offer all same-model variants)
+    _renderVariantChips(car);
+
+    // Score strip
+    _updateScoreStrip(car);
+
+    // Load 3D model — defer until viewer is ready
+    const glb = car.glb || null;
+    const loadToken = {}; // unique object per selection; used to cancel stale loads
+    _selectCar._pendingToken = loadToken;
+    function _doLoad() {
+      if (_selectCar._pendingToken !== loadToken) return; // superseded
+      if (!viewer) { setTimeout(_doLoad, 100); return; }
+      viewer.load(glb || '__fallback__');
+      const colors = car.colors || [];
+      if (colors.length) viewer.setColor(colors[0].hex);
+    }
+    _doLoad();
+  }
+
+  function _renderColorDots(car) {
+    const dotsEl = container.querySelector('#cmp-color-dots');
+    const colors = car.colors || [];
+    dotsEl.innerHTML = colors.map((c, i) => `
+      <button class="cmp-cdot${i === 0 ? ' active' : ''}"
+        style="background:${c.hex}"
+        title="${c.name}"
+        data-hex="${c.hex}"
+        aria-label="${c.name}">
+      </button>
+    `).join('');
+    dotsEl.querySelectorAll('.cmp-cdot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        dotsEl.querySelectorAll('.cmp-cdot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        if (viewer) viewer.setColor(dot.dataset.hex);
+      });
+    });
+  }
+
+  function _renderVariantChips(car) {
+    const chipsEl = container.querySelector('#cmp-variant-chips');
+    // Find all variants of the same model
+    const modelVariants = allCars.filter(c => c.model === car.model && c.brand === car.brand);
+    if (modelVariants.length <= 1) {
+      chipsEl.innerHTML = `<span class="cmp-vchip active">${car.variant || '—'}</span>`;
+      return;
+    }
+    chipsEl.innerHTML = modelVariants.map((v, i) => `
+      <button class="cmp-vchip${v.id === car.id ? ' active' : ''}" data-idx="${i}">${v.variant}</button>
+    `).join('');
+  }
+
+  function _updateScoreStrip(car) {
+    const priceEl = container.querySelector('#cmp-ss-price');
+    const scoreEl = container.querySelector('#cmp-ss-score');
+    const waitEl  = container.querySelector('#cmp-ss-wait');
+
+    const onRoad = car.ex_showroom_jodhpur ? calcOnRoadPrice(car.ex_showroom_jodhpur) : null;
+    priceEl.textContent = onRoad ? '₹' + (onRoad / 100000).toFixed(1) + 'L' : '—';
+    scoreEl.textContent = car.score != null ? Math.round(car.score) : '—';
+    waitEl.textContent  = car.waiting_weeks_jodhpur != null
+      ? car.waiting_weeks_jodhpur + ' wks'
+      : '—';
+  }
+
+  _buildCarTabs();
 
   // ── internal render ──
   function _render() {
