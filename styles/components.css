@@ -603,20 +603,15 @@
   display: none;
   align-items: flex-end;
   justify-content: center;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(3px);
 }
 .detail-panel.open {
   display: flex;
 }
+/* backdrop kept for JS compatibility but panel itself is now the overlay */
 .detail-panel-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(15,23,42,0.45);
-  backdrop-filter: blur(3px);
-  z-index: 499;
-  display: none;
-}
-.detail-panel-backdrop.visible {
-  display: block;
+  display: none !important;
 }
 .detail-backdrop {
   position: absolute;
