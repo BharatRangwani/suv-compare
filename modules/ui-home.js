@@ -177,6 +177,7 @@ function renderCarCard(car, allRanked, baseline) {
   // Feature tags
   const tagsRow = document.createElement('div');
   tagsRow.className = 'bar-tags';
+  tagsRow.addEventListener('click', e => e.stopPropagation());
 
   if (!isBaseline) {
     const mustHaveTags = [

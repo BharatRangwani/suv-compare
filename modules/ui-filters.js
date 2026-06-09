@@ -209,7 +209,18 @@ export function renderFilters(container, onFilterChange) {
     const bar = document.createElement('div');
     bar.className = 'filter-bar';
 
-    FILTER_GROUPS.forEach(({ group, options }) => {
+    FILTER_GROUPS.forEach(({ group, label: groupLabel, options }) => {
+      const groupEl = document.createElement('div');
+      groupEl.className = 'filter-group';
+
+      const catLabel = document.createElement('span');
+      catLabel.className = 'filter-cat-label';
+      catLabel.textContent = groupLabel;
+      groupEl.appendChild(catLabel);
+
+      const chipsEl = document.createElement('div');
+      chipsEl.className = 'filter-chips-row';
+
       options.forEach(({ value, label }) => {
         const btn = document.createElement('button');
         btn.className = 'filter-chip' + (currentFilters[group] === value ? ' active' : '');
@@ -223,13 +234,16 @@ export function renderFilters(container, onFilterChange) {
           updateClearButton();
           onFilterChange({ ...currentFilters });
         });
-        bar.appendChild(btn);
+        chipsEl.appendChild(btn);
       });
+
+      groupEl.appendChild(chipsEl);
+      bar.appendChild(groupEl);
     });
 
     const clearBtn = document.createElement('button');
     clearBtn.className = 'filter-chip clear-filters' + (isAnyFilterActive(currentFilters) ? '' : ' hidden');
-    clearBtn.textContent = 'Clear all';
+    clearBtn.textContent = '✕ Clear all';
     clearBtn.addEventListener('click', () => {
       currentFilters = { ...DEFAULT_FILTERS };
       resetFilters();

@@ -234,11 +234,7 @@ body {
 /* ── Filter bar ── */
 .filter-bar-wrapper {
   padding: 0 1.25rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
 }
-.filter-bar-wrapper::-webkit-scrollbar { display: none; }
 
 /* ── Car list ── */
 .car-list {
