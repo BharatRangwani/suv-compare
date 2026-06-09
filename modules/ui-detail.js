@@ -1,9 +1,9 @@
 /**
  * ui-detail.js — Slide-in detail panel for SUV Compare
- * Singleton panel, radar chart via window.Chart, EMI calculator via emi.js
+ * Singleton panel, radar chart via window.Chart, EMI calculator inline.
  */
 
-import { calcOnRoadPrice, renderEMICalculator } from './emi.js';
+import { calcEMI, calcLoanSummary, calcOnRoadPrice } from './emi.js';
 import { getVFMTag, calcTCO } from './ranking.js';
 import { getProfile } from './profile.js';
 
@@ -125,21 +125,78 @@ function buildPriceCostsSection(car) {
   const tco = calcTCO(car, profile);
   const annualIns = car.annual_insurance_estimate || 0;
   const annualMaint = car.annual_maintenance_estimate || 0;
+  const waitingWeeks = car.waiting_weeks_jodhpur || 0;
+
+  // Default EMI: 20% DP, SBI 8.5%, 5yr
+  const defaultSummary = calcLoanSummary(onRoad, 20, 8.5, 60);
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Price &amp; Costs</h3>
-      <dl class="specs-grid">
+      <div class="dp-sec-hd"><span>Price &amp; Costs</span></div>
+
+      <!-- Answer card -->
+      <div class="dp-answer-card">
+        <div class="fin-ac-eyebrow">On-Road · Jodhpur</div>
+        <div class="dp-ac-sentence">Drive home for <strong>₹${fmtLakh(onRoad)}L</strong> on-road</div>
+        <div class="dp-ac-nums">
+          <div class="dp-ac-num">
+            <div class="dp-ac-val" id="dp-emi-display">₹${defaultSummary.emi.toLocaleString('en-IN')}</div>
+            <div class="dp-ac-lbl">EMI/month</div>
+          </div>
+          <div class="dp-ac-num">
+            <div class="dp-ac-val">₹${fmtLakh(onRoad)}L</div>
+            <div class="dp-ac-lbl">On-Road</div>
+          </div>
+          <div class="dp-ac-num">
+            <div class="dp-ac-val">${getWaitingLabel(waitingWeeks)}</div>
+            <div class="dp-ac-lbl">Wait Time</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inline EMI adjuster -->
+      <div class="dp-emi-controls">
+        <div class="fin-ctrl">
+          <span class="fin-ctrl-lbl">Down Payment</span>
+          <input type="range" id="dp-dp-slider" min="5" max="50" value="20" step="1"
+                 style="flex:1;min-width:80px;accent-color:var(--blue)">
+          <span class="fin-ctrl-val" id="dp-dp-pct-val">20%</span>
+          <span class="fin-ctrl-val" id="dp-dp-amt-val" style="color:var(--text-muted);font-weight:500">₹${fmtLakh(defaultSummary.downPayment)}L</span>
+        </div>
+        <div class="fin-ctrl">
+          <span class="fin-ctrl-lbl">Rate</span>
+          <div class="fin-chips" id="dp-rate-chips">
+            <button class="fin-chip active" data-rate="8.5">SBI 8.5%</button>
+            <button class="fin-chip" data-rate="8.6">BoB 8.6%</button>
+            <button class="fin-chip" data-rate="8.75">HDFC 8.75%</button>
+            <button class="fin-chip" data-rate="8.99">Kotak 8.99%</button>
+            <button class="fin-chip" data-rate="9.0">ICICI 9%</button>
+            <button class="fin-chip" data-rate="9.15">Axis 9.15%</button>
+          </div>
+        </div>
+        <div class="fin-ctrl">
+          <span class="fin-ctrl-lbl">Tenure</span>
+          <div class="fin-chips" id="dp-tenure-chips">
+            <button class="fin-chip" data-tenure="36">3yr</button>
+            <button class="fin-chip" data-tenure="48">4yr</button>
+            <button class="fin-chip active" data-tenure="60">5yr</button>
+            <button class="fin-chip" data-tenure="72">6yr</button>
+            <button class="fin-chip" data-tenure="84">7yr</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price breakdown -->
+      <dl class="dp-price-dl">
         <dt>Ex-Showroom (Jodhpur)</dt><dd>₹${fmtLakh(exShowroom)}L</dd>
         <dt>Road Tax (11%)</dt><dd>₹${fmtLakh(roadTax)}L</dd>
         <dt>Registration</dt><dd>₹${fmtLakh(registration)}L</dd>
         <dt>Insurance (3.5%)</dt><dd>₹${fmtLakh(insurance)}L</dd>
-        <dt>On-Road Total</dt><dd><strong>₹${fmtLakh(onRoad)}L</strong></dd>
+        <dt><strong>On-Road Total</strong></dt><dd><strong>₹${fmtLakh(onRoad)}L</strong></dd>
         <dt>5-Year TCO</dt><dd>₹${fmtLakh(tco)}L</dd>
         <dt>Annual Insurance Est.</dt><dd>₹${annualIns.toLocaleString('en-IN')}</dd>
         <dt>Annual Service Est.</dt><dd>₹${annualMaint.toLocaleString('en-IN')}</dd>
       </dl>
-      <div id="dp-emi-calc"></div>
     </section>`;
 }
 
@@ -154,12 +211,13 @@ function buildRatingsSection(car, baseline) {
     'Interior Space', 'Boot Space', 'Features+Tech', 'Service Quality'
   ];
 
-  const pillsHtml = ratingKeys.map((k, i) => {
+  const barsHtml = ratingKeys.map((k, i) => {
     const val = car[k] || 0;
     return `
-      <div class="rating-pill">
-        <span class="rating-pill-label">${ratingLabels[i]}</span>
-        <span class="rating-pill-value">${val.toFixed(1)}</span>
+      <div class="dp-cat-row">
+        <span class="dp-cat-name">${ratingLabels[i]}</span>
+        <div class="dp-cat-bar-track"><div class="dp-cat-bar-fill" style="width:${val * 10}%"></div></div>
+        <span class="dp-cat-val">${val.toFixed(1)}</span>
       </div>`;
   }).join('');
 
@@ -168,12 +226,12 @@ function buildRatingsSection(car, baseline) {
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Quality Ratings${baselineLabel}</h3>
+      <div class="dp-sec-hd"><span>Quality Ratings${baselineLabel}</span></div>
       <div class="radar-chart-container">
         <canvas id="dp-radar-canvas"></canvas>
       </div>
-      <div class="ratings-grid">
-        ${pillsHtml}
+      <div class="dp-cat-bars">
+        ${barsHtml}
       </div>
       <div class="car-score">Total: <strong>${total}</strong>/10</div>
     </section>`;
@@ -206,7 +264,7 @@ function buildSpecsSection(car) {
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Specifications</h3>
+      <div class="dp-sec-hd"><span>Specifications</span></div>
       <dl class="specs-grid">
         ${isEV ? '' : `<dt>Engine</dt><dd>${car.engine_cc || '—'} cc</dd>`}
         <dt>Power</dt><dd>${car.power_bhp || '—'} bhp</dd>
@@ -237,7 +295,7 @@ function buildEVChargingSection(car) {
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">⚡ Charging & Range</h3>
+      <div class="dp-sec-hd"><span>⚡ Charging &amp; Range</span></div>
       <dl class="specs-grid">
         <dt>Real-World Range</dt><dd>${range}</dd>
         <dt>Battery Pack</dt><dd>${car.battery_kwh || '—'} kWh</dd>
@@ -262,16 +320,16 @@ function buildMustHavesSection(car) {
     { label: 'Sunroof', met: !!car.sunroof }
   ];
 
-  const itemsHtml = checks.map(c => {
-    const cls = c.met ? 'met' : 'unmet';
+  const chipsHtml = checks.map(c => {
+    const cls = c.met ? 'dp-check-chip dp-check-hit' : 'dp-check-chip dp-check-miss';
     const icon = c.met ? '✓' : '✗';
-    return `<li class="must-have-check ${cls}">${icon} ${c.label}</li>`;
+    return `<span class="${cls}">${icon} ${c.label}</span>`;
   }).join('');
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Must-Have Checklist</h3>
-      <ul class="must-haves-list">${itemsHtml}</ul>
+      <div class="dp-sec-hd"><span>Must-Have Checklist</span></div>
+      <div class="dp-check-chips">${chipsHtml}</div>
     </section>`;
 }
 
@@ -281,53 +339,50 @@ function buildKnownIssuesSection(car) {
 
   const itemsHtml = issues.map(i => {
     const sev = (i.severity || 'Minor').toLowerCase();
-    const sevClass = sev === 'critical' ? 'severity-critical' :
-                     sev === 'watch'    ? 'severity-watch' : 'severity-minor';
+    const sevClass = sev === 'critical' ? 'dp-sev-critical' :
+                     sev === 'watch'    ? 'dp-sev-watch' : 'dp-sev-minor';
     return `
       <li class="issue-item">
-        <span class="${sevClass}">[${i.severity || 'Minor'}]</span>
+        <span class="${sevClass}">${i.severity || 'Minor'}</span>
         <span class="issue-text">${i.issue || ''}</span>
       </li>`;
   }).join('');
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Known Issues</h3>
-      <details>
-        <summary>${issues.length} known issue${issues.length !== 1 ? 's' : ''}</summary>
-        <ul class="issues-list">${itemsHtml}</ul>
-      </details>
+      <div class="dp-sec-hd"><span>Known Issues (${issues.length})</span></div>
+      <ul class="issues-list">${itemsHtml}</ul>
     </section>`;
 }
 
 function buildOwnershipSection(car) {
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Ownership &amp; Reliability</h3>
-      <div class="ownership-grid">
-        <div class="ownership-item">
-          <span>Long-Term Reliability</span>
-          <strong>${car.long_term_reliability_score || '—'}/10</strong>
+      <div class="dp-sec-hd"><span>Ownership &amp; Reliability</span></div>
+      <div class="dp-stat-grid">
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.long_term_reliability_score != null ? car.long_term_reliability_score + '/10' : '—'}</div>
+          <div class="dp-stat-lbl">Long-Term Reliability</div>
         </div>
-        <div class="ownership-item">
-          <span>Future-Proof Score</span>
-          <strong>${car.future_proof_score || '—'}/10</strong>
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.future_proof_score != null ? car.future_proof_score + '/10' : '—'}</div>
+          <div class="dp-stat-lbl">Future-Proof</div>
         </div>
-        <div class="ownership-item">
-          <span>Parts Availability</span>
-          <strong>${car.parts_availability_score || '—'}/10</strong>
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.parts_availability_score != null ? car.parts_availability_score + '/10' : '—'}</div>
+          <div class="dp-stat-lbl">Parts Availability</div>
         </div>
-        <div class="ownership-item">
-          <span>Ease of Servicing</span>
-          <strong>${car.ease_of_servicing_score || '—'}/10</strong>
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.ease_of_servicing_score != null ? car.ease_of_servicing_score + '/10' : '—'}</div>
+          <div class="dp-stat-lbl">Ease of Servicing</div>
         </div>
-        <div class="ownership-item">
-          <span>Resale Value (3yr)</span>
-          <strong>${car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '—'}</strong>
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '—'}</div>
+          <div class="dp-stat-lbl">Resale 3yr</div>
         </div>
-        <div class="ownership-item">
-          <span>Resale Value (5yr)</span>
-          <strong>${car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '—'}</strong>
+        <div class="dp-stat-cell">
+          <div class="dp-stat-val">${car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '—'}</div>
+          <div class="dp-stat-lbl">Resale 5yr</div>
         </div>
       </div>
     </section>`;
@@ -355,7 +410,7 @@ function buildServiceCentersSection(car) {
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Service Centers in Jodhpur</h3>
+      <div class="dp-sec-hd"><span>Service Centers in Jodhpur</span></div>
       <div class="service-center-list">${cardsHtml}</div>
     </section>`;
 }
@@ -365,12 +420,12 @@ function buildProsConsSection(car) {
   const cons = car.cons || [];
   if (!pros.length && !cons.length) return '';
 
-  const prosHtml = pros.map(p => `<li>${p}</li>`).join('');
-  const consHtml = cons.map(c => `<li>${c}</li>`).join('');
+  const prosHtml = pros.map(p => `<li class="dp-pro-item">✓ ${p}</li>`).join('');
+  const consHtml = cons.map(c => `<li class="dp-con-item">✗ ${c}</li>`).join('');
 
   return `
     <section class="detail-section">
-      <h3 class="detail-section-title">Pros &amp; Cons</h3>
+      <div class="dp-sec-hd"><span>Pros &amp; Cons</span></div>
       <div class="pros-cons-grid">
         <ul class="pros-list">${prosHtml}</ul>
         <ul class="cons-list">${consHtml}</ul>
@@ -451,6 +506,55 @@ function buildRadarChart(car, baseline) {
   });
 }
 
+// ─── EMI wiring ───────────────────────────────────────────────────────────────
+
+function _wireEMIControls(car) {
+  if (car.is_baseline || !car.ex_showroom_jodhpur) return;
+
+  const onRoad = calcOnRoadPrice(car.ex_showroom_jodhpur);
+
+  const dpSlider   = _panelEl.querySelector('#dp-dp-slider');
+  const dpPctVal   = _panelEl.querySelector('#dp-dp-pct-val');
+  const dpAmtVal   = _panelEl.querySelector('#dp-dp-amt-val');
+  const emiDisplay = _panelEl.querySelector('#dp-emi-display');
+  const rateChips  = _panelEl.querySelectorAll('#dp-rate-chips .fin-chip');
+  const tenureChips = _panelEl.querySelectorAll('#dp-tenure-chips .fin-chip');
+
+  if (!dpSlider || !emiDisplay) return;
+
+  let currentRate   = 8.5;
+  let currentTenure = 60;
+
+  function recalc() {
+    const dpPct = parseFloat(dpSlider.value) || 20;
+    const summary = calcLoanSummary(onRoad, dpPct, currentRate, currentTenure);
+
+    dpPctVal.textContent = dpPct + '%';
+    dpAmtVal.textContent = '₹' + (summary.downPayment / 100000).toFixed(2) + 'L';
+    emiDisplay.textContent = '₹' + summary.emi.toLocaleString('en-IN');
+  }
+
+  dpSlider.addEventListener('input', recalc);
+
+  rateChips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      rateChips.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentRate = parseFloat(btn.dataset.rate);
+      recalc();
+    });
+  });
+
+  tenureChips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tenureChips.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentTenure = parseInt(btn.dataset.tenure, 10);
+      recalc();
+    });
+  });
+}
+
 // ─── Main panel API ───────────────────────────────────────────────────────────
 
 export function closeDetailPanel() {
@@ -507,8 +611,6 @@ export function renderDetailPanel(car, allRanked, baseline) {
     </div>`;
 
   // Build body sections
-  const onRoad = calcOnRoadPrice(car.ex_showroom_jodhpur || 0);
-
   const bodyHtml = `
     <div class="detail-body">
       ${buildBadgesSection(car)}
@@ -528,13 +630,8 @@ export function renderDetailPanel(car, allRanked, baseline) {
 
   // ── Post-innerHTML wiring ──────────────────────────────────────────────────
 
-  // 1. Mount EMI calculator (only if price section was rendered)
-  if (!car.is_baseline && car.ex_showroom_jodhpur) {
-    const emiContainer = document.getElementById('dp-emi-calc');
-    if (emiContainer) {
-      renderEMICalculator(emiContainer, onRoad);
-    }
-  }
+  // 1. Wire inline EMI controls
+  _wireEMIControls(car);
 
   // 2. Wire back + close buttons
   const backBtn = document.getElementById('detail-back-btn');
