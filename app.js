@@ -172,6 +172,14 @@ async function renderFinanceTab() {
             <button class="fin-chip" data-tenure="84">7yr</button>
           </div>
         </div>
+        <div class="fin-ctrl fin-ctrl-emi-target">
+          <span class="fin-ctrl-lbl">Target EMI</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">₹</span>
+          <input type="number" id="fin-target-emi" min="1000" max="200000" step="500"
+            placeholder="e.g. 25000"
+            style="width:6rem;padding:0.2rem 0.4rem;border:1px solid var(--border);border-radius:6px;font-size:0.82rem;background:var(--surface);color:var(--text)">
+          <span class="fin-ctrl-lbl" style="margin-left:0.25rem;color:var(--text-muted);font-size:0.72rem" id="fin-target-emi-hint"></span>
+        </div>
       </div>
     </div>
   `;
@@ -259,11 +267,47 @@ async function renderFinanceTab() {
     adjWrap.querySelector('#fin-dp').value = 20;
     adjWrap.querySelector('#fin-dp-val').textContent = '20%';
     adjWrap.querySelector('#fin-petrol-price').value = 103;
+    const tgtEmiEl = adjWrap.querySelector('#fin-target-emi');
+    if (tgtEmiEl) { tgtEmiEl.value = ''; }
+    const hintEl = adjWrap.querySelector('#fin-target-emi-hint');
+    if (hintEl) { hintEl.textContent = ''; }
     profile = { ...profile, petrol_price_jodhpur: 103 };
     saveProfile(profile);
     adjWrap.querySelectorAll('#fin-rate-chips .fin-chip').forEach(b => b.classList.toggle('active', b.dataset.rate === '8.5'));
     adjWrap.querySelectorAll('#fin-tenure-chips .fin-chip').forEach(b => b.classList.toggle('active', b.dataset.tenure === '60'));
     buildCarSel();
+    updateLoanResult();
+    updateAnswerCard();
+  });
+
+  // Target EMI — back-calculate required DP%
+  adjWrap.querySelector('#fin-target-emi').addEventListener('input', e => {
+    const targetEMI = parseInt(e.target.value, 10);
+    const hintEl = adjWrap.querySelector('#fin-target-emi-hint');
+    if (!targetEMI || targetEMI < 1000) { hintEl.textContent = ''; return; }
+    const car = getSelectedCar();
+    const onRoad = getOnRoad(car);
+    // Reverse EMI formula: P = EMI * ((1+r)^n - 1) / (r * (1+r)^n)
+    const r = rate / 12 / 100;
+    const n = tenureMonths;
+    const factor = (Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n));
+    const maxPrincipal = Math.round(targetEMI * factor);
+    const reqDP = Math.round(((onRoad - maxPrincipal) / onRoad) * 100);
+    if (reqDP < 5) {
+      hintEl.textContent = '⚠ EMI too high — DP already at min';
+      hintEl.style.color = 'var(--red)';
+      return;
+    }
+    if (reqDP > 95) {
+      hintEl.textContent = '⚠ EMI too low — need > 95% down';
+      hintEl.style.color = 'var(--red)';
+      return;
+    }
+    hintEl.textContent = `→ needs ${reqDP}% down (₹${Math.round(onRoad * reqDP / 100).toLocaleString('en-IN')})`;
+    hintEl.style.color = 'var(--text-muted)';
+    dpPct = reqDP;
+    adjWrap.querySelector('#fin-dp').value = reqDP;
+    adjWrap.querySelector('#fin-dp-val').textContent = reqDP + '%';
     updateLoanResult();
     updateAnswerCard();
   });

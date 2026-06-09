@@ -17,6 +17,7 @@ const DEFAULT_FILTERS = {
   wireless:         'all',
   connected:        'all',
   camera_360:       'all',
+  rear_camera:      'all',
   alloy_wheels:     'all',
   parking_sensors:  'all',
   drive_modes:      'all',
@@ -147,6 +148,9 @@ export function applyFilters(cars, filters) {
 
     // 360-degree camera — single
     if (filters.camera_360 === 'yes' && !car.camera_360) return false;
+
+    // Rear parking camera — single
+    if (filters.rear_camera === 'yes' && !car.rear_camera) return false;
 
     // Alloy wheels — single
     if (filters.alloy_wheels === 'yes' && !car.alloy_wheels) return false;
@@ -292,6 +296,13 @@ export function renderFilters(container, onFilterChange) {
     },
     {
       group: 'camera_360', label: '360° Camera', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Yes' },
+      ]
+    },
+    {
+      group: 'rear_camera', label: 'Rear Camera', multi: false,
       options: [
         { value: 'all', label: 'Any' },
         { value: 'yes', label: 'Yes' },
@@ -458,12 +469,15 @@ export function renderFilters(container, onFilterChange) {
     return bar;
   }
 
+  let syncToggleLabel = null; // set after toggle header is built
+
   function updateActiveStates() {
     container.querySelectorAll('.filter-chip[data-group]').forEach(chip => {
       const group = chip.dataset.group;
       const value = chip.dataset.value;
       chip.classList.toggle('active', isActive(currentFilters, group, value));
     });
+    if (syncToggleLabel) syncToggleLabel();
   }
 
   function updateClearButton() {
@@ -471,6 +485,47 @@ export function renderFilters(container, onFilterChange) {
     if (clearBtn) clearBtn.classList.toggle('hidden', !isAnyFilterActive(currentFilters));
   }
 
+  const COLLAPSE_KEY = 'suv_filters_collapsed';
+  let collapsed = localStorage.getItem(COLLAPSE_KEY) === 'true';
+
+  function activeCount() {
+    return Object.entries(currentFilters).reduce((n, [g, v]) =>
+      n + (MULTI_GROUPS.has(g) ? v.length : (v !== 'all' ? 1 : 0)), 0);
+  }
+
+  function buildToggleHeader() {
+    const hdr = document.createElement('div');
+    hdr.className = 'filter-toggle-hdr';
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'filter-toggle-btn';
+    toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+
+    function syncLabel() {
+      const n = activeCount();
+      toggleBtn.innerHTML = collapsed
+        ? `<span class="filter-toggle-icon">▶</span> Filters${n > 0 ? ` <span class="filter-toggle-count">${n}</span>` : ''}`
+        : `<span class="filter-toggle-icon open">▼</span> Filters${n > 0 ? ` <span class="filter-toggle-count">${n}</span>` : ''}`;
+      toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+    }
+    syncLabel();
+    syncToggleLabel = syncLabel;
+
+    toggleBtn.addEventListener('click', () => {
+      collapsed = !collapsed;
+      localStorage.setItem(COLLAPSE_KEY, String(collapsed));
+      const bar = container.querySelector('.filter-bar');
+      if (bar) bar.classList.toggle('filter-bar-hidden', collapsed);
+      syncLabel();
+    });
+
+    hdr.appendChild(toggleBtn);
+    return hdr;
+  }
+
   container.innerHTML = '';
-  container.appendChild(buildFilterBar());
+  container.appendChild(buildToggleHeader());
+  const bar = buildFilterBar();
+  if (collapsed) bar.classList.add('filter-bar-hidden');
+  container.appendChild(bar);
 }

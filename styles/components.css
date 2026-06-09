@@ -351,6 +351,34 @@
   color: var(--text-muted);
 }
 
+/* ── Filter toggle header ── */
+.filter-toggle-hdr {
+  padding: 0.45rem 1.25rem 0.2rem;
+}
+.filter-toggle-btn {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--blue);
+  background: none; border: none; cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.1s;
+}
+.filter-toggle-btn:hover { background: var(--blue-light); }
+.filter-toggle-icon { font-size: 0.6rem; transition: transform 0.15s; }
+.filter-toggle-icon.open { transform: none; }
+.filter-toggle-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--blue); color: #fff;
+  border-radius: 999px;
+  font-size: 0.62rem; font-weight: 700;
+  min-width: 1.2em; height: 1.2em;
+  padding: 0 0.25em;
+}
+.filter-bar-hidden {
+  display: none !important;
+}
+
 /* ── Filter bar ── */
 .filter-bar {
   display: flex;

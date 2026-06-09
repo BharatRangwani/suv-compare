@@ -142,7 +142,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -266,7 +267,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -403,7 +405,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -530,7 +533,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -642,7 +646,8 @@
       "parking_sensors_rear": false,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": false
+      "clutchless": false,
+      "rear_camera": false
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-strong-hybrid",
@@ -779,7 +784,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -904,7 +910,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -1028,7 +1035,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1157,7 +1165,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1283,7 +1292,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1408,7 +1418,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1538,7 +1549,8 @@
       "parking_sensors_rear": true,
       "dash_cam": true,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1664,7 +1676,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -1793,7 +1806,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -1926,7 +1940,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2051,7 +2066,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2187,7 +2203,8 @@
       "parking_sensors_rear": true,
       "dash_cam": true,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -2324,7 +2341,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mg-zs-ev-excite-pro",
@@ -2451,7 +2469,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -2574,7 +2593,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": false
+      "clutchless": false,
+      "rear_camera": true
     },
     {
       "id": "maruti-ertiga-cng-vxi",
@@ -2710,7 +2730,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": false
+      "clutchless": false,
+      "rear_camera": true
     },
     {
       "id": "kia-seltos-htx-plus-diesel-at",
@@ -2835,7 +2856,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -2961,7 +2983,8 @@
       "parking_sensors_rear": true,
       "dash_cam": true,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     },
     {
       "id": "mahindra-scorpio-n-z8-diesel-at",
@@ -3083,7 +3106,8 @@
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
-      "clutchless": true
+      "clutchless": true,
+      "rear_camera": true
     }
   ]
 }
