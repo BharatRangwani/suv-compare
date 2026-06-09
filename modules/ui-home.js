@@ -28,14 +28,37 @@ export async function renderHome(container) {
   // Build page structure
   container.innerHTML = '';
 
-  // Hero section — split grid matching option-final design
+  // ── Live hero data ───────────────────────────────────────────────────────────
   const nonBaseline = allRanked.filter(c => !c.is_baseline);
-  const topCount = nonBaseline.length;
+  const topCar = nonBaseline[0];
   const prices = nonBaseline.map(c => c.ex_showroom_jodhpur).filter(Boolean);
   const minL = prices.length ? Math.floor(Math.min(...prices) / 100000) : 12;
   const maxL = prices.length ? Math.ceil(Math.max(...prices) / 100000) : 22;
-  const criteriaCount = Object.keys({safety:1,value_for_money:1,features:1,service:1,comfort:1,reliability:1}).length;
+  const evCount = nonBaseline.filter(c => c.fuel === 'electric').length;
+  const avgScore = nonBaseline.length
+    ? Math.round(nonBaseline.reduce((s, c) => s + (c.score || 0), 0) / nonBaseline.length)
+    : 0;
+  const inStockCount = nonBaseline.filter(c => c.waiting_weeks_jodhpur === 0).length;
+  const top5SafeCount = nonBaseline.filter(c => (c.ncap_stars || 0) >= 5).length;
+  const budgetL = Math.round((profile.budget_max || 2500000) / 100000);
 
+  // Slides: each has a label, big number, sub text
+  const slides = [
+    { eyebrow: 'Top Pick', num: topCar ? `${topCar.brand} ${topCar.model}` : '—',
+      sub: topCar ? `Score ${topCar.score} · ₹${formatLakh(topCar.ex_showroom_jodhpur * 1.11 + 15000 + topCar.ex_showroom_jodhpur * 0.035)}L on-road` : '' },
+    { eyebrow: 'SUVs Ranked', num: String(nonBaseline.length),
+      sub: `₹${minL}L to ₹${maxL}L · 6 scored criteria` },
+    { eyebrow: 'Your Budget', num: `₹${budgetL}L`,
+      sub: `${nonBaseline.filter(c => c.ex_showroom_jodhpur * 1.145 + 15000 <= profile.budget_max).length} cars within reach` },
+    { eyebrow: 'Available Now', num: String(inStockCount),
+      sub: `${inStockCount} SUV${inStockCount !== 1 ? 's' : ''} in stock at Jodhpur dealers` },
+    { eyebrow: 'Electric Options', num: String(evCount),
+      sub: evCount ? `EV range from ${Math.min(...nonBaseline.filter(c=>c.fuel==='electric').map(c=>c.realworld_range_km||0))} km` : 'More EVs coming soon' },
+    { eyebrow: '5-Star Safety', num: String(top5SafeCount),
+      sub: `${top5SafeCount} cars with 5-star NCAP rating` },
+  ];
+
+  // ── Hero slideshow ───────────────────────────────────────────────────────────
   const hero = document.createElement('div');
   hero.className = 'hero-split';
   hero.innerHTML = `
@@ -44,39 +67,95 @@ export async function renderHome(container) {
       <h2 class="hero-title">Find Your <strong>Next SUV</strong></h2>
       <p class="hero-sub">Ranked for your budget &amp; must-haves. Updated June 2026.</p>
     </div>
-    <div class="hero-right">
-      <div class="hero-stat">
-        <span class="hs-num">${topCount}</span>
-        <span class="hs-label">SUVs ranked</span>
+    <div class="hero-slide-wrap">
+      <div class="hero-slide-track" id="hero-slide-track">
+        ${slides.map((s, i) => `
+          <div class="hero-slide${i === 0 ? ' active' : ''}">
+            <span class="hs-eyebrow">${s.eyebrow}</span>
+            <span class="hs-num">${s.num}</span>
+            <span class="hs-label">${s.sub}</span>
+          </div>`).join('')}
       </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat">
-        <span class="hs-num">₹${minL}–${maxL}L</span>
-        <span class="hs-label">Price range</span>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat">
-        <span class="hs-num">${criteriaCount}</span>
-        <span class="hs-label">Criteria scored</span>
+      <div class="hero-slide-dots" id="hero-slide-dots">
+        ${slides.map((_, i) => `<button class="hs-dot${i===0?' active':''}" data-idx="${i}" aria-label="Slide ${i+1}"></button>`).join('')}
       </div>
     </div>
   `;
   container.appendChild(hero);
 
-  // Must-have chips row
+  // Slideshow logic
+  let slideIdx = 0;
+  let slideTimer = null;
+  const track = hero.querySelector('#hero-slide-track');
+  const dotsEl = hero.querySelector('#hero-slide-dots');
+
+  function goToSlide(n) {
+    const allSlides = track.querySelectorAll('.hero-slide');
+    const allDots = dotsEl.querySelectorAll('.hs-dot');
+    allSlides[slideIdx]?.classList.remove('active');
+    allDots[slideIdx]?.classList.remove('active');
+    slideIdx = (n + slides.length) % slides.length;
+    allSlides[slideIdx]?.classList.add('active');
+    allDots[slideIdx]?.classList.add('active');
+  }
+
+  function startTimer() {
+    clearInterval(slideTimer);
+    slideTimer = setInterval(() => goToSlide(slideIdx + 1), 3500);
+  }
+
+  dotsEl.addEventListener('click', e => {
+    const dot = e.target.closest('.hs-dot');
+    if (!dot) return;
+    goToSlide(parseInt(dot.dataset.idx));
+    startTimer();
+  });
+
+  startTimer();
+
+  // ── Must-have chips row ──────────────────────────────────────────────────────
   const chipsRow = document.createElement('div');
   chipsRow.className = 'chips-row';
-  chipsRow.innerHTML = `
-    <span class="mchip">₹20L Budget</span>
-    <span class="mchip">Petrol Turbo</span>
-    <span class="mchip">6 Airbags</span>
-    <span class="mchip">Ventilated Seats</span>
-  `;
+  const mustLabels = { '6_airbags': '6 Airbags', ventilated_seats: 'Vent. Seats', connected_car: 'Connected Car' };
+  const fuels = (profile.fuel_preference || ['petrol_turbo']).map(f =>
+    ({ petrol_turbo:'Petrol Turbo', diesel:'Diesel', electric:'Electric', cng:'CNG', strong_hybrid:'Strong Hybrid' }[f] || f)
+  );
+  chipsRow.innerHTML = [
+    `₹${budgetL}L Budget`,
+    ...fuels,
+    ...(profile.must_haves || []).map(k => mustLabels[k] || k)
+  ].map(t => `<span class="mchip">${t}</span>`).join('');
   container.appendChild(chipsRow);
 
+  // ── Sort + filter bar ────────────────────────────────────────────────────────
   const filterContainer = document.createElement('div');
   filterContainer.className = 'filter-bar-wrapper';
   container.appendChild(filterContainer);
+
+  // Sort control
+  const sortBar = document.createElement('div');
+  sortBar.className = 'sort-bar';
+  sortBar.innerHTML = `
+    <span class="sort-label">Sort:</span>
+    <div class="sort-chips" id="sort-chips">
+      <button class="sort-chip active" data-sort="score">Best Match</button>
+      <button class="sort-chip" data-sort="price_asc">Price ↑</button>
+      <button class="sort-chip" data-sort="price_desc">Price ↓</button>
+      <button class="sort-chip" data-sort="safety">Safety</button>
+      <button class="sort-chip" data-sort="mileage">Mileage</button>
+      <button class="sort-chip" data-sort="waiting">Waiting ↑</button>
+    </div>`;
+  container.appendChild(sortBar);
+
+  let currentSort = 'score';
+  sortBar.querySelector('#sort-chips').addEventListener('click', e => {
+    const btn = e.target.closest('.sort-chip');
+    if (!btn) return;
+    sortBar.querySelectorAll('.sort-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    refresh(getStoredFilters());
+  });
 
   const countEl = document.createElement('p');
   countEl.className = 'results-count';
@@ -86,20 +165,32 @@ export async function renderHome(container) {
   listContainer.className = 'car-list';
   container.appendChild(listContainer);
 
-  function refresh(filters) {
-    const filtered = applyFilters(allRanked, filters);
-    // Exclude baseline from count display
-    const nonBaselineCount = filtered.filter(c => !c.is_baseline).length;
-    countEl.textContent = `${nonBaselineCount} car${nonBaselineCount !== 1 ? 's' : ''} shown`;
-    renderCarList(listContainer, filtered, baseline, allRanked);
+  function applySortOrder(cars) {
+    const sorted = [...cars];
+    if (currentSort === 'price_asc')  return sorted.sort((a,b) => (a.ex_showroom_jodhpur||0) - (b.ex_showroom_jodhpur||0));
+    if (currentSort === 'price_desc') return sorted.sort((a,b) => (b.ex_showroom_jodhpur||0) - (a.ex_showroom_jodhpur||0));
+    if (currentSort === 'safety')     return sorted.sort((a,b) => (b.ncap_stars||0) - (a.ncap_stars||0));
+    if (currentSort === 'mileage')    return sorted.sort((a,b) => {
+      const ma = a.fuel==='electric' ? (a.realworld_range_km||0)/10 : (a.realworld_kmpl||0);
+      const mb = b.fuel==='electric' ? (b.realworld_range_km||0)/10 : (b.realworld_kmpl||0);
+      return mb - ma;
+    });
+    if (currentSort === 'waiting')    return sorted.sort((a,b) => (a.waiting_weeks_jodhpur??99) - (b.waiting_weeks_jodhpur??99));
+    return sorted; // 'score' — already ranked
   }
 
-  // Mount filter bar — on change re-render card list only
+  function refresh(filters) {
+    const filtered = applyFilters(allRanked, filters);
+    const nonBaselineCount = filtered.filter(c => !c.is_baseline).length;
+    countEl.textContent = `${nonBaselineCount} car${nonBaselineCount !== 1 ? 's' : ''} shown`;
+    const sortedFiltered = applySortOrder(filtered);
+    renderCarList(listContainer, sortedFiltered, baseline, allRanked);
+  }
+
   renderFilters(filterContainer, (filters) => {
     refresh(filters);
   });
 
-  // Initial render with stored filters
   refresh(getStoredFilters());
 }
 
