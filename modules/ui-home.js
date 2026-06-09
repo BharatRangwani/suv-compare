@@ -36,7 +36,7 @@ export async function renderHome(container) {
     <div class="hero-left">
       <p class="hero-eyebrow">Jodhpur, Rajasthan</p>
       <h2 class="hero-title">Find Your <strong>Next SUV</strong></h2>
-      <p class="hero-sub">Ranked for your budget &amp; must-haves. Updated June 2025.</p>
+      <p class="hero-sub">Ranked for your budget &amp; must-haves. Updated June 2026.</p>
     </div>
     <div class="hero-right">
       <div class="hero-stat">
