@@ -10,6 +10,7 @@ import { openProfileEditor } from './modules/ui-profile.js';
 const TABS = ['home', 'compare', 'ranking', 'jodhpur'];
 let activeTab = 'home';
 let homeRendered = false;
+let _injectRankingFilters = null; // set once ranking tab is loaded
 
 function switchTab(tabId) {
   TABS.forEach(t => {
@@ -511,11 +512,6 @@ async function renderRankingPlaceholder() {
 
     pane.innerHTML = '';
 
-    // ── Filter bar ───────────────────────────────────────────────────────────
-    const filterContainer = document.createElement('div');
-    filterContainer.className = 'filter-bar-wrapper';
-    pane.appendChild(filterContainer);
-
     const countEl = document.createElement('p');
     countEl.className = 'results-count';
     pane.appendChild(countEl);
@@ -699,13 +695,15 @@ async function renderRankingPlaceholder() {
       });
     }
 
-    // Wire filters
-    renderFilters(filterContainer, filters => {
-      const filtered = applyFilters(fullRanked, filters);
-      renderList(filtered);
-    });
+    // Store injectable so the profile/settings sheet can mount filters inside it
+    _injectRankingFilters = (container) => {
+      renderFilters(container, filters => {
+        const filtered = applyFilters(fullRanked, filters);
+        renderList(filtered);
+      });
+    };
 
-    // Initial render
+    // Initial render (no filter active = show all)
     renderList(applyFilters(fullRanked, getStoredFilters()));
 
   } catch (e) {
@@ -739,6 +737,13 @@ function init() {
   document.addEventListener('suv:openCompare', () => switchTab('compare'));
 
   document.getElementById('profile-btn')?.addEventListener('click', () => {
+    const opts = {};
+    if (activeTab === 'ranking' && _injectRankingFilters) {
+      opts.extraSection = {
+        title: 'Ranking Filters',
+        buildEl: (container) => _injectRankingFilters(container),
+      };
+    }
     openProfileEditor((updatedProfile) => {
       // Re-render home tab with new profile
       invalidateCache();
@@ -749,7 +754,15 @@ function init() {
         homeRendered = true;
         renderHome(homePaneEl).then(() => applyGlossaryTooltips(homePaneEl)).catch(() => {});
       }
-    });
+      // Re-render ranking tab if it was rendered (profile change may affect scores)
+      const rankingPane = document.getElementById('tab-ranking');
+      if (rankingPane.dataset.rendered) {
+        rankingPane.innerHTML = '';
+        delete rankingPane.dataset.rendered;
+        _injectRankingFilters = null;
+        if (activeTab === 'ranking') renderRankingPlaceholder();
+      }
+    }, opts);
   });
 
   document.getElementById('refresh-btn')?.addEventListener('click', () => {

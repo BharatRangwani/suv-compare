@@ -2284,6 +2284,22 @@
 
 .prf-field { display: flex; flex-direction: column; gap: 0.4rem; }
 
+/* Ranking filters injected into profile sheet */
+.prf-extra-section {
+  border-top: 1px solid var(--border);
+  padding-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.prf-extra-hd {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-dim);
+}
+
 .prf-label {
   font-size: 0.78rem;
   font-weight: 600;

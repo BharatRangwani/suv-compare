@@ -27,7 +27,9 @@ const DAYS_OPTIONS = [3, 5, 7];
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
-export function openProfileEditor(onSave) {
+// opts.extraSection: optional { title, buildEl } — inserts a labelled section
+// into the sheet body before the footer, then calls buildEl(container) to populate it.
+export function openProfileEditor(onSave, opts = {}) {
   const existing = document.getElementById('profile-sheet-backdrop');
   if (existing) existing.remove();
 
@@ -42,6 +44,22 @@ export function openProfileEditor(onSave) {
   sheet.className = 'profile-sheet';
   sheet.innerHTML = buildSheetHtml();
   backdrop.appendChild(sheet);
+
+  // Inject extra section (e.g. ranking filters) before the footer
+  if (opts.extraSection) {
+    const footer = sheet.querySelector('.prf-footer');
+    const extraWrap = document.createElement('div');
+    extraWrap.className = 'prf-extra-section';
+    if (opts.extraSection.title) {
+      const hd = document.createElement('div');
+      hd.className = 'prf-extra-hd';
+      hd.textContent = opts.extraSection.title;
+      extraWrap.appendChild(hd);
+    }
+    opts.extraSection.buildEl(extraWrap);
+    sheet.querySelector('.prf-body').appendChild(extraWrap);
+  }
+
   document.body.appendChild(backdrop);
 
   // Animate in
