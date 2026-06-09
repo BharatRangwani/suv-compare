@@ -70,8 +70,8 @@ async function renderFinanceTab() {
   let dpPct         = 20;
   let rate          = 8.5;
   let tenureMonths  = 60;
-  let exchYear      = 2014;
-  let exchCondition = 'good';
+  let exchYear      = 2013;
+  let exchCondition = 'fair';
   let exchKm        = 80000;
 
   function getExch() { return calcExchangeValue(exchYear, exchCondition, exchKm); }
@@ -272,7 +272,7 @@ async function renderFinanceTab() {
   const exchWrap = document.createElement('div');
   exchWrap.className = 'fin-section';
   exchWrap.innerHTML = `
-    <div class="fin-sec-hd"><span>Your Quanto trade-in</span></div>
+    <div class="fin-sec-hd"><span>Your Quanto — sell vs scrap</span></div>
     <div class="fin-exch-card">
       <div class="fin-exch-top">
         <div>
@@ -290,19 +290,21 @@ async function renderFinanceTab() {
         <select id="fin-exch-year">
           ${[...Array(15)].map((_, i) => {
             const yr = 2026 - i;
-            return `<option value="${yr}"${yr === 2014 ? ' selected' : ''}>${yr}</option>`;
+            return `<option value="${yr}"${yr === 2013 ? ' selected' : ''}>${yr}</option>`;
           }).join('')}
         </select>
         <input type="range" id="fin-exch-km" min="20000" max="250000" step="5000" value="80000">
         <span id="fin-exch-km-lbl" class="fin-exch-km-lbl">80k km</span>
         <div class="fin-chips" id="fin-cond-chips">
           <button class="fin-chip" data-cond="excellent">Exc</button>
-          <button class="fin-chip active" data-cond="good">Good</button>
-          <button class="fin-chip" data-cond="fair">Fair</button>
+          <button class="fin-chip" data-cond="good">Good</button>
+          <button class="fin-chip active" data-cond="fair">Fair</button>
           <button class="fin-chip" data-cond="poor">Poor</button>
         </div>
       </div>
-      <div class="fin-exch-tip">💡 Cars24 / Spinny often pay 5–8% more. Get 3 quotes before accepting the dealer offer.</div>
+      <!-- Sell vs Scrap comparison -->
+      <div class="fin-scrap-compare" id="fin-scrap-compare"></div>
+      <div class="fin-exch-tip">💡 Cars24 / Spinny often pay 5–8% more than dealers. Get 3 quotes before deciding.</div>
     </div>
   `;
   pane.appendChild(exchWrap);
@@ -315,6 +317,35 @@ async function renderFinanceTab() {
     exchWrap.querySelector('#fin-exch-market').textContent = `Open market ~${fL(exch.openMarket)} · ~12% below`;
     exchWrap.querySelector('#fin-exch-carname').textContent = car ? car.model : 'top pick';
     exchWrap.querySelector('#fin-exch-net').textContent = net != null ? fL(net) : '—';
+
+    // Scrap value: HSRP-compliant scrapping in Rajasthan gives a certificate + metal weight value
+    // ~10-year-old discontinued diesel: ~₹0.8–1.2L scrap + 25% road tax rebate on new car
+    const scrapMetal = Math.round(Math.min(exch.openMarket * 0.18, 90000) / 1000) * 1000;
+    const roadTaxRebate = car ? Math.round(getOnRoad(car) * 0.025 / 1000) * 1000 : 0; // 2.5% rebate on new OTR
+    const scrapTotal = scrapMetal + roadTaxRebate;
+    const sellNetBetter = exch.dealerExchange > scrapTotal;
+    const scrapEl = exchWrap.querySelector('#fin-scrap-compare');
+    if (scrapEl) {
+      scrapEl.innerHTML = `
+        <div class="fin-scrap-row">
+          <div class="fin-scrap-opt${sellNetBetter ? ' fin-scrap-winner' : ''}">
+            <div class="fin-scrap-lbl">Sell / Trade-in</div>
+            <div class="fin-scrap-val">${fL(exch.dealerExchange)}</div>
+            <div class="fin-scrap-sub">dealer exchange offer</div>
+            ${sellNetBetter ? '<span class="fin-scrap-badge">Better deal</span>' : ''}
+          </div>
+          <div class="fin-scrap-vs">vs</div>
+          <div class="fin-scrap-opt${!sellNetBetter ? ' fin-scrap-winner' : ''}">
+            <div class="fin-scrap-lbl">Scrap (HSRP)</div>
+            <div class="fin-scrap-val">${fL(scrapTotal)}</div>
+            <div class="fin-scrap-sub">metal ~${fL(scrapMetal)} + tax rebate ~${fL(roadTaxRebate)}</div>
+            ${!sellNetBetter ? '<span class="fin-scrap-badge">Better deal</span>' : ''}
+          </div>
+        </div>
+        <div class="fin-scrap-note">Scrap certificate under Rajasthan Vehicle Scrapping Policy also exempts you from green tax on the new vehicle.</div>
+      `;
+    }
+
     updateLoanResult();
     updateAnswerCard();
   }
@@ -630,6 +661,10 @@ function init() {
   document.querySelectorAll('[data-tab]').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
+
+  // Detail panel events
+  document.addEventListener('suv:ensureCompare', () => renderCompareTab());
+  document.addEventListener('suv:openCompare', () => switchTab('compare'));
 
   document.getElementById('profile-btn')?.addEventListener('click', () => {
     openProfileEditor((updatedProfile) => {

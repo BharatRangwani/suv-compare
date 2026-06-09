@@ -441,6 +441,7 @@ function buildActionsSection(car) {
   return `
     <section class="detail-section detail-actions">
       <button id="dp-add-compare-btn" class="btn-primary">Add to Compare</button>
+      <button id="dp-compare-now-btn" class="btn-primary dp-compare-now-hidden">Compare Now →</button>
       <button id="dp-share-btn" class="btn-secondary">Share link</button>
       <a id="dp-wa-btn" class="btn-secondary btn-wa" href="${waUrl}" target="_blank" rel="noopener">WhatsApp</a>
     </section>`;
@@ -639,13 +640,28 @@ export function renderDetailPanel(car, allRanked, baseline) {
   if (backBtn) backBtn.addEventListener('click', closeDetailPanel);
   if (closeBtn) closeBtn.addEventListener('click', closeDetailPanel);
 
-  // 3. Wire "Add to Compare" button
+  // 3. Wire "Add to Compare" + "Compare Now" buttons
   const addBtn = document.getElementById('dp-add-compare-btn');
+  const compareNowBtn = document.getElementById('dp-compare-now-btn');
   if (addBtn) {
     addBtn.addEventListener('click', () => {
-      document.dispatchEvent(
-        new CustomEvent('suv:addToCompare', { detail: { car }, bubbles: true })
-      );
+      // Ensure compare tab is rendered before dispatching
+      document.dispatchEvent(new CustomEvent('suv:ensureCompare', { bubbles: true }));
+      setTimeout(() => {
+        document.dispatchEvent(
+          new CustomEvent('suv:addToCompare', { detail: { car }, bubbles: true })
+        );
+      }, 50);
+      // Swap button states
+      addBtn.textContent = '✓ Added';
+      addBtn.disabled = true;
+      if (compareNowBtn) compareNowBtn.classList.remove('dp-compare-now-hidden');
+    });
+  }
+  if (compareNowBtn) {
+    compareNowBtn.addEventListener('click', () => {
+      closeDetailPanel();
+      document.dispatchEvent(new CustomEvent('suv:openCompare', { bubbles: true }));
     });
   }
 
