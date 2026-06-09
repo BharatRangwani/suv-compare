@@ -30,9 +30,10 @@ describe('data module', () => {
     expect(cars.length).toBeGreaterThan(0);
   });
 
-  test('getCarsForRanking returns exactly 10 cars', async () => {
+  test('getCarsForRanking returns only non-baseline cars', async () => {
     const data = await loadCarsData();
     const cars = getCarsForRanking(data);
-    expect(cars.length).toBe(10);
+    expect(cars.length).toBeGreaterThan(0);
+    expect(cars.every(c => !c.is_baseline)).toBe(true);
   });
 });

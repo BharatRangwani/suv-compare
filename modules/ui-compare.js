@@ -160,15 +160,19 @@ function buildRowDefs() {
       direction: null,
     },
     {
-      label: 'ARAI mileage (kmpl)',
-      format: (car) => car.arai_kmpl != null ? String(car.arai_kmpl) : '—',
-      rawVal: (car) => car.arai_kmpl,
+      label: 'ARAI mileage / range',
+      format: (car) => car.fuel === 'electric'
+        ? (car.arai_range_km ? car.arai_range_km + ' km' : '—')
+        : (car.arai_kmpl != null ? car.arai_kmpl + ' kmpl' : '—'),
+      rawVal: (car) => car.fuel === 'electric' ? (car.arai_range_km || 0) : (car.arai_kmpl || 0),
       direction: HIGHER_IS_BETTER,
     },
     {
-      label: 'Real-world mileage (kmpl)',
-      format: (car) => car.realworld_kmpl != null ? String(car.realworld_kmpl) : '—',
-      rawVal: (car) => car.realworld_kmpl,
+      label: 'Real-world mileage / range',
+      format: (car) => car.fuel === 'electric'
+        ? (car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '—')
+        : (car.realworld_kmpl != null ? car.realworld_kmpl + ' kmpl' : '—'),
+      rawVal: (car) => car.fuel === 'electric' ? (car.realworld_range_km || 0) : (car.realworld_kmpl || 0),
       direction: HIGHER_IS_BETTER,
     },
 

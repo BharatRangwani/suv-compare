@@ -166,6 +166,17 @@
   color: var(--blue);
   border-color: rgba(37,99,235,0.2);
 }
+.btag.btag-ev {
+  background: #ecfdf5;
+  color: #059669;
+  border-color: rgba(5,150,105,0.25);
+  font-weight: 600;
+}
+[data-theme="dark"] .btag.btag-ev {
+  background: rgba(5,150,105,0.15);
+  color: #34d399;
+  border-color: rgba(52,211,153,0.25);
+}
 
 /* ── Best Time to Buy tag ── */
 .btb-tag {

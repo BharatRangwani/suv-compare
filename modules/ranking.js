@@ -13,10 +13,20 @@ export function calcTCO(car, profile) {
   const insurance = car.ex_showroom_jodhpur * 0.035;
   const onRoad = car.ex_showroom_jodhpur + roadTax + registration + insurance;
   const annualKm = profile.daily_km * profile.days_per_week * 52;
-  const annualFuel = (annualKm / car.realworld_kmpl) * profile.petrol_price_jodhpur;
-  const annualService = 12000;
+
+  let annualFuel;
+  if (car.fuel === 'electric') {
+    // EV: ~6 km/kWh real-world, electricity ₹8/kWh in Rajasthan home charging
+    const kmPerKwh = car.realworld_range_km && car.battery_kwh
+      ? car.realworld_range_km / car.battery_kwh
+      : 6;
+    annualFuel = (annualKm / kmPerKwh) * 8;
+  } else {
+    annualFuel = (annualKm / car.realworld_kmpl) * profile.petrol_price_jodhpur;
+  }
+
+  const annualService = car.fuel === 'electric' ? 4000 : 12000;
   const operatingCosts = (annualFuel * 5) + (annualService * 5);
-  // Resale deduction capped at 90% of operating costs so TCO always exceeds on-road price
   const resaleValue = Math.min(
     car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100),
     operatingCosts * 0.9

@@ -123,7 +123,8 @@ function renderCarList(container, rankedCars, baseline, allRanked) {
 
 const FUEL_LABELS = {
   petrol_turbo: 'Petrol Turbo', diesel: 'Diesel',
-  strong_hybrid: 'Strong Hybrid', mild_hybrid: 'Mild Hybrid', petrol: 'Petrol'
+  electric: 'Electric', strong_hybrid: 'Strong Hybrid',
+  mild_hybrid: 'Mild Hybrid', petrol: 'Petrol'
 };
 
 function renderCarCard(car, allRanked, baseline) {
@@ -180,6 +181,16 @@ function renderCarCard(car, allRanked, baseline) {
   tagsRow.addEventListener('click', e => e.stopPropagation());
 
   if (!isBaseline) {
+    if (car.fuel === 'electric') {
+      const evTag = document.createElement('span');
+      evTag.className = 'btag btag-ev';
+      evTag.textContent = '⚡ EV';
+      tagsRow.appendChild(evTag);
+      const rangeTag = document.createElement('span');
+      rangeTag.className = 'btag';
+      rangeTag.textContent = car.realworld_range_km ? `~${car.realworld_range_km}km range` : `${car.arai_range_km || '?'}km ARAI`;
+      tagsRow.appendChild(rangeTag);
+    }
     const mustHaveTags = [
       { label: '6 Airbags', hit: (car.airbags || 0) >= 6 },
       { label: 'Vent. Seats', hit: !!car.ventilated_seats },

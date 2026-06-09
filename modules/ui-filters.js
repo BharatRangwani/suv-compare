@@ -114,6 +114,7 @@ export function renderFilters(container, onFilterChange) {
         { value: 'all', label: 'All' },
         { value: 'petrol_turbo', label: 'Petrol Turbo' },
         { value: 'diesel', label: 'Diesel' },
+        { value: 'electric', label: 'Electric (EV)' },
         { value: 'strong_hybrid', label: 'Strong Hybrid' },
         { value: 'mild_hybrid', label: 'Mild Hybrid' }
       ]
@@ -123,9 +124,9 @@ export function renderFilters(container, onFilterChange) {
       label: 'Transmission',
       options: [
         { value: 'all', label: 'All' },
-        { value: 'automatic', label: 'Automatic' },
+        { value: 'automatic', label: 'Automatic / DCT' },
         { value: 'manual', label: 'Manual' },
-        { value: 'amt', label: 'AMT' }
+        { value: 'amt', label: 'AMT / Semi-Auto' }
       ]
     },
     {
