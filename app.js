@@ -447,14 +447,15 @@ async function renderRankingPlaceholder() {
   try {
     const { getCarsForRanking, getBaselineCar } = await import('./modules/data.js');
     const { getProfile }                         = await import('./modules/profile.js');
-    const { rankCars, getBestVariantPerBrand }   = await import('./modules/ranking.js');
+    const { rankCars, getBestVariantPerBrand, getBetterVFMVariant } = await import('./modules/ranking.js');
     const { calcOnRoadPrice, calcEMI }           = await import('./modules/emi.js');
     const { renderFilters, applyFilters, getStoredFilters } = await import('./modules/ui-filters.js');
 
     const data    = await loadCarsData();
     const profile = getProfile();
     const baseline = getBaselineCar(data);
-    const allRanked = getBestVariantPerBrand(rankCars(getCarsForRanking(data), profile, baseline));
+    const allVariantsRanked = rankCars(getCarsForRanking(data), profile, baseline);
+    const allRanked = getBestVariantPerBrand(allVariantsRanked);
 
     const seen = new Set();
     const fullRanked = allRanked.filter(c => {
@@ -504,6 +505,9 @@ async function renderRankingPlaceholder() {
       const btb = bestTimeToBuy(car);
       const btbCls = btb.color === 'green' ? 'good' : btb.color === 'orange' ? 'warn' : 'neutral';
       tags.push({ text: btb.label, cls: btbCls, tip: btb.tip });
+      const betterVFM = getBetterVFMVariant(car, allVariantsRanked);
+      if (betterVFM) tags.push({ text: '↓ Better VFM variant', cls: 'better-vfm',
+        tip: `${betterVFM.variant} @ ₹${(betterVFM.ex_showroom_jodhpur/100000).toFixed(1)}L is better value` });
       return tags.map(t => `<span class="rnk-tag ${t.cls}"${t.tip ? ` title="${t.tip}"` : ''}>${t.text}</span>`).join('');
     }
 

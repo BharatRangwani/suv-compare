@@ -112,7 +112,10 @@ export function rankCars(cars, profile, baseline) {
     return { ...car, score: total, breakdown, tco };
   });
   scored.sort((a, b) => b.score - a.score);
-  return scored.map((car, i) => ({ ...car, rank: i + 1 }));
+  const ranked = scored.map((car, i) => ({ ...car, rank: i + 1 }));
+  // Attach vfm_tag so filters and UI can read it without re-computing
+  ranked.forEach(car => { car.vfm_tag = getVFMTag(car, ranked); });
+  return ranked;
 }
 
 export function getBestVariantPerBrand(rankedCars) {
@@ -125,6 +128,27 @@ export function getBestVariantPerBrand(rankedCars) {
   }
   const bestIds = new Set(Object.values(bestByBrand).map(c => c.id));
   return rankedCars.map(car => ({ ...car, is_best_variant_for_user: bestIds.has(car.id) }));
+}
+
+// Returns the variant of the same model that has a better or equal VFM tag
+// at a lower price, or null if this car is already the best-value variant.
+export function getBetterVFMVariant(car, allRanked) {
+  if (!car.vfm_tag || car.is_baseline) return null;
+  const vfmOrder = { excellent: 0, fair: 1, overpriced: 2 };
+  const myVfm = vfmOrder[car.vfm_tag] ?? 1;
+  const myPrice = car.ex_showroom_jodhpur || 0;
+  const better = allRanked.filter(c =>
+    c.id !== car.id &&
+    c.brand === car.brand &&
+    c.model === car.model &&
+    !c.is_baseline &&
+    (c.ex_showroom_jodhpur || 0) < myPrice &&
+    (vfmOrder[c.vfm_tag] ?? 1) <= myVfm
+  );
+  if (!better.length) return null;
+  // Return the cheapest one that's at least as good VFM
+  better.sort((a, b) => a.ex_showroom_jodhpur - b.ex_showroom_jodhpur);
+  return better[0];
 }
 
 export function getVFMTag(rankedCar, allRanked) {

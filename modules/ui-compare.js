@@ -2,7 +2,7 @@
 // Compare tab — 3D viewer + spec table vs Quanto baseline
 
 import { loadCarsData, getBaselineCar, getCarsForRanking } from './data.js';
-import { rankCars, calcTCO, getBestVariantPerBrand } from './ranking.js';
+import { rankCars, calcTCO, getBestVariantPerBrand, getBetterVFMVariant } from './ranking.js';
 import { getProfile } from './profile.js';
 import { calcOnRoadPrice, calcEMI } from './emi.js';
 import { createCarViewer } from './ui-3d.js';
@@ -558,11 +558,15 @@ function buildPickerModal(allCars, baselineCar, selectedCars) {
       const price = car.ex_showroom_jodhpur
         ? ' — ₹' + (car.ex_showroom_jodhpur / 100000).toFixed(2) + ' L'
         : '';
+      const betterVFM = getBetterVFMVariant(car, allCars);
+      const vfmBadge = betterVFM
+        ? ` <span class="picker-vfm-badge" title="Cheaper ${betterVFM.variant} has better value">↓ Better VFM available</span>`
+        : (car.vfm_tag === 'excellent' ? ' <span class="picker-vfm-badge excellent">★ Best VFM</span>' : '');
       return `<div class="car-picker-item${disabled ? ' disabled' : ''}"
                data-id="${car.id}"
                role="option"
                aria-disabled="${disabled}">
-        ${car.brand} ${car.model} — ${car.variant || ''}${price}
+        ${car.brand} ${car.model} — ${car.variant || ''}${price}${vfmBadge}
       </div>`;
     })
     .join('');

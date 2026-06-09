@@ -2,7 +2,7 @@
 
 import { loadCarsData, getBaselineCar, getCarsForRanking } from './data.js';
 import { getProfile } from './profile.js';
-import { rankCars, getVFMTag, getBestVariantPerBrand } from './ranking.js';
+import { rankCars, getVFMTag, getBestVariantPerBrand, getBetterVFMVariant } from './ranking.js';
 import { renderFilters, applyFilters, getStoredFilters } from './ui-filters.js';
 import { renderDetailPanel } from './ui-detail.js';
 
@@ -306,12 +306,21 @@ function renderCarCard(car, allRanked, baseline) {
       tagsRow.appendChild(t);
     });
 
-    const vfmTag = getVFMTag(car, allRanked);
+    const vfmTag = car.vfm_tag || getVFMTag(car, allRanked);
     const vfmLabels = { excellent: 'Excellent VFM', fair: 'Fair VFM', overpriced: 'Overpriced' };
     const vt = document.createElement('span');
     vt.className = `btag${vfmTag === 'excellent' ? ' hit' : ''}`;
     vt.textContent = vfmLabels[vfmTag] || vfmTag;
     tagsRow.appendChild(vt);
+
+    const betterVariant = getBetterVFMVariant(car, allRanked);
+    if (betterVariant) {
+      const bv = document.createElement('span');
+      bv.className = 'btag btag-better-vfm';
+      bv.title = `${betterVariant.variant} at ₹${(betterVariant.ex_showroom_jodhpur/100000).toFixed(1)}L is better value`;
+      bv.textContent = '↓ Better VFM variant';
+      tagsRow.appendChild(bv);
+    }
   } else {
     const fuel = FUEL_LABELS[car.fuel] || car.fuel || '';
     [fuel, `${car.engine_cc || 0}cc`, 'Baseline'].forEach(t => {

@@ -189,6 +189,32 @@
   border-color: rgba(147,197,253,0.25);
 }
 
+/* ── Better VFM variant badge ── */
+.btag.btag-better-vfm {
+  background: #fefce8;
+  color: #a16207;
+  border-color: rgba(161,98,7,0.25);
+  font-weight: 600;
+  cursor: help;
+}
+[data-theme="dark"] .btag.btag-better-vfm {
+  background: rgba(161,98,7,0.15);
+  color: #fbbf24;
+  border-color: rgba(251,191,36,0.25);
+}
+.rnk-tag.better-vfm {
+  background: #fefce8;
+  color: #a16207;
+  border-color: rgba(161,98,7,0.25);
+  font-weight: 600;
+  cursor: help;
+}
+[data-theme="dark"] .rnk-tag.better-vfm {
+  background: rgba(161,98,7,0.15);
+  color: #fbbf24;
+  border-color: rgba(251,191,36,0.25);
+}
+
 /* ── Best Time to Buy tag ── */
 .btb-tag {
   display: inline-block;
@@ -666,6 +692,21 @@
 }
 .car-picker-item:hover { background: var(--blue-light); border-color: rgba(37,99,235,0.2); }
 .car-picker-item.disabled { opacity: 0.4; cursor: not-allowed; }
+.picker-vfm-badge {
+  display: inline-block;
+  font-size: 0.58rem; font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: #fefce8; color: #a16207;
+  border: 1px solid rgba(161,98,7,0.25);
+  margin-left: 0.35rem; vertical-align: middle; cursor: help;
+}
+.picker-vfm-badge.excellent {
+  background: var(--green-bg); color: var(--green);
+  border-color: rgba(22,163,74,0.2);
+}
+[data-theme="dark"] .picker-vfm-badge { background: rgba(161,98,7,0.15); color: #fbbf24; border-color: rgba(251,191,36,0.25); }
+[data-theme="dark"] .picker-vfm-badge.excellent { background: rgba(22,163,74,0.15); color: #4ade80; border-color: rgba(74,222,128,0.25); }
 
 /* ── TCO chart ── */
 .bar-chart-container {

@@ -136,7 +136,13 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -254,7 +260,13 @@
           "turnaround_hours": 8
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -385,7 +397,13 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -506,7 +524,13 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": true
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -612,7 +636,13 @@
         }
       ],
       "service_centers_jodhpur": [],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": false,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": false
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-strong-hybrid",
@@ -743,7 +773,13 @@
           "turnaround_hours": 8
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -862,7 +898,13 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -980,7 +1022,13 @@
           "turnaround_hours": 12
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1103,7 +1151,13 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1223,7 +1277,13 @@
           "turnaround_hours": 8
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": true
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1342,7 +1402,13 @@
           "turnaround_hours": 48
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1466,7 +1532,13 @@
           "turnaround_hours": 14
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1586,7 +1658,13 @@
           "turnaround_hours": 10
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -1709,7 +1787,13 @@
           "turnaround_hours": 10
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -1836,7 +1920,13 @@
           "turnaround_hours": 10
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -1955,7 +2045,13 @@
           "turnaround_hours": 36
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2085,7 +2181,13 @@
           "turnaround_hours": 12
         }
       ],
-      "camera_360": false
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -2216,7 +2318,13 @@
           "turnaround_hours": 10
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "mg-zs-ev-excite-pro",
@@ -2337,7 +2445,13 @@
           "turnaround_hours": 18
         }
       ],
-      "camera_360": true
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -2454,7 +2568,13 @@
           "rating": 3.7,
           "turnaround_hours": 14
         }
-      ]
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": false
     },
     {
       "id": "maruti-ertiga-cng-vxi",
@@ -2584,7 +2704,13 @@
           "rating": 4.1,
           "turnaround_hours": 8
         }
-      ]
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": false
     },
     {
       "id": "kia-seltos-htx-plus-diesel-at",
@@ -2703,7 +2829,13 @@
           "rating": 3.8,
           "turnaround_hours": 12
         }
-      ]
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": false,
+      "clutchless": true
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -2823,7 +2955,13 @@
           "rating": 3.7,
           "turnaround_hours": 14
         }
-      ]
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true
     },
     {
       "id": "mahindra-scorpio-n-z8-diesel-at",
@@ -2939,7 +3077,13 @@
           "rating": 3.9,
           "turnaround_hours": 10
         }
-      ]
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true
     }
   ]
 }

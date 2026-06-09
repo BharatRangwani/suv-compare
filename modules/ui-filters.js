@@ -5,20 +5,27 @@ const STORAGE_KEY = 'suv_filters';
 // Multi-select groups store arrays; single-select groups store a string.
 // 'all' means no filter active (or empty array for multi).
 const DEFAULT_FILTERS = {
-  fuel:         [],   // multi — empty = all
-  transmission: [],   // multi
-  brand:        [],   // multi
-  budget:       'all',
-  ncap:         'all',
-  mileage:      'all',
-  adas:         'all',
-  ventilated:   'all',
-  sunroof:      'all',
-  wireless:     'all',
-  connected:    'all',
-  service_avail:'all',
-  after_sales:  'all',
-  waiting:      'all',
+  fuel:             [],   // multi — empty = all
+  transmission:     [],   // multi
+  brand:            [],   // multi
+  budget:           'all',
+  ncap:             'all',
+  mileage:          'all',
+  adas:             'all',
+  ventilated:       'all',
+  sunroof:          'all',
+  wireless:         'all',
+  connected:        'all',
+  camera_360:       'all',
+  alloy_wheels:     'all',
+  parking_sensors:  'all',
+  drive_modes:      'all',
+  clutchless:       'all',
+  dash_cam:         'all',
+  vfm:              'all',
+  service_avail:    'all',
+  after_sales:      'all',
+  waiting:          'all',
 };
 
 // Groups that store arrays (multi-select)
@@ -138,6 +145,35 @@ export function applyFilters(cars, filters) {
     // Connected / smart features — single
     if (filters.connected === 'yes' && !car.connected_car) return false;
 
+    // 360-degree camera — single
+    if (filters.camera_360 === 'yes' && !car.camera_360) return false;
+
+    // Alloy wheels — single
+    if (filters.alloy_wheels === 'yes' && !car.alloy_wheels) return false;
+
+    // Parking sensors — single
+    if (filters.parking_sensors !== 'all') {
+      if (filters.parking_sensors === 'rear' && !car.parking_sensors_rear)  return false;
+      if (filters.parking_sensors === 'both' && !(car.parking_sensors_front && car.parking_sensors_rear)) return false;
+    }
+
+    // Drive modes (Eco/City/Sport selector) — single
+    if (filters.drive_modes === 'yes' && !car.drive_modes) return false;
+
+    // Clutchless (no clutch pedal: AMT, DCT, CVT, DSG, AT, e-CVT) — single
+    if (filters.clutchless === 'yes' && !car.clutchless) return false;
+
+    // Factory dash cam — single
+    if (filters.dash_cam === 'yes' && !car.dash_cam) return false;
+
+    // VFM tag — single (values: 'excellent' | 'fair' | 'overpriced' from getVFMTag)
+    if (filters.vfm !== 'all') {
+      const tag = car.vfm_tag || 'fair';
+      if (filters.vfm === 'excellent'  && tag !== 'excellent') return false;
+      if (filters.vfm === 'good'       && tag === 'overpriced') return false;
+      if (filters.vfm === 'overpriced' && tag !== 'overpriced') return false;
+    }
+
     // Service availability (# of Jodhpur service centers) — single
     if (filters.service_avail !== 'all') {
       const count = (car.service_centers_jodhpur || []).length;
@@ -252,6 +288,58 @@ export function renderFilters(container, onFilterChange) {
       options: [
         { value: 'all', label: 'Any' },
         { value: 'yes', label: 'Yes' },
+      ]
+    },
+    {
+      group: 'camera_360', label: '360° Camera', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Yes' },
+      ]
+    },
+    {
+      group: 'alloy_wheels', label: 'Alloy Wheels', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Yes' },
+      ]
+    },
+    {
+      group: 'parking_sensors', label: 'Parking Sensors', multi: false,
+      options: [
+        { value: 'all',  label: 'Any' },
+        { value: 'rear', label: 'Rear' },
+        { value: 'both', label: 'Front + Rear' },
+      ]
+    },
+    {
+      group: 'drive_modes', label: 'Drive Modes', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Eco / Sport' },
+      ]
+    },
+    {
+      group: 'clutchless', label: 'No Clutch', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Clutchless' },
+      ]
+    },
+    {
+      group: 'dash_cam', label: 'Dash Cam', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Factory fitted' },
+      ]
+    },
+    {
+      group: 'vfm', label: 'Value Rating', multi: false,
+      options: [
+        { value: 'all',        label: 'Any' },
+        { value: 'excellent',  label: '🏷 Excellent' },
+        { value: 'good',       label: 'Good+' },
+        { value: 'overpriced', label: 'Overpriced' },
       ]
     },
     {
