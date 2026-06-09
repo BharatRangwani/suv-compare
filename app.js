@@ -140,6 +140,7 @@ async function renderFinanceTab() {
           <span class="fin-ctrl-lbl">Down payment</span>
           <input type="range" id="fin-dp" min="5" max="50" value="20" style="flex:1;accent-color:var(--blue)">
           <span class="fin-ctrl-val" id="fin-dp-val">20%</span>
+          <span class="fin-ctrl-amt" id="fin-dp-amt" style="font-size:0.72rem;color:var(--text-muted);min-width:4rem;text-align:right"></span>
         </div>
         <div class="fin-ctrl">
           <span class="fin-ctrl-lbl">Bank / rate</span>
@@ -195,8 +196,11 @@ async function renderFinanceTab() {
     const emi   = getEMI(car);
     const onRoad = getOnRoad(car);
     const net   = onRoad - getExch().dealerExchange;
+    const dpAmt = Math.round(onRoad * dpPct / 100);
     adjWrap.querySelector('#fin-emi-val').textContent = '₹' + emi.toLocaleString('en-IN');
     adjWrap.querySelector('#fin-net-val').textContent = fL(net);
+    const dpAmtEl = adjWrap.querySelector('#fin-dp-amt');
+    if (dpAmtEl) dpAmtEl.textContent = '₹' + dpAmt.toLocaleString('en-IN');
   }
   updateLoanResult();
 
