@@ -29,7 +29,13 @@ export async function renderHome(container) {
   container.innerHTML = '';
 
   // Hero section — split grid matching option-final design
-  const topCount = allRanked.filter(c => !c.is_baseline).length;
+  const nonBaseline = allRanked.filter(c => !c.is_baseline);
+  const topCount = nonBaseline.length;
+  const prices = nonBaseline.map(c => c.ex_showroom_jodhpur).filter(Boolean);
+  const minL = prices.length ? Math.floor(Math.min(...prices) / 100000) : 12;
+  const maxL = prices.length ? Math.ceil(Math.max(...prices) / 100000) : 22;
+  const criteriaCount = Object.keys({safety:1,value_for_money:1,features:1,service:1,comfort:1,reliability:1}).length;
+
   const hero = document.createElement('div');
   hero.className = 'hero-split';
   hero.innerHTML = `
@@ -45,12 +51,12 @@ export async function renderHome(container) {
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <span class="hs-num">₹12–22L</span>
+        <span class="hs-num">₹${minL}–${maxL}L</span>
         <span class="hs-label">Price range</span>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <span class="hs-num">6</span>
+        <span class="hs-num">${criteriaCount}</span>
         <span class="hs-label">Criteria scored</span>
       </div>
     </div>
@@ -122,7 +128,7 @@ function renderCarList(container, rankedCars, baseline, allRanked) {
 // ─── Single car card (option-final bar-row style) ────────────────────────────
 
 const FUEL_LABELS = {
-  petrol_turbo: 'Petrol Turbo', diesel: 'Diesel',
+  petrol_turbo: 'Petrol Turbo', diesel: 'Diesel', cng: 'CNG',
   electric: 'Electric', strong_hybrid: 'Strong Hybrid',
   mild_hybrid: 'Mild Hybrid', petrol: 'Petrol'
 };
@@ -190,6 +196,15 @@ function renderCarCard(car, allRanked, baseline) {
       rangeTag.className = 'btag';
       rangeTag.textContent = car.realworld_range_km ? `~${car.realworld_range_km}km range` : `${car.arai_range_km || '?'}km ARAI`;
       tagsRow.appendChild(rangeTag);
+    } else if (car.fuel === 'cng') {
+      const cngTag = document.createElement('span');
+      cngTag.className = 'btag btag-cng';
+      cngTag.textContent = '🔵 CNG';
+      tagsRow.appendChild(cngTag);
+      const mileTag = document.createElement('span');
+      mileTag.className = 'btag';
+      mileTag.textContent = car.realworld_cng_kmkg ? `~${car.realworld_cng_kmkg} km/kg` : '';
+      if (mileTag.textContent) tagsRow.appendChild(mileTag);
     }
     const mustHaveTags = [
       { label: '6 Airbags', hit: (car.airbags || 0) >= 6 },

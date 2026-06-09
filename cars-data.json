@@ -1,6 +1,6 @@
 {
   "last_updated": "2026-06-09",
-  "petrol_price_jodhpur": 103.0,
+  "petrol_price_jodhpur": 103,
   "cars": [
     {
       "id": "hyundai-creta-sx-opt-petrol-dct",
@@ -22,7 +22,12 @@
       "airbags": 6,
       "ncap_stars": 3,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Keep Assist", "Blind Spot Monitor", "Forward Collision Warning"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Blind Spot Monitor",
+        "Forward Collision Warning"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -54,27 +59,64 @@
       "rating_boot_space": 8,
       "rating_features_tech": 9,
       "rating_service_quality": 8,
-      "ratings_total": 8.0,
+      "ratings_total": 8,
       "annual_insurance_estimate": 52000,
       "annual_maintenance_estimate": 14000,
       "known_issues": [
-        { "issue": "DCT jerk/hesitation in slow city traffic below 20 kmph", "severity": "Watch" },
-        { "issue": "Panoramic sunroof wind noise at highway speeds above 100 kmph", "severity": "Minor" },
-        { "issue": "Occasional BlueLink app connectivity drops", "severity": "Minor" }
+        {
+          "issue": "DCT jerk/hesitation in slow city traffic below 20 kmph",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Panoramic sunroof wind noise at highway speeds above 100 kmph",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Occasional BlueLink app connectivity drops",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["Best-in-class features at price", "ADAS on this variant", "Panoramic sunroof", "Dual-zone climate control", "BlueLink connected car"],
-      "cons": ["DCT can feel jerky in slow city traffic", "Expensive service costs", "Waiting period 4-6 weeks Jodhpur"],
+      "pros": [
+        "Best-in-class features at price",
+        "ADAS on this variant",
+        "Panoramic sunroof",
+        "Dual-zone climate control",
+        "BlueLink connected car"
+      ],
+      "cons": [
+        "DCT can feel jerky in slow city traffic",
+        "Expensive service costs",
+        "Waiting period 4-6 weeks Jodhpur"
+      ],
       "waiting_weeks_jodhpur": 5,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": "previews/hyundai creta.glb",
       "colors": [
-        { "name": "Atlas White",    "hex": "#f2f2f2" },
-        { "name": "Abyss Black",    "hex": "#1e1e1e" },
-        { "name": "Fiery Red",      "hex": "#cc1a1a" },
-        { "name": "Robust Emerald", "hex": "#1e6641" },
-        { "name": "Starry Night",   "hex": "#1c2b80" },
-        { "name": "Titan Grey",     "hex": "#5e7585" }
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -93,7 +135,8 @@
           "rating": 3.8,
           "turnaround_hours": 24
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -151,22 +194,55 @@
       "annual_insurance_estimate": 44000,
       "annual_maintenance_estimate": 13000,
       "known_issues": [
-        { "issue": "DCT jerk/hesitation in slow city traffic below 20 kmph", "severity": "Watch" },
-        { "issue": "Occasional BlueLink app connectivity drops", "severity": "Minor" }
+        {
+          "issue": "DCT jerk/hesitation in slow city traffic below 20 kmph",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Occasional BlueLink app connectivity drops",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["Good value mid variant", "BlueLink connected features", "Spacious cabin", "Proven engine reliability"],
-      "cons": ["No ventilated seats", "No ADAS", "DCT quirks in city"],
+      "pros": [
+        "Good value mid variant",
+        "BlueLink connected features",
+        "Spacious cabin",
+        "Proven engine reliability"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "No ADAS",
+        "DCT quirks in city"
+      ],
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": "previews/hyundai creta.glb",
       "colors": [
-        { "name": "Atlas White",    "hex": "#f2f2f2" },
-        { "name": "Abyss Black",    "hex": "#1e1e1e" },
-        { "name": "Fiery Red",      "hex": "#cc1a1a" },
-        { "name": "Robust Emerald", "hex": "#1e6641" },
-        { "name": "Starry Night",   "hex": "#1c2b80" },
-        { "name": "Titan Grey",     "hex": "#5e7585" }
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -177,7 +253,8 @@
           "rating": 4.1,
           "turnaround_hours": 8
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -190,7 +267,7 @@
       "power_bhp": 158,
       "torque_nm": 253,
       "arai_kmpl": 16.5,
-      "realworld_kmpl": 13.0,
+      "realworld_kmpl": 13,
       "ex_showroom_jodhpur": 2059000,
       "boot_litres": 433,
       "ground_clearance_mm": 190,
@@ -199,7 +276,12 @@
       "airbags": 6,
       "ncap_stars": 3,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Departure Warning", "Driver Attention Warning", "High Beam Assist"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Driver Attention Warning",
+        "High Beam Assist"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -235,24 +317,63 @@
       "annual_insurance_estimate": 54000,
       "annual_maintenance_estimate": 15000,
       "known_issues": [
-        { "issue": "DCT jerk in bumper-to-bumper traffic — shared platform with Creta", "severity": "Watch" },
-        { "issue": "Infotainment screen glare in direct sunlight", "severity": "Minor" },
-        { "issue": "Only one authorized service center in Jodhpur — long wait times possible", "severity": "Watch" }
+        {
+          "issue": "DCT jerk in bumper-to-bumper traffic — shared platform with Creta",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Infotainment screen glare in direct sunlight",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Only one authorized service center in Jodhpur — long wait times possible",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Premium interior feel", "Best rear legroom in class", "Excellent ADAS suite", "Larger cabin feel"],
-      "cons": ["Slightly over 20L", "Fewer Kia service centers in Jodhpur vs Hyundai", "Higher service cost"],
+      "pros": [
+        "Premium interior feel",
+        "Best rear legroom in class",
+        "Excellent ADAS suite",
+        "Larger cabin feel"
+      ],
+      "cons": [
+        "Slightly over 20L",
+        "Fewer Kia service centers in Jodhpur vs Hyundai",
+        "Higher service cost"
+      ],
       "waiting_weeks_jodhpur": 4,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": "previews/kia-seltos.glb",
       "colors": [
-        { "name": "Glacier White Pearl", "hex": "#f0efeb" },
-        { "name": "Aurora Black Pearl",  "hex": "#1a1a1a" },
-        { "name": "Intense Red",         "hex": "#b81c1c" },
-        { "name": "Imperial Blue",       "hex": "#1a3a6b" },
-        { "name": "Pewter Olive",        "hex": "#5a5e3a" },
-        { "name": "Gravity Grey",        "hex": "#4a4e52" },
-        { "name": "Beige Gold",          "hex": "#c9a96e" }
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -263,7 +384,8 @@
           "rating": 3.9,
           "turnaround_hours": 24
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -276,7 +398,7 @@
       "power_bhp": 158,
       "torque_nm": 253,
       "arai_kmpl": 16.5,
-      "realworld_kmpl": 13.0,
+      "realworld_kmpl": 13,
       "ex_showroom_jodhpur": 1829000,
       "boot_litres": 433,
       "ground_clearance_mm": 190,
@@ -321,23 +443,58 @@
       "annual_insurance_estimate": 48000,
       "annual_maintenance_estimate": 14000,
       "known_issues": [
-        { "issue": "DCT jerk in bumper-to-bumper traffic", "severity": "Watch" },
-        { "issue": "Only one authorized service center in Jodhpur", "severity": "Watch" }
+        {
+          "issue": "DCT jerk in bumper-to-bumper traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Only one authorized service center in Jodhpur",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Ventilated seats at this price", "Best rear space in class", "Kia Connect app"],
-      "cons": ["No ADAS", "Single service center in Jodhpur", "Slightly pricier than Creta S"],
+      "pros": [
+        "Ventilated seats at this price",
+        "Best rear space in class",
+        "Kia Connect app"
+      ],
+      "cons": [
+        "No ADAS",
+        "Single service center in Jodhpur",
+        "Slightly pricier than Creta S"
+      ],
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": "previews/kia-seltos.glb",
       "colors": [
-        { "name": "Glacier White Pearl", "hex": "#f0efeb" },
-        { "name": "Aurora Black Pearl",  "hex": "#1a1a1a" },
-        { "name": "Intense Red",         "hex": "#b81c1c" },
-        { "name": "Imperial Blue",       "hex": "#1a3a6b" },
-        { "name": "Pewter Olive",        "hex": "#5a5e3a" },
-        { "name": "Gravity Grey",        "hex": "#4a4e52" },
-        { "name": "Beige Gold",          "hex": "#c9a96e" }
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -348,7 +505,8 @@
           "rating": 3.9,
           "turnaround_hours": 24
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -360,8 +518,8 @@
       "engine_cc": 1493,
       "power_bhp": 100,
       "torque_nm": 240,
-      "arai_kmpl": 17.0,
-      "realworld_kmpl": 14.0,
+      "arai_kmpl": 17,
+      "realworld_kmpl": 14,
       "ex_showroom_jodhpur": 0,
       "boot_litres": 274,
       "ground_clearance_mm": 185,
@@ -402,28 +560,59 @@
       "rating_boot_space": 3,
       "rating_features_tech": 2,
       "rating_service_quality": 5,
-      "ratings_total": 4.0,
+      "ratings_total": 4,
       "annual_insurance_estimate": 18000,
       "annual_maintenance_estimate": 9000,
       "known_issues": [
-        { "issue": "Discontinued model — parts supply declining year on year", "severity": "Critical" },
-        { "issue": "Only 2 airbags — no modern passive safety", "severity": "Critical" },
-        { "issue": "NVH (noise/vibration/harshness) high vs modern SUVs", "severity": "Watch" }
+        {
+          "issue": "Discontinued model — parts supply declining year on year",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Only 2 airbags — no modern passive safety",
+          "severity": "Critical"
+        },
+        {
+          "issue": "NVH (noise/vibration/harshness) high vs modern SUVs",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Diesel efficiency", "Ground clearance decent", "Compact for city"],
-      "cons": ["Tiny boot (274L)", "Only 2 airbags", "No modern safety features", "Cramped rear"],
+      "pros": [
+        "Diesel efficiency",
+        "Ground clearance decent",
+        "Compact for city"
+      ],
+      "cons": [
+        "Tiny boot (274L)",
+        "Only 2 airbags",
+        "No modern safety features",
+        "Cramped rear"
+      ],
       "waiting_weeks_jodhpur": 0,
       "launch_year": 2012,
       "is_new_model": false,
       "is_baseline": true,
       "glb": null,
       "colors": [
-        { "name": "Pearl White",   "hex": "#f0f0ec" },
-        { "name": "Midnight Black","hex": "#1c1c1c" },
-        { "name": "Silver",        "hex": "#a8a8a8" },
-        { "name": "Fiery Orange",  "hex": "#c94e1a" }
+        {
+          "name": "Pearl White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1c1c1c"
+        },
+        {
+          "name": "Silver",
+          "hex": "#a8a8a8"
+        },
+        {
+          "name": "Fiery Orange",
+          "hex": "#c94e1a"
+        }
       ],
-      "service_centers_jodhpur": []
+      "service_centers_jodhpur": [],
+      "camera_360": false
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-strong-hybrid",
@@ -436,7 +625,7 @@
       "power_bhp": 115,
       "torque_nm": 122,
       "arai_kmpl": 27.97,
-      "realworld_kmpl": 20.0,
+      "realworld_kmpl": 20,
       "ex_showroom_jodhpur": 1997000,
       "boot_litres": 373,
       "ground_clearance_mm": 210,
@@ -453,7 +642,7 @@
       "connected_car": true,
       "connected_system": "Suzuki Connect",
       "climate_control": "automatic",
-      "infotainment_inches": 9.0,
+      "infotainment_inches": 9,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1765,
       "resale_3yr_pct": 68,
@@ -481,23 +670,60 @@
       "annual_insurance_estimate": 52000,
       "annual_maintenance_estimate": 11000,
       "known_issues": [
-        { "issue": "3-star NCAP — same as Creta/Seltos; Nexon/Taigun rated higher", "severity": "Watch" },
-        { "issue": "e-CVT feels sluggish on sharp overtaking maneuvers", "severity": "Minor" },
-        { "issue": "Hybrid battery warranty 8yr/1.6L km — replacement cost very high if needed after warranty", "severity": "Watch" }
+        {
+          "issue": "3-star NCAP — same as Creta/Seltos; Nexon/Taigun rated higher",
+          "severity": "Watch"
+        },
+        {
+          "issue": "e-CVT feels sluggish on sharp overtaking maneuvers",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Hybrid battery warranty 8yr/1.6L km — replacement cost very high if needed after warranty",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Best fuel economy (20 kmpl real-world)", "Highest resale value", "Excellent Maruti service network", "High ground clearance 210mm"],
-      "cons": ["3-star NCAP (same as Creta/Seltos)", "Smaller boot (373L)", "No ADAS", "e-CVT not as sporty"],
+      "pros": [
+        "Best fuel economy (20 kmpl real-world)",
+        "Highest resale value",
+        "Excellent Maruti service network",
+        "High ground clearance 210mm"
+      ],
+      "cons": [
+        "3-star NCAP (same as Creta/Seltos)",
+        "Smaller boot (373L)",
+        "No ADAS",
+        "e-CVT not as sporty"
+      ],
       "waiting_weeks_jodhpur": 6,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": "previews/suzuki_grand_vitara.glb",
       "colors": [
-        { "name": "Pearl Arctic White", "hex": "#f4f4f0" },
-        { "name": "Midnight Black",     "hex": "#1a1a1a" },
-        { "name": "Splendid Silver",    "hex": "#a0a4a8" },
-        { "name": "Opulent Red",        "hex": "#9e1a1a" },
-        { "name": "Grandeur Grey",      "hex": "#5a5e62" },
-        { "name": "Khaki Green",        "hex": "#5a6642" }
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f4f4f0"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Splendid Silver",
+          "hex": "#a0a4a8"
+        },
+        {
+          "name": "Opulent Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Grandeur Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Khaki Green",
+          "hex": "#5a6642"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -516,7 +742,8 @@
           "rating": 4.1,
           "turnaround_hours": 8
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -529,7 +756,7 @@
       "power_bhp": 115,
       "torque_nm": 122,
       "arai_kmpl": 27.97,
-      "realworld_kmpl": 20.0,
+      "realworld_kmpl": 20,
       "ex_showroom_jodhpur": 2149000,
       "boot_litres": 373,
       "ground_clearance_mm": 210,
@@ -546,14 +773,14 @@
       "connected_car": true,
       "connected_system": "Toyota Connected",
       "climate_control": "automatic",
-      "infotainment_inches": 9.0,
+      "infotainment_inches": 9,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1765,
       "resale_3yr_pct": 70,
       "resale_5yr_pct": 57,
       "reliability_score": 88,
       "owner_rating": 4.3,
-      "post_sale_service_rating": 4.0,
+      "post_sale_service_rating": 4,
       "engine_rating": 7,
       "fuel_efficiency_rating": 10,
       "long_term_reliability_score": 9,
@@ -574,22 +801,56 @@
       "annual_insurance_estimate": 56000,
       "annual_maintenance_estimate": 12000,
       "known_issues": [
-        { "issue": "3-star NCAP — Nexon (5-star) and Taigun (5-star) rated higher", "severity": "Watch" },
-        { "issue": "Fewer Toyota service centers in Jodhpur vs Hyundai/Maruti", "severity": "Watch" },
-        { "issue": "Hybrid battery replacement cost ~₹2-3L after warranty (8yr/1.6L km)", "severity": "Watch" }
+        {
+          "issue": "3-star NCAP — Nexon (5-star) and Taigun (5-star) rated higher",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Fewer Toyota service centers in Jodhpur vs Hyundai/Maruti",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Hybrid battery replacement cost ~₹2-3L after warranty (8yr/1.6L km)",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Best reliability score", "Best resale value", "20 kmpl real-world", "Toyota build quality"],
-      "cons": ["Above 20L target", "3-star NCAP", "Smaller boot", "Toyota service centers fewer in Jodhpur"],
+      "pros": [
+        "Best reliability score",
+        "Best resale value",
+        "20 kmpl real-world",
+        "Toyota build quality"
+      ],
+      "cons": [
+        "Above 20L target",
+        "3-star NCAP",
+        "Smaller boot",
+        "Toyota service centers fewer in Jodhpur"
+      ],
       "waiting_weeks_jodhpur": 8,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Enticing Silver",   "hex": "#b0b4b8" },
-        { "name": "Midnight Black",    "hex": "#1a1a1a" },
-        { "name": "Cafe White",        "hex": "#f0eeea" },
-        { "name": "Sporting Red",      "hex": "#9e1a1a" },
-        { "name": "Lush Forest Green", "hex": "#2a5040" }
+        {
+          "name": "Enticing Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Cafe White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Sporting Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Lush Forest Green",
+          "hex": "#2a5040"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -597,10 +858,11 @@
           "area": "MIA Road",
           "phone": "0291-5500000",
           "maps_url": "https://maps.google.com/?q=Toyota+Service+Jodhpur",
-          "rating": 4.0,
+          "rating": 4,
           "turnaround_hours": 24
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -613,7 +875,7 @@
       "power_bhp": 120,
       "torque_nm": 170,
       "arai_kmpl": 17.01,
-      "realworld_kmpl": 13.0,
+      "realworld_kmpl": 13,
       "ex_showroom_jodhpur": 1454000,
       "boot_litres": 350,
       "ground_clearance_mm": 208,
@@ -658,22 +920,55 @@
       "annual_insurance_estimate": 38000,
       "annual_maintenance_estimate": 11000,
       "known_issues": [
-        { "issue": "AMT gear hunting on inclines and in stop-go traffic", "severity": "Watch" },
-        { "issue": "Tata infotainment software bugs — improve with OTA updates", "severity": "Minor" },
-        { "issue": "Build quality inconsistency at panel gaps on some units", "severity": "Minor" }
+        {
+          "issue": "AMT gear hunting on inclines and in stop-go traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Tata infotainment software bugs — improve with OTA updates",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Build quality inconsistency at panel gaps on some units",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["5-star NCAP", "Highest ground clearance (208mm)", "Under budget", "Good connected features"],
-      "cons": ["AMT gearbox not as smooth as DCT", "No ventilated seats", "Smaller than Creta/Seltos"],
+      "pros": [
+        "5-star NCAP",
+        "Highest ground clearance (208mm)",
+        "Under budget",
+        "Good connected features"
+      ],
+      "cons": [
+        "AMT gearbox not as smooth as DCT",
+        "No ventilated seats",
+        "Smaller than Creta/Seltos"
+      ],
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Pristine White",  "hex": "#f2f0ec" },
-        { "name": "Daytona Grey",    "hex": "#5a5e62" },
-        { "name": "Flame Red",       "hex": "#c01a1a" },
-        { "name": "Midnight Black",  "hex": "#1a1a1a" },
-        { "name": "Seaweed Green",   "hex": "#2a5a4a" }
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -684,20 +979,21 @@
           "rating": 3.7,
           "turnaround_hours": 12
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "mg-astor-savvy-cvt",
       "brand": "MG",
       "model": "Astor",
       "variant": "Savvy CVT",
-      "fuel": "petrol",
+      "fuel": "petrol_turbo",
       "transmission": "CVT",
       "engine_cc": 1349,
       "power_bhp": 143,
       "torque_nm": 220,
       "arai_kmpl": 15.64,
-      "realworld_kmpl": 12.0,
+      "realworld_kmpl": 12,
       "ex_showroom_jodhpur": 1697000,
       "boot_litres": 448,
       "ground_clearance_mm": 178,
@@ -706,7 +1002,12 @@
       "airbags": 6,
       "ncap_stars": 0,
       "adas": true,
-      "adas_features": ["Autonomous Emergency Braking", "Lane Departure Warning", "Forward Collision Warning", "AI Personal Assistant"],
+      "adas_features": [
+        "Autonomous Emergency Braking",
+        "Lane Departure Warning",
+        "Forward Collision Warning",
+        "AI Personal Assistant"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": false,
@@ -742,22 +1043,55 @@
       "annual_insurance_estimate": 44000,
       "annual_maintenance_estimate": 13000,
       "known_issues": [
-        { "issue": "MG (SAIC/Chinese-owned) brand: resale and parts supply uncertainty longer term", "severity": "Watch" },
-        { "issue": "Lower ground clearance (178mm) — scrapes on bad roads/speed bumps", "severity": "Watch" },
-        { "issue": "AC cooling complaints in peak Jodhpur summer (45 degrees C)", "severity": "Watch" }
+        {
+          "issue": "MG (SAIC/Chinese-owned) brand: resale and parts supply uncertainty longer term",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Lower ground clearance (178mm) — scrapes on bad roads/speed bumps",
+          "severity": "Watch"
+        },
+        {
+          "issue": "AC cooling complaints in peak Jodhpur summer (45 degrees C)",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Largest boot (448L)", "ADAS at this price", "AI assistant unique feature"],
-      "cons": ["MG (SAIC) brand trust concerns", "Lower resale value", "Fewer service centers in Jodhpur", "Lower ground clearance"],
+      "pros": [
+        "Largest boot (448L)",
+        "ADAS at this price",
+        "AI assistant unique feature"
+      ],
+      "cons": [
+        "MG (SAIC) brand trust concerns",
+        "Lower resale value",
+        "Fewer service centers in Jodhpur",
+        "Lower ground clearance"
+      ],
       "waiting_weeks_jodhpur": 1,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Candy White",     "hex": "#f2f2f0" },
-        { "name": "Starry Black",    "hex": "#1e1e1e" },
-        { "name": "Aurora Silver",   "hex": "#a8acb0" },
-        { "name": "Glaze Red",       "hex": "#b01a1a" },
-        { "name": "Fossil Grey",     "hex": "#6a6e72" }
+        {
+          "name": "Candy White",
+          "hex": "#f2f2f0"
+        },
+        {
+          "name": "Starry Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Aurora Silver",
+          "hex": "#a8acb0"
+        },
+        {
+          "name": "Glaze Red",
+          "hex": "#b01a1a"
+        },
+        {
+          "name": "Fossil Grey",
+          "hex": "#6a6e72"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -768,7 +1102,8 @@
           "rating": 3.5,
           "turnaround_hours": 24
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -798,7 +1133,7 @@
       "connected_car": false,
       "connected_system": null,
       "climate_control": "automatic",
-      "infotainment_inches": 8.0,
+      "infotainment_inches": 8,
       "rear_legroom_mm": 982,
       "cabin_width_mm": 1790,
       "resale_3yr_pct": 60,
@@ -826,22 +1161,57 @@
       "annual_insurance_estimate": 48000,
       "annual_maintenance_estimate": 12000,
       "known_issues": [
-        { "issue": "No connected car system — no remote access, OTA updates, or live tracking", "severity": "Watch" },
-        { "issue": "CVT feels rubber-band-like on highway overtaking", "severity": "Minor" },
-        { "issue": "Smaller 8-inch infotainment feels dated vs competitors", "severity": "Minor" }
+        {
+          "issue": "No connected car system — no remote access, OTA updates, or live tracking",
+          "severity": "Watch"
+        },
+        {
+          "issue": "CVT feels rubber-band-like on highway overtaking",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Smaller 8-inch infotainment feels dated vs competitors",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["Best ground clearance (220mm)", "Largest boot (458L)", "Best rear legroom", "3-star Global NCAP", "Honda reliability"],
-      "cons": ["No ventilated seats", "No connected car features", "CVT only (no DCT option)", "Smaller infotainment screen"],
+      "pros": [
+        "Best ground clearance (220mm)",
+        "Largest boot (458L)",
+        "Best rear legroom",
+        "3-star Global NCAP",
+        "Honda reliability"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "No connected car features",
+        "CVT only (no DCT option)",
+        "Smaller infotainment screen"
+      ],
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Platinum White Pearl", "hex": "#f0efeb" },
-        { "name": "Meteoroid Grey",       "hex": "#5a5e64" },
-        { "name": "Lunar Silver",         "hex": "#aab0b4" },
-        { "name": "Radiant Red",          "hex": "#9e1a1a" },
-        { "name": "Obsidian Blue",        "hex": "#1a2a5a" }
+        {
+          "name": "Platinum White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Meteoroid Grey",
+          "hex": "#5a5e64"
+        },
+        {
+          "name": "Lunar Silver",
+          "hex": "#aab0b4"
+        },
+        {
+          "name": "Radiant Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Obsidian Blue",
+          "hex": "#1a2a5a"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -852,7 +1222,8 @@
           "rating": 4.1,
           "turnaround_hours": 8
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -882,7 +1253,7 @@
       "connected_car": true,
       "connected_system": "VW Connect",
       "climate_control": "automatic",
-      "infotainment_inches": 10.0,
+      "infotainment_inches": 10,
       "rear_legroom_mm": 890,
       "cabin_width_mm": 1760,
       "resale_3yr_pct": 55,
@@ -910,22 +1281,56 @@
       "annual_insurance_estimate": 51000,
       "annual_maintenance_estimate": 18000,
       "known_issues": [
-        { "issue": "DSG wet-clutch service at 40k km (~Rs 15-20k) — expensive vs competitors", "severity": "Watch" },
-        { "issue": "Only 1 VW service center in Jodhpur — long wait times and high labor costs", "severity": "Critical" },
-        { "issue": "Parts are imported — significantly more expensive and slower to source", "severity": "Watch" }
+        {
+          "issue": "DSG wet-clutch service at 40k km (~Rs 15-20k) — expensive vs competitors",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Only 1 VW service center in Jodhpur — long wait times and high labor costs",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Parts are imported — significantly more expensive and slower to source",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Best driving dynamics", "5-star NCAP", "Lightest in class (better handling)", "European build quality"],
-      "cons": ["No ventilated seats", "VW/Skoda service expensive in India", "Only 1 service center in Jodhpur", "Lower resale vs Hyundai/Maruti"],
+      "pros": [
+        "Best driving dynamics",
+        "5-star NCAP",
+        "Lightest in class (better handling)",
+        "European build quality"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "VW/Skoda service expensive in India",
+        "Only 1 service center in Jodhpur",
+        "Lower resale vs Hyundai/Maruti"
+      ],
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Reflex Silver",    "hex": "#a8aaae" },
-        { "name": "Deep Black",       "hex": "#1a1a1a" },
-        { "name": "White Silver",     "hex": "#e8e8e4" },
-        { "name": "Tornado Red",      "hex": "#b81c1c" },
-        { "name": "Rising Blue",      "hex": "#1a3a6b" }
+        {
+          "name": "Reflex Silver",
+          "hex": "#a8aaae"
+        },
+        {
+          "name": "Deep Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "White Silver",
+          "hex": "#e8e8e4"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Rising Blue",
+          "hex": "#1a3a6b"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -936,7 +1341,8 @@
           "rating": 3.4,
           "turnaround_hours": 48
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -958,7 +1364,12 @@
       "airbags": 6,
       "ncap_stars": 5,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Departure Warning", "Blind Spot Detection", "Traffic Sign Recognition"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -972,7 +1383,7 @@
       "resale_3yr_pct": 58,
       "resale_5yr_pct": 43,
       "reliability_score": 68,
-      "owner_rating": 4.0,
+      "owner_rating": 4,
       "post_sale_service_rating": 3.5,
       "engine_rating": 8,
       "fuel_efficiency_rating": 6,
@@ -994,22 +1405,56 @@
       "annual_insurance_estimate": 52000,
       "annual_maintenance_estimate": 13000,
       "known_issues": [
-        { "issue": "Petrol AT variant is newer — long-term reliability data still building", "severity": "Watch" },
-        { "issue": "Large size makes parking in tight Jodhpur market areas difficult", "severity": "Minor" },
-        { "issue": "Tata service centers can have longer wait times for Harrier parts", "severity": "Watch" }
+        {
+          "issue": "Petrol AT variant is newer — long-term reliability data still building",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size makes parking in tight Jodhpur market areas difficult",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Tata service centers can have longer wait times for Harrier parts",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["5-star Global NCAP", "ADAS on this variant", "Largest cabin in segment", "Panoramic sunroof", "Ventilated seats"],
-      "cons": ["Heavier than rivals — affects fuel efficiency", "Petrol engine is new — fewer long-term reviews", "Pricier than Creta/Seltos"],
+      "pros": [
+        "5-star Global NCAP",
+        "ADAS on this variant",
+        "Largest cabin in segment",
+        "Panoramic sunroof",
+        "Ventilated seats"
+      ],
+      "cons": [
+        "Heavier than rivals — affects fuel efficiency",
+        "Petrol engine is new — fewer long-term reviews",
+        "Pricier than Creta/Seltos"
+      ],
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2024,
       "is_new_model": false,
       "glb": "previews/tata-harrier.glb",
       "colors": [
-        { "name": "Supernova Copper",  "hex": "#b87333" },
-        { "name": "Daytona Grey",      "hex": "#5a5e62" },
-        { "name": "Oberon Black",      "hex": "#1a1a1a" },
-        { "name": "Pristine White",    "hex": "#f2f0ec" },
-        { "name": "Calisto Copper",    "hex": "#9c5f2a" }
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Calisto Copper",
+          "hex": "#9c5f2a"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1020,7 +1465,8 @@
           "rating": 3.7,
           "turnaround_hours": 14
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1032,7 +1478,7 @@
       "engine_cc": 1997,
       "power_bhp": 200,
       "torque_nm": 380,
-      "arai_kmpl": 13.0,
+      "arai_kmpl": 13,
       "realworld_kmpl": 10.5,
       "ex_showroom_jodhpur": 2199000,
       "boot_litres": 189,
@@ -1050,7 +1496,7 @@
       "connected_car": true,
       "connected_system": "AdrenoX Connected",
       "climate_control": "automatic",
-      "infotainment_inches": 8.0,
+      "infotainment_inches": 8,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1900,
       "resale_3yr_pct": 62,
@@ -1078,22 +1524,57 @@
       "annual_insurance_estimate": 55000,
       "annual_maintenance_estimate": 14000,
       "known_issues": [
-        { "issue": "Body-on-frame — harder ride vs monocoque rivals on city roads", "severity": "Watch" },
-        { "issue": "Fuel efficiency significantly below segment average", "severity": "Watch" },
-        { "issue": "Boot space tiny in 7-seater config — rear seats eat into luggage space", "severity": "Minor" }
+        {
+          "issue": "Body-on-frame — harder ride vs monocoque rivals on city roads",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Fuel efficiency significantly below segment average",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Boot space tiny in 7-seater config — rear seats eat into luggage space",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["5-star Global NCAP", "Most powerful engine (200bhp)", "7-seater", "Best resale in Mahindra lineup", "Road presence"],
-      "cons": ["Thirstiest in class", "Harsh ride on city roads", "Tiny boot in 7-seat mode", "Biggest and hardest to park"],
+      "pros": [
+        "5-star Global NCAP",
+        "Most powerful engine (200bhp)",
+        "7-seater",
+        "Best resale in Mahindra lineup",
+        "Road presence"
+      ],
+      "cons": [
+        "Thirstiest in class",
+        "Harsh ride on city roads",
+        "Tiny boot in 7-seat mode",
+        "Biggest and hardest to park"
+      ],
       "waiting_weeks_jodhpur": 6,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Dune Beige",        "hex": "#c8b89a" },
-        { "name": "Deep Forest",       "hex": "#2a4a35" },
-        { "name": "Everest White",     "hex": "#f0eeea" },
-        { "name": "Napoli Black",      "hex": "#1a1a1a" },
-        { "name": "Grand Canyon Red",  "hex": "#8b1a1a" }
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Grand Canyon Red",
+          "hex": "#8b1a1a"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1104,7 +1585,8 @@
           "rating": 3.9,
           "turnaround_hours": 10
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -1126,7 +1608,12 @@
       "airbags": 6,
       "ncap_stars": 5,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Keep Assist", "Forward Collision Warning", "Driver Drowsiness Alert"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning",
+        "Driver Drowsiness Alert"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -1158,26 +1645,59 @@
       "rating_boot_space": 7,
       "rating_features_tech": 8,
       "rating_service_quality": 7,
-      "ratings_total": 7.0,
+      "ratings_total": 7,
       "annual_insurance_estimate": 39000,
       "annual_maintenance_estimate": 11000,
       "known_issues": [
-        { "issue": "New model — limited long-term reliability data available yet", "severity": "Watch" },
-        { "issue": "Turbo petrol engine can feel strained at high loads", "severity": "Minor" },
-        { "issue": "Rear seat comfort average for tall adults", "severity": "Minor" }
+        {
+          "issue": "New model — limited long-term reliability data available yet",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Turbo petrol engine can feel strained at high loads",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Rear seat comfort average for tall adults",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["5-star Global NCAP", "ADAS + panoramic sunroof under ₹16L", "Ventilated seats", "Best fuel efficiency in turbo class"],
-      "cons": ["New model — reliability unproven", "Smaller than Creta/Seltos", "Boot space tighter than rivals"],
+      "pros": [
+        "5-star Global NCAP",
+        "ADAS + panoramic sunroof under ₹16L",
+        "Ventilated seats",
+        "Best fuel efficiency in turbo class"
+      ],
+      "cons": [
+        "New model — reliability unproven",
+        "Smaller than Creta/Seltos",
+        "Boot space tighter than rivals"
+      ],
       "waiting_weeks_jodhpur": 5,
       "launch_year": 2024,
       "is_new_model": true,
       "glb": null,
       "colors": [
-        { "name": "Everest White",     "hex": "#f0eeea" },
-        { "name": "Napoli Black",      "hex": "#1a1a1a" },
-        { "name": "Nebula Blue",       "hex": "#1a2f5e" },
-        { "name": "Tango Red",         "hex": "#c01a1a" },
-        { "name": "Blazing Bronze",    "hex": "#8b6914" }
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Nebula Blue",
+          "hex": "#1a2f5e"
+        },
+        {
+          "name": "Tango Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Blazing Bronze",
+          "hex": "#8b6914"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1188,7 +1708,8 @@
           "rating": 3.9,
           "turnaround_hours": 10
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -1201,7 +1722,7 @@
       "power_bhp": 120,
       "torque_nm": 172,
       "arai_kmpl": 18.15,
-      "realworld_kmpl": 14.0,
+      "realworld_kmpl": 14,
       "ex_showroom_jodhpur": 1387000,
       "boot_litres": 355,
       "ground_clearance_mm": 195,
@@ -1218,7 +1739,7 @@
       "connected_car": true,
       "connected_system": "BlueLink Connected Car",
       "climate_control": "automatic",
-      "infotainment_inches": 8.0,
+      "infotainment_inches": 8,
       "rear_legroom_mm": 800,
       "cabin_width_mm": 1700,
       "resale_3yr_pct": 60,
@@ -1232,7 +1753,7 @@
       "future_proof_score": 6,
       "parts_availability_score": 9,
       "ease_of_servicing_score": 8,
-      "overall_customer_rating": 8.0,
+      "overall_customer_rating": 8,
       "rating_engine": 7,
       "rating_ride_handling": 7,
       "rating_nvh": 6,
@@ -1246,22 +1767,56 @@
       "annual_insurance_estimate": 33000,
       "annual_maintenance_estimate": 9000,
       "known_issues": [
-        { "issue": "Smaller cabin than Creta — feels cramped for tall adults", "severity": "Watch" },
-        { "issue": "DCT hesitation at low speeds in city traffic", "severity": "Watch" },
-        { "issue": "Turbo 3-cyl can feel rough at idle compared to 4-cyl rivals", "severity": "Minor" }
+        {
+          "issue": "Smaller cabin than Creta — feels cramped for tall adults",
+          "severity": "Watch"
+        },
+        {
+          "issue": "DCT hesitation at low speeds in city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Turbo 3-cyl can feel rough at idle compared to 4-cyl rivals",
+          "severity": "Minor"
+        }
       ],
-      "pros": ["Best fuel efficiency in class", "Hyundai reliability + service network", "Compact — easy to park in Jodhpur", "BlueLink connected features"],
-      "cons": ["Smaller cabin than Creta", "No ADAS", "3-cyl engine less refined", "3-star Global NCAP"],
+      "pros": [
+        "Best fuel efficiency in class",
+        "Hyundai reliability + service network",
+        "Compact — easy to park in Jodhpur",
+        "BlueLink connected features"
+      ],
+      "cons": [
+        "Smaller cabin than Creta",
+        "No ADAS",
+        "3-cyl engine less refined",
+        "3-star Global NCAP"
+      ],
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Atlas White",       "hex": "#f2f2f2" },
-        { "name": "Abyss Black",       "hex": "#1e1e1e" },
-        { "name": "Fiery Red",         "hex": "#cc1a1a" },
-        { "name": "Ranger Khaki",      "hex": "#7a6a4a" },
-        { "name": "Typhoon Silver",    "hex": "#9a9fa8" }
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1280,7 +1835,8 @@
           "rating": 3.8,
           "turnaround_hours": 10
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -1293,7 +1849,7 @@
       "power_bhp": 150,
       "torque_nm": 250,
       "arai_kmpl": 16.5,
-      "realworld_kmpl": 13.0,
+      "realworld_kmpl": 13,
       "ex_showroom_jodhpur": 1969000,
       "boot_litres": 385,
       "ground_clearance_mm": 188,
@@ -1310,13 +1866,13 @@
       "connected_car": true,
       "connected_system": "Skoda Connect",
       "climate_control": "automatic",
-      "infotainment_inches": 10.0,
+      "infotainment_inches": 10,
       "rear_legroom_mm": 870,
       "cabin_width_mm": 1780,
       "resale_3yr_pct": 54,
       "resale_5yr_pct": 40,
       "reliability_score": 66,
-      "owner_rating": 4.0,
+      "owner_rating": 4,
       "post_sale_service_rating": 3.5,
       "engine_rating": 8,
       "fuel_efficiency_rating": 7,
@@ -1338,22 +1894,56 @@
       "annual_insurance_estimate": 50000,
       "annual_maintenance_estimate": 16000,
       "known_issues": [
-        { "issue": "DSG clutch pack service at 40k km — expensive (~Rs 15-20k)", "severity": "Watch" },
-        { "issue": "Limited Skoda service network in Jodhpur — 1 center", "severity": "Critical" },
-        { "issue": "Parts imported — higher cost and slower availability vs Indian brands", "severity": "Watch" }
+        {
+          "issue": "DSG clutch pack service at 40k km — expensive (~Rs 15-20k)",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Limited Skoda service network in Jodhpur — 1 center",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Parts imported — higher cost and slower availability vs Indian brands",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["5-star Global NCAP", "Best build quality in segment", "Sharp handling", "European refinement"],
-      "cons": ["No ventilated seats", "VW Group service expensive in India", "1 service center Jodhpur", "Lower resale vs Hyundai/Tata"],
+      "pros": [
+        "5-star Global NCAP",
+        "Best build quality in segment",
+        "Sharp handling",
+        "European refinement"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "VW Group service expensive in India",
+        "1 service center Jodhpur",
+        "Lower resale vs Hyundai/Tata"
+      ],
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Candy White",       "hex": "#f0f0ec" },
-        { "name": "Brilliant Silver",  "hex": "#b0b4b8" },
-        { "name": "Carbon Steel",      "hex": "#4a5058" },
-        { "name": "Tornado Red",       "hex": "#b81c1c" },
-        { "name": "Magnetic Brown",    "hex": "#5c4033" }
+        {
+          "name": "Candy White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Brilliant Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Carbon Steel",
+          "hex": "#4a5058"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Magnetic Brown",
+          "hex": "#5c4033"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1364,7 +1954,8 @@
           "rating": 3.5,
           "turnaround_hours": 36
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -1391,7 +1982,12 @@
       "airbags": 6,
       "ncap_stars": 5,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Keep Assist", "Forward Collision Warning", "Driver Drowsiness Alert"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning",
+        "Driver Drowsiness Alert"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -1423,26 +2019,61 @@
       "rating_boot_space": 7,
       "rating_features_tech": 9,
       "rating_service_quality": 7,
-      "ratings_total": 8.0,
+      "ratings_total": 8,
       "annual_insurance_estimate": 45000,
       "annual_maintenance_estimate": 5000,
       "known_issues": [
-        { "issue": "Fast-charging infrastructure sparse in Rajasthan — plan charging stops carefully", "severity": "Critical" },
-        { "issue": "Real-world range drops 20-25% in Rajasthan summer heat (AC load)", "severity": "Watch" },
-        { "issue": "Resale market for EVs less established than petrol — uncertain 5yr value", "severity": "Watch" }
+        {
+          "issue": "Fast-charging infrastructure sparse in Rajasthan — plan charging stops carefully",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Real-world range drops 20-25% in Rajasthan summer heat (AC load)",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Resale market for EVs less established than petrol — uncertain 5yr value",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["5-star NCAP", "Zero fuel cost (~₹1.5/km vs ₹9/km petrol)", "ADAS + panoramic sunroof", "Extremely low maintenance", "Instant torque delivery"],
-      "cons": ["Charging anxiety on long Jodhpur-Jaisalmer/Udaipur highways", "Higher upfront cost", "Resale uncertainty", "Sparse fast-charger network in Rajasthan"],
+      "pros": [
+        "5-star NCAP",
+        "Zero fuel cost (~₹1.5/km vs ₹9/km petrol)",
+        "ADAS + panoramic sunroof",
+        "Extremely low maintenance",
+        "Instant torque delivery"
+      ],
+      "cons": [
+        "Charging anxiety on long Jodhpur-Jaisalmer/Udaipur highways",
+        "Higher upfront cost",
+        "Resale uncertainty",
+        "Sparse fast-charger network in Rajasthan"
+      ],
       "waiting_weeks_jodhpur": 4,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Pristine White",    "hex": "#f2f0ec" },
-        { "name": "Daytona Grey",      "hex": "#5a5e62" },
-        { "name": "Oberon Black",      "hex": "#1a1a1a" },
-        { "name": "Intense Teal",      "hex": "#1a6b6b" },
-        { "name": "Fearless Red",      "hex": "#c01a1a" }
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Teal",
+          "hex": "#1a6b6b"
+        },
+        {
+          "name": "Fearless Red",
+          "hex": "#c01a1a"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1453,7 +2084,8 @@
           "rating": 3.6,
           "turnaround_hours": 12
         }
-      ]
+      ],
+      "camera_360": false
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -1480,7 +2112,13 @@
       "airbags": 6,
       "ncap_stars": 0,
       "adas": true,
-      "adas_features": ["Auto Emergency Braking", "Lane Keep Assist", "Blind Spot Collision Warning", "Driver Attention Warning", "Rear Cross-Traffic Alert"],
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Blind Spot Collision Warning",
+        "Driver Attention Warning",
+        "Rear Cross-Traffic Alert"
+      ],
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
@@ -1495,14 +2133,14 @@
       "resale_5yr_pct": 36,
       "reliability_score": 68,
       "owner_rating": 4.1,
-      "post_sale_service_rating": 4.0,
+      "post_sale_service_rating": 4,
       "engine_rating": 9,
       "fuel_efficiency_rating": 10,
       "long_term_reliability_score": 6,
       "future_proof_score": 9,
       "parts_availability_score": 7,
       "ease_of_servicing_score": 7,
-      "overall_customer_rating": 8.0,
+      "overall_customer_rating": 8,
       "rating_engine": 9,
       "rating_ride_handling": 8,
       "rating_nvh": 9,
@@ -1516,22 +2154,57 @@
       "annual_insurance_estimate": 52000,
       "annual_maintenance_estimate": 4500,
       "known_issues": [
-        { "issue": "New model — long-term battery health data not yet available", "severity": "Watch" },
-        { "issue": "Fast-charging infrastructure sparse in Rajasthan highways", "severity": "Critical" },
-        { "issue": "NCAP not yet rated for this generation EV variant", "severity": "Watch" }
+        {
+          "issue": "New model — long-term battery health data not yet available",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Fast-charging infrastructure sparse in Rajasthan highways",
+          "severity": "Critical"
+        },
+        {
+          "issue": "NCAP not yet rated for this generation EV variant",
+          "severity": "Watch"
+        }
       ],
-      "pros": ["Best-in-class EV range (473km ARAI)", "Full ADAS suite", "Hyundai's trusted service network", "Panoramic sunroof + ventilated seats", "V2L (vehicle to load) charging"],
-      "cons": ["Most expensive in EV segment", "NCAP unrated", "Charging infra gap in Rajasthan", "Newer model — less long-term data"],
+      "pros": [
+        "Best-in-class EV range (473km ARAI)",
+        "Full ADAS suite",
+        "Hyundai's trusted service network",
+        "Panoramic sunroof + ventilated seats",
+        "V2L (vehicle to load) charging"
+      ],
+      "cons": [
+        "Most expensive in EV segment",
+        "NCAP unrated",
+        "Charging infra gap in Rajasthan",
+        "Newer model — less long-term data"
+      ],
       "waiting_weeks_jodhpur": 6,
       "launch_year": 2024,
       "is_new_model": true,
       "glb": null,
       "colors": [
-        { "name": "Atlas White",       "hex": "#f2f2f2" },
-        { "name": "Abyss Black",       "hex": "#1e1e1e" },
-        { "name": "Starry Night",      "hex": "#1a2a4a" },
-        { "name": "Amazonas Green",    "hex": "#1a4a2a" },
-        { "name": "Typhoon Silver",    "hex": "#9a9fa8" }
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1a2a4a"
+        },
+        {
+          "name": "Amazonas Green",
+          "hex": "#1a4a2a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1542,7 +2215,8 @@
           "rating": 4.1,
           "turnaround_hours": 10
         }
-      ]
+      ],
+      "camera_360": true
     },
     {
       "id": "mg-zs-ev-excite-pro",
@@ -1605,21 +2279,53 @@
       "annual_insurance_estimate": 46000,
       "annual_maintenance_estimate": 4000,
       "known_issues": [
-        { "issue": "MG is a Chinese-owned brand — some buyers have concerns about resale and brand longevity", "severity": "Watch" },
-        { "issue": "Lowest ground clearance in class (177mm) — rough roads in outskirts of Jodhpur", "severity": "Watch" },
-        { "issue": "Service network thin outside metros — Jodhpur has 1 center", "severity": "Critical" }
+        {
+          "issue": "MG is a Chinese-owned brand — some buyers have concerns about resale and brand longevity",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Lowest ground clearance in class (177mm) — rough roads in outskirts of Jodhpur",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Service network thin outside metros — Jodhpur has 1 center",
+          "severity": "Critical"
+        }
       ],
-      "pros": ["Fastest DC charging (76kW)", "Largest boot in EV class (448L)", "Good rear legroom", "Feature-loaded"],
-      "cons": ["Brand trust concerns", "Lowest GC in class", "Thin service network", "Worst EV resale value", "No ventilated seats"],
+      "pros": [
+        "Fastest DC charging (76kW)",
+        "Largest boot in EV class (448L)",
+        "Good rear legroom",
+        "Feature-loaded"
+      ],
+      "cons": [
+        "Brand trust concerns",
+        "Lowest GC in class",
+        "Thin service network",
+        "Worst EV resale value",
+        "No ventilated seats"
+      ],
       "waiting_weeks_jodhpur": 2,
       "launch_year": 2023,
       "is_new_model": false,
       "glb": null,
       "colors": [
-        { "name": "Polar White",       "hex": "#f0f0ec" },
-        { "name": "Aurora Silver",     "hex": "#a8adb4" },
-        { "name": "Cosmic Black",      "hex": "#1a1a1a" },
-        { "name": "Ferric Blue",       "hex": "#1a3a5e" }
+        {
+          "name": "Polar White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Aurora Silver",
+          "hex": "#a8adb4"
+        },
+        {
+          "name": "Cosmic Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Ferric Blue",
+          "hex": "#1a3a5e"
+        }
       ],
       "service_centers_jodhpur": [
         {
@@ -1629,6 +2335,609 @@
           "maps_url": "https://maps.google.com/?q=MG+Motor+Jodhpur",
           "rating": 3.4,
           "turnaround_hours": 18
+        }
+      ],
+      "camera_360": true
+    },
+    {
+      "id": "tata-nexon-cng-smart-plus",
+      "brand": "Tata",
+      "model": "Nexon CNG",
+      "variant": "Smart+ CNG",
+      "fuel": "cng",
+      "transmission": "Manual",
+      "engine_cc": 1199,
+      "power_bhp": 100,
+      "torque_nm": 170,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "arai_cng_kmkg": 24.08,
+      "realworld_cng_kmkg": 19,
+      "ex_showroom_jodhpur": 1039000,
+      "boot_litres": 315,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1280,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "manual",
+      "infotainment_inches": 7,
+      "rear_legroom_mm": 850,
+      "cabin_width_mm": 1750,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 44,
+      "reliability_score": 70,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 7,
+      "ratings_total": 6.7,
+      "annual_insurance_estimate": 24000,
+      "annual_maintenance_estimate": 7000,
+      "known_issues": [
+        {
+          "issue": "Boot space reduced due to CNG tank — less practical for long trips",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Power drops ~15% vs petrol in CNG mode — highway merging feels slow",
+          "severity": "Watch"
+        },
+        {
+          "issue": "CNG filling stations sparse on Jodhpur highways (Barmer, Jaisalmer routes)",
+          "severity": "Critical"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Cheapest running cost (~Rs 2.5/km)",
+        "Lowest price in segment",
+        "Tata reliability"
+      ],
+      "cons": [
+        "No CNG stations on major Rajasthan highways",
+        "Boot reduced with CNG kit",
+        "No sunroof/ventilation",
+        "Manual only"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "camera_360": false,
+      "colors": [
+        {
+          "name": "Pure Grey",
+          "hex": "#9a9fa8"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ]
+    },
+    {
+      "id": "maruti-ertiga-cng-vxi",
+      "brand": "Maruti Suzuki",
+      "model": "Ertiga CNG",
+      "variant": "VXi CNG",
+      "fuel": "cng",
+      "transmission": "Manual",
+      "engine_cc": 1462,
+      "power_bhp": 88,
+      "torque_nm": 122,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "arai_cng_kmkg": 26.11,
+      "realworld_cng_kmkg": 21,
+      "ex_showroom_jodhpur": 1069000,
+      "boot_litres": 135,
+      "ground_clearance_mm": 180,
+      "kerb_weight_kg": 1195,
+      "seating": 7,
+      "airbags": 2,
+      "ncap_stars": 0,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Suzuki Connect",
+      "climate_control": "manual",
+      "infotainment_inches": 7,
+      "rear_legroom_mm": 960,
+      "cabin_width_mm": 1735,
+      "resale_3yr_pct": 64,
+      "resale_5yr_pct": 50,
+      "reliability_score": 80,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4.4,
+      "engine_rating": 6,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 5,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 8.1,
+      "rating_engine": 6,
+      "rating_ride_handling": 6,
+      "rating_nvh": 6,
+      "rating_fit_finish": 6,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 9,
+      "rating_boot_space": 4,
+      "rating_features_tech": 5,
+      "rating_service_quality": 9,
+      "ratings_total": 6.3,
+      "annual_insurance_estimate": 22000,
+      "annual_maintenance_estimate": 6000,
+      "known_issues": [
+        {
+          "issue": "Only 2 airbags — poor safety vs modern rivals with 6",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Boot space very limited with CNG tank in a 7-seater",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Underpowered on Rajasthan highways, especially with full load",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Best-in-class CNG mileage (26 km/kg)",
+        "Maruti service everywhere in Jodhpur",
+        "7-seater",
+        "Cheapest overall cost of ownership",
+        "Best resale value"
+      ],
+      "cons": [
+        "Only 2 airbags — safety concern",
+        "No CNG on highways easily",
+        "Very underpowered",
+        "Spartan features"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "camera_360": false,
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f5f5f0"
+        },
+        {
+          "name": "Granite Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Magma Grey",
+          "hex": "#3a3d40"
+        },
+        {
+          "name": "Auburn Red",
+          "hex": "#8b1a1a"
+        },
+        {
+          "name": "Dignity Brown",
+          "hex": "#5c4033"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki Arena - Basni",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2741500",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki NEXA - Jodhpur",
+          "area": "Residency Road",
+          "phone": "0291-2742000",
+          "maps_url": "https://maps.google.com/?q=Maruti+NEXA+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ]
+    },
+    {
+      "id": "kia-seltos-htx-plus-diesel-at",
+      "brand": "Kia",
+      "model": "Seltos",
+      "variant": "HTX+ Diesel AT",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1493,
+      "power_bhp": 116,
+      "torque_nm": 250,
+      "arai_kmpl": 21,
+      "realworld_kmpl": 16.5,
+      "ex_showroom_jodhpur": 1849000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1410,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Kia Connect",
+      "climate_control": "automatic",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 900,
+      "cabin_width_mm": 1800,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 46,
+      "reliability_score": 72,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.7,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 8,
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 8,
+      "rating_service_quality": 7,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 47000,
+      "annual_maintenance_estimate": 14000,
+      "known_issues": [
+        {
+          "issue": "Diesel AT servicing more expensive (AT fluid + diesel filter interval)",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Kia service centers limited to 1 in Jodhpur",
+          "severity": "Watch"
+        },
+        {
+          "issue": "3-star NCAP — below modern safety expectations",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Best real-world mileage in class (16.5 kmpl)",
+        "Ventilated seats",
+        "Torque-rich diesel for highway runs",
+        "Kia Connect features"
+      ],
+      "cons": [
+        "Only 1 Kia service center Jodhpur",
+        "3-star NCAP",
+        "No ADAS",
+        "Higher diesel servicing cost"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/kia-seltos.glb",
+      "camera_360": false,
+      "colors": [
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f5f5f0"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a2f5e"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#4a5040"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Kia Jodhpur - Authorized",
+          "area": "Bombay Motors Circle",
+          "phone": "0291-2743000",
+          "maps_url": "https://maps.google.com/?q=Kia+Service+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 12
+        }
+      ]
+    },
+    {
+      "id": "tata-harrier-adventure-plus-diesel-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure+ Diesel AT",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2149000,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "automatic",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 54000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ]
+    },
+    {
+      "id": "mahindra-scorpio-n-z8-diesel-at",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z8 Diesel AT",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 2184,
+      "power_bhp": 175,
+      "torque_nm": 400,
+      "arai_kmpl": 15.2,
+      "realworld_kmpl": 12,
+      "ex_showroom_jodhpur": 2349000,
+      "boot_litres": 189,
+      "ground_clearance_mm": 200,
+      "kerb_weight_kg": 2035,
+      "seating": 7,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "AdrenoX Connected",
+      "climate_control": "automatic",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 900,
+      "cabin_width_mm": 1900,
+      "resale_3yr_pct": 64,
+      "resale_5yr_pct": 50,
+      "reliability_score": 68,
+      "owner_rating": 4.4,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 6,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8.2,
+      "rating_engine": 9,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 5,
+      "rating_features_tech": 7,
+      "rating_service_quality": 7,
+      "ratings_total": 7.2,
+      "annual_insurance_estimate": 58000,
+      "annual_maintenance_estimate": 16000,
+      "known_issues": [
+        {
+          "issue": "Body-on-frame — noticeably harder ride on city roads vs monocoque rivals",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Heaviest in segment — fuel efficiency significantly below average",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Boot space near-unusable in 7-seat mode",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Highest torque in class (400Nm) — Rajasthan roads and desert tracks",
+        "7-seater",
+        "Best Mahindra resale value",
+        "Road presence"
+      ],
+      "cons": [
+        "Thirstiest diesel in class",
+        "Body-on-frame ride",
+        "Tiny boot in 7-seat mode",
+        "Largest — hardest to park in Jodhpur old city"
+      ],
+      "waiting_weeks_jodhpur": 5,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "camera_360": false,
+      "colors": [
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
         }
       ]
     }

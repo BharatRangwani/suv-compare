@@ -114,6 +114,7 @@ export function renderFilters(container, onFilterChange) {
         { value: 'all', label: 'All' },
         { value: 'petrol_turbo', label: 'Petrol Turbo' },
         { value: 'diesel', label: 'Diesel' },
+        { value: 'cng', label: 'CNG' },
         { value: 'electric', label: 'Electric (EV)' },
         { value: 'strong_hybrid', label: 'Strong Hybrid' },
         { value: 'mild_hybrid', label: 'Mild Hybrid' }

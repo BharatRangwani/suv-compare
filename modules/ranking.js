@@ -16,16 +16,20 @@ export function calcTCO(car, profile) {
 
   let annualFuel;
   if (car.fuel === 'electric') {
-    // EV: ~6 km/kWh real-world, electricity ₹8/kWh in Rajasthan home charging
+    // EV: real-world range / battery size = km per kWh, electricity ~₹8/kWh
     const kmPerKwh = car.realworld_range_km && car.battery_kwh
       ? car.realworld_range_km / car.battery_kwh
       : 6;
     annualFuel = (annualKm / kmPerKwh) * 8;
+  } else if (car.fuel === 'cng') {
+    // CNG: ~₹83/kg in Rajasthan, real-world ~21 km/kg
+    const kmPerKg = car.realworld_cng_kmkg || 20;
+    annualFuel = (annualKm / kmPerKg) * 83;
   } else {
-    annualFuel = (annualKm / car.realworld_kmpl) * profile.petrol_price_jodhpur;
+    annualFuel = (annualKm / (car.realworld_kmpl || 15)) * profile.petrol_price_jodhpur;
   }
 
-  const annualService = car.fuel === 'electric' ? 4000 : 12000;
+  const annualService = car.fuel === 'electric' ? 4000 : car.fuel === 'cng' ? 7000 : 12000;
   const operatingCosts = (annualFuel * 5) + (annualService * 5);
   const resaleValue = Math.min(
     car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100),
@@ -50,7 +54,7 @@ function featuresScore(car, profile) {
   const niceHaveMap = {
     'sunroof': car.sunroof !== 'none' && car.sunroof !== undefined,
     'adas': car.adas,
-    '360_camera': false,
+    '360_camera': !!car.camera_360,
     'wireless_carplay': car.wireless_carplay,
   };
   const mustScore = profile.must_haves.reduce((acc, f) => acc + (mustHaveMap[f] ? 1 : 0), 0) / profile.must_haves.length;

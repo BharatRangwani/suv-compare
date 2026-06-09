@@ -45,9 +45,10 @@ async function renderFinanceTab() {
   const { getCarsForRanking, getBaselineCar }  = await import('./modules/data.js');
   const { calcOnRoadPrice, calcEMI }           = await import('./modules/emi.js');
   const { calcExchangeValue }                  = await import('./modules/ui-exchange.js');
+  const { saveProfile }                        = await import('./modules/profile.js');
 
   const data     = await loadCarsData();
-  const profile  = getProfile();
+  let profile    = getProfile();
   const baseline = getBaselineCar(data);
   const allRanked = getBestVariantPerBrand(rankCars(getCarsForRanking(data), profile, baseline));
 
@@ -136,6 +137,13 @@ async function renderFinanceTab() {
         </div>
       </div>
       <div class="fin-adj-controls">
+        <div class="fin-ctrl">
+          <span class="fin-ctrl-lbl">Petrol price</span>
+          <input type="number" id="fin-petrol-price" min="80" max="140" step="1"
+            value="${profile.petrol_price_jodhpur || 103}"
+            style="width:4.5rem;padding:0.2rem 0.4rem;border:1px solid var(--border);border-radius:6px;font-size:0.82rem;background:var(--surface);color:var(--text)">
+          <span style="font-size:0.75rem;color:var(--text-muted)">₹/litre</span>
+        </div>
         <div class="fin-ctrl">
           <span class="fin-ctrl-lbl">Down payment</span>
           <input type="range" id="fin-dp" min="5" max="50" value="20" style="flex:1;accent-color:var(--blue)">
@@ -234,12 +242,24 @@ async function renderFinanceTab() {
     updateAnswerCard();
   });
 
+  // Petrol price
+  adjWrap.querySelector('#fin-petrol-price').addEventListener('change', e => {
+    const v = parseFloat(e.target.value);
+    if (!isNaN(v) && v >= 80 && v <= 140) {
+      profile = { ...profile, petrol_price_jodhpur: v };
+      saveProfile(profile);
+    }
+  });
+
   // Reset
   adjWrap.querySelector('#fin-reset').addEventListener('click', () => {
     dpPct = 20; rate = 8.5; tenureMonths = 60;
     selectedCarId = topCar ? topCar.id : selectedCarId;
     adjWrap.querySelector('#fin-dp').value = 20;
     adjWrap.querySelector('#fin-dp-val').textContent = '20%';
+    adjWrap.querySelector('#fin-petrol-price').value = 103;
+    profile = { ...profile, petrol_price_jodhpur: 103 };
+    saveProfile(profile);
     adjWrap.querySelectorAll('#fin-rate-chips .fin-chip').forEach(b => b.classList.toggle('active', b.dataset.rate === '8.5'));
     adjWrap.querySelectorAll('#fin-tenure-chips .fin-chip').forEach(b => b.classList.toggle('active', b.dataset.tenure === '60'));
     buildCarSel();

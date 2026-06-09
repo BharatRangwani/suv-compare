@@ -177,6 +177,17 @@
   color: #34d399;
   border-color: rgba(52,211,153,0.25);
 }
+.btag.btag-cng {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: rgba(37,99,235,0.25);
+  font-weight: 600;
+}
+[data-theme="dark"] .btag.btag-cng {
+  background: rgba(37,99,235,0.15);
+  color: #93c5fd;
+  border-color: rgba(147,197,253,0.25);
+}
 
 /* ── Best Time to Buy tag ── */
 .btb-tag {
@@ -229,6 +240,42 @@
 }
 .must-have-item.met   { color: var(--green); }
 .must-have-item.unmet { color: var(--text-dim); }
+
+/* ── ADAS features list ── */
+.adas-features-list {
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.adas-features-list li {
+  font-size: 0.62rem;
+  background: var(--blue-light);
+  color: var(--blue);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+}
+.spec-yes {
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ── EV charging info note ── */
+.ev-charging-note {
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(22,163,74,0.06);
+  border-left: 3px solid var(--green, #16a34a);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.ev-charging-note strong { color: var(--text); }
+[data-theme="dark"] .ev-charging-note { background: rgba(22,163,74,0.1); }
 
 /* ── Issues preview ── */
 .issues-preview {
@@ -350,6 +397,19 @@
   transition: background 0.15s;
 }
 .btn-secondary:hover { background: var(--blue-light); }
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn-wa:hover { background: #1ebe5a; color: #fff; }
 
 /* ── Compare controls ── */
 .compare-controls {
@@ -772,7 +832,8 @@
   padding: 1rem 0 0;
 }
 .detail-actions .btn-primary,
-.detail-actions .btn-secondary {
+.detail-actions .btn-secondary,
+.detail-actions .btn-wa {
   flex: 1;
   text-align: center;
 }

@@ -23,6 +23,8 @@ function fmtLakh(n) {
 const FUEL_LABELS = {
   petrol_turbo: 'Petrol Turbo',
   diesel: 'Diesel',
+  cng: 'CNG',
+  electric: 'Electric (EV)',
   strong_hybrid: 'Strong Hybrid',
   mild_hybrid: 'Mild Hybrid',
   petrol: 'Petrol NA'
@@ -181,28 +183,72 @@ function buildSpecsSection(car) {
   const fuelLabel = FUEL_LABELS[car.fuel] || (car.fuel || '—');
   const txLabel = car.transmission === 'automatic' ? 'Automatic' :
                   car.transmission === 'manual' ? 'Manual' : (car.transmission || '—');
-  const adasText = car.adas ? 'Yes' : 'No';
-  const ncapText = car.ncap_stars ? formatStars(car.ncap_stars) + ` (${car.ncap_stars}★)` : '—';
+  const ncapText = car.ncap_stars ? formatStars(car.ncap_stars) + ` (${car.ncap_stars}★)` : 'Unrated';
+  const isEV = car.fuel === 'electric';
+  const isCNG = car.fuel === 'cng';
+
+  const mileageRow = isEV
+    ? `<dt>ARAI Range</dt><dd>${car.arai_range_km || '—'} km</dd>
+       <dt>Real-World Range</dt><dd>${car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '—'}</dd>
+       <dt>Battery</dt><dd>${car.battery_kwh || '—'} kWh</dd>`
+    : isCNG
+    ? `<dt>ARAI Mileage (CNG)</dt><dd>${car.arai_cng_kmkg || '—'} km/kg</dd>
+       <dt>Real-World (CNG)</dt><dd>${car.realworld_cng_kmkg ? '~' + car.realworld_cng_kmkg + ' km/kg' : '—'}</dd>`
+    : `<dt>ARAI Mileage</dt><dd>${car.arai_kmpl || '—'} kmpl</dd>
+       <dt>Real-World Mileage</dt><dd>${car.realworld_kmpl || '—'} kmpl</dd>`;
+
+  const adasFeaturesHtml = car.adas && car.adas_features && car.adas_features.length
+    ? `<dt>ADAS</dt><dd>
+        <span class="spec-yes">Yes</span>
+        <ul class="adas-features-list">${car.adas_features.map(f => `<li>${f}</li>`).join('')}</ul>
+       </dd>`
+    : `<dt>ADAS</dt><dd>${car.adas ? 'Yes' : 'No'}</dd>`;
 
   return `
     <section class="detail-section">
       <h3 class="detail-section-title">Specifications</h3>
       <dl class="specs-grid">
-        <dt>Engine</dt><dd>${car.engine_cc || '—'} cc</dd>
+        ${isEV ? '' : `<dt>Engine</dt><dd>${car.engine_cc || '—'} cc</dd>`}
         <dt>Power</dt><dd>${car.power_bhp || '—'} bhp</dd>
         <dt>Torque</dt><dd>${car.torque_nm || '—'} Nm</dd>
         <dt>Fuel Type</dt><dd>${fuelLabel}</dd>
         <dt>Transmission</dt><dd>${txLabel}</dd>
-        <dt>ARAI Mileage</dt><dd>${car.arai_kmpl || '—'} kmpl</dd>
-        <dt>Real-World Mileage</dt><dd>${car.realworld_kmpl || '—'} kmpl</dd>
+        ${mileageRow}
         <dt>Boot Space</dt><dd>${car.boot_litres || '—'} L</dd>
         <dt>Ground Clearance</dt><dd>${car.ground_clearance_mm || '—'} mm</dd>
         <dt>Cabin Width</dt><dd>${car.cabin_width_mm || '—'} mm</dd>
         <dt>Rear Legroom</dt><dd>${car.rear_legroom_mm || '—'} mm</dd>
         <dt>Airbags</dt><dd>${car.airbags || '—'}</dd>
         <dt>NCAP Rating</dt><dd>${ncapText}</dd>
-        <dt>ADAS</dt><dd>${adasText}</dd>
+        ${adasFeaturesHtml}
+        <dt>360° Camera</dt><dd>${car.camera_360 ? '<span class="spec-yes">Yes</span>' : 'No'}</dd>
       </dl>
+    </section>`;
+}
+
+function buildEVChargingSection(car) {
+  if (car.fuel !== 'electric') return '';
+  const fast = car.charging_fast_kw ? `${car.charging_fast_kw} kW DC fast charge` : '—';
+  const home = car.charging_home_hours ? `~${car.charging_home_hours} hrs (7.2kW AC home)` : '—';
+  const range = car.realworld_range_km ? `~${car.realworld_range_km} km` : '—';
+  const costPer100 = car.realworld_range_km && car.battery_kwh
+    ? '₹' + Math.round((car.battery_kwh / car.realworld_range_km) * 100 * 8) + '/100 km'
+    : '—';
+
+  return `
+    <section class="detail-section">
+      <h3 class="detail-section-title">⚡ Charging & Range</h3>
+      <dl class="specs-grid">
+        <dt>Real-World Range</dt><dd>${range}</dd>
+        <dt>Battery Pack</dt><dd>${car.battery_kwh || '—'} kWh</dd>
+        <dt>Fast Charging</dt><dd>${fast}</dd>
+        <dt>Home Charging</dt><dd>${home}</dd>
+        <dt>Running Cost</dt><dd>${costPer100} (vs ~₹700/100km petrol)</dd>
+      </dl>
+      <div class="ev-charging-note">
+        <strong>Jodhpur charging:</strong> Tata Power EV charger at MIA Basni, EESL charger at Circuit House,
+        Statiq charger at Jodhpur Airport. Highway coverage thin — plan charging stops on Jaipur / Udaipur routes.
+      </div>
     </section>`;
 }
 
@@ -332,11 +378,16 @@ function buildProsConsSection(car) {
     </section>`;
 }
 
-function buildActionsSection() {
+function buildActionsSection(car) {
+  const waText = car
+    ? `Check out the ${car.brand} ${car.model} on the Jodhpur SUV Comparison app: ${window.location.href}`
+    : window.location.href;
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(waText)}`;
   return `
     <section class="detail-section detail-actions">
       <button id="dp-add-compare-btn" class="btn-primary">Add to Compare</button>
-      <button id="dp-share-btn" class="btn-secondary">Share</button>
+      <button id="dp-share-btn" class="btn-secondary">Share link</button>
+      <a id="dp-wa-btn" class="btn-secondary btn-wa" href="${waUrl}" target="_blank" rel="noopener">WhatsApp</a>
     </section>`;
 }
 
@@ -464,12 +515,13 @@ export function renderDetailPanel(car, allRanked, baseline) {
       ${buildPriceCostsSection(car)}
       ${buildRatingsSection(car, baseline)}
       ${buildSpecsSection(car)}
+      ${buildEVChargingSection(car)}
       ${buildMustHavesSection(car)}
       ${buildKnownIssuesSection(car)}
       ${buildOwnershipSection(car)}
       ${buildServiceCentersSection(car)}
       ${buildProsConsSection(car)}
-      ${buildActionsSection()}
+      ${buildActionsSection(car)}
     </div>`;
 
   _panelEl.innerHTML = headerHtml + bodyHtml;
