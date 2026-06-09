@@ -4,6 +4,7 @@
 
 import * as THREE from 'three';
 import { GLTFLoader }    from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader }   from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -267,7 +268,10 @@ export function createCarViewer(containerEl) {
 
   // ── Public API ───────────────────────────────────────────────────────────
 
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/libs/draco/gltf/');
   const loader = new GLTFLoader();
+  loader.setDRACOLoader(dracoLoader);
 
   function load(url) {
     _clearModel();

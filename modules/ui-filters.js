@@ -198,8 +198,10 @@ export function renderFilters(container, onFilterChange) {
         { value: 'Maruti Suzuki', label: 'Maruti Suzuki' },
         { value: 'Toyota', label: 'Toyota' },
         { value: 'Tata', label: 'Tata' },
+        { value: 'Mahindra', label: 'Mahindra' },
         { value: 'MG', label: 'MG' },
         { value: 'Honda', label: 'Honda' },
+        { value: 'Skoda', label: 'Skoda' },
         { value: 'Volkswagen', label: 'Volkswagen' }
       ]
     }
