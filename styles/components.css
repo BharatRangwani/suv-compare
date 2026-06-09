@@ -346,6 +346,20 @@
   color: var(--text-dim);
   min-width: 56px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.filter-multi-badge {
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+  background: var(--blue-light);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+  line-height: 1.4;
 }
 .filter-chips-row {
   display: flex;
