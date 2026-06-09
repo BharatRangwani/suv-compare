@@ -682,6 +682,15 @@ export async function renderCompare(container) {
     updateCarousel();
   }
 
+  function _animateIn(els) {
+    els.forEach(el => {
+      if (!el) return;
+      el.classList.remove('cmp-anim-in');
+      void el.offsetWidth; // force reflow to restart animation
+      el.classList.add('cmp-anim-in');
+    });
+  }
+
   function _selectCar(btn, car) {
     container.querySelectorAll('.cmp-csel-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -695,6 +704,14 @@ export async function renderCompare(container) {
 
     // Score strip
     _updateScoreStrip(car);
+
+    // Animate key info areas on car switch
+    _animateIn([
+      container.querySelector('.cmp-score-strip'),
+      container.querySelector('#cmp-variant-chips'),
+      container.querySelector('#cmp-color-dots'),
+      container.querySelector('.cmp-cv-row'),
+    ]);
 
     // Load 3D model — defer until viewer is ready
     const glb = car.glb || null;
@@ -732,15 +749,23 @@ export async function renderCompare(container) {
 
   function _renderVariantChips(car) {
     const chipsEl = container.querySelector('#cmp-variant-chips');
-    // Find all variants of the same model
     const modelVariants = allCars.filter(c => c.model === car.model && c.brand === car.brand);
     if (modelVariants.length <= 1) {
       chipsEl.innerHTML = `<span class="cmp-vchip active">${car.variant || '—'}</span>`;
       return;
     }
     chipsEl.innerHTML = modelVariants.map((v, i) => `
-      <button class="cmp-vchip${v.id === car.id ? ' active' : ''}" data-idx="${i}">${v.variant}</button>
+      <button class="cmp-vchip${v.id === car.id ? ' active' : ''}" data-id="${v.id}" data-idx="${i}">${v.variant}</button>
     `).join('');
+    chipsEl.querySelectorAll('.cmp-vchip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const variant = allCars.find(c => c.id === chip.dataset.id);
+        if (!variant) return;
+        const btn = container.querySelector(`.cmp-csel-btn[data-car-id="${variant.id}"]`)
+          || container.querySelector('.cmp-csel-btn.active');
+        _selectCar(btn || container.querySelector('.cmp-csel-btn'), variant);
+      });
+    });
   }
 
   function _updateScoreStrip(car) {

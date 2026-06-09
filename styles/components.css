@@ -167,6 +167,24 @@
   border-color: rgba(37,99,235,0.2);
 }
 
+/* ── Best Time to Buy tag ── */
+.btb-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: default;
+}
+.btb-tag[data-color="green"]  { background: var(--green-bg);  color: var(--green);  border: 1px solid rgba(22,163,74,0.25); }
+.btb-tag[data-color="yellow"] { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(180,83,9,0.25); }
+.btb-tag[data-color="orange"] { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(194,65,12,0.25); }
+.btb-tag[data-color="blue"]   { background: var(--blue-light); color: var(--blue);  border: 1px solid rgba(37,99,235,0.2); }
+
 /* ── Spec chips ── */
 .spec-chips {
   display: flex;
@@ -1028,6 +1046,14 @@
 }
 .viewer-hint.hidden { opacity: 0; }
 
+@keyframes cmpSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cmp-anim-in {
+  animation: cmpSlideIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .cmp-cv-row {
   padding: 0.75rem 1rem;
   display: flex; gap: 1.25rem; align-items: flex-start;
@@ -1246,7 +1272,8 @@
 }
 .rnk-tag.good { background: var(--green-bg); color: var(--green); border-color: rgba(22,163,74,0.2); font-weight: 600; }
 .rnk-tag.warn { background: var(--orange-bg); color: var(--orange); border-color: rgba(194,65,12,0.2); }
-.rnk-tag.bad  { background: var(--red-bg); color: var(--red); border-color: rgba(220,38,38,0.2); }
+.rnk-tag.bad     { background: var(--red-bg); color: var(--red); border-color: rgba(220,38,38,0.2); }
+.rnk-tag.neutral { background: var(--blue-light); color: var(--blue); border-color: rgba(37,99,235,0.2); }
 
 /* 6-category grid */
 .rnk-det-cats {

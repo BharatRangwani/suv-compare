@@ -1,5 +1,5 @@
 import { loadCarsData } from './modules/data.js';
-import { renderHome } from './modules/ui-home.js';
+import { renderHome, bestTimeToBuy } from './modules/ui-home.js';
 import { renderEMICalculator, calcOnRoadPrice } from './modules/emi.js';
 import { renderCompare } from './modules/ui-compare.js';
 import { renderDetailPanel, closeDetailPanel } from './modules/ui-detail.js';
@@ -145,8 +145,11 @@ async function renderFinanceTab() {
           <span class="fin-ctrl-lbl">Bank / rate</span>
           <div class="fin-chips" id="fin-rate-chips">
             <button class="fin-chip active" data-rate="8.5">SBI 8.5%</button>
+            <button class="fin-chip" data-rate="8.6">BoB 8.6%</button>
             <button class="fin-chip" data-rate="8.75">HDFC 8.75%</button>
+            <button class="fin-chip" data-rate="8.99">Kotak 8.99%</button>
             <button class="fin-chip" data-rate="9.0">ICICI 9%</button>
+            <button class="fin-chip" data-rate="9.15">Axis 9.15%</button>
           </div>
         </div>
         <div class="fin-ctrl">
@@ -155,6 +158,7 @@ async function renderFinanceTab() {
             <button class="fin-chip" data-tenure="36">3yr</button>
             <button class="fin-chip" data-tenure="48">4yr</button>
             <button class="fin-chip active" data-tenure="60">5yr</button>
+            <button class="fin-chip" data-tenure="72">6yr</button>
             <button class="fin-chip" data-tenure="84">7yr</button>
           </div>
         </div>
@@ -431,7 +435,10 @@ async function renderRankingPlaceholder() {
       else if (car.waiting_weeks_jodhpur >= 6) tags.push({ text: `${car.waiting_weeks_jodhpur}-wk wait`, cls: 'warn' });
       const sc = car.service_centers_jodhpur;
       if (sc && sc.length <= 1)      tags.push({ text: 'Limited service',   cls: 'bad'  });
-      return tags.map(t => `<span class="rnk-tag ${t.cls}">${t.text}</span>`).join('');
+      const btb = bestTimeToBuy(car);
+      const btbCls = btb.color === 'green' ? 'good' : btb.color === 'orange' ? 'warn' : 'neutral';
+      tags.push({ text: btb.label, cls: btbCls, tip: btb.tip });
+      return tags.map(t => `<span class="rnk-tag ${t.cls}"${t.tip ? ` title="${t.tip}"` : ''}>${t.text}</span>`).join('');
     }
 
     // ── BLOCK 1: Podium (top 3) ──────────────────────────────────────────────
@@ -568,7 +575,23 @@ async function renderRankingPlaceholder() {
   }
 }
 
+function initTheme() {
+  const saved = localStorage.getItem('suv_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('suv_theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+}
+
 function init() {
+  initTheme();
+
   document.querySelectorAll('[data-tab]').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });

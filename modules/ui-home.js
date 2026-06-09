@@ -228,17 +228,21 @@ function renderCarCard(car, allRanked, baseline) {
     priceEl.textContent = exSR ? `₹${formatLakh(onRoad)}L` : '—';
 
     const weeks = car.waiting_weeks_jodhpur;
+    right.appendChild(scoreEl);
+    right.appendChild(priceEl);
     if (weeks != null) {
       const waitEl = document.createElement('div');
       waitEl.style.cssText = `font-size:0.65rem;margin-top:0.2rem;font-weight:600;color:var(--${waitingColor(weeks) === 'green' ? 'green' : waitingColor(weeks) === 'yellow' ? 'yellow' : 'orange'})`;
       waitEl.textContent = weeks === 0 ? 'In stock' : `${weeks}w wait`;
-      right.appendChild(scoreEl);
-      right.appendChild(priceEl);
       right.appendChild(waitEl);
-    } else {
-      right.appendChild(scoreEl);
-      right.appendChild(priceEl);
     }
+    const btb = bestTimeToBuy(car);
+    const btbEl = document.createElement('div');
+    btbEl.className = 'btb-tag';
+    btbEl.dataset.color = btb.color;
+    btbEl.title = btb.tip;
+    btbEl.textContent = btb.label;
+    right.appendChild(btbEl);
   } else {
     const label = document.createElement('div');
     label.style.cssText = 'font-size:0.68rem;color:var(--text-dim);text-align:right';
@@ -269,4 +273,19 @@ function waitingColor(weeks) {
   if (weeks <= 4) return 'yellow';
   if (weeks <= 8) return 'orange';
   return 'red';
+}
+
+// "Best Time to Buy" — derived from stock, model age, and launch year
+export function bestTimeToBuy(car) {
+  const now = new Date().getFullYear();
+  const wait = car.waiting_weeks_jodhpur ?? 99;
+  const launchAge = now - (car.launch_year || now);
+  const isNew = !!car.is_new_model;
+
+  if (isNew) return { label: 'Prices settling', color: 'yellow', tip: 'New model — wait 2–3 months for prices and offers to stabilise.' };
+  if (wait >= 8) return { label: 'Wait for stock', color: 'orange', tip: `${wait}w wait in Jodhpur — high demand. Dealers less likely to negotiate.` };
+  if (wait === 0 && launchAge >= 2) return { label: 'Buy Now ✓', color: 'green', tip: 'In stock + mature model. Best chance for dealer discounts and exchange offers.' };
+  if (wait <= 2 && launchAge >= 1) return { label: 'Good time', color: 'green', tip: 'Low wait time and settled market. Dealers are open to negotiation.' };
+  if (launchAge === 0) return { label: 'Just launched', color: 'yellow', tip: 'Launched this year — prices and variants are still stabilising.' };
+  return { label: 'Anytime', color: 'blue', tip: 'No strong reason to wait or rush. Negotiate on accessories and insurance.' };
 }
