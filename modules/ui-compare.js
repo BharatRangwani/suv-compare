@@ -586,7 +586,8 @@ export async function renderCompare(container) {
   const profile     = getProfile();
   const baselineCar = getBaselineCar(data);
   const carsForRank = getCarsForRanking(data);
-  const ranked      = getBestVariantPerBrand(rankCars(carsForRank, profile, baselineCar));
+  const allRanked   = rankCars(carsForRank, profile, baselineCar).map(c => ({ ...c, tco: calcTCO(c, profile) }));
+  const ranked      = getBestVariantPerBrand(allRanked);
 
   // Attach tco to baseline too (so chart can show it)
   const baselineWithTCO = { ...baselineCar, tco: calcTCO(baselineCar, profile) };
@@ -598,6 +599,9 @@ export async function renderCompare(container) {
     .filter(Boolean);
   const rest = ranked.filter(c => !PIN_ORDER.includes(c.model));
   const allCars = [...pinned, ...rest];
+
+  // All variants (for picker) — same rank order but not deduplicated by brand
+  const allVariants = allRanked;
 
   // ── state — pre-select top-ranked car so table isn't empty on first load ──
   let selectedCars  = allCars.length > 0 ? [allCars[0]] : [];
@@ -881,7 +885,7 @@ export async function renderCompare(container) {
   function _openPicker() {
     if (pickerOpen) return;
     pickerOpen = true;
-    pickerRoot.innerHTML = buildPickerModal(allCars, baselineWithTCO, selectedCars);
+    pickerRoot.innerHTML = buildPickerModal(allVariants, baselineWithTCO, selectedCars);
 
     const backdrop = pickerRoot.querySelector('.car-picker-backdrop');
     const search   = pickerRoot.querySelector('.car-picker-search');
@@ -901,7 +905,7 @@ export async function renderCompare(container) {
       const item = e.target.closest('.car-picker-item');
       if (!item || item.classList.contains('disabled')) return;
       const id = item.dataset.id;
-      const car = allCars.find(c => c.id === id);
+      const car = allVariants.find(c => c.id === id);
       if (car && selectedCars.length < 4 && !selectedCars.find(c => c.id === id)) {
         selectedCars.push(car);
       }
@@ -939,7 +943,7 @@ export async function renderCompare(container) {
     if (car.id === baselineWithTCO.id) return;
 
     // Find the ranked version (which has .tco, .score etc.)
-    const rankedCar = allCars.find(c => c.id === car.id) || car;
+    const rankedCar = allVariants.find(c => c.id === car.id) || car;
     selectedCars.push(rankedCar);
     _render();
   }

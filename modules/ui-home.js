@@ -38,7 +38,6 @@ export async function renderHome(container) {
   const avgScore = nonBaseline.length
     ? Math.round(nonBaseline.reduce((s, c) => s + (c.score || 0), 0) / nonBaseline.length)
     : 0;
-  const inStockCount = nonBaseline.filter(c => c.waiting_weeks_jodhpur === 0).length;
   const top5SafeCount = nonBaseline.filter(c => (c.ncap_stars || 0) >= 5).length;
   const budgetL = Math.round((profile.budget_max || 2500000) / 100000);
 
@@ -50,8 +49,6 @@ export async function renderHome(container) {
       sub: `₹${minL}L to ₹${maxL}L · 6 scored criteria` },
     { eyebrow: 'Your Budget', num: `₹${budgetL}L`,
       sub: `${nonBaseline.filter(c => c.ex_showroom_jodhpur * 1.145 + 15000 <= profile.budget_max).length} cars within reach` },
-    { eyebrow: 'Available Now', num: String(inStockCount),
-      sub: `${inStockCount} SUV${inStockCount !== 1 ? 's' : ''} in stock at Jodhpur dealers` },
     { eyebrow: 'Electric Options', num: String(evCount),
       sub: evCount ? `EV range from ${Math.min(...nonBaseline.filter(c=>c.fuel==='electric').map(c=>c.realworld_range_km||0))} km` : 'More EVs coming soon' },
     { eyebrow: '5-Star Safety', num: String(top5SafeCount),

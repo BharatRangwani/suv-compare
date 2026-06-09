@@ -449,6 +449,7 @@ async function renderRankingPlaceholder() {
     const { getProfile }                         = await import('./modules/profile.js');
     const { rankCars, getBestVariantPerBrand }   = await import('./modules/ranking.js');
     const { calcOnRoadPrice, calcEMI }           = await import('./modules/emi.js');
+    const { renderFilters, applyFilters, getStoredFilters } = await import('./modules/ui-filters.js');
 
     const data    = await loadCarsData();
     const profile = getProfile();
@@ -456,7 +457,7 @@ async function renderRankingPlaceholder() {
     const allRanked = getBestVariantPerBrand(rankCars(getCarsForRanking(data), profile, baseline));
 
     const seen = new Set();
-    const ranked = allRanked.filter(c => {
+    const fullRanked = allRanked.filter(c => {
       const key = `${c.brand}||${c.model}`;
       if (seen.has(key)) return false;
       seen.add(key);
@@ -464,6 +465,15 @@ async function renderRankingPlaceholder() {
     });
 
     pane.innerHTML = '';
+
+    // ── Filter bar ───────────────────────────────────────────────────────────
+    const filterContainer = document.createElement('div');
+    filterContainer.className = 'filter-bar-wrapper';
+    pane.appendChild(filterContainer);
+
+    const countEl = document.createElement('p');
+    countEl.className = 'results-count';
+    pane.appendChild(countEl);
 
     const CATS = [
       { key: 'safety',          label: 'Safety',      w: 20 },
@@ -497,144 +507,158 @@ async function renderRankingPlaceholder() {
       return tags.map(t => `<span class="rnk-tag ${t.cls}"${t.tip ? ` title="${t.tip}"` : ''}>${t.text}</span>`).join('');
     }
 
-    // ── BLOCK 1: Podium (top 3) ──────────────────────────────────────────────
-    const top3 = ranked.slice(0, 3);
-    const podium = document.createElement('div');
-    podium.className = 'rnk-podium';
+    // ── Podium + expandable list (re-rendered on filter change) ─────────────
+    const podiumEl = document.createElement('div');
+    pane.appendChild(podiumEl);
 
-    // Order: 2nd · 1st · 3rd
-    const podOrder = [top3[1], top3[0], top3[2]].filter(Boolean);
-    podOrder.forEach((car, i) => {
-      const isFirst = car === top3[0];
-      const medal   = MEDALS[ranked.indexOf(car)] || '';
-      const onRoad  = calcOnRoadPrice(car.ex_showroom_jodhpur);
-      const pod = document.createElement('div');
-      pod.className = 'rnk-pod' + (isFirst ? ' rnk-pod-1' : '');
-      pod.innerHTML = `
-        <div class="rnk-pod-medal">${medal}</div>
-        <div class="rnk-pod-score${isFirst ? ' top' : ''}">${Math.round(car.score ?? 0)}</div>
-        <div class="rnk-pod-score-lbl">/ 100</div>
-        <div class="rnk-pod-brand">${car.brand}</div>
-        <div class="rnk-pod-model">${car.model}</div>
-        <div class="rnk-pod-var">${car.variant || ''}</div>
-        <div class="rnk-pod-price${isFirst ? ' top' : ''}">₹${(onRoad / 100000).toFixed(1)}L OTR</div>
-      `;
-      podium.appendChild(pod);
-    });
-    pane.appendChild(podium);
-
-    // ── BLOCK 2 + 3: Expandable list (all cars) ─────────────────────────────
     const secLbl = document.createElement('div');
     secLbl.className = 'rnk-sec-lbl';
-    secLbl.textContent = 'All rankings · tap to expand';
     pane.appendChild(secLbl);
 
     const list = document.createElement('div');
     list.className = 'rnk-exp-list';
     pane.appendChild(list);
 
-    ranked.forEach((car, idx) => {
-      const score   = Math.round(car.score ?? 0);
-      const onRoad  = calcOnRoadPrice(car.ex_showroom_jodhpur);
-      const emi     = calcEMI(Math.round(onRoad * 0.80), 8.5, 60);
-      const wait    = waitLabel(car);
-      const bd      = car.breakdown || {};
-      const rankCls = idx === 0 ? ' r1' : idx === 1 ? ' r2' : idx === 2 ? ' r3' : '';
-      const medal   = MEDALS[idx] ? `<span style="font-size:0.7rem">${MEDALS[idx]}</span>` : '';
-
-      const catGrid = CATS.map(c => {
-        const val = bd[c.key] != null ? Math.round(bd[c.key]) : 0;
-        return `
-          <div class="rnk-det-cat">
-            <div class="rnk-det-cat-row">
-              <span class="rnk-det-cat-name">${c.label}</span>
-              <span class="rnk-det-cat-val">${val}</span>
-            </div>
-            <div class="rnk-det-cat-bar"><div class="rnk-det-cat-fill" style="width:${val}%"></div></div>
-          </div>`;
-      }).join('');
-
-      const card = document.createElement('div');
-      card.className = `rnk-exp-card${rankCls}`;
-      card.innerHTML = `
-        <div class="rnk-exp-row">
-          <div class="rnk-exp-num">${car.rank}</div>
-          <div class="rnk-exp-info">
-            <div class="rnk-exp-name">${car.brand} ${car.model}</div>
-            <div class="rnk-exp-sub">${car.variant || ''}</div>
-          </div>
-          <div class="rnk-exp-bar-col">
-            <div class="rnk-exp-bar-track"><div class="rnk-exp-bar-fill" style="width:${score}%"></div></div>
-            <div class="rnk-exp-score-lbl">${score}</div>
-          </div>
-          <div class="rnk-exp-price-col">
-            <div class="rnk-exp-price">₹${(onRoad / 100000).toFixed(1)}L</div>
-            <div class="rnk-exp-wait">${wait}</div>
-          </div>
-          <span class="rnk-exp-chev">›</span>
-        </div>
-        <div class="rnk-exp-detail">
-          <div class="rnk-det-inner">
-            <div class="rnk-det-badge">
-              <div class="rnk-det-rank-num">${car.rank}</div>
-              ${medal}
-            </div>
-            <div class="rnk-det-main">
-              <div class="rnk-det-brand">${car.brand}</div>
-              <div class="rnk-det-name">${car.model}</div>
-              <div class="rnk-det-var">${car.variant || ''}</div>
-              <div class="rnk-det-bar-wrap">
-                <div class="rnk-det-bar-track"><div class="rnk-det-bar-fill" style="width:${score}%"></div></div>
-                <span class="rnk-det-bar-pct">${score}</span>
-              </div>
-            </div>
-            <div class="rnk-det-right">
-              <div class="rnk-det-score">${score}</div>
-              <div class="rnk-det-score-lbl">/ 100</div>
-              <div class="rnk-det-price">₹${(onRoad / 100000).toFixed(2)}L</div>
-              <div class="rnk-det-wait">${wait}</div>
-            </div>
-          </div>
-          <div class="rnk-det-tags">${buildTags(car)}</div>
-          <div class="rnk-det-cats">${catGrid}</div>
-          <div class="rnk-det-actions">
-            <button class="rnk-det-btn rnk-det-btn-primary" data-id="${car.id}">View details</button>
-            <button class="rnk-det-btn rnk-det-btn-secondary" data-id="${car.id}">Compare</button>
-          </div>
-        </div>
-      `;
-
-      // Expand/collapse
-      card.querySelector('.rnk-exp-row').addEventListener('click', () => {
-        const wasOpen = card.classList.contains('open');
-        list.querySelectorAll('.rnk-exp-card').forEach(c => c.classList.remove('open'));
-        if (!wasOpen) card.classList.add('open');
-      });
-
-      // View details → opens detail panel
-      card.querySelector('.rnk-det-btn-primary')?.addEventListener('click', e => {
-        e.stopPropagation();
-        renderDetailPanel(car, ranked, baseline);
-      });
-
-      // Compare → add car to compare tab and switch
-      card.querySelector('.rnk-det-btn-secondary')?.addEventListener('click', e => {
-        e.stopPropagation();
-        // Ensure compare tab is rendered before dispatching event
-        renderCompareTab();
-        // Small delay so renderCompare can attach its event listener first
-        setTimeout(() => {
-          document.dispatchEvent(new CustomEvent('suv:addToCompare', { detail: { car } }));
-        }, 50);
-        switchTab('compare');
-      });
-
-      list.appendChild(card);
-    });
-
     const pad = document.createElement('div');
     pad.style.height = '1.5rem';
     pane.appendChild(pad);
+
+    function renderList(ranked) {
+      // Podium
+      podiumEl.innerHTML = '';
+      const top3 = ranked.slice(0, 3);
+      if (top3.length > 0) {
+        podiumEl.className = 'rnk-podium';
+        const podOrder = [top3[1], top3[0], top3[2]].filter(Boolean);
+        podOrder.forEach(car => {
+          const isFirst = car === top3[0];
+          const medal   = MEDALS[ranked.indexOf(car)] || '';
+          const onRoad  = calcOnRoadPrice(car.ex_showroom_jodhpur);
+          const pod = document.createElement('div');
+          pod.className = 'rnk-pod' + (isFirst ? ' rnk-pod-1' : '');
+          pod.innerHTML = `
+            <div class="rnk-pod-medal">${medal}</div>
+            <div class="rnk-pod-score${isFirst ? ' top' : ''}">${Math.round(car.score ?? 0)}</div>
+            <div class="rnk-pod-score-lbl">/ 100</div>
+            <div class="rnk-pod-brand">${car.brand}</div>
+            <div class="rnk-pod-model">${car.model}</div>
+            <div class="rnk-pod-var">${car.variant || ''}</div>
+            <div class="rnk-pod-price${isFirst ? ' top' : ''}">₹${(onRoad / 100000).toFixed(1)}L OTR</div>
+          `;
+          podiumEl.appendChild(pod);
+        });
+      } else {
+        podiumEl.className = '';
+      }
+
+      // Count + section label
+      countEl.textContent = `${ranked.length} car${ranked.length !== 1 ? 's' : ''} shown`;
+      secLbl.textContent = ranked.length ? 'All rankings · tap to expand' : 'No cars match the selected filters';
+
+      // Expandable list
+      list.innerHTML = '';
+      ranked.forEach((car, idx) => {
+        const score   = Math.round(car.score ?? 0);
+        const onRoad  = calcOnRoadPrice(car.ex_showroom_jodhpur);
+        const wait    = waitLabel(car);
+        const bd      = car.breakdown || {};
+        const rankCls = idx === 0 ? ' r1' : idx === 1 ? ' r2' : idx === 2 ? ' r3' : '';
+        const medal   = MEDALS[idx] ? `<span style="font-size:0.7rem">${MEDALS[idx]}</span>` : '';
+
+        const catGrid = CATS.map(c => {
+          const val = bd[c.key] != null ? Math.round(bd[c.key]) : 0;
+          return `
+            <div class="rnk-det-cat">
+              <div class="rnk-det-cat-row">
+                <span class="rnk-det-cat-name">${c.label}</span>
+                <span class="rnk-det-cat-val">${val}</span>
+              </div>
+              <div class="rnk-det-cat-bar"><div class="rnk-det-cat-fill" style="width:${val}%"></div></div>
+            </div>`;
+        }).join('');
+
+        const card = document.createElement('div');
+        card.className = `rnk-exp-card${rankCls}`;
+        card.innerHTML = `
+          <div class="rnk-exp-row">
+            <div class="rnk-exp-num">${car.rank}</div>
+            <div class="rnk-exp-info">
+              <div class="rnk-exp-name">${car.brand} ${car.model}</div>
+              <div class="rnk-exp-sub">${car.variant || ''}</div>
+            </div>
+            <div class="rnk-exp-bar-col">
+              <div class="rnk-exp-bar-track"><div class="rnk-exp-bar-fill" style="width:${score}%"></div></div>
+              <div class="rnk-exp-score-lbl">${score}</div>
+            </div>
+            <div class="rnk-exp-price-col">
+              <div class="rnk-exp-price">₹${(onRoad / 100000).toFixed(1)}L</div>
+              <div class="rnk-exp-wait">${wait}</div>
+            </div>
+            <span class="rnk-exp-chev">›</span>
+          </div>
+          <div class="rnk-exp-detail">
+            <div class="rnk-det-inner">
+              <div class="rnk-det-badge">
+                <div class="rnk-det-rank-num">${car.rank}</div>
+                ${medal}
+              </div>
+              <div class="rnk-det-main">
+                <div class="rnk-det-brand">${car.brand}</div>
+                <div class="rnk-det-name">${car.model}</div>
+                <div class="rnk-det-var">${car.variant || ''}</div>
+                <div class="rnk-det-bar-wrap">
+                  <div class="rnk-det-bar-track"><div class="rnk-det-bar-fill" style="width:${score}%"></div></div>
+                  <span class="rnk-det-bar-pct">${score}</span>
+                </div>
+              </div>
+              <div class="rnk-det-right">
+                <div class="rnk-det-score">${score}</div>
+                <div class="rnk-det-score-lbl">/ 100</div>
+                <div class="rnk-det-price">₹${(onRoad / 100000).toFixed(2)}L</div>
+                <div class="rnk-det-wait">${wait}</div>
+              </div>
+            </div>
+            <div class="rnk-det-tags">${buildTags(car)}</div>
+            <div class="rnk-det-cats">${catGrid}</div>
+            <div class="rnk-det-actions">
+              <button class="rnk-det-btn rnk-det-btn-primary" data-id="${car.id}">View details</button>
+              <button class="rnk-det-btn rnk-det-btn-secondary" data-id="${car.id}">Compare</button>
+            </div>
+          </div>
+        `;
+
+        card.querySelector('.rnk-exp-row').addEventListener('click', () => {
+          const wasOpen = card.classList.contains('open');
+          list.querySelectorAll('.rnk-exp-card').forEach(c => c.classList.remove('open'));
+          if (!wasOpen) card.classList.add('open');
+        });
+
+        card.querySelector('.rnk-det-btn-primary')?.addEventListener('click', e => {
+          e.stopPropagation();
+          renderDetailPanel(car, ranked, baseline);
+        });
+
+        card.querySelector('.rnk-det-btn-secondary')?.addEventListener('click', e => {
+          e.stopPropagation();
+          renderCompareTab();
+          setTimeout(() => {
+            document.dispatchEvent(new CustomEvent('suv:addToCompare', { detail: { car } }));
+          }, 50);
+          switchTab('compare');
+        });
+
+        list.appendChild(card);
+      });
+    }
+
+    // Wire filters
+    renderFilters(filterContainer, filters => {
+      const filtered = applyFilters(fullRanked, filters);
+      renderList(filtered);
+    });
+
+    // Initial render
+    renderList(applyFilters(fullRanked, getStoredFilters()));
 
   } catch (e) {
     pane.innerHTML = `<p style="padding:2rem 1.25rem;color:var(--red)">Failed to load: ${e.message}</p>`;
@@ -689,9 +713,19 @@ function init() {
       homeRendered = false;
       const homePaneEl = document.getElementById('tab-home');
       homePaneEl.innerHTML = '';
+      const rankingPane = document.getElementById('tab-ranking');
+      rankingPane.innerHTML = '';
+      delete rankingPane.dataset.rendered;
+      const comparePane = document.getElementById('tab-compare');
+      comparePane.innerHTML = '';
+      delete comparePane.dataset.rendered;
       if (activeTab === 'home') {
         homeRendered = true;
         renderHome(homePaneEl);
+      } else if (activeTab === 'ranking') {
+        renderRankingPlaceholder();
+      } else if (activeTab === 'compare') {
+        renderCompareTab();
       }
     }).finally(() => {
       btn.textContent = '↻';
