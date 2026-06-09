@@ -117,10 +117,6 @@ function renderCarList(container, rankedCars, baseline, allRanked) {
     container.appendChild(renderCarCard({ ...car, rank: i + 1 }, allRanked, baseline));
   });
 
-  // Always render baseline card at the bottom
-  if (baseline) {
-    container.appendChild(renderCarCard(baseline, allRanked, baseline));
-  }
 }
 
 // ─── Single car card (option-final bar-row style) ────────────────────────────
