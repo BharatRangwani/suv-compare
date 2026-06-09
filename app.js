@@ -1,10 +1,11 @@
-import { loadCarsData } from './modules/data.js';
+import { loadCarsData, invalidateCache } from './modules/data.js';
 import { renderHome, bestTimeToBuy } from './modules/ui-home.js';
 import { renderEMICalculator, calcOnRoadPrice } from './modules/emi.js';
 import { renderCompare } from './modules/ui-compare.js';
 import { renderDetailPanel, closeDetailPanel } from './modules/ui-detail.js';
 import { renderExchangeEstimator } from './modules/ui-exchange.js';
 import { renderDealerChecklist, applyGlossaryTooltips } from './modules/ui-helpers.js';
+import { openProfileEditor } from './modules/ui-profile.js';
 
 const TABS = ['home', 'compare', 'ranking', 'jodhpur'];
 let activeTab = 'home';
@@ -618,6 +619,20 @@ function init() {
 
   document.querySelectorAll('[data-tab]').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  document.getElementById('profile-btn')?.addEventListener('click', () => {
+    openProfileEditor((updatedProfile) => {
+      // Re-render home tab with new profile
+      invalidateCache();
+      homeRendered = false;
+      const homePaneEl = document.getElementById('tab-home');
+      homePaneEl.innerHTML = '';
+      if (activeTab === 'home') {
+        homeRendered = true;
+        renderHome(homePaneEl).then(() => applyGlossaryTooltips(homePaneEl)).catch(() => {});
+      }
+    });
   });
 
   document.getElementById('refresh-btn')?.addEventListener('click', () => {
