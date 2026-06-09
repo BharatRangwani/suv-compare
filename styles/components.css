@@ -862,36 +862,29 @@
 }
 
 /* ── Glossary tooltips ── */
-.glossary-term {
+.gloss-term {
   border-bottom: 1.5px dashed rgba(37,99,235,0.4);
   cursor: help;
   color: var(--blue);
-  position: relative;
 }
-.glossary-tooltip {
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
+.gloss-tooltip {
+  position: fixed;
   background: var(--text);
-  color: white;
-  font-size: 0.68rem;
-  padding: 0.4rem 0.65rem;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 600;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  color: var(--surface);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  pointer-events: auto;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: none;
 }
-.glossary-tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--text);
-}
+.gloss-tooltip.visible { display: block; }
+.gloss-tooltip strong { display: block; margin-bottom: 0.2rem; font-size: 0.75rem; }
+.gloss-tooltip p { margin: 0; color: inherit; opacity: 0.85; }
 
 /* ── Dealer checklist ── */
 .dealer-checklist {
