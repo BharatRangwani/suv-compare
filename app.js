@@ -3,6 +3,8 @@ import { renderHome } from './modules/ui-home.js';
 import { renderEMICalculator, calcOnRoadPrice } from './modules/emi.js';
 import { renderCompare } from './modules/ui-compare.js';
 import { renderDetailPanel, closeDetailPanel } from './modules/ui-detail.js';
+import { renderExchangeEstimator } from './modules/ui-exchange.js';
+import { renderDealerChecklist, applyGlossaryTooltips } from './modules/ui-helpers.js';
 
 const TABS = ['home', 'compare', 'ranking', 'jodhpur'];
 let activeTab = 'home';
@@ -22,7 +24,8 @@ function switchTab(tabId) {
 
   if (tabId === 'home' && !homeRendered) {
     homeRendered = true;
-    renderHome(document.getElementById('tab-home'));
+    const homePane = document.getElementById('tab-home');
+    renderHome(homePane).then(() => applyGlossaryTooltips(homePane)).catch(() => {});
   }
   if (tabId === 'jodhpur') renderJodhpurTab();
   if (tabId === 'compare') renderCompareTab();
@@ -33,6 +36,17 @@ function renderJodhpurTab() {
   const pane = document.getElementById('tab-jodhpur');
   if (pane.dataset.rendered) return;
   pane.dataset.rendered = '1';
+
+  // Exchange estimator — first section
+  const exchangeSection = document.createElement('div');
+  exchangeSection.style.marginBottom = '2rem';
+  pane.appendChild(exchangeSection);
+  renderExchangeEstimator(exchangeSection);
+
+  // Divider
+  const divider = document.createElement('hr');
+  divider.style.cssText = 'border:none;border-top:1px solid var(--glass-border);margin:1.5rem 0';
+  pane.appendChild(divider);
 
   const emiSection = document.createElement('section');
   emiSection.style.marginBottom = '2rem';
@@ -77,6 +91,16 @@ function renderJodhpurTab() {
       if (ts) ts.textContent = `Data last updated: ${data.last_updated}`;
     }
   }).catch(() => {});
+
+  // Divider before checklist
+  const div2 = document.createElement('hr');
+  div2.style.cssText = 'border:none;border-top:1px solid var(--glass-border);margin:1.5rem 0';
+  pane.appendChild(div2);
+
+  // Dealer checklist
+  const checkSection = document.createElement('div');
+  pane.appendChild(checkSection);
+  renderDealerChecklist(checkSection);
 }
 
 function renderCompareTab() {
@@ -100,14 +124,16 @@ function renderRankingPlaceholder() {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem('suv_theme') || 'light';
+  const saved = localStorage.getItem('suv_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
   updateThemeIcon(saved);
 }
 
 function updateThemeIcon(theme) {
   const btn = document.getElementById('theme-toggle');
-  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  if (!btn) return;
+  btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
 }
 
 function toggleTheme() {

@@ -3,6 +3,45 @@
   .car-card { padding: 0.85rem; }
   .emi-breakdown { grid-template-columns: 1fr; }
   .tab-nav { width: calc(100vw - 1.5rem); }
+
+  /* Detail panel takes full width on mobile */
+  .detail-panel { max-width: 100%; }
+
+  /* Pros/cons stack on mobile */
+  .pros-cons-grid { grid-template-columns: 1fr; }
+
+  /* Ownership grid single column on narrow screens */
+  .ownership-grid { grid-template-columns: 1fr; }
+
+  /* Ratings grid 2-col on mobile (3 is too tight) */
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Exchange summary: 2 cols then 1 */
+  .exchange-summary-grid { grid-template-columns: 1fr 1fr; }
+  .exchange-val-block.highlight { grid-column: 1 / -1; }
+
+  /* Exchange net item: stack on small screens */
+  .exchange-net-item { flex-direction: column; align-items: flex-start; }
+  .exchange-net-prices { align-items: flex-start; }
+
+  /* Checklist: larger tap target for checkbox */
+  .checklist-check {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -12px -12px -12px -8px;
+  }
+
+  /* Hero title slightly smaller on very small screens */
+  .hero-title { font-size: 1.4rem; }
+
+  /* Filter section title always visible */
+  .filter-section-title { display: block; }
+
+  /* Compare controls wrap better */
+  .compare-controls { flex-direction: column; align-items: flex-start; }
 }
 
 @media (min-width: 601px) {

@@ -29,6 +29,10 @@ body {
   top: 0;
   z-index: 200;
 }
+[data-theme="light"] .app-header {
+  background: rgba(250, 248, 255, 0.75);
+  border-bottom-color: rgba(124, 58, 237, 0.12);
+}
 
 .app-title {
   font-size: 1.1rem;
@@ -39,6 +43,11 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
+}
+[data-theme="light"] .app-title {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .header-actions { display: flex; gap: 0.5rem; }
@@ -55,13 +64,20 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+[data-theme="light"] .btn-icon {
+  background: rgba(124, 58, 237, 0.07);
+  border-color: rgba(124, 58, 237, 0.18);
+}
 .btn-icon:hover {
   background: rgba(255,255,255,0.15);
   transform: scale(1.05);
 }
+[data-theme="light"] .btn-icon:hover {
+  background: rgba(124, 58, 237, 0.13);
+}
 .btn-icon:active { transform: scale(0.97); }
 
-/* ── Tab Nav — moved to bottom floating pill ── */
+/* ── Tab Nav — bottom floating pill ── */
 .tab-nav {
   display: flex;
   justify-content: space-around;
@@ -81,6 +97,11 @@ body {
   box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(255,255,255,0.06) inset;
   gap: 0.25rem;
   overflow: hidden;
+}
+[data-theme="light"] .tab-nav {
+  background: rgba(250, 248, 255, 0.82);
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 8px 32px rgba(107, 33, 168, 0.18), 0 0 0 0.5px rgba(124,58,237,0.08) inset;
 }
 
 .tab-btn {
@@ -115,12 +136,12 @@ body {
 
 /* ── Main content ── */
 #app-content {
-  padding: 0 1rem 6rem; /* bottom pad for floating nav */
+  padding: 0 1rem 6rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Hero section at the top of Home tab */
+/* ── Hero section ── */
 .hero-section {
   padding: 2rem 0 1.5rem;
   text-align: center;
@@ -147,6 +168,11 @@ body {
   background-clip: text;
   margin-bottom: 0.75rem;
 }
+[data-theme="light"] .hero-title {
+  background: linear-gradient(160deg, #1e0a3c 20%, #7c3aed 65%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 
 .hero-sub {
   font-size: 0.88rem;
@@ -171,6 +197,11 @@ body {
   border: 1px solid rgba(167,139,250,0.3);
   color: #c4b5fd;
   backdrop-filter: blur(8px);
+}
+[data-theme="light"] .hero-pill {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.22);
+  color: #7c3aed;
 }
 
 .data-timestamp {
