@@ -524,7 +524,7 @@ export function renderDetailPanel(car, allRanked, baseline) {
       ${buildActionsSection(car)}
     </div>`;
 
-  _panelEl.innerHTML = headerHtml + bodyHtml;
+  _panelEl.innerHTML = `<div class="detail-sheet">${headerHtml}${bodyHtml}</div>`;
 
   // ── Post-innerHTML wiring ──────────────────────────────────────────────────
 
