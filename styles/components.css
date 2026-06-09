@@ -1057,6 +1057,20 @@
 @keyframes viewer-spin { to { transform: rotate(360deg); } }
 .viewer-loading-text { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
 
+.viewer-no-model {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+.viewer-no-model span {
+  font-size: 0.72rem; color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.9rem; border-radius: 999px;
+  background: var(--surface);
+}
+
 .viewer-hint {
   position: absolute; bottom: 0.5rem; left: 50%;
   transform: translateX(-50%);

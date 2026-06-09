@@ -74,15 +74,18 @@ export function applyFilters(cars, filters) {
 
     // ADAS filter
     if (filters.adas === 'yes' && !car.adas) return false;
+    if (filters.adas === 'no'  &&  car.adas) return false;
 
     // Ventilated seats filter
     if (filters.ventilated === 'yes' && !car.ventilated_seats) return false;
+    if (filters.ventilated === 'no'  &&  car.ventilated_seats) return false;
 
     // Sunroof filter
     if (filters.sunroof !== 'all') {
       const sr = car.sunroof || 'none';
-      if (filters.sunroof === 'yes' && sr === 'none') return false;
-      if (filters.sunroof === 'panoramic' && sr !== 'panoramic') return false;
+      if (filters.sunroof === 'yes'       && sr === 'none')       return false;
+      if (filters.sunroof === 'panoramic' && sr !== 'panoramic')  return false;
+      if (filters.sunroof === 'no'        && sr !== 'none')       return false;
     }
 
     // Waiting filter
@@ -151,25 +154,28 @@ export function renderFilters(container, onFilterChange) {
       group: 'adas',
       label: 'ADAS',
       options: [
-        { value: 'all', label: 'All' },
-        { value: 'yes', label: 'ADAS Only' }
+        { value: 'all',  label: 'All' },
+        { value: 'yes',  label: 'Has ADAS' },
+        { value: 'no',   label: 'No ADAS' }
       ]
     },
     {
       group: 'ventilated',
-      label: 'Ventilated',
+      label: 'Vent. Seats',
       options: [
-        { value: 'all', label: 'All' },
-        { value: 'yes', label: 'Yes Only' }
+        { value: 'all',  label: 'All' },
+        { value: 'yes',  label: 'Yes' },
+        { value: 'no',   label: 'No' }
       ]
     },
     {
       group: 'sunroof',
       label: 'Sunroof',
       options: [
-        { value: 'all', label: 'All' },
-        { value: 'yes', label: 'Any' },
-        { value: 'panoramic', label: 'Panoramic' }
+        { value: 'all',       label: 'All' },
+        { value: 'yes',       label: 'Any' },
+        { value: 'panoramic', label: 'Panoramic' },
+        { value: 'no',        label: 'None' }
       ]
     },
     {

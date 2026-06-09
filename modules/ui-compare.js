@@ -563,8 +563,8 @@ export async function renderCompare(container) {
   // All non-baseline cars (ranked, with tco attached)
   const allCars = ranked; // already has .tco from rankCars/scoreCar
 
-  // ── state ──
-  let selectedCars  = [];
+  // ── state — pre-select top-ranked car so table isn't empty on first load ──
+  let selectedCars  = allCars.length > 0 ? [allCars[0]] : [];
   let showDiffOnly  = false;
   let pickerOpen    = false;
 
@@ -584,6 +584,9 @@ export async function renderCompare(container) {
           <div class="viewer-loading" style="display:none">
             <div class="viewer-loading-ring"></div>
             <div class="viewer-loading-text">Loading 3D model…</div>
+          </div>
+          <div class="viewer-no-model" id="cmp-no-model" style="display:none">
+            <span>3D model not available</span>
           </div>
           <div class="viewer-hint" id="cmp-drag-hint">Drag to rotate &nbsp;·&nbsp; Pinch to zoom</div>
         </div>
@@ -712,6 +715,12 @@ export async function renderCompare(container) {
       container.querySelector('#cmp-color-dots'),
       container.querySelector('.cmp-cv-row'),
     ]);
+
+    // Show/hide no-model overlay
+    const noModelEl = container.querySelector('#cmp-no-model');
+    const hintEl    = container.querySelector('#cmp-drag-hint');
+    if (noModelEl) noModelEl.style.display = car.glb ? 'none' : 'flex';
+    if (hintEl)    hintEl.style.display    = car.glb ? ''     : 'none';
 
     // Load 3D model — defer until viewer is ready
     const glb = car.glb || null;
