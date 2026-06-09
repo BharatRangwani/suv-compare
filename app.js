@@ -580,12 +580,22 @@ async function renderRankingPlaceholder() {
         if (!wasOpen) card.classList.add('open');
       });
 
-      // Both buttons switch to Compare tab
-      card.querySelectorAll('.rnk-det-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          switchTab('compare');
-        });
+      // View details → opens detail panel
+      card.querySelector('.rnk-det-btn-primary')?.addEventListener('click', e => {
+        e.stopPropagation();
+        renderDetailPanel(car, ranked, baseline);
+      });
+
+      // Compare → add car to compare tab and switch
+      card.querySelector('.rnk-det-btn-secondary')?.addEventListener('click', e => {
+        e.stopPropagation();
+        // Ensure compare tab is rendered before dispatching event
+        renderCompareTab();
+        // Small delay so renderCompare can attach its event listener first
+        setTimeout(() => {
+          document.dispatchEvent(new CustomEvent('suv:addToCompare', { detail: { car } }));
+        }, 50);
+        switchTab('compare');
       });
 
       list.appendChild(card);

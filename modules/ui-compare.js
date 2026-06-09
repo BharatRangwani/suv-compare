@@ -463,7 +463,20 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
   for (const car of selectedCars) {
     html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small></th>`;
   }
-  html += `</tr></thead><tbody>`;
+  html += `</tr>`;
+  // Score summary row pinned below the header
+  const scores = selectedCars.map(c => c.score ?? 0);
+  const maxScore = Math.max(...scores, 0);
+  html += `<tr class="compare-score-row">`;
+  html += `<td class="compare-sticky-col compare-score-lbl">Match Score</td>`;
+  html += `<td class="compare-baseline-col">—</td>`;
+  for (const car of selectedCars) {
+    const score = car.score != null ? Math.round(car.score) : null;
+    const isTop = score === maxScore && score > 0 && selectedCars.length > 1;
+    html += `<td class="compare-score-cell${isTop ? ' compare-winner' : ''}">${score ?? '—'}</td>`;
+  }
+  html += `</tr>`;
+  html += `</thead><tbody>`;
 
   for (const row of rowDefs) {
     // Section header row
@@ -499,22 +512,36 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
 
 function buildControls(selectedCars, showDiffOnly) {
   const slots = selectedCars.map((car, i) => `
-    <span class="compare-car-slot">
-      ${car.brand} ${car.model}
+    <div class="cmp-slot cmp-slot-filled">
+      <div class="cmp-slot-brand">${car.brand}</div>
+      <div class="cmp-slot-model">${car.model}</div>
+      <div class="cmp-slot-score">${car.score != null ? Math.round(car.score) : '—'}</div>
       <button class="remove-car-btn" data-index="${i}" aria-label="Remove ${car.brand} ${car.model}">×</button>
-    </span>
+    </div>
   `).join('');
 
-  const addHidden = selectedCars.length >= 3 ? ' hidden' : '';
+  const canAdd = selectedCars.length < 4;
+
+  // Build empty slot placeholders
+  const emptySlots = canAdd
+    ? `<button class="cmp-slot cmp-slot-empty" id="cmp-add-slot">
+        <span class="cmp-slot-plus">+</span>
+        <span class="cmp-slot-add-lbl">Add car</span>
+      </button>`
+    : '';
 
   return `
     <div class="compare-controls">
-      <div class="compare-car-slots">${slots}</div>
-      <button class="add-car-btn btn-primary${addHidden}">Add car +</button>
-      <label class="diff-toggle-row">
-        <input type="checkbox" id="diff-toggle" ${showDiffOnly ? 'checked' : ''}>
-        Show differences only
-      </label>
+      <div class="compare-slot-row">
+        ${slots}
+        ${emptySlots}
+      </div>
+      <div class="compare-ctrl-row">
+        <label class="diff-toggle-row">
+          <input type="checkbox" id="diff-toggle" ${showDiffOnly ? 'checked' : ''}>
+          Show differences only
+        </label>
+      </div>
     </div>
   `;
 }
@@ -834,12 +861,10 @@ export async function renderCompare(container) {
       });
     });
 
-    // Add car button
-    const addBtn = controlsRoot.querySelector('.add-car-btn');
+    // Add car slot button
+    const addBtn = controlsRoot.querySelector('#cmp-add-slot');
     if (addBtn) {
-      addBtn.addEventListener('click', () => {
-        _openPicker();
-      });
+      addBtn.addEventListener('click', () => _openPicker());
     }
 
     // Diff toggle
@@ -877,7 +902,7 @@ export async function renderCompare(container) {
       if (!item || item.classList.contains('disabled')) return;
       const id = item.dataset.id;
       const car = allCars.find(c => c.id === id);
-      if (car && selectedCars.length < 3 && !selectedCars.find(c => c.id === id)) {
+      if (car && selectedCars.length < 4 && !selectedCars.find(c => c.id === id)) {
         selectedCars.push(car);
       }
       _closePicker();
@@ -909,7 +934,7 @@ export async function renderCompare(container) {
   function _handleAddToCompare(e) {
     const car = e.detail && e.detail.car;
     if (!car) return;
-    if (selectedCars.length >= 3) return;
+    if (selectedCars.length >= 4) return;
     if (selectedCars.find(c => c.id === car.id)) return;
     if (car.id === baselineWithTCO.id) return;
 
