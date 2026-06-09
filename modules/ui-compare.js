@@ -560,8 +560,13 @@ export async function renderCompare(container) {
   // Attach tco to baseline too (so chart can show it)
   const baselineWithTCO = { ...baselineCar, tco: calcTCO(baselineCar, profile) };
 
-  // All non-baseline cars (ranked, with tco attached)
-  const allCars = ranked; // already has .tco from rankCars/scoreCar
+  // All non-baseline cars — pinned order: Creta → Seltos → Grand Vitara → others by score
+  const PIN_ORDER = ['Creta', 'Seltos', 'Grand Vitara'];
+  const pinned = PIN_ORDER
+    .map(model => ranked.find(c => c.model === model))
+    .filter(Boolean);
+  const rest = ranked.filter(c => !PIN_ORDER.includes(c.model));
+  const allCars = [...pinned, ...rest];
 
   // ── state — pre-select top-ranked car so table isn't empty on first load ──
   let selectedCars  = allCars.length > 0 ? [allCars[0]] : [];
@@ -587,6 +592,9 @@ export async function renderCompare(container) {
           </div>
           <div class="viewer-no-model" id="cmp-no-model" style="display:none">
             <span>3D model not available</span>
+          </div>
+          <div class="cmp-mock-label" id="cmp-mock-label" style="display:none">
+            <span>Mock render</span>
           </div>
           <div class="viewer-hint" id="cmp-drag-hint">Drag to rotate &nbsp;·&nbsp; Pinch to zoom</div>
         </div>
@@ -716,22 +724,28 @@ export async function renderCompare(container) {
       container.querySelector('.cmp-cv-row'),
     ]);
 
-    // Show/hide no-model overlay
-    const noModelEl = container.querySelector('#cmp-no-model');
-    const hintEl    = container.querySelector('#cmp-drag-hint');
-    if (noModelEl) noModelEl.style.display = car.glb ? 'none' : 'flex';
-    if (hintEl)    hintEl.style.display    = car.glb ? ''     : 'none';
+    // Mock-render label: show for cars using the Seltos proxy model
+    const mockLabelEl = container.querySelector('#cmp-mock-label');
+    const noModelEl   = container.querySelector('#cmp-no-model');
+    const hintEl      = container.querySelector('#cmp-drag-hint');
+    const isMock      = !car.glb;
+    if (mockLabelEl) mockLabelEl.style.display = isMock ? 'flex' : 'none';
+    if (noModelEl)   noModelEl.style.display   = 'none';
+    if (hintEl)      hintEl.style.display      = '';
 
-    // Load 3D model — defer until viewer is ready
-    const glb = car.glb || null;
-    const loadToken = {}; // unique object per selection; used to cancel stale loads
+    // Load 3D model — use Seltos proxy for cars without their own GLB
+    const PROXY_GLB = 'previews/kia-seltos.glb';
+    const glb       = car.glb || PROXY_GLB;
+    const loadToken = {};
     _selectCar._pendingToken = loadToken;
     function _doLoad() {
-      if (_selectCar._pendingToken !== loadToken) return; // superseded
+      if (_selectCar._pendingToken !== loadToken) return;
       if (!viewer) { setTimeout(_doLoad, 100); return; }
-      viewer.load(glb || '__fallback__');
+      viewer.load(glb);
+      // Default to white; fall back to first color if no white found
       const colors = car.colors || [];
-      if (colors.length) viewer.setColor(colors[0].hex);
+      const white  = colors.find(c => /white/i.test(c.name));
+      viewer.setColor(white ? white.hex : (colors.length ? colors[0].hex : '#f2f2f2'));
     }
     _doLoad();
   }
@@ -739,8 +753,10 @@ export async function renderCompare(container) {
   function _renderColorDots(car) {
     const dotsEl = container.querySelector('#cmp-color-dots');
     const colors = car.colors || [];
+    const whiteIdx = colors.findIndex(c => /white/i.test(c.name));
+    const defaultIdx = whiteIdx >= 0 ? whiteIdx : 0;
     dotsEl.innerHTML = colors.map((c, i) => `
-      <button class="cmp-cdot${i === 0 ? ' active' : ''}"
+      <button class="cmp-cdot${i === defaultIdx ? ' active' : ''}"
         style="background:${c.hex}"
         title="${c.name}"
         data-hex="${c.hex}"

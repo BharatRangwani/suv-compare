@@ -529,9 +529,23 @@
   position: fixed;
   inset: 0;
   z-index: 500;
-  display: flex;
+  display: none;
   align-items: flex-end;
   justify-content: center;
+}
+.detail-panel.open {
+  display: flex;
+}
+.detail-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.45);
+  backdrop-filter: blur(3px);
+  z-index: 499;
+  display: none;
+}
+.detail-panel-backdrop.visible {
+  display: block;
 }
 .detail-backdrop {
   position: absolute;
@@ -1062,6 +1076,22 @@
   border: 1px solid var(--border);
   padding: 0.35rem 0.9rem; border-radius: 999px;
   background: var(--surface);
+}
+
+.cmp-mock-label {
+  position: absolute; top: 0.55rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 2;
+}
+.cmp-mock-label span {
+  font-size: 0.62rem; font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.2rem 0.65rem; border-radius: 999px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.04em;
 }
 
 .viewer-hint {
