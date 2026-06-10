@@ -2,6 +2,56 @@
 
 ---
 
+## 2026-06-10 (Session 5) — NCAP/Price Corrections, Platform Filter, Finance Enhancements, Launch Year
+
+### What changed this session
+
+**Commit `a355303` — 35 files changed:**
+
+**`cars-data.json`:**
+- NCAP corrections: Seltos (all 3 variants) 3→5★ BNCAP; Venue 3→5★ BNCAP; Honda Elevate 3→5★ GNCAP; Creta kept at 3★ GNCAP (legitimately tested at base spec)
+- Price corrections: Honda Elevate ₹18.26L→₹16.63L; MG Astor ₹16.97L→₹15.16L
+- Added `platform` field to all 24 cars (K2/SP2, TNGA-B, ALFA, MQB-A0-IN, OMEGA, Gen3 BOF, E-GMP, etc.)
+- Added `ncap_body` field ("BNCAP"/"GNCAP") to NCAP-corrected cars
+- Updated pros/cons to reflect corrections (added 5★ BNCAP pro to Seltos/Venue, updated Elevate price notes)
+
+**`modules/ui-filters.js`:**
+- Added `platform` filter group: Any / VW MQB (EU) / Toyota TNGA / Hyundai-Kia K2 / Body-on-Frame / EV Platform
+- `applyFilters()` handles platform matching via `.includes()` on `car.platform`
+
+**`app.js` (Finance tab):**
+- Section 5: Recommended Purchase Plan — DP%, rate, tenure dynamically computed from budget cushion; shows 3-column summary + tip
+- Section 6: Loan Preclosure Charges — table covering SBI, BoB, HDFC, ICICI, Axis, Kotak with charge rates and conditions
+- `updatePurchasePlan()` called on car selection, rate chip, and tenure chip changes
+
+**`modules/ui-home.js`:**
+- Launch year appended next to variant name on home cards: `Variant (YYYY)`
+
+**`app.js` (Ranking tab):**
+- Launch year added in 3 places: podium pod variant text, collapsed list subtitle, expanded detail variant row
+
+**`modules/ui-detail.js`:**
+- NCAP rating now shows `ncap_body` in small muted text: e.g. "5★ (BNCAP)"
+- Added Platform and Launch Year rows to specs grid
+
+**`styles/components.css`:**
+- `.fin-plan-card`, `.fin-plan-row`, `.fin-plan-col`, `.fin-plan-lbl`, `.fin-plan-val`, `.fin-plan-sub`, `.fin-plan-tip`
+- `.fin-preclose-card`, `.fin-preclose-note`, `.fin-preclose-table`, `.fin-pct-nil`
+
+### Pending (next session)
+- **Latest news around brand** — user requested (new launches, price drops, model upgrades); needs design decision: static curated entries in cars-data.json vs. links to brand/news pages (no backend available on GitHub Pages)
+- **K3 platform for 2026 Seltos** — user mentioned K3; current app has 2023 Seltos (K2/SP2). If upgrading to 2026 gen, full data refresh needed.
+
+### Open questions
+- For "latest news": static JSON entries or outbound news links? How many items per brand?
+
+### What to do next session
+1. Decide news approach and implement (static `news[]` per car in JSON, or a global `news_items[]` at root)
+2. Render news in car detail panel and/or a dedicated News tab
+3. Consider 2026 Seltos data upgrade (K3 platform, new pricing, new features)
+
+---
+
 ## 2026-06-09 (Session 4) — Audit Completions: EV Charging UI, Petrol Price Editor, Dynamic Hero, WhatsApp Share
 
 ### What changed this session
