@@ -257,7 +257,7 @@ function renderCarCard(car, allRanked, baseline) {
   modelEl.textContent = car.model || '';
   const variantEl = document.createElement('span');
   variantEl.style.cssText = 'font-size:0.72rem;color:var(--text-muted);font-weight:400';
-  variantEl.textContent = car.variant || '';
+  variantEl.textContent = car.variant ? (car.launch_year ? `${car.variant} (${car.launch_year})` : car.variant) : '';
   modelRow.appendChild(modelEl);
   if (!isBaseline) modelRow.appendChild(variantEl);
 

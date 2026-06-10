@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance D — One-screen answer</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.15);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.08);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Answer card — the one thing user needs to see ── */
+.answer-card {
+  margin: 1rem 1.25rem 0;
+  background: linear-gradient(145deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+  border-radius: var(--radius); padding: 1.1rem 1.2rem; color: white;
+}
+.ac-eyebrow { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 0.6rem; }
+.ac-answer { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-bottom: 0.85rem; line-height: 1.55; }
+.ac-answer strong { color: white; }
+.ac-numbers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.85rem; }
+.ac-num { text-align: center; padding: 0 0.5rem; border-right: 1px solid rgba(255,255,255,0.15); }
+.ac-num:last-child { border-right: none; }
+.ac-num-val { font-family: 'Geist Mono', monospace; font-size: 1.2rem; font-weight: 800; color: white; line-height: 1; }
+.ac-num-lbl { font-size: 0.58rem; color: rgba(255,255,255,0.55); margin-top: 0.18rem; }
+
+/* ── Adjustable EMI section ── */
+.adj-section { margin: 0.85rem 1.25rem 0; }
+.adj-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; }
+.adj-title { font-size: 0.82rem; font-weight: 700; }
+.adj-reset { font-size: 0.68rem; color: var(--blue); cursor: pointer; }
+
+.adj-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+
+/* Car selector */
+.car-sel { display: flex; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border); }
+.car-sel::-webkit-scrollbar { display: none; }
+.car-opt { flex-shrink: 0; padding: 0.55rem 0.85rem; border-right: 1px solid var(--border); cursor: pointer; }
+.car-opt:last-child { border-right: none; }
+.car-opt-brand { font-size: 0.55rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.car-opt-model { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.car-opt-price { font-size: 0.62rem; color: var(--muted); margin-top: 0.05rem; }
+.car-opt.sel { background: var(--blue-light); }
+.car-opt.sel .car-opt-model { color: var(--blue); }
+
+/* Result strip inside adj card */
+.adj-result { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.adj-res-cell { padding: 0.75rem 1rem; border-right: 1px solid var(--border); }
+.adj-res-cell:last-child { border-right: none; }
+.adj-res-lbl { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.15rem; }
+.adj-res-val { font-family: 'Geist Mono', monospace; font-size: 1.15rem; font-weight: 800; color: var(--blue); }
+
+.adj-controls { padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+.adj-ctrl { display: flex; align-items: center; gap: 0.65rem; }
+.adj-ctrl-lbl { font-size: 0.65rem; color: var(--muted); width: 85px; flex-shrink: 0; }
+.adj-ctrl-val { font-size: 0.7rem; font-weight: 700; color: var(--text); font-family: 'Geist Mono', monospace; min-width: 60px; text-align: right; }
+input[type=range] { flex: 1; accent-color: var(--blue); }
+.mini-chip-row { display: flex; gap: 0.25rem; }
+.mchip2 { font-size: 0.6rem; padding: 0.2rem 0.45rem; border-radius: 999px; border: 1.5px solid var(--border); color: var(--muted); cursor: pointer; }
+.mchip2.on { border-color: var(--blue); color: var(--blue); background: var(--blue-light); font-weight: 600; }
+
+/* ── Exchange section ── */
+.exch-section { margin: 0.85rem 1.25rem 0; }
+.exch-card2 { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.exch-top2 { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); }
+.exch-left2 { }
+.exch-lbl2 { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+.exch-val2 { font-family: 'Geist Mono', monospace; font-size: 1.2rem; font-weight: 800; color: var(--blue); }
+.exch-desc2 { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
+.exch-net2-lbl { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; text-align: right; }
+.exch-net2-val { font-family: 'Geist Mono', monospace; font-size: 1.2rem; font-weight: 800; color: var(--green); text-align: right; }
+.exch-net2-desc { font-size: 0.62rem; color: var(--muted); text-align: right; }
+.exch-form2 { padding: 0.65rem 1rem; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; background: var(--surface-2); }
+.exch-form2 select { font-size: 0.72rem; padding: 0.28rem 0.5rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'Geist', sans-serif; background: white; }
+.cond2 { font-size: 0.62rem; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1.5px solid var(--border); color: var(--muted); cursor: pointer; }
+.cond2.on { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+.exch-tip2 { padding: 0.55rem 1rem; font-size: 0.68rem; color: var(--muted); background: var(--green-bg); line-height: 1.5; }
+
+/* ── Prices section ── */
+.prices-section { margin: 0.85rem 1.25rem 0; }
+.price-scroll { display: flex; flex-direction: column; gap: 0.4rem; }
+.price-row { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.85rem; display: flex; align-items: center; justify-content: space-between; }
+.pr-car { font-size: 0.82rem; font-weight: 600; }
+.pr-car small { font-size: 0.65rem; color: var(--muted); font-weight: 400; display: block; }
+.pr-right { text-align: right; }
+.pr-exsh { font-size: 0.65rem; color: var(--muted); }
+.pr-onroad { font-size: 0.88rem; font-weight: 700; color: var(--blue); font-family: 'Geist Mono', monospace; }
+
+/* ── Checklist ── */
+.check-section { margin: 0.85rem 1.25rem 0; }
+.check-list2 { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.check-row2 { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+.check-row2:last-child { border-bottom: none; }
+.check-row2 input { accent-color: var(--blue); margin-top: 0.15rem; flex-shrink: 0; }
+
+/* ── Shared typography ── */
+.section-lbl { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.4rem; display: flex; align-items: baseline; justify-content: space-between; }
+.section-lbl a { color: var(--blue); font-weight: 500; text-transform: none; letter-spacing: 0; }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION D — One-screen answer · per-car EMI · exchange inline</div>
+
+<!-- The answer -->
+<div class="answer-card">
+  <div class="ac-eyebrow">Your buying picture · top pick</div>
+  <div class="ac-answer">
+    <strong>Creta SX(O) Petrol Turbo DCT</strong> costs <strong>₹17.70L on-road</strong>.
+    After exchanging your Quanto (~₹1.03L), net cost is <strong>₹16.67L</strong>.
+    At 20% down + SBI 8.5%, that's <strong>₹26,800/month</strong> for 5 years.
+  </div>
+  <div class="ac-numbers">
+    <div class="ac-num"><div class="ac-num-val">₹16.67L</div><div class="ac-num-lbl">Net after exchange</div></div>
+    <div class="ac-num"><div class="ac-num-val">₹26,800</div><div class="ac-num-lbl">EMI / month</div></div>
+    <div class="ac-num"><div class="ac-num-val">3 wks</div><div class="ac-num-lbl">Wait time</div></div>
+  </div>
+</div>
+
+<!-- Adjustable EMI — per car -->
+<div class="adj-section">
+  <div class="adj-header">
+    <div class="adj-title">Adjust your loan</div>
+    <div class="adj-reset">Reset</div>
+  </div>
+  <div class="adj-card">
+    <!-- Car selector -->
+    <div class="car-sel">
+      <div class="car-opt sel">
+        <div class="car-opt-brand">Hyundai</div>
+        <div class="car-opt-model">Creta</div>
+        <div class="car-opt-price">₹17.7L</div>
+      </div>
+      <div class="car-opt">
+        <div class="car-opt-brand">Kia</div>
+        <div class="car-opt-model">Seltos</div>
+        <div class="car-opt-price">₹17.1L</div>
+      </div>
+      <div class="car-opt">
+        <div class="car-opt-brand">Tata</div>
+        <div class="car-opt-model">Nexon</div>
+        <div class="car-opt-price">₹14.5L</div>
+      </div>
+      <div class="car-opt">
+        <div class="car-opt-brand">Maruti</div>
+        <div class="car-opt-model">Grand Vitara</div>
+        <div class="car-opt-price">₹15.8L</div>
+      </div>
+    </div>
+    <!-- Live result -->
+    <div class="adj-result">
+      <div class="adj-res-cell">
+        <div class="adj-res-lbl">Monthly EMI</div>
+        <div class="adj-res-val">₹26,800</div>
+      </div>
+      <div class="adj-res-cell">
+        <div class="adj-res-lbl">After exchange</div>
+        <div class="adj-res-val">₹16.67L</div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <div class="adj-controls">
+      <div class="adj-ctrl">
+        <span class="adj-ctrl-lbl">Down payment</span>
+        <input type="range" min="5" max="50" value="20">
+        <span class="adj-ctrl-val">20%</span>
+      </div>
+      <div class="adj-ctrl">
+        <span class="adj-ctrl-lbl">Bank / rate</span>
+        <div class="mini-chip-row">
+          <span class="mchip2 on">SBI 8.5%</span>
+          <span class="mchip2">HDFC 8.75%</span>
+          <span class="mchip2">ICICI 9%</span>
+        </div>
+      </div>
+      <div class="adj-ctrl">
+        <span class="adj-ctrl-lbl">Tenure</span>
+        <div class="mini-chip-row">
+          <span class="mchip2">3yr</span><span class="mchip2">4yr</span><span class="mchip2 on">5yr</span><span class="mchip2">7yr</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Exchange -->
+<div class="exch-section">
+  <div class="section-lbl">Your Quanto trade-in</div>
+  <div class="exch-card2">
+    <div class="exch-top2">
+      <div class="exch-left2">
+        <div class="exch-lbl2">Dealer offer</div>
+        <div class="exch-val2">₹1.03L</div>
+        <div class="exch-desc2">Open market ~₹1.18L · 12% below</div>
+      </div>
+      <div>
+        <div class="exch-net2-lbl">Net cost · Creta</div>
+        <div class="exch-net2-val">₹16.67L</div>
+        <div class="exch-net2-desc">on-road minus exchange</div>
+      </div>
+    </div>
+    <div class="exch-form2">
+      <select><option>2014</option><option>2015</option></select>
+      <input type="range" min="20000" max="250000" step="5000" value="80000" style="accent-color:var(--blue);width:80px">
+      <span style="font-size:0.68rem;color:var(--muted)">80k km</span>
+      <div style="display:flex;gap:0.25rem">
+        <span class="cond2">Exc</span><span class="cond2 on">Good</span><span class="cond2">Fair</span><span class="cond2">Poor</span>
+      </div>
+    </div>
+    <div class="exch-tip2">💡 Cars24 / Spinny often pay 5–8% more. Get 3 quotes before accepting dealer offer.</div>
+  </div>
+</div>
+
+<!-- On-road prices — compact -->
+<div class="prices-section">
+  <div class="section-lbl">On-road prices · all cars <a href="#">Sort ↕</a></div>
+  <div class="price-scroll">
+    <div class="price-row">
+      <div class="pr-car">Tata Nexon <small>Fearless+ Petrol AMT</small></div>
+      <div class="pr-right"><div class="pr-exsh">Ex-sh ₹13.10L</div><div class="pr-onroad">₹14.54L</div></div>
+    </div>
+    <div class="price-row">
+      <div class="pr-car">Maruti Grand Vitara <small>Alpha+ Petrol AT</small></div>
+      <div class="pr-right"><div class="pr-exsh">Ex-sh ₹14.22L</div><div class="pr-onroad">₹15.80L</div></div>
+    </div>
+    <div class="price-row" style="border-color:var(--blue);background:var(--blue-light)">
+      <div class="pr-car" style="color:var(--blue)">Hyundai Creta <small style="color:var(--muted)">SX(O) Petrol Turbo DCT</small></div>
+      <div class="pr-right"><div class="pr-exsh">Ex-sh ₹15.90L</div><div class="pr-onroad" style="color:var(--blue)">₹17.70L</div></div>
+    </div>
+    <div class="price-row">
+      <div class="pr-car">Kia Seltos <small>HTX+ 1.5 Turbo DCT</small></div>
+      <div class="pr-right"><div class="pr-exsh">Ex-sh ₹15.40L</div><div class="pr-onroad">₹17.10L</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Checklist -->
+<div class="check-section">
+  <div class="section-lbl">Dealer visit checklist</div>
+  <div class="check-list2">
+    <label class="check-row2"><input type="checkbox"> Ask for OTR price in writing</label>
+    <label class="check-row2"><input type="checkbox"> Negotiate accessories separately</label>
+    <label class="check-row2"><input type="checkbox"> Check actual waiting period</label>
+    <label class="check-row2"><input type="checkbox"> Compare exchange with Cars24 / Spinny</label>
+    <label class="check-row2"><input type="checkbox"> Confirm colour availability</label>
+  </div>
+</div>
+
+<div style="height:1rem"></div>
+
+<nav class="nav">
+  <button class="nav-btn"><span>🏠</span>Home</button>
+  <button class="nav-btn"><span>⚖️</span>Compare</button>
+  <button class="nav-btn"><span>🏆</span>Ranking</button>
+  <button class="nav-btn active"><span>₹</span>Cost & Finance</button>
+</nav>
+</body>
+</html>

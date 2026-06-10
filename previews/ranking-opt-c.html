@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking C — Podium + compact list</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.09);
+  --orange: #c2410c; --orange-bg: rgba(194,65,12,0.08);
+  --gold: #b45309; --silver: #64748b; --bronze: #92400e;
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Podium top 3 ── */
+.podium {
+  margin: 1rem 1.25rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 0.4rem;
+  align-items: end;
+}
+.pod {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  position: relative;
+}
+.pod-1 {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, #eff6ff, white);
+  padding-bottom: 0;
+}
+.pod-2, .pod-3 { padding-bottom: 0; }
+
+.pod-medal {
+  font-size: 1.4rem;
+  padding: 0.6rem 0 0.2rem;
+  line-height: 1;
+}
+.pod-1 .pod-medal { font-size: 1.7rem; padding-top: 0.75rem; }
+
+.pod-score {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 900; line-height: 1;
+  color: var(--blue);
+}
+.pod-1 .pod-score { font-size: 2.2rem; }
+.pod-2 .pod-score, .pod-3 .pod-score { font-size: 1.7rem; color: var(--text); }
+.pod-score-lbl { font-size: 0.5rem; color: var(--dim); margin-bottom: 0.25rem; }
+
+.pod-brand { font-size: 0.55rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
+.pod-model { font-size: 0.78rem; font-weight: 800; color: var(--text); line-height: 1.2; padding: 0 0.4rem; }
+.pod-1 .pod-model { font-size: 0.88rem; }
+.pod-var { font-size: 0.58rem; color: var(--dim); padding: 0 0.35rem 0.1rem; }
+.pod-price {
+  width: 100%;
+  background: var(--blue); color: white;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.78rem; font-weight: 700;
+  padding: 0.3rem 0; margin-top: 0.5rem;
+  text-align: center;
+}
+.pod-2 .pod-price, .pod-3 .pod-price { background: var(--surface-2); color: var(--text); }
+
+/* ── Rest of the list ── */
+.sec-lbl {
+  padding: 1rem 1.25rem 0.45rem;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.rank-rest { margin: 0 1.25rem; background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+
+.rr-row {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.rr-row:last-child { border-bottom: none; }
+
+.rr-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.95rem; font-weight: 800;
+  color: var(--dim); width: 20px; text-align: center; flex-shrink: 0;
+}
+.rr-info { flex: 1; min-width: 0; }
+.rr-name { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.rr-sub  { font-size: 0.62rem; color: var(--dim); margin-top: 0.05rem; }
+.rr-bar-wrap { display: flex; align-items: center; gap: 0.4rem; }
+.rr-bar-track { width: 60px; height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; flex-shrink: 0; }
+.rr-bar-fill  { height: 100%; border-radius: 999px; background: var(--dim); }
+.rr-score { font-family: 'Geist Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--muted); width: 22px; }
+.rr-price { font-size: 0.72rem; font-weight: 700; color: var(--text); font-family: 'Geist Mono', monospace; text-align: right; flex-shrink: 0; }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION C — Podium top-3 + compact list for the rest</div>
+
+<!-- Podium -->
+<div class="podium">
+  <!-- 2nd -->
+  <div class="pod pod-2">
+    <div class="pod-medal">🥈</div>
+    <div class="pod-score">81</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Kia</div>
+    <div class="pod-model">Seltos GTX+</div>
+    <div class="pod-var">Petrol DCT</div>
+    <div class="pod-price">₹18.40L</div>
+  </div>
+  <!-- 1st -->
+  <div class="pod pod-1">
+    <div class="pod-medal">🥇</div>
+    <div class="pod-score">84</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Hyundai</div>
+    <div class="pod-model">Creta SX(O)</div>
+    <div class="pod-var">Petrol Turbo DCT</div>
+    <div class="pod-price">₹17.70L</div>
+  </div>
+  <!-- 3rd -->
+  <div class="pod pod-3">
+    <div class="pod-medal">🥉</div>
+    <div class="pod-score">79</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Maruti</div>
+    <div class="pod-model">Grand Vitara</div>
+    <div class="pod-var">Strong Hybrid</div>
+    <div class="pod-price">₹17.88L</div>
+  </div>
+</div>
+
+<div class="sec-lbl">Also considered</div>
+
+<!-- Rest of list -->
+<div class="rank-rest">
+  <div class="rr-row">
+    <div class="rr-num">4</div>
+    <div class="rr-info">
+      <div class="rr-name">Honda Elevate ZX</div>
+      <div class="rr-sub">Petrol CVT</div>
+    </div>
+    <div class="rr-bar-wrap">
+      <div class="rr-bar-track"><div class="rr-bar-fill" style="width:74%"></div></div>
+      <div class="rr-score">74</div>
+    </div>
+    <div class="rr-price">₹16.35L</div>
+  </div>
+  <div class="rr-row">
+    <div class="rr-num">5</div>
+    <div class="rr-info">
+      <div class="rr-name">Tata Nexon Fearless+</div>
+      <div class="rr-sub">Petrol AMT</div>
+    </div>
+    <div class="rr-bar-wrap">
+      <div class="rr-bar-track"><div class="rr-bar-fill" style="width:70%"></div></div>
+      <div class="rr-score">70</div>
+    </div>
+    <div class="rr-price">₹13.02L</div>
+  </div>
+  <div class="rr-row">
+    <div class="rr-num">6</div>
+    <div class="rr-info">
+      <div class="rr-name">Volkswagen Taigun</div>
+      <div class="rr-sub">1.5 TSI DSG</div>
+    </div>
+    <div class="rr-bar-wrap">
+      <div class="rr-bar-track"><div class="rr-bar-fill" style="width:68%"></div></div>
+      <div class="rr-score">68</div>
+    </div>
+    <div class="rr-price">₹17.53L</div>
+  </div>
+  <div class="rr-row">
+    <div class="rr-num">7</div>
+    <div class="rr-info">
+      <div class="rr-name">MG Astor Savvy</div>
+      <div class="rr-sub">CVT</div>
+    </div>
+    <div class="rr-bar-wrap">
+      <div class="rr-bar-track"><div class="rr-bar-fill" style="width:65%"></div></div>
+      <div class="rr-score">65</div>
+    </div>
+    <div class="rr-price">₹15.20L</div>
+  </div>
+  <div class="rr-row">
+    <div class="rr-num">8</div>
+    <div class="rr-info">
+      <div class="rr-name">Toyota Hyryder V</div>
+      <div class="rr-sub">Strong Hybrid</div>
+    </div>
+    <div class="rr-bar-wrap">
+      <div class="rr-bar-track"><div class="rr-bar-fill" style="width:62%"></div></div>
+      <div class="rr-score">62</div>
+    </div>
+    <div class="rr-price">₹19.23L</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn">🏠 Home</button>
+  <button class="nav-btn">⚖️ Compare</button>
+  <button class="nav-btn active">🏆 Ranking</button>
+  <button class="nav-btn">₹ Cost</button>
+</nav>
+</body>
+</html>

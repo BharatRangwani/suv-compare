@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B4 — Off-White + Indigo + Category Scores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f7f7f9;
+  --surface: #ffffff;
+  --indigo: #4f46e5;
+  --indigo-light: rgba(79,70,229,0.08);
+  --indigo-mid: rgba(79,70,229,0.2);
+  --text: #111827;
+  --muted: #6b7280;
+  --dim: #9ca3af;
+  --border: #e5e7eb;
+  --radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.option-label {
+  background: #4f46e5; color: white; text-align: center;
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem; letter-spacing: 0.05em;
+}
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: white; border-bottom: 1px solid var(--border);
+  position: sticky; top: 26px; z-index: 100;
+}
+.logo { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.025em; }
+.logo span { color: var(--indigo); }
+.filter-row {
+  display: flex; gap: 0.35rem; align-items: center;
+}
+.fchip {
+  font-size: 0.62rem; font-weight: 500;
+  padding: 0.25rem 0.6rem; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--muted); background: white;
+  cursor: pointer;
+}
+.fchip.on { background: var(--indigo-light); color: var(--indigo); border-color: var(--indigo-mid); }
+
+/* ── HERO ── */
+.hero {
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+.hero h1 {
+  font-size: 1.5rem; font-weight: 700; letter-spacing: -0.04em;
+  line-height: 1.1; margin-bottom: 0.45rem;
+}
+.hero h1 em { font-style: normal; color: var(--indigo); }
+.hero p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; max-width: 34ch; }
+
+/* ── WINNER CARD — FULL WIDTH ── */
+.winner-card {
+  margin: 0.75rem 1.25rem;
+  background: white; border: 2px solid var(--indigo);
+  border-radius: var(--radius); padding: 1.1rem;
+  position: relative; overflow: hidden;
+}
+.winner-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--indigo), #818cf8);
+}
+.wc-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+.wc-badge {
+  font-size: 0.62rem; font-weight: 700; color: var(--indigo);
+  background: var(--indigo-light); padding: 0.2rem 0.55rem;
+  border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.wc-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 2rem; font-weight: 500; color: var(--indigo); line-height: 1;
+}
+.wc-sub { font-size: 0.6rem; color: var(--muted); text-align: right; }
+.wc-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.15rem; }
+.wc-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.85rem; }
+/* Category score dots */
+.wc-cats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem;
+}
+.wc-cat {
+  background: var(--bg); border-radius: 8px; padding: 0.5rem 0.55rem;
+  text-align: center;
+}
+.wc-cat-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1;
+}
+.wc-cat-label { font-size: 0.55rem; color: var(--dim); margin-top: 0.15rem; }
+
+/* ── OTHERS LIST ── */
+.section { padding: 0 1.25rem; margin-bottom: 1.5rem; }
+.sh {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.65rem;
+}
+.sh h3 { font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.sh a { font-size: 0.7rem; color: var(--indigo); text-decoration: none; }
+
+.others-list { display: flex; flex-direction: column; gap: 0.45rem; }
+.other-row {
+  background: white; border: 1px solid var(--border);
+  border-radius: 10px; padding: 0.75rem 0.9rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  cursor: pointer; transition: border-color 0.15s;
+}
+.other-row:hover { border-color: var(--indigo); }
+.or-rank {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  font-weight: 500; color: var(--dim); width: 14px;
+}
+.or-info { flex: 1; min-width: 0; }
+.or-name {
+  font-size: 0.8rem; font-weight: 600; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.or-price { font-size: 0.65rem; color: var(--muted); margin-top: 0.1rem; }
+.or-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem; font-weight: 500; color: var(--muted);
+}
+.or-arrow { font-size: 0.8rem; color: var(--dim); margin-left: 0.25rem; }
+
+/* ── NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: white; border-top: 1px solid var(--border);
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 0.2rem; padding: 0.7rem 0.5rem; border: none;
+  background: transparent; cursor: pointer; color: var(--dim);
+  font-size: 0.58rem; font-family: 'DM Sans', sans-serif;
+  font-weight: 500; transition: color 0.15s; position: relative;
+}
+.nav-btn.active { color: var(--indigo); }
+.nav-btn.active::after {
+  content: ''; position: absolute; top: 0; left: 20%; right: 20%;
+  height: 2px; background: var(--indigo); border-radius: 0 0 2px 2px;
+}
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+<div class="option-label">B4 — OFF-WHITE + INDIGO &nbsp;|&nbsp; Indigo accent, DM Sans, winner hero card + category breakdown</div>
+
+<header>
+  <div class="logo">SUV<span>.</span>Compare</div>
+  <div class="filter-row">
+    <div class="fchip on">Turbo</div>
+    <div class="fchip on">6 Bags</div>
+    <div class="fchip">Diesel</div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1><em>Your best</em> SUV<br>for Jodhpur</h1>
+  <p>10 cars ranked against 6 weighted categories. Petrol turbo, ₹20L budget.</p>
+</div>
+
+<div class="winner-card">
+  <div class="wc-top">
+    <div class="wc-badge">Top pick</div>
+    <div>
+      <div class="wc-score">84</div>
+      <div class="wc-sub">/100 score</div>
+    </div>
+  </div>
+  <div class="wc-name">Hyundai Creta SX(O) Turbo</div>
+  <div class="wc-meta">₹17.69L on-road · 6 Airbags · Vent. Seats · BlueLink</div>
+  <div class="wc-cats">
+    <div class="wc-cat"><div class="wc-cat-val">9.0</div><div class="wc-cat-label">Safety</div></div>
+    <div class="wc-cat"><div class="wc-cat-val">8.2</div><div class="wc-cat-label">Value</div></div>
+    <div class="wc-cat"><div class="wc-cat-val">8.8</div><div class="wc-cat-label">Features</div></div>
+    <div class="wc-cat"><div class="wc-cat-val">7.8</div><div class="wc-cat-label">Service</div></div>
+    <div class="wc-cat"><div class="wc-cat-val">8.0</div><div class="wc-cat-label">Comfort</div></div>
+    <div class="wc-cat"><div class="wc-cat-val">8.5</div><div class="wc-cat-label">Reliability</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h3>Others</h3><a href="#">All 10</a></div>
+  <div class="others-list">
+
+    <div class="other-row">
+      <div class="or-rank">2</div>
+      <div class="or-info">
+        <div class="or-name">Kia Seltos HTX+ Turbo</div>
+        <div class="or-price">₹18.2L on-road</div>
+      </div>
+      <div class="or-score">81</div>
+      <div class="or-arrow">›</div>
+    </div>
+
+    <div class="other-row">
+      <div class="or-rank">3</div>
+      <div class="or-info">
+        <div class="or-name">MG Hector Sharp Pro</div>
+        <div class="or-price">₹19.1L on-road</div>
+      </div>
+      <div class="or-score">79</div>
+      <div class="or-arrow">›</div>
+    </div>
+
+    <div class="other-row">
+      <div class="or-rank">4</div>
+      <div class="or-info">
+        <div class="or-name">Skoda Kushaq Style 1.5</div>
+        <div class="or-price">₹17.8L on-road</div>
+      </div>
+      <div class="or-score">76</div>
+      <div class="or-arrow">›</div>
+    </div>
+
+    <div class="other-row">
+      <div class="or-rank">5</div>
+      <div class="or-info">
+        <div class="or-name">Tata Nexon Creative+ Turbo</div>
+        <div class="or-price">₹16.4L on-road</div>
+      </div>
+      <div class="or-score">74</div>
+      <div class="or-arrow">›</div>
+    </div>
+
+  </div>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn active"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+</body>
+</html>

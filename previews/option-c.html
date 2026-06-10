@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option C Preview — Carbon Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #111118;
+  --s1: #17171f;
+  --s2: #1e1e28;
+  --s3: #25252f;
+  --rose: #f43f5e;
+  --rose-dim: rgba(244,63,94,0.12);
+  --rose-glow: rgba(244,63,94,0.25);
+  --cyan: #22d3ee;
+  --cyan-dim: rgba(34,211,238,0.1);
+  --text: #f1f0f8;
+  --muted: #7c7b8f;
+  --dim: #3f3e52;
+  --border: rgba(255,255,255,0.06);
+  --radius: 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* subtle noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ─── LABEL ─────────────────────────────────────── */
+.option-label {
+  background: #f43f5e;
+  color: white;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 200;
+}
+
+/* ─── HEADER ─────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 26px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  background: rgba(17,17,24,0.85);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-mark {
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, var(--rose), #fb923c);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: white;
+}
+.header-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--rose);
+  background: var(--rose-dim);
+  border: 1px solid rgba(244,63,94,0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+/* ─── HERO — BENTO STYLE ─────────────────────────── */
+.bento-hero {
+  padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.6rem;
+}
+
+.bento-cell {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow cell */
+.bento-cell.glow {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #1a0a12 0%, #0f0f1a 60%);
+  border-color: rgba(244,63,94,0.2);
+  padding: 1.5rem 1.25rem;
+}
+.bento-cell.glow::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(244,63,94,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bento-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+.bento-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--rose), #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.bento-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Score cell */
+.bento-cell.score-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(244,63,94,0.1), var(--s1));
+  border-color: rgba(244,63,94,0.25);
+}
+.score-label { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.score-giant {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #f43f5e, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.score-car { font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
+
+/* Stats cell */
+.bento-cell.stat-mini {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.stat-big {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--cyan);
+}
+.stat-sm-label { font-size: 0.65rem; color: var(--muted); }
+
+/* ─── CAR CARDS ─────────────────────────────────── */
+.cards-section { padding: 0.5rem 1.25rem 1.5rem; }
+.cards-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.cards-header h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.car-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+  position: relative;
+  overflow: hidden;
+}
+.car-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+.car-card:hover {
+  border-color: rgba(244,63,94,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.car-card.best {
+  border-color: rgba(244,63,94,0.35);
+  background: linear-gradient(145deg, rgba(244,63,94,0.07), var(--s1));
+}
+.card-rank-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--rose);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.card-brand {
+  font-size: 0.6rem;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.15rem;
+}
+.card-model {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.card-score-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+.card-score-val {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+.card-score-max { font-size: 0.7rem; color: var(--dim); margin-bottom: 0.1rem; }
+.card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.chip {
+  font-size: 0.57rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--s3);
+  color: var(--muted);
+  font-weight: 500;
+}
+.chip.hit {
+  background: rgba(34,211,238,0.1);
+  color: var(--cyan);
+}
+
+/* ─── BOTTOM NAV ────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0;
+  background: var(--s2);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 0.3rem;
+  z-index: 200;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--dim);
+  font-size: 0.58rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.15s;
+}
+.nav-btn.active {
+  background: linear-gradient(135deg, rgba(244,63,94,0.25), rgba(251,146,60,0.15));
+  color: var(--rose);
+  border: 1px solid rgba(244,63,94,0.2);
+}
+.nav-icon { font-size: 0.95rem; }
+
+</style>
+</head>
+<body>
+
+<div class="option-label">OPTION C — CARBON NIGHT &nbsp;|&nbsp; Deep dark, rose-red accent, bento hero, Space Grotesk headings</div>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">SC</div>
+    SUV Compare
+  </div>
+  <div class="header-tag">Jodhpur</div>
+</header>
+
+<div class="bento-hero">
+
+  <!-- Full-width title cell -->
+  <div class="bento-cell glow">
+    <div class="bento-title">Pick your<br><em>perfect SUV</em></div>
+    <div class="bento-sub">10 SUVs ranked for your ₹20L budget, petrol turbo, 6 airbags, ventilated seats.</div>
+  </div>
+
+  <!-- Top score cell -->
+  <div class="bento-cell score-cell">
+    <div>
+      <div class="score-label">Top match</div>
+      <div class="score-giant">84</div>
+    </div>
+    <div class="score-car">Hyundai Creta<br>SX(O) Turbo</div>
+  </div>
+
+  <!-- Budget stat -->
+  <div class="bento-cell stat-mini">
+    <div class="stat-big">₹20L</div>
+    <div class="stat-sm-label">Your budget</div>
+  </div>
+
+</div>
+
+<div class="cards-section">
+  <div class="cards-header">
+    <h3>Ranked for you</h3>
+  </div>
+  <div class="cards-grid">
+
+    <div class="car-card best">
+      <div class="card-rank-label">Best match</div>
+      <div class="card-brand">Hyundai</div>
+      <div class="card-model">Creta SX(O) Turbo</div>
+      <div class="card-score-row">
+        <div class="card-score-val">84</div>
+        <div class="card-score-max">/100</div>
+      </div>
+      <div class="card-chips">
+        <span class="chip hit">6 Airbags</span>
+        <span class="chip hit">Vent.</span>
+        <span class="chip">₹17.7L</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank-label" style="color:var(--muted)">#2</div>
+      <div class="card-brand">Kia</div>
+      <div class="card-model">Seltos HTX+ Turbo</div>
+      <div class="card-score-row">
+        <div class="card-score-val">81</div>
+        <div class="card-score-max">/100</div>
+      </div>
+      <div class="card-chips">
+        <span class="chip hit">6 Airbags</span>
+        <span class="chip">₹18.2L</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank-label" style="color:var(--muted)">#3</div>
+      <div class="card-brand">MG</div>
+      <div class="card-model">Hector Sharp Pro</div>
+      <div class="card-score-row">
+        <div class="card-score-val">79</div>
+        <div class="card-score-max">/100</div>
+      </div>
+      <div class="card-chips">
+        <span class="chip hit">Vent.</span>
+        <span class="chip hit">i-SMART</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank-label" style="color:var(--muted)">#4</div>
+      <div class="card-brand">Skoda</div>
+      <div class="card-model">Kushaq Style 1.5</div>
+      <div class="card-score-row">
+        <div class="card-score-val">76</div>
+        <div class="card-score-max">/100</div>
+      </div>
+      <div class="card-chips">
+        <span class="chip hit">6 Airbags</span>
+        <span class="chip">₹17.8L</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="height: 5rem"></div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active">
+    <span class="nav-icon">⊞</span>
+    Explore
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">≡</span>
+    Compare
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">★</span>
+    Rank
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">◎</span>
+    Jodhpur
+  </button>
+</nav>
+
+</body>
+</html>

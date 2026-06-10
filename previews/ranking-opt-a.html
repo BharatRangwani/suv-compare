@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking A — Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.18);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.09);
+  --orange: #c2410c; --orange-bg: rgba(194,65,12,0.08);
+  --yellow: #b45309; --yellow-bg: rgba(180,83,9,0.08);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Hero strip ── */
+.rank-hero {
+  margin: 1rem 1.25rem 0;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem 0.85rem;
+  color: white;
+}
+.rh-eyebrow { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 0.35rem; }
+.rh-title { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+.rh-sub { font-size: 0.7rem; color: rgba(255,255,255,0.65); margin-top: 0.25rem; }
+.rh-criteria {
+  display: flex; gap: 0.3rem; flex-wrap: wrap;
+  margin-top: 0.75rem; padding-top: 0.6rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.rh-crit {
+  font-size: 0.58rem; font-weight: 600; color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.12); border-radius: 999px;
+  padding: 0.18rem 0.55rem; white-space: nowrap;
+}
+
+/* ── Leaderboard list ── */
+.rank-list { margin: 0.85rem 1.25rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.rank-row {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+}
+.rank-row.rank-1 { border-color: var(--blue); background: linear-gradient(to right, var(--blue-light), white 60%); }
+.rank-row.rank-1::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--blue);
+}
+
+/* Rank number badge */
+.rank-badge {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0.75rem 0.85rem;
+  flex-shrink: 0;
+  min-width: 44px;
+  border-right: 1px solid var(--border);
+}
+.rank-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.35rem; font-weight: 900;
+  color: var(--dim); line-height: 1;
+}
+.rank-row.rank-1 .rank-num { color: var(--blue); font-size: 1.55rem; }
+.rank-row.rank-2 .rank-num { color: var(--text); }
+.rank-row.rank-3 .rank-num { color: var(--muted); }
+.rank-medal { font-size: 0.65rem; margin-top: 0.15rem; }
+
+/* Main content */
+.rank-main {
+  flex: 1; padding: 0.65rem 0.75rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
+  min-width: 0;
+}
+.rank-car-line { display: flex; align-items: baseline; gap: 0.35rem; }
+.rank-brand { font-size: 0.6rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.rank-model { font-size: 0.9rem; font-weight: 800; color: var(--text); line-height: 1; }
+.rank-variant { font-size: 0.65rem; color: var(--dim); }
+
+/* Score bar */
+.rank-bar-wrap { display: flex; align-items: center; gap: 0.5rem; }
+.rank-bar-track {
+  flex: 1; height: 5px; background: var(--border);
+  border-radius: 999px; overflow: hidden;
+}
+.rank-bar-fill {
+  height: 100%; border-radius: 999px;
+  background: var(--blue); transition: width 0.4s;
+}
+.rank-bar-pct { font-size: 0.6rem; font-weight: 700; color: var(--muted); width: 26px; text-align: right; font-family: 'Geist Mono', monospace; }
+
+/* Tags */
+.rank-tags { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.rtag {
+  font-size: 0.6rem; padding: 0.15rem 0.45rem;
+  border-radius: 4px; border: 1px solid var(--border);
+  color: var(--dim); background: var(--surface-2);
+}
+.rtag.hit { background: var(--green-bg); color: var(--green); border-color: rgba(22,163,74,0.2); }
+.rtag.warn { background: var(--orange-bg); color: var(--orange); border-color: rgba(194,65,12,0.2); }
+
+/* Right column */
+.rank-right {
+  display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+  padding: 0.65rem 0.85rem 0.65rem 0.4rem;
+  flex-shrink: 0; gap: 0.2rem;
+}
+.rank-score-big {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.6rem; font-weight: 900;
+  color: var(--blue); line-height: 1; letter-spacing: -0.03em;
+}
+.rank-row.rank-1 .rank-score-big { font-size: 1.85rem; }
+.rank-score-label { font-size: 0.55rem; color: var(--dim); text-align: right; }
+.rank-price { font-size: 0.75rem; font-weight: 700; color: var(--text); font-family: 'Geist Mono', monospace; }
+.rank-wait { font-size: 0.6rem; color: var(--muted); }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION A — Leaderboard with rank badges</div>
+
+<div class="rank-hero">
+  <div class="rh-eyebrow">Jodhpur, Rajasthan · June 2025</div>
+  <div class="rh-title">SUV Rankings for <strong>Your Profile</strong></div>
+  <div class="rh-sub">Scored across 6 categories. Personalized to your must-haves.</div>
+  <div class="rh-criteria">
+    <span class="rh-crit">Safety 20%</span>
+    <span class="rh-crit">VFM 20%</span>
+    <span class="rh-crit">Features 20%</span>
+    <span class="rh-crit">Service 15%</span>
+    <span class="rh-crit">Comfort 15%</span>
+    <span class="rh-crit">Reliability 10%</span>
+  </div>
+</div>
+
+<div class="rank-list">
+
+  <!-- #1 -->
+  <div class="rank-row rank-1">
+    <div class="rank-badge">
+      <div class="rank-num">1</div>
+      <div class="rank-medal">🥇</div>
+    </div>
+    <div class="rank-main">
+      <div class="rank-car-line">
+        <span class="rank-brand">Hyundai</span>
+        <span class="rank-model">Creta SX(O)</span>
+      </div>
+      <div class="rank-variant">Petrol Turbo DCT</div>
+      <div class="rank-bar-wrap">
+        <div class="rank-bar-track"><div class="rank-bar-fill" style="width:84%"></div></div>
+        <span class="rank-bar-pct">84</span>
+      </div>
+      <div class="rank-tags">
+        <span class="rtag hit">6 Airbags</span>
+        <span class="rtag hit">Vent. Seats</span>
+        <span class="rtag hit">ADAS</span>
+        <span class="rtag">3 wks</span>
+      </div>
+    </div>
+    <div class="rank-right">
+      <div class="rank-score-big">84</div>
+      <div class="rank-score-label">/ 100</div>
+      <div class="rank-price">₹17.70L</div>
+      <div class="rank-wait">OTR</div>
+    </div>
+  </div>
+
+  <!-- #2 -->
+  <div class="rank-row rank-2">
+    <div class="rank-badge">
+      <div class="rank-num">2</div>
+      <div class="rank-medal">🥈</div>
+    </div>
+    <div class="rank-main">
+      <div class="rank-car-line">
+        <span class="rank-brand">Kia</span>
+        <span class="rank-model">Seltos GTX+</span>
+      </div>
+      <div class="rank-variant">Petrol DCT</div>
+      <div class="rank-bar-wrap">
+        <div class="rank-bar-track"><div class="rank-bar-fill" style="width:81%"></div></div>
+        <span class="rank-bar-pct">81</span>
+      </div>
+      <div class="rank-tags">
+        <span class="rtag hit">6 Airbags</span>
+        <span class="rtag hit">ADAS</span>
+        <span class="rtag warn">6 wks wait</span>
+      </div>
+    </div>
+    <div class="rank-right">
+      <div class="rank-score-big">81</div>
+      <div class="rank-score-label">/ 100</div>
+      <div class="rank-price">₹18.40L</div>
+      <div class="rank-wait">OTR</div>
+    </div>
+  </div>
+
+  <!-- #3 -->
+  <div class="rank-row rank-3">
+    <div class="rank-badge">
+      <div class="rank-num">3</div>
+      <div class="rank-medal">🥉</div>
+    </div>
+    <div class="rank-main">
+      <div class="rank-car-line">
+        <span class="rank-brand">Maruti</span>
+        <span class="rank-model">Grand Vitara</span>
+      </div>
+      <div class="rank-variant">Strong Hybrid AT</div>
+      <div class="rank-bar-wrap">
+        <div class="rank-bar-track"><div class="rank-bar-fill" style="width:79%"></div></div>
+        <span class="rank-bar-pct">79</span>
+      </div>
+      <div class="rank-tags">
+        <span class="rtag hit">Best mileage</span>
+        <span class="rtag">In stock</span>
+      </div>
+    </div>
+    <div class="rank-right">
+      <div class="rank-score-big">79</div>
+      <div class="rank-score-label">/ 100</div>
+      <div class="rank-price">₹17.88L</div>
+      <div class="rank-wait">OTR</div>
+    </div>
+  </div>
+
+  <!-- #4 -->
+  <div class="rank-row">
+    <div class="rank-badge">
+      <div class="rank-num">4</div>
+    </div>
+    <div class="rank-main">
+      <div class="rank-car-line">
+        <span class="rank-brand">Honda</span>
+        <span class="rank-model">Elevate ZX</span>
+      </div>
+      <div class="rank-variant">Petrol CVT</div>
+      <div class="rank-bar-wrap">
+        <div class="rank-bar-track"><div class="rank-bar-fill" style="width:74%; background:var(--muted)"></div></div>
+        <span class="rank-bar-pct">74</span>
+      </div>
+      <div class="rank-tags">
+        <span class="rtag hit">6 Airbags</span>
+        <span class="rtag">In stock</span>
+      </div>
+    </div>
+    <div class="rank-right">
+      <div class="rank-score-big" style="color:var(--text);font-size:1.4rem">74</div>
+      <div class="rank-score-label">/ 100</div>
+      <div class="rank-price">₹16.35L</div>
+      <div class="rank-wait">OTR</div>
+    </div>
+  </div>
+
+  <!-- #5 -->
+  <div class="rank-row">
+    <div class="rank-badge">
+      <div class="rank-num">5</div>
+    </div>
+    <div class="rank-main">
+      <div class="rank-car-line">
+        <span class="rank-brand">Tata</span>
+        <span class="rank-model">Nexon</span>
+      </div>
+      <div class="rank-variant">Petrol AMT</div>
+      <div class="rank-bar-wrap">
+        <div class="rank-bar-track"><div class="rank-bar-fill" style="width:70%; background:var(--muted)"></div></div>
+        <span class="rank-bar-pct">70</span>
+      </div>
+      <div class="rank-tags">
+        <span class="rtag hit">5-star NCAP</span>
+        <span class="rtag">Lowest price</span>
+      </div>
+    </div>
+    <div class="rank-right">
+      <div class="rank-score-big" style="color:var(--text);font-size:1.4rem">70</div>
+      <div class="rank-score-label">/ 100</div>
+      <div class="rank-price">₹13.02L</div>
+      <div class="rank-wait">OTR</div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="nav">
+  <button class="nav-btn"><span>🏠</span>Home</button>
+  <button class="nav-btn"><span>⚖️</span>Compare</button>
+  <button class="nav-btn active"><span>🏆</span>Ranking</button>
+  <button class="nav-btn"><span>₹</span>Cost & Finance</button>
+</nav>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B2 — Sky Blue + Rank Bars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff;
+  --surface: #ffffff;
+  --surface-2: #f5f7ff;
+  --blue: #2563eb;
+  --blue-light: rgba(37,99,235,0.08);
+  --blue-mid: rgba(37,99,235,0.15);
+  --text: #0f172a;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --border: #dde3f0;
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.option-label {
+  background: #2563eb; color: white; text-align: center;
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+header {
+  position: sticky; top: 26px; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  background: rgba(240,244,255,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-size: 0.95rem; font-weight: 700; letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.logo-sq {
+  width: 20px; height: 20px; border-radius: 5px;
+  background: var(--blue); display: flex; align-items: center;
+  justify-content: center; font-size: 0.55rem; font-weight: 800; color: white;
+}
+.header-pill {
+  font-size: 0.68rem; font-weight: 500; color: var(--blue);
+  background: var(--blue-light); border: 1px solid rgba(37,99,235,0.18);
+  padding: 0.28rem 0.7rem; border-radius: 999px;
+}
+
+/* ── HERO SPLIT ── */
+.hero-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; margin: 1rem 1.5rem;
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.hero-left {
+  padding: 1.4rem 1.25rem;
+  border-right: 1px solid var(--border);
+}
+.hero-eyebrow {
+  font-size: 0.62rem; font-weight: 600; color: var(--blue);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem;
+}
+.hero-left h1 {
+  font-size: 1.55rem; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.1; color: var(--text); margin-bottom: 0.5rem;
+}
+.hero-left h1 strong { color: var(--blue); font-weight: 800; }
+.hero-left p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+.hero-right {
+  padding: 1.4rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.7rem;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 0.1rem; }
+.hs-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.5rem; font-weight: 700; color: var(--blue); line-height: 1;
+}
+.hs-label { font-size: 0.65rem; color: var(--muted); }
+.hero-divider { height: 1px; background: var(--border); }
+
+/* ── RANKED BARS ── */
+.section { padding: 0 1.5rem; margin-bottom: 1.5rem; }
+.sh {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.sh h3 { font-size: 0.9rem; font-weight: 700; }
+.sh a { font-size: 0.72rem; color: var(--blue); text-decoration: none; }
+
+.bar-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.bar-row {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.85rem 1rem;
+  display: flex; align-items: center; gap: 0.85rem; cursor: pointer;
+  transition: border-color 0.15s;
+}
+.bar-row:hover { border-color: var(--blue); }
+.bar-row.top { border-color: var(--blue); background: var(--blue-light); }
+.bar-rank {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.75rem; font-weight: 700; color: var(--dim); width: 16px;
+}
+.bar-rank.first { color: var(--blue); }
+.bar-info { flex: 1; min-width: 0; }
+.bar-model {
+  font-size: 0.82rem; font-weight: 600; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.35rem;
+}
+.bar-track {
+  height: 5px; background: #e2e8f0; border-radius: 999px; overflow: hidden;
+}
+.bar-fill {
+  height: 100%; background: var(--blue); border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.bar-row.top .bar-fill { background: var(--blue); }
+.bar-right { text-align: right; }
+.bar-score {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1;
+}
+.bar-row.top .bar-score { color: var(--blue); }
+.bar-price { font-size: 0.62rem; color: var(--muted); margin-top: 0.15rem; }
+
+/* ── MUST-HAVE CHIPS ── */
+.chips-row {
+  display: flex; gap: 0.4rem; flex-wrap: wrap;
+  padding: 0 1.5rem; margin-bottom: 1.25rem;
+}
+.mchip {
+  font-size: 0.65rem; font-weight: 500;
+  padding: 0.3rem 0.7rem; border-radius: 999px;
+  border: 1.5px solid var(--blue-mid); color: var(--blue);
+  background: var(--blue-light);
+}
+.mchip.off { border-color: var(--border); color: var(--dim); background: transparent; }
+
+/* ── NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: white;
+  border-top: 1.5px solid var(--border);
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 0.2rem; padding: 0.7rem 0.5rem;
+  border: none; background: transparent; cursor: pointer;
+  color: var(--dim); font-size: 0.58rem; font-family: 'Geist', sans-serif;
+  font-weight: 500; transition: color 0.15s; position: relative;
+}
+.nav-btn.active { color: var(--blue); }
+.nav-btn.active::after {
+  content: ''; position: absolute; top: 0; left: 25%; right: 25%;
+  height: 2px; background: var(--blue); border-radius: 0 0 2px 2px;
+}
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+<div class="option-label">B2 — SKY BLUE + RANKED BARS &nbsp;|&nbsp; Blue accent, split hero, horizontal score bars</div>
+
+<header>
+  <div class="logo"><div class="logo-sq">SC</div> SUV Compare</div>
+  <div class="header-pill">Jodhpur</div>
+</header>
+
+<div class="hero-split">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Your shortlist</div>
+    <h1>10 SUVs.<br><strong>One answer.</strong></h1>
+    <p>Ranked for Jodhpur — petrol turbo, 6 airbags, ventilated seats, connected car.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hs-num">84</div>
+      <div class="hs-label">Top score this week</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hs-num">₹20L</div>
+      <div class="hs-label">Your budget</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hs-num">6</div>
+      <div class="hs-label">Scoring categories</div>
+    </div>
+  </div>
+</div>
+
+<div class="chips-row">
+  <div class="mchip">Petrol Turbo</div>
+  <div class="mchip">6 Airbags</div>
+  <div class="mchip">Vent. Seats</div>
+  <div class="mchip">Connected Car</div>
+  <div class="mchip off">5-Seater</div>
+</div>
+
+<div class="section">
+  <div class="sh"><h3>Ranked for you</h3><a href="#">See all 10</a></div>
+  <div class="bar-list">
+
+    <div class="bar-row top">
+      <div class="bar-rank first">1</div>
+      <div class="bar-info">
+        <div class="bar-model">Hyundai Creta SX(O) Turbo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:84%"></div></div>
+      </div>
+      <div class="bar-right">
+        <div class="bar-score">84</div>
+        <div class="bar-price">₹17.7L</div>
+      </div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-rank">2</div>
+      <div class="bar-info">
+        <div class="bar-model">Kia Seltos HTX+ Turbo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:81%"></div></div>
+      </div>
+      <div class="bar-right">
+        <div class="bar-score">81</div>
+        <div class="bar-price">₹18.2L</div>
+      </div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-rank">3</div>
+      <div class="bar-info">
+        <div class="bar-model">MG Hector Sharp Pro</div>
+        <div class="bar-track"><div class="bar-fill" style="width:79%"></div></div>
+      </div>
+      <div class="bar-right">
+        <div class="bar-score">79</div>
+        <div class="bar-price">₹19.1L</div>
+      </div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-rank">4</div>
+      <div class="bar-info">
+        <div class="bar-model">Skoda Kushaq Style 1.5</div>
+        <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+      </div>
+      <div class="bar-right">
+        <div class="bar-score">76</div>
+        <div class="bar-price">₹17.8L</div>
+      </div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-rank">5</div>
+      <div class="bar-info">
+        <div class="bar-model">Tata Nexon Creative+ Turbo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+      </div>
+      <div class="bar-right">
+        <div class="bar-score">74</div>
+        <div class="bar-price">₹16.4L</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn active"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+</body>
+</html>

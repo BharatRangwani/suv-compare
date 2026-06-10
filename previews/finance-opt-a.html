@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance A — The Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.15);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.08);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+
+/* ── Banner ── */
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Journey steps ── */
+.journey { padding: 1rem 1.25rem 0; }
+.journey-title { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 1rem; }
+
+.step { display: flex; gap: 0.85rem; padding-bottom: 1.5rem; position: relative; }
+.step:not(:last-child)::before {
+  content: ''; position: absolute; left: 15px; top: 32px; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--surface);
+  border: 2px solid var(--border); display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; color: var(--muted); flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+.step-num.active { background: var(--blue); border-color: var(--blue); color: white; }
+.step-num.done { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.step-body { flex: 1; min-width: 0; padding-top: 0.35rem; }
+.step-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin-bottom: 0.25rem; }
+.step-head { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.step-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; }
+.step-card.active { border-color: var(--blue); background: var(--blue-light); }
+
+/* ── Big number row ── */
+.num-row { display: flex; gap: 0.75rem; margin-bottom: 0.6rem; }
+.num-block { flex: 1; }
+.num-val { font-family: 'Geist Mono', monospace; font-size: 1.35rem; font-weight: 800; color: var(--blue); line-height: 1; }
+.num-label { font-size: 0.62rem; color: var(--muted); margin-top: 0.15rem; }
+
+/* ── Slider ── */
+.slider-row { margin-bottom: 0.6rem; }
+.slider-row label { font-size: 0.72rem; color: var(--muted); display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
+input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; }
+
+/* ── Chip row ── */
+.chip-row { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.chip {
+  font-size: 0.68rem; font-weight: 500; padding: 0.3rem 0.65rem;
+  border-radius: 999px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--muted); cursor: pointer;
+}
+.chip.active { border-color: var(--blue); background: var(--blue-light); color: var(--blue); font-weight: 600; }
+
+/* ── Mini table ── */
+.mini-table { width: 100%; font-size: 0.75rem; border-collapse: collapse; }
+.mini-table td { padding: 0.45rem 0; border-bottom: 1px solid var(--border); }
+.mini-table tr:last-child td { border-bottom: none; }
+.mini-table td:last-child { text-align: right; font-weight: 600; color: var(--text); font-family: 'Geist Mono', monospace; font-size: 0.78rem; }
+
+/* ── Result box ── */
+.result-box {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  border-radius: 10px; padding: 1rem 1.1rem; color: white; margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.result-emi { font-family: 'Geist Mono', monospace; font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.result-label { font-size: 0.62rem; color: rgba(255,255,255,0.65); margin-top: 0.2rem; }
+.result-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+.result-meta { font-size: 0.7rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+/* ── Exchange compare row ── */
+.exch-row { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+.exch-row:last-child { border-bottom: none; }
+.exch-car { font-size: 0.8rem; font-weight: 600; }
+.exch-car small { font-size: 0.65rem; font-weight: 400; color: var(--muted); display: block; margin-top: 0.05rem; }
+.exch-price { text-align: right; }
+.exch-onroad { font-size: 0.7rem; color: var(--muted); }
+.exch-net { font-size: 0.88rem; font-weight: 700; color: var(--blue); font-family: 'Geist Mono', monospace; }
+
+/* ── Checklist ── */
+.checklist { display: flex; flex-direction: column; gap: 0; }
+.check-item { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+.check-item:last-child { border-bottom: none; }
+.check-box { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 0.1rem; accent-color: var(--blue); }
+
+/* ── Tip chip ── */
+.tip { font-size: 0.72rem; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.75rem; line-height: 1.5; margin-top: 0.6rem; }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION A — Journey / step flow</div>
+
+<div class="journey">
+  <div class="journey-title">Your buying journey</div>
+
+  <!-- Step 1: Budget -->
+  <div class="step">
+    <div class="step-num done">✓</div>
+    <div class="step-body">
+      <div class="step-label">Step 1</div>
+      <div class="step-head">Your top pick</div>
+      <div class="step-card">
+        <div style="font-size:0.62rem;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem">Hyundai</div>
+        <div style="font-size:1.05rem;font-weight:700;color:var(--blue);margin-bottom:0.5rem">Creta <span style="font-size:0.72rem;color:var(--muted);font-weight:400">SX(O) Petrol Turbo DCT</span></div>
+        <div class="num-row">
+          <div class="num-block"><div class="num-val">84</div><div class="num-label">Match score</div></div>
+          <div class="num-block"><div class="num-val">₹17.7L</div><div class="num-label">On-road</div></div>
+          <div class="num-block"><div class="num-val">3 wks</div><div class="num-label">Wait time</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: EMI -->
+  <div class="step">
+    <div class="step-num active">2</div>
+    <div class="step-body">
+      <div class="step-label">Step 2</div>
+      <div class="step-head">Loan calculator</div>
+      <div class="step-card active">
+        <div class="result-box">
+          <div>
+            <div class="result-emi">₹28,400</div>
+            <div class="result-label">per month</div>
+          </div>
+          <div class="result-divider"></div>
+          <div class="result-meta">
+            80% financed · ₹14.16L<br>
+            8.5% p.a. · 5 years<br>
+            Total interest: ₹2.81L
+          </div>
+        </div>
+        <div class="slider-row">
+          <label><span>Down payment</span><strong style="color:var(--blue)">20% — ₹3.54L</strong></label>
+          <input type="range" min="5" max="50" value="20">
+        </div>
+        <div class="chip-row" style="margin-bottom:0.65rem">
+          <span class="chip active">SBI 8.5%</span>
+          <span class="chip">HDFC 8.75%</span>
+          <span class="chip">ICICI 9%</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip">3 yr</span>
+          <span class="chip">4 yr</span>
+          <span class="chip active">5 yr</span>
+          <span class="chip">7 yr</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Exchange -->
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-label">Step 3</div>
+      <div class="step-head">Trade in your Quanto</div>
+      <div class="step-card">
+        <table class="mini-table" style="margin-bottom:0.6rem">
+          <tr><td style="color:var(--muted)">Open market value</td><td>₹1.18L</td></tr>
+          <tr><td style="color:var(--muted)">Dealer offer (−12%)</td><td>₹1.03L</td></tr>
+          <tr><td style="color:var(--muted)">Net cost after exchange</td><td style="color:var(--blue)">₹16.67L</td></tr>
+        </table>
+        <div class="chip-row">
+          <span class="chip">2014</span>
+          <span class="chip">Good</span>
+          <span class="chip">80k km</span>
+        </div>
+        <div class="tip">💡 Cars24 and Spinny typically offer 5–8% more than dealer exchange. Get 3 quotes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4: Dealer -->
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-label">Step 4</div>
+      <div class="step-head">Dealer visit checklist</div>
+      <div class="step-card">
+        <div class="checklist">
+          <label class="check-item"><input type="checkbox" class="check-box"> Ask for OTR price in writing</label>
+          <label class="check-item"><input type="checkbox" class="check-box"> Negotiate accessories separately</label>
+          <label class="check-item"><input type="checkbox" class="check-box"> Check actual waiting period</label>
+          <label class="check-item"><input type="checkbox" class="check-box"> Verify colour availability</label>
+          <label class="check-item"><input type="checkbox" class="check-box"> Compare exchange offer with Cars24</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="nav">
+  <button class="nav-btn"><span>🏠</span>Home</button>
+  <button class="nav-btn"><span>⚖️</span>Compare</button>
+  <button class="nav-btn"><span>🏆</span>Ranking</button>
+  <button class="nav-btn active"><span>₹</span>Cost & Finance</button>
+</nav>
+</body>
+</html>

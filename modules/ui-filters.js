@@ -24,6 +24,7 @@ const DEFAULT_FILTERS = {
   clutchless:       'all',
   dash_cam:         'all',
   vfm:              'all',
+  platform:         'all',
   service_avail:    'all',
   after_sales:      'all',
   waiting:          'all',
@@ -176,6 +177,16 @@ export function applyFilters(cars, filters) {
       if (filters.vfm === 'excellent'  && tag !== 'excellent') return false;
       if (filters.vfm === 'good'       && tag === 'overpriced') return false;
       if (filters.vfm === 'overpriced' && tag !== 'overpriced') return false;
+    }
+
+    // Platform — single (maps logical group → platform string fragments)
+    if (filters.platform !== 'all') {
+      const plat = (car.platform || '').toLowerCase();
+      if (filters.platform === 'mqb'      && !plat.includes('mqb'))       return false;
+      if (filters.platform === 'tnga'     && !plat.includes('tnga'))       return false;
+      if (filters.platform === 'k2sp2'    && !plat.includes('k2') && !plat.includes('sp2')) return false;
+      if (filters.platform === 'bof'      && !plat.includes('bof'))        return false;
+      if (filters.platform === 'ev_only'  && car.fuel !== 'electric')      return false;
     }
 
     // Service availability (# of Jodhpur service centers) — single
@@ -351,6 +362,17 @@ export function renderFilters(container, onFilterChange) {
         { value: 'excellent',  label: '🏷 Excellent' },
         { value: 'good',       label: 'Good+' },
         { value: 'overpriced', label: 'Overpriced' },
+      ]
+    },
+    {
+      group: 'platform', label: 'Platform / Tech', multi: false,
+      options: [
+        { value: 'all',    label: 'Any' },
+        { value: 'mqb',    label: 'VW MQB (EU)' },
+        { value: 'tnga',   label: 'Toyota TNGA' },
+        { value: 'k2sp2',  label: 'Hyundai-Kia K2' },
+        { value: 'bof',    label: 'Body-on-Frame' },
+        { value: 'ev_only',label: 'EV Platform' },
       ]
     },
     {

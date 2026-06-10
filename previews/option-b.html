@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B Preview — Slate & Emerald</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f8fa;
+  --surface: #ffffff;
+  --surface-2: #f2f2f6;
+  --emerald: #059669;
+  --emerald-light: rgba(5,150,105,0.1);
+  --emerald-mid: rgba(5,150,105,0.18);
+  --slate: #1e293b;
+  --slate-mid: #334155;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --border: #e2e8f0;
+  --border-dark: #cbd5e1;
+  --text: #0f172a;
+  --radius: 14px;
+  --radius-sm: 8px;
+  font-family: 'Geist', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── LABEL ─────────────────────────────────────── */
+.option-label {
+  background: #059669;
+  color: white;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* ─── HEADER ─────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 26px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  background: rgba(248,248,250,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+.header-right {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.header-chip {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--emerald-light);
+  color: var(--emerald);
+  border: 1px solid rgba(5,150,105,0.2);
+}
+
+/* ─── PROFILE BANNER ────────────────────────────── */
+.profile-banner {
+  margin: 1rem 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--slate);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.profile-left h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+.profile-left p {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+.profile-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-end;
+}
+.ppill {
+  font-size: 0.62rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+.ppill.green {
+  background: rgba(5,150,105,0.25);
+  color: #34d399;
+}
+
+/* ─── SECTION HEADER ──────────────────────────────── */
+.section-hd {
+  padding: 1.25rem 1.5rem 0.75rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.section-hd h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.section-hd a {
+  font-size: 0.75rem;
+  color: var(--emerald);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ─── CAR CARD (HORIZONTAL LIST STYLE) ─────────────── */
+.car-list { padding: 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.car-row {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.car-row:hover {
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px var(--emerald-light);
+}
+.car-row.top {
+  border-color: var(--emerald);
+  background: linear-gradient(135deg, rgba(5,150,105,0.04), white);
+}
+.rank-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dim);
+  width: 24px;
+  flex-shrink: 0;
+}
+.rank-num.first { color: var(--emerald); }
+.car-info { flex: 1; min-width: 0; }
+.car-row-brand {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.15rem;
+}
+.car-row-model {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.car-row-tags {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 0.58rem;
+  font-weight: 500;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.tag.ok { background: var(--emerald-light); color: var(--emerald); border-color: rgba(5,150,105,0.2); }
+.car-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.car-score-big {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--slate);
+  line-height: 1;
+}
+.car-score-big.top-score { color: var(--emerald); }
+.car-price-small {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+/* ─── QUICK STATS STRIP ─────────────────────────── */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  padding: 0 1.5rem;
+  margin-top: 1.25rem;
+}
+.stat-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.9rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--emerald);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-label {
+  font-size: 0.62rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ─── BOTTOM NAV ────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  background: white;
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--dim);
+  font-size: 0.58rem;
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.nav-btn.active { color: var(--emerald); }
+.nav-icon { font-size: 1.05rem; }
+.nav-active-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--emerald);
+  border-radius: 2px 2px 0 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="option-label">OPTION B — SLATE & EMERALD &nbsp;|&nbsp; Light mode, ranked list, Geist font, bottom-tab nav, enterprise-clean</div>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    SUV Compare
+  </div>
+  <div class="header-right">
+    <div class="header-chip">Jodhpur</div>
+  </div>
+</header>
+
+<div class="profile-banner">
+  <div class="profile-left">
+    <h2>Your shortlist is ready</h2>
+    <p>Scored against 6 categories for Jodhpur</p>
+  </div>
+  <div class="profile-pills">
+    <div class="ppill green">Petrol Turbo</div>
+    <div class="ppill">6 Airbags</div>
+    <div class="ppill">Vent. Seats</div>
+  </div>
+</div>
+
+<div class="section-hd">
+  <h3>Ranked for you</h3>
+  <a href="#">See all 10</a>
+</div>
+
+<div class="car-list">
+
+  <div class="car-row top">
+    <div class="rank-num first">1</div>
+    <div class="car-info">
+      <div class="car-row-brand">Hyundai</div>
+      <div class="car-row-model">Creta SX(O) Turbo</div>
+      <div class="car-row-tags">
+        <span class="tag ok">6 Airbags</span>
+        <span class="tag ok">Vent. Seats</span>
+        <span class="tag ok">BlueLink</span>
+      </div>
+    </div>
+    <div class="car-right">
+      <div class="car-score-big top-score">84</div>
+      <div class="car-price-small">₹17.69L</div>
+    </div>
+  </div>
+
+  <div class="car-row">
+    <div class="rank-num">2</div>
+    <div class="car-info">
+      <div class="car-row-brand">Kia</div>
+      <div class="car-row-model">Seltos HTX+ Turbo</div>
+      <div class="car-row-tags">
+        <span class="tag ok">6 Airbags</span>
+        <span class="tag">iRA</span>
+      </div>
+    </div>
+    <div class="car-right">
+      <div class="car-score-big">81</div>
+      <div class="car-price-small">₹18.2L</div>
+    </div>
+  </div>
+
+  <div class="car-row">
+    <div class="rank-num">3</div>
+    <div class="car-info">
+      <div class="car-row-brand">MG</div>
+      <div class="car-row-model">Hector Sharp Pro</div>
+      <div class="car-row-tags">
+        <span class="tag ok">Vent. Seats</span>
+        <span class="tag ok">i-SMART</span>
+      </div>
+    </div>
+    <div class="car-right">
+      <div class="car-score-big">79</div>
+      <div class="car-price-small">₹19.1L</div>
+    </div>
+  </div>
+
+  <div class="car-row">
+    <div class="rank-num">4</div>
+    <div class="car-info">
+      <div class="car-row-brand">Skoda</div>
+      <div class="car-row-model">Kushaq Style 1.5</div>
+      <div class="car-row-tags">
+        <span class="tag ok">6 Airbags</span>
+        <span class="tag">5-Star NCAP</span>
+      </div>
+    </div>
+    <div class="car-right">
+      <div class="car-score-big">76</div>
+      <div class="car-price-small">₹17.8L</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="stats-strip">
+  <div class="stat-tile">
+    <div class="stat-num">10</div>
+    <div class="stat-label">SUVs scored</div>
+  </div>
+  <div class="stat-tile">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Categories</div>
+  </div>
+  <div class="stat-tile">
+    <div class="stat-num">₹20L</div>
+    <div class="stat-label">Your budget</div>
+  </div>
+</div>
+
+<div style="height: 5rem"></div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" style="position:relative">
+    <span class="nav-icon">⊞</span>
+    Explore
+    <div class="nav-active-bar"></div>
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">≡</span>
+    Compare
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">★</span>
+    Ranking
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">◎</span>
+    Jodhpur
+  </button>
+</nav>
+
+</body>
+</html>

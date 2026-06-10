@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking D — Expandable cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.18);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.09);
+  --orange: #c2410c; --orange-bg: rgba(194,65,12,0.08);
+  --red: #dc2626; --red-bg: rgba(220,38,38,0.07);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Filter chips ── */
+.filter-row {
+  display: flex; gap: 0.35rem; overflow-x: auto; scrollbar-width: none;
+  padding: 0.85rem 1.25rem 0;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+.fchip {
+  flex-shrink: 0; font-size: 0.68rem; font-weight: 600;
+  padding: 0.3rem 0.75rem; border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--muted);
+  cursor: pointer;
+}
+.fchip.on { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+
+/* ── Expandable card list ── */
+.rank-list { margin: 0.75rem 1.25rem 0; display: flex; flex-direction: column; gap: 0; background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+
+.exp-card { border-bottom: 1px solid var(--border); }
+.exp-card:last-child { border-bottom: none; }
+
+/* Summary row (always visible) */
+.exp-summary {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+.exp-summary:hover { background: var(--surface-2); }
+.exp-card.open .exp-summary { background: var(--blue-light); }
+.exp-card.rank-1 .exp-summary { background: var(--blue-light); }
+
+.exp-rank {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1rem; font-weight: 900;
+  color: var(--dim); width: 22px; text-align: center; flex-shrink: 0;
+}
+.exp-card.rank-1 .exp-rank { color: var(--blue); font-size: 1.15rem; }
+.exp-card.rank-2 .exp-rank { color: var(--text); }
+
+.exp-info { flex: 1; min-width: 0; }
+.exp-name { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.exp-sub  { font-size: 0.62rem; color: var(--dim); margin-top: 0.05rem; }
+.exp-card.rank-1 .exp-name { color: var(--blue); }
+
+/* mini score bar */
+.exp-bar-col { display: flex; flex-direction: column; align-items: center; gap: 0.18rem; flex-shrink: 0; }
+.exp-mini-bar { width: 50px; height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.exp-mini-fill { height: 100%; border-radius: 999px; background: var(--blue); }
+.exp-card:not(.rank-1):not(.rank-2):not(.rank-3) .exp-mini-fill { background: var(--dim); }
+.exp-mini-num { font-family: 'Geist Mono', monospace; font-size: 0.62rem; font-weight: 700; color: var(--muted); }
+
+.exp-price-col { text-align: right; flex-shrink: 0; }
+.exp-price { font-family: 'Geist Mono', monospace; font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.exp-card.rank-1 .exp-price { color: var(--blue); }
+.exp-wait { font-size: 0.6rem; color: var(--dim); margin-top: 0.05rem; }
+
+.exp-chevron { color: var(--dim); font-size: 0.9rem; flex-shrink: 0; transition: transform 0.2s; }
+.exp-card.open .exp-chevron { transform: rotate(90deg); color: var(--blue); }
+
+/* Expanded detail */
+.exp-detail { display: none; padding: 0.75rem 1rem 0.85rem; border-top: 1px solid var(--border); background: var(--surface); }
+.exp-card.open .exp-detail { display: block; }
+
+.exp-cat-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.4rem; margin-bottom: 0.75rem;
+}
+.exp-cat {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.45rem 0.55rem;
+}
+.exp-cat-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem; }
+.exp-cat-name { font-size: 0.58rem; color: var(--muted); }
+.exp-cat-val  { font-size: 0.72rem; font-weight: 800; color: var(--text); font-family: 'Geist Mono', monospace; }
+.exp-cat-bar  { height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.exp-cat-fill { height: 100%; border-radius: 999px; background: var(--blue); }
+
+.exp-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.etag {
+  font-size: 0.62rem; padding: 0.18rem 0.5rem;
+  border-radius: 4px; border: 1px solid var(--border);
+  color: var(--dim); background: var(--surface);
+}
+.etag.good { background: var(--green-bg); color: var(--green); border-color: rgba(22,163,74,0.2); }
+.etag.warn { background: var(--orange-bg); color: var(--orange); border-color: rgba(194,65,12,0.2); }
+.etag.bad  { background: var(--red-bg); color: var(--red); border-color: rgba(220,38,38,0.2); }
+
+.exp-action-row { display: flex; gap: 0.5rem; }
+.exp-btn {
+  flex: 1; text-align: center;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.45rem 0;
+  border-radius: 8px; cursor: pointer;
+  border: none; font-family: 'Geist', sans-serif;
+}
+.exp-btn-primary { background: var(--blue); color: white; }
+.exp-btn-secondary { background: var(--surface-2); border: 1.5px solid var(--border); color: var(--text); }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION D — Tap-to-expand rows with category breakdown inside</div>
+
+<!-- Filter chips -->
+<div class="filter-row">
+  <button class="fchip on">All</button>
+  <button class="fchip">6 Airbags</button>
+  <button class="fchip">Under ₹16L</button>
+  <button class="fchip">In stock</button>
+  <button class="fchip">Strong Hybrid</button>
+  <button class="fchip">ADAS</button>
+</div>
+
+<!-- Rank list -->
+<div class="rank-list" id="rank-list">
+
+  <!-- #1 expanded by default -->
+  <div class="exp-card rank-1 open">
+    <div class="exp-summary">
+      <div class="exp-rank">1</div>
+      <div class="exp-info">
+        <div class="exp-name">Hyundai Creta SX(O)</div>
+        <div class="exp-sub">Petrol Turbo DCT</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-mini-bar"><div class="exp-mini-fill" style="width:84%"></div></div>
+        <div class="exp-mini-num">84</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹17.70L</div>
+        <div class="exp-wait">3 wks</div>
+      </div>
+      <span class="exp-chevron">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-cat-grid">
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">88</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:88%"></div></div>
+        </div>
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Value</span><span class="exp-cat-val">82</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:82%"></div></div>
+        </div>
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Features</span><span class="exp-cat-val">91</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:91%"></div></div>
+        </div>
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Service</span><span class="exp-cat-val">80</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:80%"></div></div>
+        </div>
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">85</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:85%"></div></div>
+        </div>
+        <div class="exp-cat">
+          <div class="exp-cat-top"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">75</span></div>
+          <div class="exp-cat-bar"><div class="exp-cat-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">6 Airbags</span>
+        <span class="etag good">Ventilated seats</span>
+        <span class="etag good">ADAS</span>
+        <span class="etag good">Connected car</span>
+        <span class="etag warn">3-week wait</span>
+      </div>
+      <div class="exp-action-row">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #2 collapsed -->
+  <div class="exp-card rank-2">
+    <div class="exp-summary">
+      <div class="exp-rank">2</div>
+      <div class="exp-info">
+        <div class="exp-name">Kia Seltos GTX+</div>
+        <div class="exp-sub">Petrol DCT</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-mini-bar"><div class="exp-mini-fill" style="width:81%"></div></div>
+        <div class="exp-mini-num">81</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹18.40L</div>
+        <div class="exp-wait">6 wks</div>
+      </div>
+      <span class="exp-chevron">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-cat-grid">
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">85</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:85%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Value</span><span class="exp-cat-val">75</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:75%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Features</span><span class="exp-cat-val">90</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:90%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Service</span><span class="exp-cat-val">72</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:72%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">83</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:83%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">78</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:78%"></div></div></div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">6 Airbags</span><span class="etag good">ADAS</span><span class="etag warn">6-week wait</span>
+      </div>
+      <div class="exp-action-row">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #3 collapsed -->
+  <div class="exp-card rank-3">
+    <div class="exp-summary">
+      <div class="exp-rank">3</div>
+      <div class="exp-info">
+        <div class="exp-name">Maruti Grand Vitara</div>
+        <div class="exp-sub">Alpha+ Strong Hybrid</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-mini-bar"><div class="exp-mini-fill" style="width:79%"></div></div>
+        <div class="exp-mini-num">79</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹17.88L</div>
+        <div class="exp-wait">In stock</div>
+      </div>
+      <span class="exp-chevron">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-cat-grid">
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">80</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:80%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Value</span><span class="exp-cat-val">85</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:85%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Features</span><span class="exp-cat-val">72</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:72%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Service</span><span class="exp-cat-val">90</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:90%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">77</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:77%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-top"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">88</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:88%"></div></div></div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">Best fuel economy</span><span class="etag good">Best service network</span><span class="etag good">In stock</span>
+      </div>
+      <div class="exp-action-row">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #4 -->
+  <div class="exp-card">
+    <div class="exp-summary">
+      <div class="exp-rank">4</div>
+      <div class="exp-info">
+        <div class="exp-name">Honda Elevate ZX</div>
+        <div class="exp-sub">Petrol CVT</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-mini-bar"><div class="exp-mini-fill" style="width:74%"></div></div>
+        <div class="exp-mini-num">74</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹16.35L</div>
+        <div class="exp-wait">In stock</div>
+      </div>
+      <span class="exp-chevron">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-tags">
+        <span class="etag good">6 Airbags</span><span class="etag good">In stock</span><span class="etag warn">No ADAS</span>
+      </div>
+      <div class="exp-action-row">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #5 -->
+  <div class="exp-card">
+    <div class="exp-summary">
+      <div class="exp-rank">5</div>
+      <div class="exp-info">
+        <div class="exp-name">Tata Nexon Fearless+</div>
+        <div class="exp-sub">Petrol AMT</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-mini-bar"><div class="exp-mini-fill" style="width:70%"></div></div>
+        <div class="exp-mini-num">70</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹13.02L</div>
+        <div class="exp-wait">In stock</div>
+      </div>
+      <span class="exp-chevron">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-tags">
+        <span class="etag good">5-star NCAP</span><span class="etag good">Lowest price</span><span class="etag warn">AMT gearbox</span>
+      </div>
+      <div class="exp-action-row">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.exp-summary').forEach(s => {
+  s.addEventListener('click', () => {
+    const card = s.closest('.exp-card');
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.exp-card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  });
+});
+</script>
+
+<nav class="nav">
+  <button class="nav-btn">🏠 Home</button>
+  <button class="nav-btn">⚖️ Compare</button>
+  <button class="nav-btn active">🏆 Ranking</button>
+  <button class="nav-btn">₹ Cost</button>
+</nav>
+</body>
+</html>

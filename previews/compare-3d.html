@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare — 3D Viewer Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff;
+  --surface: #ffffff;
+  --surface-2: #f5f7ff;
+  --blue: #2563eb;
+  --blue-light: rgba(37,99,235,0.08);
+  --blue-mid: rgba(37,99,235,0.15);
+  --blue-dark: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --border: #dde3f0;
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+/* ── HEADER ── */
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(240,244,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.03em; display: flex; align-items: center; gap: 0.4rem; }
+.logo-sq { width: 18px; height: 18px; border-radius: 4px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 800; color: white; }
+.header-back { font-size: 0.72rem; color: var(--blue); font-weight: 500; cursor: pointer; }
+
+/* ── CAR SELECTOR TABS ── */
+.viewer-wrap {
+  margin: 0.9rem 1.25rem 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+  position: relative;
+}
+
+/* ── CAR SELECTOR CAROUSEL ── */
+.car-selector-wrap { padding: 0.6rem 0.6rem 0; }
+.csel-track-wrap { overflow: hidden; }
+.csel-track { display: flex; gap: 0.3rem; transition: transform 0.3s ease; }
+.csel-arrow {
+  position: absolute; top: 0; bottom: 0; width: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(to right, rgba(30,58,138,0.7), transparent);
+  border: none; cursor: pointer; color: white; font-size: 1.3rem; z-index: 20;
+  transition: background 0.15s;
+}
+#csel-prev { left: 0; background: linear-gradient(to right, rgba(30,58,138,0.8), transparent); border-radius: var(--radius) 0 0 0; }
+#csel-next { right: 0; background: linear-gradient(to left, rgba(30,58,138,0.8), transparent); border-radius: 0 var(--radius) 0 0; }
+.csel-arrow:hover { background: rgba(255,255,255,0.15) !important; }
+.csel-arrow:disabled { opacity: 0.15; cursor: default; }
+.csel-track-wrap { flex: 1; overflow: hidden; }
+.csel-track { display: flex; gap: 0.3rem; transition: transform 0.3s ease; }
+.csel-btn {
+  flex: 0 0 calc(50% - 0.15rem);  /* exactly 2 visible */
+  text-align: center; padding: 0.75rem 0.4rem 0.6rem;
+  border-radius: 8px 8px 0 0; cursor: pointer;
+  transition: background 0.2s; border: 1px solid transparent;
+}
+.csel-btn.active { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.15); }
+.csel-btn:hover:not(.active) { background: rgba(255,255,255,0.08); }
+.csel-brand { font-size: 0.62rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.1rem; }
+.csel-model { font-size: 1.1rem; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1.1; }
+.csel-score { font-family: 'Geist Mono', monospace; font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.85); margin-top: 0.15rem; }
+
+/* ── THREE.JS CANVAS CONTAINER ── */
+#viewer-container {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  cursor: grab;
+}
+#viewer-container:active { cursor: grabbing; }
+#three-canvas { display: block; width: 100% !important; height: 100% !important; }
+
+.viewer-hint {
+  position: absolute; bottom: 0.5rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.6rem; color: rgba(255,255,255,0.45);
+  background: rgba(0,0,0,0.2); border-radius: 999px;
+  padding: 0.2rem 0.65rem; pointer-events: none;
+  transition: opacity 0.5s;
+}
+.viewer-hint.hidden { opacity: 0; }
+
+/* ── IMAGE FALLBACK (for cars without GLB) ── */
+#viewer-image {
+  position: absolute; inset: 0;
+  display: none; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+#viewer-image img {
+  max-width: 88%; max-height: 88%;
+  object-fit: contain; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+  animation: car-rock 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes car-rock {
+  0%   { transform: perspective(600px) rotateY(-12deg) rotateX(2deg); }
+  50%  { transform: perspective(600px) rotateY(12deg)  rotateX(-1deg); }
+  100% { transform: perspective(600px) rotateY(-12deg) rotateX(2deg); }
+}
+
+/* Loading state */
+#viewer-loading {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem;
+}
+.loading-ring {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+
+/* ── COLOR + VARIANT ROW ── */
+.cv-row {
+  padding: 0.75rem 1rem;
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.cv-block { display: flex; flex-direction: column; gap: 0.35rem; }
+.cv-label { font-size: 0.55rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+.color-dots { display: flex; gap: 0.4rem; }
+.cdot {
+  width: 22px; height: 22px; border-radius: 50%;
+  cursor: pointer; border: 2.5px solid transparent;
+  transition: all 0.2s; position: relative;
+}
+.cdot.active { border-color: white; transform: scale(1.15); }
+.cdot:hover:not(.active) { transform: scale(1.08); }
+.variant-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.vchip-sm {
+  font-size: 0.62rem; font-weight: 500; padding: 0.25rem 0.6rem;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.08);
+  cursor: pointer; white-space: nowrap; transition: all 0.15s;
+}
+.vchip-sm.active { background: rgba(255,255,255,0.22); color: white; border-color: rgba(255,255,255,0.55); }
+
+/* ── SCORE STRIP ── */
+.score-strip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: white; border: 1.5px solid var(--border);
+  border-top: none; border-radius: 0 0 var(--radius) var(--radius);
+  margin: 0 1.25rem; overflow: hidden;
+}
+.ss-cell { padding: 0.9rem 0.75rem; text-align: center; border-right: 1px solid var(--border); }
+.ss-cell:last-child { border-right: none; }
+.ss-num { font-family: 'Geist', sans-serif; font-size: 1.65rem; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -0.03em; }
+.ss-label { font-size: 0.72rem; font-weight: 500; color: var(--muted); margin-top: 0.25rem; }
+
+/* ── SPEC TABS ── */
+.spec-tabs {
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  padding: 0 1.25rem;
+  background: white; border-bottom: 1px solid var(--border);
+  position: sticky; top: 57px; z-index: 50;
+  margin: 0.85rem 0 0;
+}
+.spec-tabs::-webkit-scrollbar { display: none; }
+.stab {
+  font-size: 0.72rem; font-weight: 600; padding: 0.6rem 0.85rem;
+  color: var(--muted); cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: all 0.15s;
+}
+.stab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* ── SPEC CONTENT ── */
+.spec-content { padding: 0.75rem 1.25rem; }
+
+.must-haves { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
+.mh-tile {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.7rem 0.75rem;
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+.mh-tile.pass { border-color: rgba(37,99,235,0.3); background: var(--blue-light); }
+.mh-tile.fail { border-color: rgba(239,68,68,0.25); background: rgba(239,68,68,0.05); }
+.mh-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+.mh-text { font-size: 0.72rem; font-weight: 600; color: var(--text); line-height: 1.2; }
+.mh-sub { font-size: 0.6rem; color: var(--muted); margin-top: 0.1rem; }
+
+.spec-table { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 0.75rem; }
+.srow { display: flex; align-items: center; justify-content: space-between; padding: 0.62rem 1rem; border-bottom: 1px solid var(--border); }
+.srow:last-child { border-bottom: none; }
+.srow-key { font-size: 0.74rem; color: var(--muted); }
+.srow-val { font-size: 0.76rem; font-weight: 600; color: var(--text); font-family: 'Geist Mono', monospace; display: flex; align-items: center; gap: 0.3rem; }
+.tick { color: #16a34a; font-style: normal; }
+.cross { color: #ef4444; font-style: normal; }
+.badge-blue { font-size: 0.56rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 4px; background: var(--blue-light); color: var(--blue); }
+
+/* ── CTA ROW ── */
+.cta-row { display: flex; gap: 0.6rem; padding: 0 1.25rem; margin: 0 0 1.25rem; }
+.btn-primary { flex: 1; background: var(--blue); color: white; border: none; border-radius: 10px; padding: 0.85rem; font-size: 0.85rem; font-weight: 700; font-family: 'Geist', sans-serif; cursor: pointer; }
+.btn-outline { flex: 1; background: white; color: var(--blue); border: 1.5px solid var(--blue-mid); border-radius: 10px; padding: 0.85rem; font-size: 0.85rem; font-weight: 700; font-family: 'Geist', sans-serif; cursor: pointer; }
+
+/* ── NAV ── */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; background: white; border-top: 1.5px solid var(--border); }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; cursor: pointer; color: var(--dim); font-size: 0.58rem; font-family: 'Geist', sans-serif; font-weight: 500; transition: color 0.15s; position: relative; }
+.nav-btn.active { color: var(--blue); }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><div class="logo-sq">SC</div> SUV Compare</div>
+  <div class="header-back">‹ Explore</div>
+</header>
+
+<div class="viewer-wrap">
+
+  <!-- Carousel arrows — full viewer height, positioned absolute -->
+  <button class="csel-arrow" id="csel-prev" onclick="carouselPrev()" disabled>‹</button>
+  <button class="csel-arrow" id="csel-next" onclick="carouselNext()">›</button>
+
+  <!-- Car selector carousel — 2 visible at a time -->
+  <div class="car-selector-wrap">
+    <div class="csel-track-wrap">
+      <div class="csel-track" id="csel-track">
+        <div class="csel-btn active" data-car="Creta" onclick="switchCar(this,'Creta')">
+          <div class="csel-brand">Hyundai</div>
+          <div class="csel-model">Creta</div>
+          <div class="csel-score">84</div>
+        </div>
+        <div class="csel-btn" data-car="Seltos" onclick="switchCar(this,'Seltos')">
+          <div class="csel-brand">Kia</div>
+          <div class="csel-model">Seltos</div>
+          <div class="csel-score">81</div>
+        </div>
+        <div class="csel-btn" data-car="Harrier" onclick="switchCar(this,'Harrier')">
+          <div class="csel-brand">Tata</div>
+          <div class="csel-model">Harrier</div>
+          <div class="csel-score">79</div>
+        </div>
+        <div class="csel-btn" data-car="GrandVitara" onclick="switchCar(this,'GrandVitara')">
+          <div class="csel-brand">Maruti</div>
+          <div class="csel-model">Grand Vitara</div>
+          <div class="csel-score">77</div>
+        </div>
+        <div class="csel-btn" data-car="UrbanCruiser" onclick="switchCar(this,'UrbanCruiser')">
+          <div class="csel-brand">Toyota</div>
+          <div class="csel-model">Urban Cruiser</div>
+          <div class="csel-score">76</div>
+        </div>
+        <div class="csel-btn" data-car="XUV700" onclick="switchCar(this,'XUV700')">
+          <div class="csel-brand">Mahindra</div>
+          <div class="csel-model">Quanto</div>
+          <div class="csel-score">78</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js canvas -->
+  <div id="viewer-container">
+    <canvas id="three-canvas"></canvas>
+    <div id="viewer-image"><img id="viewer-img-el" src="" alt=""></div>
+    <div id="viewer-loading">
+      <div class="loading-ring"></div>
+      <div class="loading-text">Loading 3D model...</div>
+    </div>
+    <div class="viewer-hint" id="drag-hint">Drag to rotate &nbsp;·&nbsp; Pinch to zoom</div>
+  </div>
+
+  <!-- Color + variant -->
+  <div class="cv-row">
+    <div class="cv-block">
+      <div class="cv-label">Color</div>
+      <div class="color-dots" id="color-dots">
+        <!-- Populated dynamically by switchCar() -->
+      </div>
+    </div>
+    <div class="cv-block" style="flex:1">
+      <div class="cv-label">Variant</div>
+      <div class="variant-chips" id="variant-chips">
+        <!-- Populated dynamically by switchCar() -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Score strip -->
+<div class="score-strip">
+  <div class="ss-cell"><div class="ss-num">₹17.7L</div><div class="ss-label">On-road</div></div>
+  <div class="ss-cell"><div class="ss-num">84</div><div class="ss-label">Match score</div></div>
+  <div class="ss-cell"><div class="ss-num">6 wks</div><div class="ss-label">Wait time</div></div>
+</div>
+
+<!-- Spec tabs -->
+<div class="spec-tabs">
+  <div class="stab active" onclick="switchTab(this)">Must-haves</div>
+  <div class="stab" onclick="switchTab(this)">Performance</div>
+  <div class="stab" onclick="switchTab(this)">Safety</div>
+  <div class="stab" onclick="switchTab(this)">Features</div>
+  <div class="stab" onclick="switchTab(this)">Ownership</div>
+</div>
+
+<!-- Tab content panels -->
+<div id="tab-musthaves" class="spec-content">
+  <div class="must-haves">
+    <div class="mh-tile pass"><div class="mh-icon">🛡</div><div><div class="mh-text">6 Airbags</div><div class="mh-sub">Front, side, curtain</div></div></div>
+    <div class="mh-tile pass"><div class="mh-icon">💨</div><div><div class="mh-text">Vent. Seats</div><div class="mh-sub">Driver + co-driver</div></div></div>
+    <div class="mh-tile pass"><div class="mh-icon">📱</div><div><div class="mh-text">Connected Car</div><div class="mh-sub">BlueLink app</div></div></div>
+    <div class="mh-tile pass"><div class="mh-icon">⛽</div><div><div class="mh-text">Petrol Turbo</div><div class="mh-sub">1.5L GDi DCT</div></div></div>
+    <div class="mh-tile pass"><div class="mh-icon">👥</div><div><div class="mh-text">5-Seater</div><div class="mh-sub">920mm rear legroom</div></div></div>
+    <div class="mh-tile pass"><div class="mh-icon">💰</div><div><div class="mh-text">Under ₹20L</div><div class="mh-sub">₹17.69L on-road</div></div></div>
+  </div>
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">NCAP rating</span><span class="srow-val">5 Stars <span class="badge-blue">Global</span></span></div>
+    <div class="srow"><span class="srow-key">ADAS</span><span class="srow-val">Level 2 <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Wireless CarPlay</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Panoramic sunroof</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Service centers, Jodhpur</span><span class="srow-val">3 centers</span></div>
+  </div>
+</div>
+
+<div id="tab-performance" class="spec-content" style="display:none">
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">Engine</span><span class="srow-val">1.5L Turbo GDi</span></div>
+    <div class="srow"><span class="srow-key">Power</span><span class="srow-val">158 BHP</span></div>
+    <div class="srow"><span class="srow-key">Torque</span><span class="srow-val">253 Nm</span></div>
+    <div class="srow"><span class="srow-key">Transmission</span><span class="srow-val">7-speed DCT</span></div>
+    <div class="srow"><span class="srow-key">ARAI mileage</span><span class="srow-val">16.8 kmpl</span></div>
+    <div class="srow"><span class="srow-key">Real-world mileage</span><span class="srow-val">~13 kmpl</span></div>
+    <div class="srow"><span class="srow-key">Ground clearance</span><span class="srow-val">190 mm</span></div>
+  </div>
+</div>
+
+<div id="tab-safety" class="spec-content" style="display:none">
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">Airbags</span><span class="srow-val">6 <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">NCAP rating</span><span class="srow-val">5 Stars <span class="badge-blue">Global</span></span></div>
+    <div class="srow"><span class="srow-key">AEB</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Lane keep assist</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Blind spot monitor</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Rear cross-traffic alert</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Driver drowsiness alert</span><span class="srow-val"><i class="tick">✓</i></span></div>
+  </div>
+</div>
+
+<div id="tab-features" class="spec-content" style="display:none">
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">Ventilated seats</span><span class="srow-val">Front <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Sunroof</span><span class="srow-val">Panoramic <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Connected car</span><span class="srow-val">BlueLink <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Wireless CarPlay</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Wireless Android Auto</span><span class="srow-val"><i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Infotainment screen</span><span class="srow-val">10.25"</span></div>
+    <div class="srow"><span class="srow-key">Digital instrument cluster</span><span class="srow-val">10.25" <i class="tick">✓</i></span></div>
+    <div class="srow"><span class="srow-key">Rear AC vents</span><span class="srow-val"><i class="tick">✓</i></span></div>
+  </div>
+</div>
+
+<div id="tab-ownership" class="spec-content" style="display:none">
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">On-road price (Jodhpur)</span><span class="srow-val">₹17.69 L</span></div>
+    <div class="srow"><span class="srow-key">Annual insurance est.</span><span class="srow-val">₹52,000</span></div>
+    <div class="srow"><span class="srow-key">Annual service est.</span><span class="srow-val">₹18,000</span></div>
+    <div class="srow"><span class="srow-key">3-yr resale value</span><span class="srow-val">~68%</span></div>
+    <div class="srow"><span class="srow-key">5-yr resale value</span><span class="srow-val">~54%</span></div>
+    <div class="srow"><span class="srow-key">Waiting period</span><span class="srow-val">6 weeks</span></div>
+    <div class="srow"><span class="srow-key">Service centers, Jodhpur</span><span class="srow-val">3 centers</span></div>
+  </div>
+</div>
+
+<div class="cta-row">
+  <button class="btn-primary">+ Add to comparison</button>
+  <button class="btn-outline">Share link</button>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn active"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+
+<!-- Three.js from CDN — ES module import map -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ── Scene setup ──────────────────────────────────────────────────────────────
+const container = document.getElementById('viewer-container');
+const canvas    = document.getElementById('three-canvas');
+const loading   = document.getElementById('viewer-loading');
+const hint      = document.getElementById('drag-hint');
+
+const W = container.clientWidth;
+const H = container.clientHeight;
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(W, H);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;  // Creta default — overridden per model on load
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene  = new THREE.Scene();
+// transparent so the gradient CSS background shows through
+scene.background = null;
+
+const camera = new THREE.PerspectiveCamera(45, W / H, 0.01, 100);
+camera.position.set(0, 0.25, 1.9);
+
+// ── Controls ─────────────────────────────────────────────────────────────────
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.enablePan = false;
+controls.minDistance = 1.2;
+controls.maxDistance = 4;
+controls.minPolarAngle = Math.PI / 6;
+controls.maxPolarAngle = Math.PI / 2.1;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 1.8;
+controls.target.set(0, 0.3, 0);  // lock orbit pivot at car centre height
+controls.update();
+
+// Pause auto-rotate while dragging, always resume after release
+let rotateTimer;
+controls.addEventListener('start', () => {
+  controls.autoRotate = false;
+  clearTimeout(rotateTimer);
+  hint.classList.add('hidden');
+});
+controls.addEventListener('end', () => {
+  // Always resume — no condition, so it restarts even after a tap/click
+  clearTimeout(rotateTimer);
+  rotateTimer = setTimeout(() => { controls.autoRotate = true; }, 1500);
+});
+
+// ── Lights ───────────────────────────────────────────────────────────────────
+// Key light (Creta default — overridden per model in loadModel)
+const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
+keyLight.position.set(3, 5, 3);
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.set(1024, 1024);
+keyLight.shadow.camera.near = 0.1;
+keyLight.shadow.camera.far = 20;
+scene.add(keyLight);
+
+// Fill light
+const fillLight = new THREE.DirectionalLight(0xffffff, 1.0);
+fillLight.position.set(-2, 3, 3);
+scene.add(fillLight);
+
+// Rim light
+const rimLight = new THREE.DirectionalLight(0xffffff, 0.8);
+rimLight.position.set(0, 2, -4);
+scene.add(rimLight);
+
+// Under-fill
+const underLight = new THREE.DirectionalLight(0xffffff, 0.3);
+underLight.position.set(0, -2, 2);
+scene.add(underLight);
+
+// Ambient
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+
+// Ground shadow plane
+const shadowGeo  = new THREE.PlaneGeometry(1, 1);
+const shadowMat  = new THREE.ShadowMaterial({ opacity: 0.12 });
+const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
+shadowPlane.rotation.x = -Math.PI / 2;
+shadowPlane.position.y = -0.001;
+shadowPlane.receiveShadow = true;
+scene.add(shadowPlane);
+
+// ── State ────────────────────────────────────────────────────────────────────
+let currentModel = null;
+let paintMeshes  = [];   // meshes whose color we change on color-dot click
+let currentColor = new THREE.Color(0xf0f0f0);
+
+// ── Load model ───────────────────────────────────────────────────────────────
+const loader = new GLTFLoader();
+
+function loadModel(url) {
+  if (currentModel) {
+    scene.remove(currentModel);
+    currentModel = null;
+    paintMeshes = [];
+  }
+  // Image fallback — just clear 3D scene, image shown via CSS overlay
+  if (!url || url === '__fallback_hide__') return;
+  // No GLB yet — use the primitive fallback car
+  if (url === '__fallback__') {
+    renderer.toneMappingExposure = 1.2;
+    keyLight.intensity = 2.5; fillLight.intensity = 1.0;
+    rimLight.intensity = 0.8; underLight.intensity = 0.3;
+    buildFallbackCar();
+    applyColor(currentColor);
+    return;
+  }
+  loading.style.display = 'flex';
+
+  // Encode spaces in path so GLTFLoader fetch succeeds
+  const encodedUrl = url.replace(/ /g, '%20');
+
+  loader.load(
+    encodedUrl,
+    (gltf) => {
+      const model = gltf.scene;
+      currentModel = model;
+
+      // Auto-center and scale to fit
+      const box    = new THREE.Box3().setFromObject(model);
+      const size   = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      // Normalise all models to same apparent size.
+      // Creta=4.32, Seltos=174.88, Harrier=1.90, GrandVitara=8.74
+      // Seltos and Creta already produce the same rendered size at 1.8/maxDim.
+      // Vitara maxDim=8.74 renders too small at 1.8 — needs target scaled up proportionally.
+      let targetFill = 1.8;
+      if (encodedUrl.includes('vitara') || encodedUrl.includes('Vitara')) targetFill = 1.8 * (8.74 / 4.32);
+      const scale = targetFill / maxDim;
+      model.scale.setScalar(scale);
+      // (centering happens below, after optional rotation)
+
+      // Per-model lighting profile — each GLB was authored with different exposure bake
+      const isSeltos  = encodedUrl.includes('Seltos') || encodedUrl.includes('seltos');
+      const isHarrier = encodedUrl.includes('harrier') || encodedUrl.includes('Harrier');
+      if (isSeltos) {
+        renderer.toneMappingExposure = 2.2;
+        keyLight.intensity  = 4.0;
+        fillLight.intensity = 2.5;
+        rimLight.intensity  = 1.5;
+        underLight.intensity = 0.8;
+      } else {
+        renderer.toneMappingExposure = 1.2;
+        keyLight.intensity  = 2.5;
+        fillLight.intensity = 1.0;
+        rimLight.intensity  = 0.8;
+        underLight.intensity = 0.3;
+      }
+
+      // Per-model orientation fix BEFORE centering — some GLBs have wrong up-axis
+      if (isSeltos) {
+        model.rotation.x = -Math.PI / 2;
+      }
+
+      // Center horizontally, sit wheels exactly on the ground plane
+      const postBox    = new THREE.Box3().setFromObject(model);
+      const postCenter = postBox.getCenter(new THREE.Vector3());
+      model.position.x = -postCenter.x;
+      model.position.z = -postCenter.z;
+      model.position.y = -postBox.min.y + 0.02;
+
+      // Size shadow to car footprint — force matrix update so bounds are post-scale
+      model.updateWorldMatrix(true, true);
+      const finalBox = new THREE.Box3().setFromObject(model);
+      const fw = finalBox.max.x - finalBox.min.x;
+      const fd = finalBox.max.z - finalBox.min.z;
+      shadowPlane.scale.set(fw + 0.15, fd + 0.15, 1);
+
+      // Find all paint materials and collect unique instances by name
+      const SKIP_MAT = /black|glass|window|chrome|tire|tyre|rubber|interior|brown|leather|seat|carpet|floor|badge|logo|lamp|light|redglass|licenseplate/i;
+      const matCount = {};
+      const matRefs  = {};
+
+      model.traverse((child) => {
+        if (!child.isMesh) return;
+        child.castShadow = true;
+        child.receiveShadow = true;
+
+        const mats = Array.isArray(child.material) ? child.material : [child.material];
+        mats.forEach(m => {
+          if (!m || !m.color) return;
+          const name = (m.name || '').toLowerCase();
+          // Explicit carpaint names get high weight
+          if (name.includes('carpaint') || name.includes('car_paint') || name.includes('body_paint') || name.includes('carosserie') || name.includes('carcolor')) {
+            matCount[m.name] = (matCount[m.name] || 0) + 99;
+            matRefs[m.name]  = m;
+            return;
+          }
+          if (SKIP_MAT.test(name)) return;
+          const b = m.color.r + m.color.g + m.color.b;
+          if (b < 0.15) return;
+          matCount[m.name] = (matCount[m.name] || 0) + 1;
+          matRefs[m.name]  = m;
+        });
+      });
+
+      const paintMatName = Object.keys(matCount).sort((a,b) => matCount[b]-matCount[a])[0];
+      let carpaintMaterial = paintMatName ? matRefs[paintMatName] : null;
+      console.log('Paint material:', paintMatName, '| has texture:', !!(carpaintMaterial && carpaintMaterial.map));
+
+      // Fallback: if no paint found (e.g. single unnamed white material),
+      // just grab the first mesh material — it IS the body
+      if (!carpaintMaterial) {
+        model.traverse(child => {
+          if (carpaintMaterial || !child.isMesh) return;
+          const m = Array.isArray(child.material) ? child.material[0] : child.material;
+          if (m) carpaintMaterial = m;
+        });
+        if (carpaintMaterial) console.log('Paint fallback: grabbed first material', carpaintMaterial.name || '(unnamed)');
+      }
+
+      if (carpaintMaterial) {
+        carpaintMaterial.metalness = 0.7;
+        carpaintMaterial.roughness = 0.25;
+        // If material uses a baked texture, remove it so color.set() takes full effect
+        if (carpaintMaterial.map) {
+          carpaintMaterial._originalMap = carpaintMaterial.map; // stash in case needed
+          carpaintMaterial.map = null;
+        }
+        carpaintMaterial.needsUpdate = true;
+        paintMeshes.push({ material: carpaintMaterial, _isMaterialRef: true });
+      }
+
+
+      applyColor(currentColor);
+      scene.add(model);
+      loading.style.display = 'none';
+
+      // Fade out the drag hint after 2.5s
+      setTimeout(() => hint.classList.add('hidden'), 2500);
+    },
+    undefined,
+    (err) => {
+      console.error('GLB load error for:', encodedUrl, err);
+      loading.innerHTML = `
+        <div style="color:rgba(255,255,255,0.5);font-size:0.7rem;text-align:center;padding:1rem">
+          Model unavailable.<br>Using placeholder.
+        </div>`;
+      // Fall back to a simple box SUV silhouette
+      buildFallbackCar();
+      loading.style.display = 'none';
+    }
+  );
+}
+
+// Fallback: build a rough SUV shape from Three.js primitives
+function buildFallbackCar() {
+  const group = new THREE.Group();
+  const mat = new THREE.MeshStandardMaterial({ color: currentColor, roughness: 0.4, metalness: 0.3 });
+
+  // Body
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.5, 0.9), mat.clone());
+  body.position.y = 0.3;
+  body.castShadow = true;
+  group.add(body);
+
+  // Cabin
+  const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.42, 0.86), mat.clone());
+  cabin.position.set(-0.1, 0.71, 0);
+  cabin.castShadow = true;
+  group.add(cabin);
+
+  // Windows (dark glass)
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0x1a2a4a, roughness: 0.1, metalness: 0.5, transparent: true, opacity: 0.85 });
+  const windscreen = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.35, 0.78), glassMat);
+  windscreen.position.set(0.46, 0.68, 0);
+  windscreen.rotation.z = -0.35;
+  group.add(windscreen);
+
+  const rearScreen = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.35, 0.78), glassMat);
+  rearScreen.position.set(-0.65, 0.68, 0);
+  rearScreen.rotation.z = 0.35;
+  group.add(rearScreen);
+
+  // Wheels
+  const wheelGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.18, 24);
+  const wheelMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.8 });
+  const rimMat   = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, roughness: 0.3, metalness: 0.8 });
+
+  [[0.6, 0, 0.5], [0.6, 0, -0.5], [-0.6, 0, 0.5], [-0.6, 0, -0.5]].forEach(([x, y, z]) => {
+    const wheel = new THREE.Mesh(wheelGeo, wheelMat);
+    wheel.rotation.x = Math.PI / 2;
+    wheel.position.set(x, y + 0.09, z);
+    wheel.castShadow = true;
+    const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.19, 8), rimMat);
+    rim.rotation.x = Math.PI / 2;
+    rim.position.set(x, y + 0.09, z);
+    group.add(wheel, rim);
+  });
+
+  // Headlights
+  const lightMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffee, emissiveIntensity: 0.6 });
+  [[0.91, 0.32, 0.28], [0.91, 0.32, -0.28]].forEach(([x, y, z]) => {
+    const hl = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.1, 0.15), lightMat);
+    hl.position.set(x, y, z);
+    group.add(hl);
+  });
+
+  // Collect paint material refs for fallback car
+  [body, cabin].forEach(mesh => {
+    paintMeshes.push({ material: mesh.material, _isMaterialRef: true });
+  });
+
+  group.scale.setScalar(0.85);
+  scene.add(group);
+  currentModel = group;
+  applyColor(currentColor);
+}
+
+// ── Color swap ───────────────────────────────────────────────────────────────
+function applyColor(color) {
+  currentColor = color;
+  paintMeshes.forEach(entry => {
+    // Direct material reference (carpaint.004 shared instance)
+    if (entry._isMaterialRef) {
+      entry.material.color.set(color);
+      entry.material.needsUpdate = true;
+    }
+  });
+}
+
+// ── Render loop ──────────────────────────────────────────────────────────────
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// ── Resize handler ───────────────────────────────────────────────────────────
+window.addEventListener('resize', () => {
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+// ── Load Hyundai Creta GLB ────────────────────────────────────────────────────
+loadModel('./hyundai creta.glb');
+
+// ── Expose helpers to global for onclick handlers ────────────────────────────
+window._applyColor  = applyColor;
+window._THREE_Color = THREE.Color;
+window._loadModel   = loadModel;
+
+</script>
+
+<script>
+// ── UI handlers (non-module scope) ───────────────────────────────────────────
+
+// Real manufacturer colors (India 2024-25 palette).
+// Hex values are tuned for Three.js ACES tonemapping + metalness 0.7 / roughness 0.25 —
+// slightly brighter than raw swatch hex so the rendered color matches the real paint.
+const CAR_DATA = {
+  Creta: {
+    glb: './hyundai creta.glb',
+    // Hyundai Creta 4th gen (2024) official India colors
+    colors: [
+      { name: 'Atlas White',        hex: '#f0f0f0' },
+      { name: 'Abyss Black',        hex: '#1e1e1e' },
+      { name: 'Fiery Red',          hex: '#cc1a1a' },
+      { name: 'Robust Emerald',     hex: '#1e6641' },
+      { name: 'Starry Night',       hex: '#1c2b80' },
+      { name: 'Titan Grey',         hex: '#5e7585' },
+    ],
+    variants: ['E MT', 'EX MT', 'S MT', 'S DCT', 'SX MT', 'SX DCT', 'SX(O) DCT'],
+    defaultVariant: 'SX(O) DCT',
+  },
+  Seltos: {
+    glb: './2021-kia-seltos-sx/2021+Kia+Seltos+SX.glb',
+    // Kia Seltos facelift (2023–24) official India colors
+    colors: [
+      { name: 'Clear White',         hex: '#f4f4f4' },
+      { name: 'Aurora Black Pearl',  hex: '#1a1a1a' },
+      { name: 'Imperial Red',        hex: '#c41e1e' },
+      { name: 'Pewter Olive',        hex: '#5a6e50' },
+      { name: 'Sparkling Silver',    hex: '#a8a8a8' },
+      { name: 'Midnight Blue',       hex: '#1a2878' },
+      { name: 'Glacier White Pearl', hex: '#dde6f0' },
+    ],
+    variants: ['HTE MT', 'HTK MT', 'HTK+ MT', 'HTX MT', 'HTX+ DCT', 'GTX+ DCT'],
+    defaultVariant: 'HTX+ DCT',
+  },
+  Harrier: {
+    glb: './tata harrier/model.glb',
+    // Tata Harrier 2023 facelift official India colors
+    colors: [
+      { name: 'Oberon Black',       hex: '#1a1a1a' },
+      { name: 'Stellar Frost',      hex: '#f0f0f0' },
+      { name: 'Calypso Red',        hex: '#b81c1c' },
+      { name: 'Tropical Mist',      hex: '#8fa89a' },
+      { name: 'Daytona Grey',       hex: '#5a6068' },
+      { name: 'Royale Blue',        hex: '#1a2878' },
+    ],
+    variants: ['Smart', 'Smart+', 'Pure', 'Pure+', 'Adventure', 'Adventure+', 'Fearless', 'Fearless+'],
+    defaultVariant: 'Adventure+',
+  },
+  GrandVitara: {
+    glb: './suzuki_grand_vitara.glb',
+    // Maruti Suzuki Grand Vitara 2022 official India colors
+    colors: [
+      { name: 'Grandeur Grey',      hex: '#606060' },
+      { name: 'Splendid Silver',    hex: '#b0b0b0' },
+      { name: 'Opulent Red',        hex: '#b81c1c' },
+      { name: 'Chestnut Brown',     hex: '#6b3a2a' },
+      { name: 'Arctic White Pearl', hex: '#f2f2f2' },
+      { name: 'Midnight Black',     hex: '#1a1a1a' },
+    ],
+    variants: ['Sigma', 'Delta', 'Zeta', 'Alpha', 'Alpha+'],
+    defaultVariant: 'Alpha',
+  },
+  XUV700: {
+    glb: null,
+    img: './mahindra-xuv700.jpg',
+    // Mahindra XUV700 official India colors
+    colors: [
+      { name: 'Dazzling Silver',  hex: '#c0c0c0' },
+      { name: 'Midnight Black',   hex: '#1a1a1a' },
+      { name: 'Red Rage',         hex: '#b81c1c' },
+      { name: 'Everest White',    hex: '#f0f0f0' },
+      { name: 'Napoli Black',     hex: '#2a2a2a' },
+      { name: 'Deep Forest',      hex: '#1a3a2a' },
+    ],
+    variants: ['MX', 'AX3', 'AX5', 'AX5 L', 'AX7', 'AX7 L'],
+    defaultVariant: 'AX7',
+  },
+  UrbanCruiser: {
+    glb: null,
+    // Toyota Urban Cruiser Hyryder 2022 official India colors
+    colors: [
+      { name: 'Cafe White',         hex: '#f0ede8' },
+      { name: 'Sporty Red',         hex: '#b81c1c' },
+      { name: 'Gaming Grey',        hex: '#5a6068' },
+      { name: 'Enticing Silver',    hex: '#b0b0b0' },
+      { name: 'Midnight Black',     hex: '#1a1a1a' },
+      { name: 'Celestial Blue',     hex: '#1a3070' },
+    ],
+    variants: ['E', 'S', 'G', 'V', 'G AT', 'V AT'],
+    defaultVariant: 'V',
+  },
+};
+
+function renderColors(carKey) {
+  const data = CAR_DATA[carKey];
+  const container = document.getElementById('color-dots');
+  container.innerHTML = data.colors.map((c, i) =>
+    `<div class="cdot ${i===0?'active':''}" style="background:${c.hex}" data-hex="${c.hex}" onclick="setColor(this)" title="${c.name}"></div>`
+  ).join('');
+  // Apply first color to 3D model
+  if (window._applyColor && window._THREE_Color) {
+    window._applyColor(new window._THREE_Color(data.colors[0].hex));
+  }
+}
+
+function renderVariants(carKey) {
+  const data = CAR_DATA[carKey];
+  const container = document.getElementById('variant-chips');
+  container.innerHTML = data.variants.map(v =>
+    `<div class="vchip-sm ${v===data.defaultVariant?'active':''}" onclick="setVariant(this)">${v}</div>`
+  ).join('');
+}
+
+function setColor(dot) {
+  document.querySelectorAll('#color-dots .cdot').forEach(d => d.classList.remove('active'));
+  dot.classList.add('active');
+  if (window._applyColor && window._THREE_Color) {
+    window._applyColor(new window._THREE_Color(dot.dataset.hex));
+  }
+}
+
+function setVariant(chip) {
+  document.querySelectorAll('#variant-chips .vchip-sm').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+}
+
+// ── Carousel ─────────────────────────────────────────────────────────────────
+let carouselOffset = 0;
+const CARS_VISIBLE = 2;
+
+function carouselUpdate() {
+  const track   = document.getElementById('csel-track');
+  const buttons = track.querySelectorAll('.csel-btn');
+  const total   = buttons.length;
+  const maxOffset = total - CARS_VISIBLE;
+  // Each button is 50% of track width + gap; translate by N * (50% + gap)
+  // Use pixel calculation based on actual button width
+  const btnW = track.parentElement.offsetWidth / CARS_VISIBLE;
+  track.style.transform = `translateX(-${carouselOffset * (btnW + 4.8)}px)`;
+  document.getElementById('csel-prev').disabled = carouselOffset === 0;
+  document.getElementById('csel-next').disabled = carouselOffset >= maxOffset;
+}
+
+function carouselActivateFirst() {
+  // After sliding, auto-select the first visible car
+  const track   = document.getElementById('csel-track');
+  const buttons = track.querySelectorAll('.csel-btn');
+  const btn     = buttons[carouselOffset];
+  if (btn) switchCar(btn, btn.dataset.car);
+}
+
+function carouselPrev() {
+  if (carouselOffset > 0) { carouselOffset--; carouselUpdate(); carouselActivateFirst(); }
+}
+
+function carouselNext() {
+  const total = document.getElementById('csel-track').querySelectorAll('.csel-btn').length;
+  if (carouselOffset < total - CARS_VISIBLE) { carouselOffset++; carouselUpdate(); carouselActivateFirst(); }
+}
+
+// Init carousel after DOM ready
+window.addEventListener('load', carouselUpdate);
+
+function switchCar(btn, carKey) {
+  document.querySelectorAll('.csel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderColors(carKey);
+  renderVariants(carKey);
+  const car = CAR_DATA[carKey];
+  if (car.glb) {
+    // Hide image overlay, show canvas
+    document.getElementById('viewer-image').style.display = 'none';
+    document.getElementById('three-canvas').style.display = 'block';
+    if (window._loadModel) window._loadModel(car.glb);
+  } else if (car.img) {
+    // Test if image actually exists before hiding canvas
+    const testImg = new Image();
+    testImg.onload = () => {
+      document.getElementById('three-canvas').style.display = 'none';
+      document.getElementById('viewer-image').style.display = 'flex';
+      document.getElementById('viewer-img-el').src = car.img;
+      if (window._loadModel) window._loadModel('__fallback_hide__');
+    };
+    testImg.onerror = () => {
+      // Image not found — use box fallback so viewer isn't blank
+      document.getElementById('viewer-image').style.display = 'none';
+      document.getElementById('three-canvas').style.display = 'block';
+      if (window._loadModel) window._loadModel('__fallback__');
+    };
+    testImg.src = car.img;
+  } else {
+    document.getElementById('viewer-image').style.display = 'none';
+    document.getElementById('three-canvas').style.display = 'block';
+    if (window._loadModel) window._loadModel('__fallback__');
+  }
+}
+
+// Init with Creta on load
+renderColors('Creta');
+renderVariants('Creta');
+
+function switchTab(tab) {
+  document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  const panels = {
+    'Must-haves':  'tab-musthaves',
+    'Performance': 'tab-performance',
+    'Safety':      'tab-safety',
+    'Features':    'tab-features',
+    'Ownership':   'tab-ownership',
+  };
+  Object.values(panels).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  const target = panels[tab.textContent.trim()];
+  if (target) document.getElementById(target).style.display = 'block';
+}
+</script>
+
+</body>
+</html>

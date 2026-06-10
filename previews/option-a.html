@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option A Preview — Midnight Amber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0c0c14;
+  --surface-1: #13131f;
+  --surface-2: #1a1a2e;
+  --amber: #f59e0b;
+  --amber-dim: rgba(245,158,11,0.12);
+  --amber-glow: rgba(245,158,11,0.06);
+  --text: #f5f0e8;
+  --text-muted: #8b8a9e;
+  --text-dim: #4a4960;
+  --border: rgba(255,255,255,0.07);
+  --radius: 16px;
+  --radius-sm: 10px;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ambient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(245,158,11,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── HEADER ─────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(12,12,20,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.logo span { color: var(--amber); }
+.header-actions { display: flex; gap: 0.75rem; align-items: center; }
+.theme-btn {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* ─── HERO ─────────────────────────────────────── */
+.hero {
+  padding: 3rem 1.5rem 2rem;
+  max-width: 480px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--amber);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--amber);
+}
+.hero p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 38ch;
+}
+
+/* ─── CARDS GRID ────────────────────────────────── */
+.section { padding: 0 1.5rem 2rem; }
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.car-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.car-card:hover {
+  border-color: rgba(245,158,11,0.3);
+  background: var(--surface-2);
+}
+.car-card.rank-1 {
+  border-color: rgba(245,158,11,0.4);
+  background: linear-gradient(145deg, rgba(245,158,11,0.08), var(--surface-1));
+}
+.rank-badge {
+  position: absolute;
+  top: 0.75rem; right: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--amber);
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+.card-score {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.card-score span {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+.card-brand {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+.card-model {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.card-price {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+.card-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.pill {
+  font-size: 0.62rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  background: transparent;
+}
+.pill.match { border-color: rgba(245,158,11,0.3); color: var(--amber); }
+
+/* ─── SCORE BAR SECTION ─────────────────────────── */
+.score-section {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 0 1.5rem 2rem;
+}
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.score-name { font-size: 1rem; font-weight: 600; }
+.score-num {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--amber);
+  line-height: 1;
+}
+.score-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.score-bar-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  width: 72px;
+  flex-shrink: 0;
+}
+.score-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.score-bar-fill {
+  height: 100%;
+  background: var(--amber);
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.score-bar-val {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  width: 22px;
+  text-align: right;
+}
+
+/* ─── BOTTOM NAV ────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.2rem;
+  background: rgba(19,19,31,0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem;
+  z-index: 200;
+}
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-btn.active {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+.nav-icon { font-size: 1rem; }
+
+/* ─── LABEL ─────────────────────────────────────── */
+.option-label {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #f59e0b;
+  color: #0c0c14;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  letter-spacing: 0.05em;
+  z-index: 999;
+}
+header { top: 26px; }
+
+</style>
+</head>
+<body>
+
+<div class="option-label">OPTION A — MIDNIGHT AMBER &nbsp;|&nbsp; Dark bg, amber accent, JetBrains Mono data, pill-nav</div>
+
+<header>
+  <div class="logo">SUV<span>.</span>Compare</div>
+  <div class="header-actions">
+    <button class="theme-btn">☀</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">Jodhpur · ₹20L budget</div>
+  <h1>Find your<br><em>best match</em></h1>
+  <p>10 SUVs scored for your exact needs — petrol turbo, 6 airbags, ventilated seats, connected car.</p>
+</section>
+
+<div class="section">
+  <div class="section-label">Top picks for you</div>
+  <div class="cards-grid">
+
+    <div class="car-card rank-1">
+      <div class="rank-badge">#1</div>
+      <div class="card-score">84<span>/100</span></div>
+      <div class="card-brand">Hyundai</div>
+      <div class="card-model">Creta SX(O) Turbo</div>
+      <div class="card-price">₹17.69L on-road</div>
+      <div class="card-pills">
+        <span class="pill match">6 Airbags</span>
+        <span class="pill match">Vent. Seats</span>
+        <span class="pill">BlueLink</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="rank-badge">#2</div>
+      <div class="card-score">81<span>/100</span></div>
+      <div class="card-brand">Kia</div>
+      <div class="card-model">Seltos HTX+ Turbo</div>
+      <div class="card-price">₹18.2L on-road</div>
+      <div class="card-pills">
+        <span class="pill match">6 Airbags</span>
+        <span class="pill">iRA</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-score">79<span>/100</span></div>
+      <div class="card-brand">MG</div>
+      <div class="card-model">Hector Sharp Pro</div>
+      <div class="card-price">₹19.1L on-road</div>
+      <div class="card-pills">
+        <span class="pill match">Vent. Seats</span>
+        <span class="pill match">i-SMART</span>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-score">76<span>/100</span></div>
+      <div class="card-brand">Skoda</div>
+      <div class="card-model">Kushaq Style 1.5</div>
+      <div class="card-price">₹17.8L on-road</div>
+      <div class="card-pills">
+        <span class="pill match">6 Airbags</span>
+        <span class="pill">5-Star NCAP</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="score-section">
+  <div class="score-header">
+    <div>
+      <div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:0.2rem">Score breakdown</div>
+      <div class="score-name">Hyundai Creta SX(O)</div>
+    </div>
+    <div class="score-num">84</div>
+  </div>
+  <div class="score-bar-row">
+    <div class="score-bar-label">Safety</div>
+    <div class="score-bar-track"><div class="score-bar-fill" style="width:90%"></div></div>
+    <div class="score-bar-val">9.0</div>
+  </div>
+  <div class="score-bar-row">
+    <div class="score-bar-label">Value</div>
+    <div class="score-bar-track"><div class="score-bar-fill" style="width:82%"></div></div>
+    <div class="score-bar-val">8.2</div>
+  </div>
+  <div class="score-bar-row">
+    <div class="score-bar-label">Features</div>
+    <div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div>
+    <div class="score-bar-val">8.8</div>
+  </div>
+  <div class="score-bar-row">
+    <div class="score-bar-label">Service</div>
+    <div class="score-bar-track"><div class="score-bar-fill" style="width:78%"></div></div>
+    <div class="score-bar-val">7.8</div>
+  </div>
+  <div class="score-bar-row">
+    <div class="score-bar-label">Comfort</div>
+    <div class="score-bar-track"><div class="score-bar-fill" style="width:80%"></div></div>
+    <div class="score-bar-val">8.0</div>
+  </div>
+</div>
+
+<div style="height: 5rem"></div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active">
+    <span class="nav-icon">⊞</span>
+    Explore
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">≡</span>
+    Compare
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">★</span>
+    Ranking
+  </button>
+  <button class="nav-btn">
+    <span class="nav-icon">◎</span>
+    Jodhpur
+  </button>
+</nav>
+
+</body>
+</html>

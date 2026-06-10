@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking E — Podium + expandable leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.18);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.09);
+  --orange: #c2410c; --orange-bg: rgba(194,65,12,0.08);
+  --red: #dc2626; --red-bg: rgba(220,38,38,0.07);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5.5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ════════════════════════════════════════
+   PODIUM — top 3
+   ════════════════════════════════════════ */
+.podium {
+  margin: 1rem 1.25rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1.18fr 1fr;
+  gap: 0.45rem;
+  align-items: end;
+}
+
+.pod {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.pod-1 {
+  border-color: var(--blue);
+  background: linear-gradient(170deg, #eff6ff 0%, white 55%);
+}
+
+.pod-medal {
+  font-size: 1.25rem; padding: 0.55rem 0 0.1rem; line-height: 1;
+}
+.pod-1 .pod-medal { font-size: 1.5rem; padding-top: 0.65rem; }
+
+.pod-score {
+  font-family: 'Geist Mono', monospace;
+  font-weight: 900; line-height: 1;
+}
+.pod-1 .pod-score { font-size: 2.1rem; color: var(--blue); }
+.pod-2 .pod-score,
+.pod-3 .pod-score { font-size: 1.6rem; color: var(--text); }
+.pod-score-lbl { font-size: 0.5rem; color: var(--dim); margin-bottom: 0.2rem; }
+
+.pod-brand {
+  font-size: 0.55rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem;
+}
+.pod-model {
+  font-size: 0.8rem; font-weight: 800; color: var(--text);
+  line-height: 1.2; padding: 0 0.4rem;
+}
+.pod-1 .pod-model { font-size: 0.9rem; }
+.pod-var { font-size: 0.58rem; color: var(--dim); padding: 0.05rem 0.35rem 0; }
+
+/* Cat mini-bars inside podium */
+.pod-cats {
+  width: 100%; padding: 0.5rem 0.65rem 0.4rem;
+  display: flex; flex-direction: column; gap: 0.25rem;
+  border-top: 1px solid var(--border); margin-top: 0.45rem;
+}
+.pod-cat-row { display: flex; align-items: center; gap: 0.3rem; }
+.pod-cat-name { font-size: 0.52rem; color: var(--dim); width: 42px; flex-shrink: 0; }
+.pod-cat-track { flex: 1; height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.pod-cat-fill  { height: 100%; border-radius: 999px; background: var(--blue); }
+.pod-2 .pod-cat-fill, .pod-3 .pod-cat-fill { background: var(--dim); }
+.pod-cat-val { font-size: 0.52rem; font-weight: 700; color: var(--muted); font-family: 'Geist Mono', monospace; width: 16px; text-align: right; }
+
+.pod-foot {
+  width: 100%; padding: 0.35rem 0;
+  text-align: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.78rem; font-weight: 800;
+}
+.pod-1 .pod-foot { background: var(--blue); color: white; }
+.pod-2 .pod-foot,
+.pod-3 .pod-foot { background: var(--surface-2); color: var(--text); border-top: 1px solid var(--border); }
+
+/* ════════════════════════════════════════
+   SECTION LABEL
+   ════════════════════════════════════════ */
+.sec-lbl {
+  padding: 0.9rem 1.25rem 0.45rem;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+/* ════════════════════════════════════════
+   EXPANDABLE LIST — ranks 4+
+   ════════════════════════════════════════ */
+.exp-list {
+  margin: 0 1.25rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.exp-card { border-bottom: 1px solid var(--border); }
+.exp-card:last-child { border-bottom: none; }
+
+/* ── Collapsed summary row ── */
+.exp-row {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer; user-select: none;
+  transition: background 0.12s;
+}
+.exp-row:hover { background: var(--surface-2); }
+.exp-card.open > .exp-row { background: var(--blue-light); }
+
+.exp-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1rem; font-weight: 900;
+  color: var(--dim); width: 20px; text-align: center; flex-shrink: 0;
+}
+
+.exp-main { flex: 1; min-width: 0; }
+.exp-name  { font-size: 0.85rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+.exp-sub   { font-size: 0.62rem; color: var(--dim); margin-top: 0.05rem; }
+
+/* inline mini score bar */
+.exp-bar-col { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; flex-shrink: 0; }
+.exp-bar-track { width: 48px; height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.exp-bar-fill  { height: 100%; border-radius: 999px; background: var(--dim); }
+.exp-score-lbl { font-family: 'Geist Mono', monospace; font-size: 0.62rem; font-weight: 700; color: var(--muted); }
+
+.exp-price-col { text-align: right; flex-shrink: 0; }
+.exp-price { font-family: 'Geist Mono', monospace; font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.exp-wait  { font-size: 0.58rem; color: var(--dim); margin-top: 0.05rem; }
+
+.exp-chev {
+  font-size: 1rem; color: var(--dim);
+  flex-shrink: 0; transition: transform 0.2s;
+  line-height: 1;
+}
+.exp-card.open .exp-chev { transform: rotate(90deg); color: var(--blue); }
+
+/* ── Expanded detail panel ── */
+.exp-detail {
+  display: none;
+  padding: 0.7rem 1rem 0.85rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.exp-card.open .exp-detail { display: block; }
+
+/* Score bar row (A-style) */
+.exp-full-bar-wrap {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+.exp-full-track {
+  flex: 1; height: 6px; background: var(--border);
+  border-radius: 999px; overflow: hidden;
+}
+.exp-full-fill { height: 100%; border-radius: 999px; background: var(--blue); }
+.exp-full-pct {
+  font-size: 0.65rem; font-weight: 700; color: var(--muted);
+  width: 26px; text-align: right;
+  font-family: 'Geist Mono', monospace;
+}
+
+/* 6-category grid */
+.exp-cat-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.35rem; margin-bottom: 0.65rem;
+}
+.exp-cat {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 7px; padding: 0.42rem 0.5rem;
+}
+.exp-cat-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.22rem; }
+.exp-cat-name { font-size: 0.58rem; color: var(--muted); }
+.exp-cat-val  { font-size: 0.68rem; font-weight: 800; color: var(--text); font-family: 'Geist Mono', monospace; }
+.exp-cat-bar  { height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.exp-cat-fill { height: 100%; border-radius: 999px; background: var(--blue); }
+
+/* Tags */
+.exp-tags { display: flex; gap: 0.28rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.etag {
+  font-size: 0.6rem; padding: 0.16rem 0.48rem;
+  border-radius: 4px; border: 1px solid var(--border);
+  color: var(--dim); background: var(--surface);
+}
+.etag.good { background: var(--green-bg); color: var(--green); border-color: rgba(22,163,74,0.2); font-weight: 600; }
+.etag.warn { background: var(--orange-bg); color: var(--orange); border-color: rgba(194,65,12,0.2); }
+.etag.bad  { background: var(--red-bg); color: var(--red); border-color: rgba(220,38,38,0.2); }
+
+/* Price strip */
+.exp-price-strip {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.5rem 0.75rem;
+  margin-bottom: 0.6rem;
+}
+.exp-ps-item { display: flex; flex-direction: column; align-items: center; gap: 0.05rem; }
+.exp-ps-val  { font-family: 'Geist Mono', monospace; font-size: 0.85rem; font-weight: 800; color: var(--text); }
+.exp-ps-lbl  { font-size: 0.55rem; color: var(--dim); }
+.exp-ps-div  { width: 1px; height: 28px; background: var(--border); }
+
+/* Action buttons */
+.exp-actions { display: flex; gap: 0.5rem; }
+.exp-btn {
+  flex: 1; text-align: center;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.45rem 0; border-radius: 8px;
+  border: none; cursor: pointer;
+  font-family: 'Geist', sans-serif;
+}
+.exp-btn-primary   { background: var(--blue); color: white; }
+.exp-btn-secondary { background: var(--surface-2); border: 1.5px solid var(--border); color: var(--text); }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION E — Podium (C) + expandable leaderboard rows (D) with full detail (A)</div>
+
+<!-- ══ PODIUM ══ -->
+<div class="podium">
+
+  <!-- 2nd -->
+  <div class="pod pod-2">
+    <div class="pod-medal">🥈</div>
+    <div class="pod-score">81</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Kia</div>
+    <div class="pod-model">Seltos GTX+</div>
+    <div class="pod-var">Petrol DCT</div>
+    <div class="pod-cats">
+      <div class="pod-cat-row"><span class="pod-cat-name">Safety</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:85%"></div></div><span class="pod-cat-val">85</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Value</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:75%"></div></div><span class="pod-cat-val">75</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Features</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:90%"></div></div><span class="pod-cat-val">90</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Service</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:72%"></div></div><span class="pod-cat-val">72</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Comfort</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:83%"></div></div><span class="pod-cat-val">83</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Reliability</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:78%"></div></div><span class="pod-cat-val">78</span></div>
+    </div>
+    <div class="pod-foot">₹18.40L OTR</div>
+  </div>
+
+  <!-- 1st -->
+  <div class="pod pod-1">
+    <div class="pod-medal">🥇</div>
+    <div class="pod-score">84</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Hyundai</div>
+    <div class="pod-model">Creta SX(O)</div>
+    <div class="pod-var">Petrol Turbo DCT</div>
+    <div class="pod-cats">
+      <div class="pod-cat-row"><span class="pod-cat-name">Safety</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:88%"></div></div><span class="pod-cat-val">88</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Value</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:82%"></div></div><span class="pod-cat-val">82</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Features</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:91%"></div></div><span class="pod-cat-val">91</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Service</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:80%"></div></div><span class="pod-cat-val">80</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Comfort</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:85%"></div></div><span class="pod-cat-val">85</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Reliability</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:75%"></div></div><span class="pod-cat-val">75</span></div>
+    </div>
+    <div class="pod-foot">₹17.70L OTR</div>
+  </div>
+
+  <!-- 3rd -->
+  <div class="pod pod-3">
+    <div class="pod-medal">🥉</div>
+    <div class="pod-score">79</div>
+    <div class="pod-score-lbl">/ 100</div>
+    <div class="pod-brand">Maruti</div>
+    <div class="pod-model">Grand Vitara</div>
+    <div class="pod-var">Strong Hybrid</div>
+    <div class="pod-cats">
+      <div class="pod-cat-row"><span class="pod-cat-name">Safety</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:80%"></div></div><span class="pod-cat-val">80</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Value</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:85%"></div></div><span class="pod-cat-val">85</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Features</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:72%"></div></div><span class="pod-cat-val">72</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Service</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:90%"></div></div><span class="pod-cat-val">90</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Comfort</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:77%"></div></div><span class="pod-cat-val">77</span></div>
+      <div class="pod-cat-row"><span class="pod-cat-name">Reliability</span><div class="pod-cat-track"><div class="pod-cat-fill" style="width:88%"></div></div><span class="pod-cat-val">88</span></div>
+    </div>
+    <div class="pod-foot">₹17.88L OTR</div>
+  </div>
+
+</div>
+
+<!-- ══ EXPANDABLE LIST ══ -->
+<div class="sec-lbl">Also ranked · tap to expand</div>
+
+<div class="exp-list">
+
+  <!-- #4 Honda Elevate -->
+  <div class="exp-card" id="card-4">
+    <div class="exp-row">
+      <div class="exp-num">4</div>
+      <div class="exp-main">
+        <div class="exp-name">Honda Elevate ZX</div>
+        <div class="exp-sub">Petrol CVT · In stock</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-bar-track"><div class="exp-bar-fill" style="width:74%"></div></div>
+        <div class="exp-score-lbl">74</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹16.35L</div>
+        <div class="exp-wait">OTR</div>
+      </div>
+      <span class="exp-chev">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-full-bar-wrap">
+        <div class="exp-full-track"><div class="exp-full-fill" style="width:74%"></div></div>
+        <span class="exp-full-pct">74</span>
+      </div>
+      <div class="exp-cat-grid">
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">84</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:84%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Value</span><span class="exp-cat-val">78</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:78%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Features</span><span class="exp-cat-val">68</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:68%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Service</span><span class="exp-cat-val">74</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:74%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">72</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:72%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">80</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:80%"></div></div></div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">6 Airbags</span>
+        <span class="etag good">In stock</span>
+        <span class="etag good">Good reliability</span>
+        <span class="etag warn">No ADAS</span>
+        <span class="etag warn">No ventilated seats</span>
+      </div>
+      <div class="exp-price-strip">
+        <div class="exp-ps-item"><div class="exp-ps-val">₹16.35L</div><div class="exp-ps-lbl">On-road</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">₹26,100</div><div class="exp-ps-lbl">EMI / mo</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">In stock</div><div class="exp-ps-lbl">Wait time</div></div>
+      </div>
+      <div class="exp-actions">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #5 Tata Nexon -->
+  <div class="exp-card" id="card-5">
+    <div class="exp-row">
+      <div class="exp-num">5</div>
+      <div class="exp-main">
+        <div class="exp-name">Tata Nexon Fearless+</div>
+        <div class="exp-sub">Petrol AMT · In stock</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-bar-track"><div class="exp-bar-fill" style="width:70%"></div></div>
+        <div class="exp-score-lbl">70</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹13.02L</div>
+        <div class="exp-wait">OTR</div>
+      </div>
+      <span class="exp-chev">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-full-bar-wrap">
+        <div class="exp-full-track"><div class="exp-full-fill" style="width:70%"></div></div>
+        <span class="exp-full-pct">70</span>
+      </div>
+      <div class="exp-cat-grid">
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">90</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:90%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Value</span><span class="exp-cat-val">82</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:82%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Features</span><span class="exp-cat-val">60</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:60%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Service</span><span class="exp-cat-val">65</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:65%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">65</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:65%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">70</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:70%"></div></div></div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">5-star NCAP</span>
+        <span class="etag good">Lowest on-road price</span>
+        <span class="etag good">In stock</span>
+        <span class="etag warn">AMT gearbox</span>
+        <span class="etag bad">Limited Jodhpur service</span>
+      </div>
+      <div class="exp-price-strip">
+        <div class="exp-ps-item"><div class="exp-ps-val">₹13.02L</div><div class="exp-ps-lbl">On-road</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">₹20,800</div><div class="exp-ps-lbl">EMI / mo</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">In stock</div><div class="exp-ps-lbl">Wait time</div></div>
+      </div>
+      <div class="exp-actions">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #6 VW Taigun -->
+  <div class="exp-card" id="card-6">
+    <div class="exp-row">
+      <div class="exp-num">6</div>
+      <div class="exp-main">
+        <div class="exp-name">VW Taigun Topline</div>
+        <div class="exp-sub">1.5 TSI DSG · 2 wks</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-bar-track"><div class="exp-bar-fill" style="width:68%"></div></div>
+        <div class="exp-score-lbl">68</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹17.53L</div>
+        <div class="exp-wait">OTR</div>
+      </div>
+      <span class="exp-chev">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-full-bar-wrap">
+        <div class="exp-full-track"><div class="exp-full-fill" style="width:68%"></div></div>
+        <span class="exp-full-pct">68</span>
+      </div>
+      <div class="exp-cat-grid">
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Safety</span><span class="exp-cat-val">76</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:76%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Value</span><span class="exp-cat-val">62</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:62%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Features</span><span class="exp-cat-val">70</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:70%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Service</span><span class="exp-cat-val">55</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:55%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Comfort</span><span class="exp-cat-val">74</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:74%"></div></div></div>
+        <div class="exp-cat"><div class="exp-cat-hd"><span class="exp-cat-name">Reliability</span><span class="exp-cat-val">65</span></div><div class="exp-cat-bar"><div class="exp-cat-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="exp-tags">
+        <span class="etag good">Fun to drive</span>
+        <span class="etag good">German build</span>
+        <span class="etag warn">Few service centres</span>
+        <span class="etag bad">High parts cost</span>
+      </div>
+      <div class="exp-price-strip">
+        <div class="exp-ps-item"><div class="exp-ps-val">₹17.53L</div><div class="exp-ps-lbl">On-road</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">₹28,000</div><div class="exp-ps-lbl">EMI / mo</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">2 weeks</div><div class="exp-ps-lbl">Wait time</div></div>
+      </div>
+      <div class="exp-actions">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #7 MG Astor -->
+  <div class="exp-card" id="card-7">
+    <div class="exp-row">
+      <div class="exp-num">7</div>
+      <div class="exp-main">
+        <div class="exp-name">MG Astor Savvy</div>
+        <div class="exp-sub">CVT · In stock</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-bar-track"><div class="exp-bar-fill" style="width:65%"></div></div>
+        <div class="exp-score-lbl">65</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹15.20L</div>
+        <div class="exp-wait">OTR</div>
+      </div>
+      <span class="exp-chev">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-tags">
+        <span class="etag good">AI assistant</span>
+        <span class="etag warn">Resale value lower</span>
+        <span class="etag bad">1 service centre Jodhpur</span>
+      </div>
+      <div class="exp-price-strip">
+        <div class="exp-ps-item"><div class="exp-ps-val">₹15.20L</div><div class="exp-ps-lbl">On-road</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">₹24,300</div><div class="exp-ps-lbl">EMI / mo</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">In stock</div><div class="exp-ps-lbl">Wait time</div></div>
+      </div>
+      <div class="exp-actions">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- #8 Toyota Hyryder -->
+  <div class="exp-card" id="card-8">
+    <div class="exp-row">
+      <div class="exp-num">8</div>
+      <div class="exp-main">
+        <div class="exp-name">Toyota Hyryder V</div>
+        <div class="exp-sub">Strong Hybrid · In stock</div>
+      </div>
+      <div class="exp-bar-col">
+        <div class="exp-bar-track"><div class="exp-bar-fill" style="width:62%"></div></div>
+        <div class="exp-score-lbl">62</div>
+      </div>
+      <div class="exp-price-col">
+        <div class="exp-price">₹19.23L</div>
+        <div class="exp-wait">OTR</div>
+      </div>
+      <span class="exp-chev">›</span>
+    </div>
+    <div class="exp-detail">
+      <div class="exp-tags">
+        <span class="etag good">Best reliability</span>
+        <span class="etag good">25+ km/l</span>
+        <span class="etag bad">Priciest on-road</span>
+        <span class="etag warn">No ADAS</span>
+      </div>
+      <div class="exp-price-strip">
+        <div class="exp-ps-item"><div class="exp-ps-val">₹19.23L</div><div class="exp-ps-lbl">On-road</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">₹30,700</div><div class="exp-ps-lbl">EMI / mo</div></div>
+        <div class="exp-ps-div"></div>
+        <div class="exp-ps-item"><div class="exp-ps-val">In stock</div><div class="exp-ps-lbl">Wait time</div></div>
+      </div>
+      <div class="exp-actions">
+        <button class="exp-btn exp-btn-primary">View details</button>
+        <button class="exp-btn exp-btn-secondary">Compare</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="height:1rem"></div>
+
+<script>
+document.querySelectorAll('.exp-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const card = row.closest('.exp-card');
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.exp-card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  });
+});
+</script>
+
+<nav class="nav">
+  <button class="nav-btn">🏠 Home</button>
+  <button class="nav-btn">⚖️ Compare</button>
+  <button class="nav-btn active">🏆 Ranking</button>
+  <button class="nav-btn">₹ Cost</button>
+</nav>
+</body>
+</html>

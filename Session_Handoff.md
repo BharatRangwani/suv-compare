@@ -2,7 +2,91 @@
 
 ---
 
-## 2026-06-09 — UI Redesign: Glass Morphism (Gradient Hero + Glass Cards)
+## 2026-06-09 (Session 4) — Audit Completions: EV Charging UI, Petrol Price Editor, Dynamic Hero, WhatsApp Share
+
+### What changed this session
+
+**Commit `dcf831a` — 7 files changed:**
+
+**`modules/ui-detail.js`:**
+- Added `buildEVChargingSection(car)` — for electric cars shows: real-world range, battery size, fast-charge kW, home charge time, running cost per 100km vs petrol, and Jodhpur charging station note
+- `buildActionsSection(car)` now accepts car param and adds a WhatsApp share button alongside the existing copy-link button
+
+**`modules/ui-home.js`:**
+- Hero stats now fully dynamic: car count computed from `allRanked`, price range min/max from actual `ex_showroom_jodhpur` values, criteria count from WEIGHTS object keys
+
+**`app.js` (Finance tab):**
+- Added editable petrol price input (₹80–140/L) above Down Payment slider
+- Persists to user profile via `saveProfile()` so TCO calculations use updated price
+- Resets to ₹103 on Reset button
+
+**`styles/components.css`:**
+- `.ev-charging-note` — green left-border info block for EV charging section
+- `.btn-wa` — WhatsApp green button style
+- `.detail-actions` flex rule extended to include `.btn-wa`
+
+### Pending (next session)
+- **User profile editor** — budget slider, daily km, must-haves, fuel preference (most complex remaining task)
+
+### Open questions
+- None
+
+### What to do next session
+1. Build user profile editor UI (modal or inline panel off settings icon in header)
+2. Profile fields: budget_target, budget_max, daily_km, days_per_week, fuel_preference, must_haves, nice_to_haves
+3. Profile changes should trigger re-ranking of home page (invalidateCache + re-render)
+
+---
+
+## 2026-06-09 (Session 3) — New Cars (EVs, CNG, Diesel), ADAS UI, Transmission Filters, Audit
+
+### What changed (Sessions 3 previous context — summarised)
+- 13 new cars added (EVs: Nexon EV, Creta Electric, ZS EV; CNG: Nexon CNG, Ertiga CNG; Diesel: Seltos, Harrier, Scorpio-N; Petrol: Harrier, Scorpio-N, XUV 3XO, Venue, Kushaq)
+- MG Astor fuel corrected petrol→petrol_turbo
+- Compare page: Creta/Seltos/Grand Vitara pinned first; mock render with Seltos proxy for cars without GLB; default white color
+- Detail panel: ADAS features as pill chips, EV range fields, CNG km/kg, 360-camera field wired into scoring
+- Transmission filter: renamed AMT→AMT/Semi-Auto, Automatic→Automatic/DCT
+- Detail panel always-visible phone bug fixed
+- Finance tab: down payment amount now shows in ₹
+
+---
+
+## 2026-06-09 (Session 2) — Ranking Tab, Finance Tab, 3D Viewer, Bug Fixes
+
+### What changed this session
+
+**Commit `f05e1fb` — 10 files changed:**
+
+**`modules/ui-3d.js`** (new file):
+- Three.js r165 GLB viewer with drag-to-rotate orbit, load-token cancellation for fast car switching
+- Shadow plane sized to car bounding box, capped at 5.5×3.0 to prevent Grand Vitara oversized shadow
+- Paint color picker with `MeshStandardMaterial` color override on car body parts
+- Fallback procedural car when `glb: null` or model fails to load
+
+**`app.js`** (major additions):
+- `renderRankingPlaceholder()` — Option F layout: podium (2nd·1st·3rd) + full expandable list with rich detail panels (score breakdown 3×2 grid, tags, pros/cons, action buttons)
+- `renderFinanceTab()` — Option D layout: answer card (plain-English recommendation + 3 KPIs), live EMI adjuster, exchange value card, price comparison list, dealer checklist
+- Removed `initTheme()` function and theme-toggle dead code
+
+**`styles/components.css`** (large additions):
+- Full `.rnk-*` CSS block for ranking tab (podium, expandable cards, detail panels, category grid)
+- Full `.fin-*` CSS block for finance tab (answer card, sections, sliders, price list, checklist)
+
+**`index.html`** (cleaned):
+- Removed `<button id="theme-toggle">` (was hidden via JS; now fully removed)
+- Font updated from Inter to Geist + Geist Mono
+
+**Bug fixes:**
+- `calcExchangeValue` correctly imported from `modules/ui-exchange.js` (not `emi.js`)
+- `selectCar` not exported from `ui-compare.js` — ranking tab buttons now call `switchTab('compare')` instead
+- Shadow plane max size capped — Grand Vitara no longer renders oversized shadow
+- `initTheme()` removed — was dead code after removing dark mode
+
+**Tests:** 68/68 still passing
+
+---
+
+## 2026-06-09 (Session 1) — UI Redesign: Glass Morphism (Gradient Hero + Glass Cards)
 
 ### What changed this session
 

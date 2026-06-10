@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B3 — Warm Slate + Teal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --teal: #0d9488;
+  --teal-light: rgba(13,148,136,0.08);
+  --teal-mid: rgba(13,148,136,0.16);
+  --text: #18181b;
+  --muted: #71717a;
+  --dim: #a1a1aa;
+  --border: #e4e4e7;
+  --radius: 12px;
+  font-family: 'Outfit', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.option-label {
+  background: #0d9488; color: white; text-align: center;
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem; letter-spacing: 0.05em;
+}
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: white;
+}
+.logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; }
+.logo span { color: var(--teal); }
+.hbadge {
+  display: flex; align-items: center; gap: 0.3rem;
+  font-size: 0.65rem; font-weight: 600; color: var(--teal);
+}
+.hbadge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+
+/* ── PROFILE SUMMARY CARD ── */
+.profile-card {
+  margin: 0.9rem 1.25rem;
+  background: white; border: 1.5px solid var(--border); border-radius: var(--radius);
+  overflow: hidden;
+}
+.profile-top {
+  padding: 1rem 1.1rem 0.85rem;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.profile-top h2 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+.profile-top p { font-size: 0.72rem; color: var(--muted); }
+.profile-score {
+  text-align: right;
+}
+.pscore-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem; font-weight: 700; color: var(--teal); line-height: 1;
+}
+.pscore-label { font-size: 0.6rem; color: var(--dim); }
+.profile-tags {
+  display: flex; gap: 0.4rem; flex-wrap: wrap;
+  padding: 0.6rem 1.1rem; border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.ptag {
+  font-size: 0.62rem; font-weight: 500; padding: 0.2rem 0.55rem;
+  border-radius: 999px; background: var(--teal-light);
+  color: var(--teal); border: 1px solid var(--teal-mid);
+}
+
+/* ── CAR CARDS — 2 COLUMN GRID ── */
+.section { padding: 0 1.25rem; margin-bottom: 1.25rem; }
+.sh {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+.sh h3 { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.sh a { font-size: 0.7rem; color: var(--teal); text-decoration: none; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+
+.car-tile {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 0.9rem;
+  cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.car-tile:hover { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-light); }
+.car-tile.winner {
+  border-color: var(--teal);
+  background: linear-gradient(150deg, rgba(13,148,136,0.05) 0%, white 60%);
+}
+.tile-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.tile-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem; font-weight: 700; line-height: 1;
+  color: var(--dim);
+}
+.car-tile.winner .tile-score { color: var(--teal); }
+.tile-rank {
+  font-size: 0.6rem; font-weight: 600; color: var(--dim);
+  background: var(--surface-2); padding: 0.15rem 0.45rem;
+  border-radius: 4px; margin-top: 0.1rem;
+}
+.car-tile.winner .tile-rank {
+  background: var(--teal-light); color: var(--teal);
+}
+.tile-brand { font-size: 0.6rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.1rem; }
+.tile-model { font-size: 0.82rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; color: var(--text); }
+.tile-price { font-size: 0.7rem; color: var(--muted); margin-bottom: 0.5rem; }
+.tile-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.ttag {
+  font-size: 0.57rem; padding: 0.15rem 0.4rem; border-radius: 4px;
+  background: var(--surface-2); color: var(--muted); border: 1px solid var(--border);
+}
+.ttag.ok { background: var(--teal-light); color: var(--teal); border-color: var(--teal-mid); }
+
+/* ── EMI QUICK ── */
+.emi-quick {
+  margin: 0 1.25rem 1.25rem;
+  background: white; border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.1rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.emi-left { flex: 1; }
+.emi-left h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.2rem; }
+.emi-left p { font-size: 0.7rem; color: var(--muted); }
+.emi-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem; font-weight: 700; color: var(--teal); white-space: nowrap;
+}
+.emi-sub { font-size: 0.6rem; color: var(--dim); text-align: right; }
+
+/* ── NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: white; border-top: 1px solid var(--border);
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 0.2rem; padding: 0.7rem 0.5rem; border: none;
+  background: transparent; cursor: pointer; color: var(--dim);
+  font-size: 0.58rem; font-family: 'Outfit', sans-serif; font-weight: 500;
+  transition: color 0.15s; position: relative;
+}
+.nav-btn.active { color: var(--teal); }
+.nav-btn.active::after {
+  content: ''; position: absolute; top: 0; left: 20%; right: 20%;
+  height: 2px; background: var(--teal); border-radius: 0 0 3px 3px;
+}
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+<div class="option-label">B3 — WARM SLATE + TEAL &nbsp;|&nbsp; Teal accent, Outfit font, profile summary card at top</div>
+
+<header>
+  <div class="logo">SUV<span>.</span>Compare</div>
+  <div class="hbadge"><div class="hbadge-dot"></div>Jodhpur</div>
+</header>
+
+<div class="profile-card">
+  <div class="profile-top">
+    <div>
+      <h2>Your best match is ready</h2>
+      <p>Based on your Jodhpur profile</p>
+    </div>
+    <div class="profile-score">
+      <div class="pscore-num">84</div>
+      <div class="pscore-label">/100 top score</div>
+    </div>
+  </div>
+  <div class="profile-tags">
+    <span class="ptag">Petrol Turbo</span>
+    <span class="ptag">6 Airbags</span>
+    <span class="ptag">Vent. Seats</span>
+    <span class="ptag">Connected</span>
+    <span class="ptag">5-Seater</span>
+    <span class="ptag">₹20L Budget</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h3>Ranked for you</h3><a href="#">View all 10</a></div>
+  <div class="grid2">
+
+    <div class="car-tile winner">
+      <div class="tile-top">
+        <div class="tile-score">84</div>
+        <div class="tile-rank">Best</div>
+      </div>
+      <div class="tile-brand">Hyundai</div>
+      <div class="tile-model">Creta SX(O) Turbo</div>
+      <div class="tile-price">₹17.7L on-road</div>
+      <div class="tile-tags">
+        <span class="ttag ok">6 Airbags</span>
+        <span class="ttag ok">Vent.</span>
+        <span class="ttag ok">BlueLink</span>
+      </div>
+    </div>
+
+    <div class="car-tile">
+      <div class="tile-top">
+        <div class="tile-score">81</div>
+        <div class="tile-rank">#2</div>
+      </div>
+      <div class="tile-brand">Kia</div>
+      <div class="tile-model">Seltos HTX+ Turbo</div>
+      <div class="tile-price">₹18.2L on-road</div>
+      <div class="tile-tags">
+        <span class="ttag ok">6 Airbags</span>
+        <span class="ttag">iRA</span>
+      </div>
+    </div>
+
+    <div class="car-tile">
+      <div class="tile-top">
+        <div class="tile-score">79</div>
+        <div class="tile-rank">#3</div>
+      </div>
+      <div class="tile-brand">MG</div>
+      <div class="tile-model">Hector Sharp Pro</div>
+      <div class="tile-price">₹19.1L on-road</div>
+      <div class="tile-tags">
+        <span class="ttag ok">Vent.</span>
+        <span class="ttag ok">i-SMART</span>
+      </div>
+    </div>
+
+    <div class="car-tile">
+      <div class="tile-top">
+        <div class="tile-score">76</div>
+        <div class="tile-rank">#4</div>
+      </div>
+      <div class="tile-brand">Skoda</div>
+      <div class="tile-model">Kushaq Style 1.5</div>
+      <div class="tile-price">₹17.8L on-road</div>
+      <div class="tile-tags">
+        <span class="ttag ok">6 Airbags</span>
+        <span class="ttag">5-Star</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="emi-quick">
+  <div class="emi-left">
+    <h4>EMI Calculator</h4>
+    <p>₹17.7L at 8.5% for 5 years</p>
+  </div>
+  <div>
+    <div class="emi-num">₹36,400/mo</div>
+    <div class="emi-sub">after ₹4L down payment</div>
+  </div>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn active"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+</body>
+</html>

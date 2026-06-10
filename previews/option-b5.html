@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B5 — Warm White + Deep Violet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #fdfcff;
+  --surface: #ffffff;
+  --surface-2: #f6f5ff;
+  --violet: #7c3aed;
+  --violet-light: rgba(124,58,237,0.08);
+  --violet-mid: rgba(124,58,237,0.18);
+  --violet-dark: #5b21b6;
+  --text: #1c1033;
+  --muted: #6b6b8e;
+  --dim: #aeadcc;
+  --border: #e8e6f4;
+  --radius: 16px;
+  font-family: 'Nunito', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.option-label {
+  background: #7c3aed; color: white; text-align: center;
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem; letter-spacing: 0.05em;
+}
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.25rem; background: white;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-size: 1rem; font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text);
+}
+.logo em { font-style: normal; color: var(--violet); }
+.hright { display: flex; gap: 0.5rem; align-items: center; }
+.city-badge {
+  font-size: 0.65rem; font-weight: 700; color: var(--violet);
+  background: var(--violet-light); border-radius: 999px;
+  padding: 0.25rem 0.7rem; border: 1px solid var(--violet-mid);
+}
+
+/* ── HERO BANNER ── */
+.hero-banner {
+  margin: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, var(--violet-dark) 0%, var(--violet) 100%);
+  border-radius: var(--radius); padding: 1.4rem 1.3rem;
+  color: white; position: relative; overflow: hidden;
+}
+.hero-banner::after {
+  content: '';
+  position: absolute; top: -30%; right: -10%;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.hb-eye { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.65; margin-bottom: 0.5rem; }
+.hb-h1 { font-size: 1.55rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 0.5rem; }
+.hb-sub { font-size: 0.75rem; opacity: 0.75; line-height: 1.5; max-width: 28ch; margin-bottom: 1rem; }
+.hb-stats { display: flex; gap: 1.5rem; }
+.hb-stat-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.3rem; font-weight: 700; line-height: 1;
+}
+.hb-stat-label { font-size: 0.6rem; opacity: 0.6; margin-top: 0.15rem; }
+
+/* ── CARD LIST — LEFT ACCENT BAR ── */
+.section { padding: 0 1.25rem; margin-bottom: 1.5rem; }
+.sh {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.7rem;
+}
+.sh h3 { font-size: 0.9rem; font-weight: 800; }
+.sh a { font-size: 0.7rem; color: var(--violet); text-decoration: none; font-weight: 600; }
+
+.card-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.car-card {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 0.9rem 1rem;
+  display: flex; align-items: center; gap: 0.85rem;
+  cursor: pointer; transition: all 0.15s;
+  position: relative; overflow: hidden;
+}
+.car-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: transparent; border-radius: 3px 0 0 3px;
+  transition: background 0.15s;
+}
+.car-card.winner::before { background: var(--violet); }
+.car-card:hover { border-color: var(--violet-mid); }
+.car-card:hover::before { background: var(--violet); }
+
+.card-rank {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem; font-weight: 700; color: var(--dim);
+  width: 18px; flex-shrink: 0; text-align: center;
+}
+.car-card.winner .card-rank { color: var(--violet); }
+.card-body { flex: 1; min-width: 0; }
+.card-brand { font-size: 0.6rem; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.1rem; }
+.card-name {
+  font-size: 0.88rem; font-weight: 800; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 0.35rem; letter-spacing: -0.01em;
+}
+.card-row { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; }
+.ctag {
+  font-size: 0.57rem; font-weight: 600; padding: 0.15rem 0.45rem;
+  border-radius: 5px; background: var(--surface-2);
+  color: var(--muted);
+}
+.ctag.hit { background: var(--violet-light); color: var(--violet); }
+.card-right { flex-shrink: 0; text-align: right; }
+.card-score {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.2rem; font-weight: 700; color: var(--text); line-height: 1;
+}
+.car-card.winner .card-score { color: var(--violet); }
+.card-price { font-size: 0.62rem; color: var(--muted); margin-top: 0.2rem; }
+
+/* ── JODHPUR STRIP ── */
+.jodhpur-strip {
+  margin: 0 1.25rem 1.25rem;
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 0.9rem 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.js-icon { font-size: 1.4rem; }
+.js-body h4 { font-size: 0.82rem; font-weight: 800; margin-bottom: 0.15rem; }
+.js-body p { font-size: 0.7rem; color: var(--muted); }
+.js-arrow { margin-left: auto; font-size: 1rem; color: var(--dim); }
+
+/* ── NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: white; border-top: 1.5px solid var(--border);
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 0.2rem; padding: 0.7rem 0.5rem; border: none;
+  background: transparent; cursor: pointer; color: var(--dim);
+  font-size: 0.58rem; font-family: 'Nunito', sans-serif; font-weight: 600;
+  transition: color 0.15s; position: relative;
+}
+.nav-btn.active { color: var(--violet); }
+.nav-btn.active::after {
+  content: ''; position: absolute; top: 0; left: 20%; right: 20%;
+  height: 2px; background: var(--violet); border-radius: 0 0 3px 3px;
+}
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+<div class="option-label">B5 — WARM WHITE + DEEP VIOLET &nbsp;|&nbsp; Violet accent, Nunito rounded, dark hero banner</div>
+
+<header>
+  <div class="logo">SUV<em>.</em>Compare</div>
+  <div class="hright">
+    <div class="city-badge">Jodhpur</div>
+  </div>
+</header>
+
+<div class="hero-banner">
+  <div class="hb-eye">Jodhpur shortlist</div>
+  <div class="hb-h1">Your perfect SUV is ranked.</div>
+  <div class="hb-sub">10 cars scored for petrol turbo, 6 airbags, ventilated seats, connected car.</div>
+  <div class="hb-stats">
+    <div>
+      <div class="hb-stat-num">84</div>
+      <div class="hb-stat-label">Top score</div>
+    </div>
+    <div>
+      <div class="hb-stat-num">₹20L</div>
+      <div class="hb-stat-label">Your budget</div>
+    </div>
+    <div>
+      <div class="hb-stat-num">10</div>
+      <div class="hb-stat-label">SUVs ranked</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sh"><h3>Ranked for you</h3><a href="#">See all</a></div>
+  <div class="card-list">
+
+    <div class="car-card winner">
+      <div class="card-rank">1</div>
+      <div class="card-body">
+        <div class="card-brand">Hyundai</div>
+        <div class="card-name">Creta SX(O) Turbo</div>
+        <div class="card-row">
+          <span class="ctag hit">6 Airbags</span>
+          <span class="ctag hit">Vent. Seats</span>
+          <span class="ctag hit">BlueLink</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-score">84</div>
+        <div class="card-price">₹17.7L</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank">2</div>
+      <div class="card-body">
+        <div class="card-brand">Kia</div>
+        <div class="card-name">Seltos HTX+ Turbo</div>
+        <div class="card-row">
+          <span class="ctag hit">6 Airbags</span>
+          <span class="ctag">iRA</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-score">81</div>
+        <div class="card-price">₹18.2L</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank">3</div>
+      <div class="card-body">
+        <div class="card-brand">MG</div>
+        <div class="card-name">Hector Sharp Pro</div>
+        <div class="card-row">
+          <span class="ctag hit">Vent. Seats</span>
+          <span class="ctag hit">i-SMART</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-score">79</div>
+        <div class="card-price">₹19.1L</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank">4</div>
+      <div class="card-body">
+        <div class="card-brand">Skoda</div>
+        <div class="card-name">Kushaq Style 1.5</div>
+        <div class="card-row">
+          <span class="ctag hit">6 Airbags</span>
+          <span class="ctag">5-Star NCAP</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-score">76</div>
+        <div class="card-price">₹17.8L</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="card-rank">5</div>
+      <div class="card-body">
+        <div class="card-brand">Tata</div>
+        <div class="card-name">Nexon Creative+ Turbo</div>
+        <div class="card-row">
+          <span class="ctag hit">6 Airbags</span>
+          <span class="ctag">Xpress Cool</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-score">74</div>
+        <div class="card-price">₹16.4L</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="jodhpur-strip">
+  <div class="js-icon">📍</div>
+  <div class="js-body">
+    <h4>Jodhpur tools</h4>
+    <p>EMI calculator, exchange estimator, dealer checklist</p>
+  </div>
+  <div class="js-arrow">›</div>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn active"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+</body>
+</html>

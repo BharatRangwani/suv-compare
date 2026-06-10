@@ -277,9 +277,11 @@ function buildSpecsSection(car) {
         <dt>Cabin Width</dt><dd>${car.cabin_width_mm || '—'} mm</dd>
         <dt>Rear Legroom</dt><dd>${car.rear_legroom_mm || '—'} mm</dd>
         <dt>Airbags</dt><dd>${car.airbags || '—'}</dd>
-        <dt>NCAP Rating</dt><dd>${ncapText}</dd>
+        <dt>NCAP Rating</dt><dd>${ncapText}${car.ncap_body ? ` <span style="font-size:0.65em;color:var(--text-muted)">(${car.ncap_body})</span>` : ''}</dd>
         ${adasFeaturesHtml}
         <dt>360° Camera</dt><dd>${car.camera_360 ? '<span class="spec-yes">Yes</span>' : 'No'}</dd>
+        ${car.platform ? `<dt>Platform</dt><dd>${car.platform}</dd>` : ''}
+        ${car.launch_year ? `<dt>Launch Year</dt><dd>${car.launch_year}</dd>` : ''}
       </dl>
     </section>`;
 }

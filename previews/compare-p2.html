@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare P2 — 3D Viewer + Tabbed Spec Categories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff;
+  --surface: #ffffff;
+  --surface-2: #f5f7ff;
+  --blue: #2563eb;
+  --blue-light: rgba(37,99,235,0.08);
+  --blue-mid: rgba(37,99,235,0.15);
+  --blue-dark: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --border: #dde3f0;
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.option-label {
+  background: #1d4ed8; color: white; text-align: center;
+  font-size: 0.72rem; font-weight: 700; padding: 0.3rem; letter-spacing: 0.05em;
+}
+
+header {
+  position: sticky; top: 26px; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(240,244,255,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-size: 0.9rem; font-weight: 700; letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.logo-sq {
+  width: 18px; height: 18px; border-radius: 4px;
+  background: var(--blue); display: flex; align-items: center;
+  justify-content: center; font-size: 0.5rem; font-weight: 800; color: white;
+}
+.header-back { font-size: 0.72rem; color: var(--blue); font-weight: 500; cursor: pointer; }
+
+/* ── 3D VIEWER — taller, split layout ── */
+.viewer-wrap {
+  margin: 0.9rem 1.25rem 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
+}
+
+/* Car selector tabs at top */
+.car-selector {
+  display: flex; gap: 0; padding: 0.6rem 0.75rem 0;
+}
+.csel-btn {
+  flex: 1; text-align: center; padding: 0.75rem 0.5rem 0.6rem;
+  border-radius: 8px 8px 0 0; cursor: pointer;
+  transition: background 0.15s;
+}
+.csel-btn.active { background: rgba(255,255,255,0.15); }
+.csel-brand { font-size: 0.62rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.1rem; }
+.csel-model { font-size: 1.1rem; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1.1; }
+.csel-score {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.85);
+  margin-top: 0.15rem;
+}
+
+/* Canvas */
+.viewer-canvas {
+  height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.car-3d-wrap {
+  perspective: 600px;
+  width: 260px; height: 130px; position: relative;
+}
+.car-body {
+  width: 260px; height: 90px; position: absolute; bottom: 0;
+  transform-style: preserve-3d;
+  animation: rotY 10s ease-in-out infinite;
+}
+@keyframes rotY {
+  0%   { transform: rotateY(-20deg) rotateX(6deg); }
+  50%  { transform: rotateY(20deg) rotateX(6deg); }
+  100% { transform: rotateY(-20deg) rotateX(6deg); }
+}
+.car-svg { width: 100%; height: 100%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.45)); }
+.ground-shadow {
+  position: absolute; bottom: -6px; left: 10%; right: 10%;
+  height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Color + variant row — inside blue bg */
+.cv-row {
+  padding: 0.7rem 0.9rem;
+  display: flex; gap: 1.25rem; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.cv-block { display: flex; flex-direction: column; gap: 0.35rem; }
+.cv-label { font-size: 0.55rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+.color-dots { display: flex; gap: 0.35rem; }
+.cdot {
+  width: 18px; height: 18px; border-radius: 50%;
+  cursor: pointer; border: 2px solid transparent; transition: all 0.15s;
+}
+.cdot.active { border-color: white; }
+.variant-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.vchip-sm {
+  font-size: 0.6rem; font-weight: 500; padding: 0.2rem 0.55rem;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.08);
+  cursor: pointer; white-space: nowrap; transition: all 0.15s;
+}
+.vchip-sm.active {
+  background: rgba(255,255,255,0.2); color: white;
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ── SCORE STRIP — just below viewer ── */
+.score-strip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: white; border: 1.5px solid var(--border);
+  border-top: none; border-radius: 0 0 var(--radius) var(--radius);
+  margin: 0 1.25rem; overflow: hidden;
+}
+.ss-cell {
+  padding: 0.7rem 0.75rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.ss-cell:last-child { border-right: none; }
+.ss-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.1rem; font-weight: 700; color: var(--blue); line-height: 1;
+}
+.ss-label { font-size: 0.58rem; color: var(--muted); margin-top: 0.15rem; }
+
+/* ── SPEC TABS ── */
+.spec-tabs {
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+  padding: 0.75rem 1.25rem 0; border-bottom: 1px solid var(--border);
+  background: white; position: sticky; top: 78px; z-index: 50;
+  margin: 0.9rem 0 0;
+}
+.spec-tabs::-webkit-scrollbar { display: none; }
+.stab {
+  font-size: 0.72rem; font-weight: 600; padding: 0.45rem 0.85rem;
+  color: var(--muted); cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: all 0.15s;
+}
+.stab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* ── SPEC CONTENT ── */
+.spec-content { padding: 0 1.25rem; margin-top: 0.75rem; }
+
+/* Highlighted must-haves */
+.must-haves {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.5rem; margin-bottom: 0.75rem;
+}
+.mh-tile {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.65rem 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.mh-tile.pass { border-color: rgba(37,99,235,0.3); background: var(--blue-light); }
+.mh-tile.fail { border-color: rgba(239,68,68,0.25); background: rgba(239,68,68,0.05); }
+.mh-icon { font-size: 1rem; flex-shrink: 0; }
+.mh-text { font-size: 0.7rem; font-weight: 600; color: var(--text); line-height: 1.2; }
+.mh-sub { font-size: 0.6rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* Spec table */
+.spec-table { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.srow {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.6rem 1rem; border-bottom: 1px solid var(--border);
+}
+.srow:last-child { border-bottom: none; }
+.srow-key { font-size: 0.74rem; color: var(--muted); }
+.srow-val {
+  font-size: 0.76rem; font-weight: 600; color: var(--text);
+  font-family: 'Geist Mono', monospace;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.tick { color: #16a34a; }
+.cross { color: #ef4444; }
+.badge-blue {
+  font-size: 0.56rem; font-weight: 700; padding: 0.1rem 0.4rem;
+  border-radius: 4px; background: var(--blue-light); color: var(--blue);
+}
+
+/* ── CTA ── */
+.cta-row {
+  display: flex; gap: 0.6rem; padding: 0 1.25rem; margin: 0.9rem 0 1.25rem;
+}
+.btn-primary {
+  flex: 1; background: var(--blue); color: white;
+  border: none; border-radius: 10px; padding: 0.8rem;
+  font-size: 0.82rem; font-weight: 700; font-family: 'Geist', sans-serif;
+  cursor: pointer;
+}
+.btn-outline {
+  flex: 1; background: white; color: var(--blue);
+  border: 1.5px solid var(--blue-mid); border-radius: 10px; padding: 0.8rem;
+  font-size: 0.82rem; font-weight: 700; font-family: 'Geist', sans-serif;
+  cursor: pointer;
+}
+
+/* ── NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: white; border-top: 1.5px solid var(--border);
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 0.2rem; padding: 0.7rem 0.5rem; border: none;
+  background: transparent; cursor: pointer; color: var(--dim);
+  font-size: 0.58rem; font-family: 'Geist', sans-serif;
+  font-weight: 500; transition: color 0.15s; position: relative;
+}
+.nav-btn.active { color: var(--blue); }
+.nav-btn.active::after {
+  content: ''; position: absolute; top: 0; left: 25%; right: 25%;
+  height: 2px; background: var(--blue); border-radius: 0 0 2px 2px;
+}
+.nav-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+<div class="option-label">COMPARE P2 — 3D viewer + car selector tabs + tabbed spec categories (Performance / Safety / Features / Ownership)</div>
+
+<header>
+  <div class="logo"><div class="logo-sq">SC</div> SUV Compare</div>
+  <div class="header-back">‹ Explore</div>
+</header>
+
+<!-- Viewer with car selector tabs at top -->
+<div class="viewer-wrap">
+  <div class="car-selector">
+    <div class="csel-btn active">
+      <div class="csel-brand">Hyundai</div>
+      <div class="csel-model">Creta</div>
+      <div class="csel-score">84</div>
+    </div>
+    <div class="csel-btn">
+      <div class="csel-brand">Kia</div>
+      <div class="csel-model">Seltos</div>
+      <div class="csel-score">81</div>
+    </div>
+    <div class="csel-btn">
+      <div class="csel-brand">MG</div>
+      <div class="csel-model">Hector</div>
+      <div class="csel-score">79</div>
+    </div>
+  </div>
+
+  <div class="viewer-canvas">
+    <div class="car-3d-wrap">
+      <div class="car-body">
+        <svg class="car-svg" viewBox="0 0 260 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="38" width="240" height="40" rx="6" fill="rgba(255,255,255,0.18)"/>
+          <path d="M60 38 Q70 12 95 10 L175 10 Q200 10 205 38Z" fill="rgba(255,255,255,0.22)"/>
+          <path d="M72 36 Q80 18 97 16 L130 16 L130 36Z" fill="rgba(255,255,255,0.35)"/>
+          <path d="M138 36 L138 16 L172 16 Q192 18 198 36Z" fill="rgba(255,255,255,0.28)"/>
+          <rect x="10" y="48" width="28" height="22" rx="3" fill="rgba(255,255,255,0.1)"/>
+          <ellipse cx="22" cy="50" rx="8" ry="5" fill="rgba(255,255,255,0.5)"/>
+          <ellipse cx="238" cy="50" rx="8" ry="5" fill="rgba(255,255,255,0.45)"/>
+          <circle cx="65" cy="78" r="12" fill="rgba(30,30,60,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <circle cx="65" cy="78" r="6" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="195" cy="78" r="12" fill="rgba(30,30,60,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <circle cx="195" cy="78" r="6" fill="rgba(255,255,255,0.2)"/>
+          <line x1="130" y1="38" x2="130" y2="78" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        </svg>
+        <div class="ground-shadow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color + variant controls inside gradient -->
+  <div class="cv-row">
+    <div class="cv-block">
+      <div class="cv-label">Color</div>
+      <div class="color-dots">
+        <div class="cdot active" style="background:#e8e8e8"></div>
+        <div class="cdot" style="background:#1a1a2e"></div>
+        <div class="cdot" style="background:#c0392b"></div>
+        <div class="cdot" style="background:#2563eb"></div>
+        <div class="cdot" style="background:#6b7c6e"></div>
+      </div>
+    </div>
+    <div class="cv-block" style="flex:1">
+      <div class="cv-label">Variant</div>
+      <div class="variant-chips">
+        <div class="vchip-sm">S MT</div>
+        <div class="vchip-sm">SX Turbo</div>
+        <div class="vchip-sm active">SX(O) DCT</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Score strip below viewer -->
+<div class="score-strip">
+  <div class="ss-cell">
+    <div class="ss-num">₹17.7L</div>
+    <div class="ss-label">On-road</div>
+  </div>
+  <div class="ss-cell">
+    <div class="ss-num">84</div>
+    <div class="ss-label">Match score</div>
+  </div>
+  <div class="ss-cell">
+    <div class="ss-num">6 wks</div>
+    <div class="ss-label">Wait time</div>
+  </div>
+</div>
+
+<!-- Sticky spec category tabs -->
+<div class="spec-tabs">
+  <div class="stab active">Must-haves</div>
+  <div class="stab">Performance</div>
+  <div class="stab">Safety</div>
+  <div class="stab">Features</div>
+  <div class="stab">Ownership</div>
+</div>
+
+<!-- Must-haves tab content -->
+<div class="spec-content">
+
+  <div class="must-haves">
+    <div class="mh-tile pass">
+      <div class="mh-icon">🛡</div>
+      <div><div class="mh-text">6 Airbags</div><div class="mh-sub">Front, side, curtain</div></div>
+    </div>
+    <div class="mh-tile pass">
+      <div class="mh-icon">💨</div>
+      <div><div class="mh-text">Vent. Seats</div><div class="mh-sub">Driver + co-driver</div></div>
+    </div>
+    <div class="mh-tile pass">
+      <div class="mh-icon">📱</div>
+      <div><div class="mh-text">Connected Car</div><div class="mh-sub">BlueLink app</div></div>
+    </div>
+    <div class="mh-tile pass">
+      <div class="mh-icon">⛽</div>
+      <div><div class="mh-text">Petrol Turbo</div><div class="mh-sub">1.5L GDi DCT</div></div>
+    </div>
+    <div class="mh-tile pass">
+      <div class="mh-icon">👥</div>
+      <div><div class="mh-text">5-Seater</div><div class="mh-sub">920mm rear legroom</div></div>
+    </div>
+    <div class="mh-tile fail">
+      <div class="mh-icon">💰</div>
+      <div><div class="mh-text">Under ₹20L</div><div class="mh-sub">₹17.69L on-road</div></div>
+    </div>
+  </div>
+
+  <div class="spec-table">
+    <div class="srow"><span class="srow-key">NCAP rating</span><span class="srow-val">5 Stars <span class="badge-blue">Global</span></span></div>
+    <div class="srow"><span class="srow-key">ADAS</span><span class="srow-val">Level 2 <span class="tick">✓</span></span></div>
+    <div class="srow"><span class="srow-key">Wireless CarPlay</span><span class="srow-val"><span class="tick">✓</span></span></div>
+    <div class="srow"><span class="srow-key">Wireless AA</span><span class="srow-val"><span class="tick">✓</span></span></div>
+    <div class="srow"><span class="srow-key">Panoramic sunroof</span><span class="srow-val"><span class="tick">✓</span></span></div>
+    <div class="srow"><span class="srow-key">Waiting period</span><span class="srow-val">6 weeks</span></div>
+    <div class="srow"><span class="srow-key">Service centers (Jodhpur)</span><span class="srow-val">3 centers</span></div>
+  </div>
+
+</div>
+
+<div class="cta-row">
+  <button class="btn-primary">+ Add to compare</button>
+  <button class="btn-outline">View full specs</button>
+</div>
+
+<div style="height:5rem"></div>
+<nav class="bottom-nav">
+  <button class="nav-btn"><span class="nav-icon">⊞</span>Explore</button>
+  <button class="nav-btn active"><span class="nav-icon">≡</span>Compare</button>
+  <button class="nav-btn"><span class="nav-icon">★</span>Ranking</button>
+  <button class="nav-btn"><span class="nav-icon">◎</span>Jodhpur</button>
+</nav>
+</body>
+</html>

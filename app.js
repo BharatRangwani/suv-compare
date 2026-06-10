@@ -203,6 +203,7 @@ async function renderFinanceTab() {
         btn.classList.add('sel');
         updateLoanResult();
         updateAnswerCard();
+        if (typeof updatePurchasePlan === 'function') updatePurchasePlan();
       });
     });
   }
@@ -239,6 +240,7 @@ async function renderFinanceTab() {
     btn.classList.add('active');
     updateLoanResult();
     updateAnswerCard();
+    if (typeof updatePurchasePlan === 'function') updatePurchasePlan();
   });
 
   // Tenure chips
@@ -250,6 +252,7 @@ async function renderFinanceTab() {
     btn.classList.add('active');
     updateLoanResult();
     updateAnswerCard();
+    if (typeof updatePurchasePlan === 'function') updatePurchasePlan();
   });
 
   // Petrol price
@@ -443,7 +446,86 @@ async function renderFinanceTab() {
   pricesWrap.appendChild(priceList);
   pane.appendChild(pricesWrap);
 
-  // ── 5. Dealer checklist ──────────────────────────────────────────────────────
+  // ── 5. Recommended purchase plan ────────────────────────────────────────────
+  const planWrap = document.createElement('div');
+  planWrap.className = 'fin-section';
+  planWrap.innerHTML = `<div class="fin-sec-hd"><span>Recommended purchase plan</span></div>`;
+  const planCard = document.createElement('div');
+  planCard.className = 'fin-plan-card';
+  planWrap.appendChild(planCard);
+  pane.appendChild(planWrap);
+
+  function updatePurchasePlan() {
+    const car = getSelectedCar();
+    if (!car) return;
+    const onRoad = getOnRoad(car);
+    const exch   = getExch();
+    const exchVal = exch.dealerExchange;
+
+    // Budget band logic
+    const budgetMax = profile.budget_max || onRoad;
+    const cushion   = budgetMax - onRoad;
+    const isComfort = cushion > 100000; // >1L headroom = comfortable
+
+    // Recommended DP: 20-30% for comfort buyers, 30-40% if tight
+    const recDPPct = isComfort ? 20 : 30;
+    const recRate  = 8.5; // SBI — best rate
+    const recYears = isComfort ? 5 : 7;  // 5yr EMI if comfortable, 7yr to reduce EMI if tight
+    const recTenure = recYears * 12;
+
+    const recDP    = Math.max(Math.round(onRoad * recDPPct / 100 / 1000) * 1000, exchVal);
+    const recPrin  = onRoad - recDP;
+    const r        = recRate / 12 / 100;
+    const recEMI   = Math.round(recPrin * r * Math.pow(1+r, recTenure) / (Math.pow(1+r, recTenure) - 1));
+    const totalInt = Math.round(recEMI * recTenure - recPrin);
+
+    planCard.innerHTML = `
+      <div class="fin-plan-row">
+        <div class="fin-plan-col">
+          <div class="fin-plan-lbl">Suggested Down Payment</div>
+          <div class="fin-plan-val">${fL(recDP)}</div>
+          <div class="fin-plan-sub">${recDPPct}% of on-road${exchVal > 0 ? ` · use Quanto exchange (${fL(exchVal)})` : ''}</div>
+        </div>
+        <div class="fin-plan-col">
+          <div class="fin-plan-lbl">Suggested Rate</div>
+          <div class="fin-plan-val">${recRate}% p.a.</div>
+          <div class="fin-plan-sub">SBI — lowest car loan rate</div>
+        </div>
+        <div class="fin-plan-col">
+          <div class="fin-plan-lbl">Suggested Tenure</div>
+          <div class="fin-plan-val">${recYears} years</div>
+          <div class="fin-plan-sub">EMI ₹${recEMI.toLocaleString('en-IN')}/mo · interest ₹${(totalInt/100000).toFixed(1)}L total</div>
+        </div>
+      </div>
+      <div class="fin-plan-tip">💡 ${isComfort ? 'You have comfortable headroom. Keep tenure shorter (5yr) to save on interest.' : 'Budget is tight — use 7yr tenure to lower monthly EMI, and prepay when possible to save interest.'}</div>
+    `;
+  }
+  updatePurchasePlan();
+
+  // ── 6. Loan preclosure charges ───────────────────────────────────────────────
+  const preCloseWrap = document.createElement('div');
+  preCloseWrap.className = 'fin-section';
+  preCloseWrap.innerHTML = `
+    <div class="fin-sec-hd"><span>Loan preclosure / prepayment charges</span></div>
+    <div class="fin-preclose-card">
+      <p class="fin-preclose-note">After RBI directive (2014), floating-rate loans have NO preclosure penalty. Fixed-rate loans may still charge 1–5%. Always confirm with your bank before signing.</p>
+      <table class="fin-preclose-table">
+        <thead><tr><th>Bank</th><th>Prepayment Charge</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>SBI</td><td class="fin-pct-nil">NIL</td><td>Floating rate — no penalty anytime</td></tr>
+          <tr><td>Bank of Baroda</td><td class="fin-pct-nil">NIL</td><td>Floating rate — no penalty</td></tr>
+          <tr><td>HDFC Bank</td><td>2–6%</td><td>6% if < 12 EMIs paid; 2% after 36 EMIs</td></tr>
+          <tr><td>ICICI Bank</td><td>5%</td><td>On outstanding principal, full tenure</td></tr>
+          <tr><td>Axis Bank</td><td>5–10%</td><td>10% if closed in first 6 months; 5% after 12 months</td></tr>
+          <tr><td>Kotak Mahindra</td><td>~5%</td><td>On outstanding; reduces after 12 EMIs</td></tr>
+        </tbody>
+      </table>
+      <p class="fin-preclose-note" style="margin-top:0.5rem">💡 Tip: If you plan to prepay early, go with SBI or BoB to avoid the penalty.</p>
+    </div>
+  `;
+  pane.appendChild(preCloseWrap);
+
+  // ── 7. Dealer checklist ──────────────────────────────────────────────────────
   const checkWrap = document.createElement('div');
   checkWrap.className = 'fin-section';
   checkWrap.innerHTML = `<div class="fin-sec-hd"><span>Dealer visit checklist</span></div>`;
@@ -586,7 +668,7 @@ async function renderRankingPlaceholder() {
             <div class="rnk-pod-score-lbl">/ 100</div>
             <div class="rnk-pod-brand">${car.brand}</div>
             <div class="rnk-pod-model">${car.model}</div>
-            <div class="rnk-pod-var">${car.variant || ''}</div>
+            <div class="rnk-pod-var">${car.variant || ''}${car.launch_year ? ` (${car.launch_year})` : ''}</div>
             <div class="rnk-pod-price${isFirst ? ' top' : ''}">₹${(onRoad / 100000).toFixed(1)}L OTR</div>
           `;
           podiumEl.appendChild(pod);
@@ -628,7 +710,7 @@ async function renderRankingPlaceholder() {
             <div class="rnk-exp-num">${car.rank}</div>
             <div class="rnk-exp-info">
               <div class="rnk-exp-name">${car.brand} ${car.model}</div>
-              <div class="rnk-exp-sub">${car.variant || ''}</div>
+              <div class="rnk-exp-sub">${car.variant || ''}${car.launch_year ? ` (${car.launch_year})` : ''}</div>
             </div>
             <div class="rnk-exp-bar-col">
               <div class="rnk-exp-bar-track"><div class="rnk-exp-bar-fill" style="width:${score}%"></div></div>
@@ -649,7 +731,7 @@ async function renderRankingPlaceholder() {
               <div class="rnk-det-main">
                 <div class="rnk-det-brand">${car.brand}</div>
                 <div class="rnk-det-name">${car.model}</div>
-                <div class="rnk-det-var">${car.variant || ''}</div>
+                <div class="rnk-det-var">${car.variant || ''}${car.launch_year ? ` (${car.launch_year})` : ''}</div>
                 <div class="rnk-det-bar-wrap">
                   <div class="rnk-det-bar-track"><div class="rnk-det-bar-fill" style="width:${score}%"></div></div>
                   <span class="rnk-det-bar-pct">${score}</span>

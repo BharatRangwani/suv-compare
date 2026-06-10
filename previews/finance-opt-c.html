@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance C — Tabbed tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f0f4ff; --surface: #ffffff; --surface-2: #f5f7ff;
+  --blue: #2563eb; --blue-light: rgba(37,99,235,0.08); --blue-mid: rgba(37,99,235,0.15);
+  --text: #0f172a; --muted: #64748b; --dim: #94a3b8; --border: #dde3f0;
+  --green: #16a34a; --green-bg: rgba(22,163,74,0.08);
+  --radius: 14px;
+  font-family: 'Geist', sans-serif;
+}
+body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 5rem; }
+.opt-banner { background: var(--blue); color: white; text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.35rem; }
+
+/* ── Summary strip ── */
+.summary-strip {
+  margin: 1rem 1.25rem 0;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.strip-top {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  padding: 0.85rem 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.strip-car { color: white; }
+.strip-car-eyebrow { font-size: 0.58rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+.strip-car-name { font-size: 0.95rem; font-weight: 800; line-height: 1.2; }
+.strip-car-var { font-size: 0.68rem; color: rgba(255,255,255,0.65); margin-top: 0.1rem; }
+.strip-score { font-family: 'Geist Mono', monospace; font-size: 2rem; font-weight: 800; color: white; line-height: 1; }
+.strip-score-lbl { font-size: 0.55rem; color: rgba(255,255,255,0.5); text-align: right; }
+
+.strip-stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+.strip-stat { padding: 0.65rem 0.75rem; border-right: 1px solid var(--border); text-align: center; }
+.strip-stat:last-child { border-right: none; }
+.strip-stat-val { font-family: 'Geist Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.strip-stat-lbl { font-size: 0.55rem; color: var(--dim); margin-top: 0.1rem; }
+
+/* ── Tool tabs ── */
+.tool-tabs-wrap { padding: 0.85rem 1.25rem 0; }
+.tool-tabs { display: flex; gap: 0; background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.ttab {
+  flex: 1; padding: 0.6rem 0.5rem; border: none; background: transparent;
+  font-size: 0.68rem; font-weight: 600; color: var(--muted);
+  font-family: 'Geist', sans-serif; cursor: pointer;
+  border-right: 1px solid var(--border); transition: all 0.15s;
+}
+.ttab:last-child { border-right: none; }
+.ttab.active { background: var(--blue); color: white; }
+
+/* ── Tool panels ── */
+.tool-panel { padding: 0.85rem 1.25rem 0; }
+
+/* EMI panel */
+.emi-result-big {
+  background: var(--blue); border-radius: 12px; padding: 1.1rem 1.15rem;
+  display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.75rem; color: white;
+}
+.emi-num { font-family: 'Geist Mono', monospace; font-size: 2rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.emi-num-lbl { font-size: 0.6rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+.emi-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+.emi-meta { font-size: 0.7rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+.ctrl-block { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.6rem; }
+.ctrl-row-2 { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.ctrl-row-2:last-child { margin-bottom: 0; }
+.ctrl-label-2 { font-size: 0.68rem; color: var(--muted); width: 85px; flex-shrink: 0; }
+.ctrl-val-2 { font-size: 0.72rem; font-weight: 700; color: var(--text); font-family: 'Geist Mono', monospace; text-align: right; min-width: 55px; }
+input[type=range] { flex: 1; accent-color: var(--blue); }
+
+.mini-chips { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.mc { font-size: 0.62rem; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1.5px solid var(--border); color: var(--muted); cursor: pointer; }
+.mc.on { border-color: var(--blue); color: var(--blue); background: var(--blue-light); font-weight: 600; }
+
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.stat-cell { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.65rem; }
+.stat-cell-val { font-size: 0.9rem; font-weight: 700; color: var(--text); font-family: 'Geist Mono', monospace; }
+.stat-cell-lbl { font-size: 0.58rem; color: var(--dim); margin-top: 0.1rem; }
+
+/* Exchange panel */
+.exch-hero { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 0.6rem; }
+.exch-hero-top { display: grid; grid-template-columns: 1fr 1fr; }
+.exch-hero-cell { padding: 0.85rem 1rem; border-right: 1px solid var(--border); }
+.exch-hero-cell:last-child { border-right: none; }
+.exch-hero-lbl { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+.exch-hero-val { font-family: 'Geist Mono', monospace; font-size: 1.25rem; font-weight: 800; }
+.exch-hero-val.blue { color: var(--blue); }
+.exch-form { padding: 0.75rem 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; border-top: 1px solid var(--border); align-items: center; }
+.exch-form select { font-size: 0.72rem; padding: 0.28rem 0.5rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'Geist', sans-serif; background: var(--surface); color: var(--text); }
+.cond-chips { display: flex; gap: 0.25rem; }
+.cc { font-size: 0.62rem; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1.5px solid var(--border); color: var(--muted); cursor: pointer; }
+.cc.on { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+
+.net-list { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.net-row { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border); }
+.net-row:last-child { border-bottom: none; }
+.net-car { font-size: 0.8rem; font-weight: 600; }
+.net-car small { font-size: 0.65rem; color: var(--muted); font-weight: 400; display: block; }
+.net-price { font-family: 'Geist Mono', monospace; font-size: 0.88rem; font-weight: 700; color: var(--blue); }
+.net-onroad { font-size: 0.65rem; color: var(--muted); }
+.tip { font-size: 0.7rem; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.75rem; margin-top: 0.6rem; line-height: 1.5; }
+
+/* Checklist panel */
+.check-list { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.check-row { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+.check-row:last-child { border-bottom: none; }
+.check-row input { accent-color: var(--blue); margin-top: 0.15rem; flex-shrink: 0; }
+
+/* ── Nav stub ── */
+.nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1.5px solid var(--border); display: flex; }
+.nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.7rem 0.5rem; border: none; background: transparent; font-size: 0.58rem; font-family: 'Geist', sans-serif; color: var(--dim); }
+.nav-btn.active { color: var(--blue); position: relative; }
+.nav-btn.active::after { content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 2px; background: var(--blue); border-radius: 0 0 2px 2px; }
+</style>
+</head>
+<body>
+<div class="opt-banner">OPTION C — Summary strip + tabbed tools</div>
+
+<!-- Summary strip -->
+<div class="summary-strip">
+  <div class="strip-top">
+    <div class="strip-car">
+      <div class="strip-car-eyebrow">Top pick · Hyundai</div>
+      <div class="strip-car-name">Creta SX(O)</div>
+      <div class="strip-car-var">Petrol Turbo DCT</div>
+    </div>
+    <div>
+      <div class="strip-score">84</div>
+      <div class="strip-score-lbl">/ 100</div>
+    </div>
+  </div>
+  <div class="strip-stats">
+    <div class="strip-stat"><div class="strip-stat-val">₹17.7L</div><div class="strip-stat-lbl">On-road</div></div>
+    <div class="strip-stat"><div class="strip-stat-val">₹28.4k</div><div class="strip-stat-lbl">EMI/mo</div></div>
+    <div class="strip-stat"><div class="strip-stat-val">₹1.03L</div><div class="strip-stat-lbl">Exchange</div></div>
+    <div class="strip-stat"><div class="strip-stat-val">3 wks</div><div class="strip-stat-lbl">Wait</div></div>
+  </div>
+</div>
+
+<!-- Tabbed tools -->
+<div class="tool-tabs-wrap">
+  <div class="tool-tabs">
+    <button class="ttab active">EMI</button>
+    <button class="ttab">Exchange</button>
+    <button class="ttab">Prices</button>
+    <button class="ttab">Checklist</button>
+  </div>
+</div>
+
+<!-- EMI Panel (visible) -->
+<div class="tool-panel">
+  <div class="emi-result-big">
+    <div>
+      <div class="emi-num">₹28,400</div>
+      <div class="emi-num-lbl">per month</div>
+    </div>
+    <div class="emi-divider"></div>
+    <div class="emi-meta">80% financed · ₹14.16L loan<br>8.5% p.a. · 60 months<br>Total interest ₹2.81L</div>
+  </div>
+  <div class="ctrl-block">
+    <div class="ctrl-row-2">
+      <span class="ctrl-label-2">Down payment</span>
+      <input type="range" min="5" max="50" value="20">
+      <span class="ctrl-val-2">20% — ₹3.54L</span>
+    </div>
+    <div class="ctrl-row-2">
+      <span class="ctrl-label-2">Bank / rate</span>
+      <div class="mini-chips">
+        <span class="mc on">SBI 8.5%</span>
+        <span class="mc">HDFC 8.75%</span>
+        <span class="mc">ICICI 9%</span>
+      </div>
+    </div>
+    <div class="ctrl-row-2">
+      <span class="ctrl-label-2">Tenure</span>
+      <div class="mini-chips">
+        <span class="mc">3yr</span><span class="mc">4yr</span><span class="mc on">5yr</span><span class="mc">7yr</span>
+      </div>
+    </div>
+  </div>
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-cell-val">₹14.16L</div><div class="stat-cell-lbl">Loan</div></div>
+    <div class="stat-cell"><div class="stat-cell-val">₹2.81L</div><div class="stat-cell-lbl">Interest</div></div>
+    <div class="stat-cell"><div class="stat-cell-val">₹17.0L</div><div class="stat-cell-lbl">Total payable</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn"><span>🏠</span>Home</button>
+  <button class="nav-btn"><span>⚖️</span>Compare</button>
+  <button class="nav-btn"><span>🏆</span>Ranking</button>
+  <button class="nav-btn active"><span>₹</span>Cost & Finance</button>
+</nav>
+</body>
+</html>
