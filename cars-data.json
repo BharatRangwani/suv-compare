@@ -3571,6 +3571,2436 @@
         }
       ],
       "news_url": "https://media.mahindra.com/news"
+    },
+    {
+      "id": "hyundai-creta-s-petrol-mt",
+      "brand": "Hyundai",
+      "model": "Creta",
+      "variant": "S Petrol MT",
+      "platform": "K2/SP2",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 158,
+      "torque_nm": 253,
+      "arai_kmpl": 17,
+      "realworld_kmpl": 13.2,
+      "ex_showroom_jodhpur": 1360000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1345,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 945,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 54,
+      "resale_5yr_pct": 43,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 7.2,
+      "annual_insurance_estimate": 36000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "Clutch effort slightly heavy in stop-go traffic",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Lowest-price Creta entry",
+        "Hyundai reliability",
+        "Good fuel efficiency MT"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "No ADAS",
+        "Manual only"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Pawan+Motors+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Shri+Balaji+Motors+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+    },
+    {
+      "id": "hyundai-creta-sxo-diesel-mt",
+      "brand": "Hyundai",
+      "model": "Creta",
+      "variant": "SX(O) Diesel MT",
+      "platform": "K2/SP2",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1493,
+      "power_bhp": 116,
+      "torque_nm": 250,
+      "arai_kmpl": 21.4,
+      "realworld_kmpl": 16.5,
+      "ex_showroom_jodhpur": 1840000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1380,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "dual_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 945,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 63,
+      "resale_5yr_pct": 50,
+      "reliability_score": 80,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8.3,
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 9,
+      "rating_service_quality": 8,
+      "ratings_total": 8.1,
+      "annual_insurance_estimate": 48000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Diesel clatter noticeable at idle",
+          "severity": "Minor"
+        },
+        {
+          "issue": "MT gear throws slightly notchy",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Best-in-class fuel efficiency",
+        "Full features at lower price vs AT",
+        "High resale diesel"
+      ],
+      "cons": [
+        "Diesel clatter at idle",
+        "No DCT option at this trim"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Pawan+Motors+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Shri+Balaji+Motors+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+    },
+    {
+      "id": "hyundai-creta-sxo-diesel-at",
+      "brand": "Hyundai",
+      "model": "Creta",
+      "variant": "SX(O) Diesel AT",
+      "platform": "K2/SP2",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1493,
+      "power_bhp": 116,
+      "torque_nm": 250,
+      "arai_kmpl": 18.4,
+      "realworld_kmpl": 14.8,
+      "ex_showroom_jodhpur": 1970000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1395,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Blind Spot Monitor",
+        "Forward Collision Warning"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "dual_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 945,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 62,
+      "resale_5yr_pct": 49,
+      "reliability_score": 80,
+      "owner_rating": 4.4,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 8,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8.4,
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 9,
+      "rating_service_quality": 8,
+      "ratings_total": 8.1,
+      "annual_insurance_estimate": 51000,
+      "annual_maintenance_estimate": 16000,
+      "known_issues": [
+        {
+          "issue": "Diesel clatter noticeable at idle",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Diesel efficiency with automatic comfort",
+        "Full feature set",
+        "High resale value"
+      ],
+      "cons": [
+        "Priciest Creta variant",
+        "Diesel AT adds weight"
+      ],
+      "waiting_weeks_jodhpur": 5,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Pawan+Motors+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Shri+Balaji+Motors+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+    },
+    {
+      "id": "hyundai-creta-sx-strong-hybrid",
+      "brand": "Hyundai",
+      "model": "Creta",
+      "variant": "SX Strong Hybrid AT",
+      "platform": "K2/SP2",
+      "fuel": "strong_hybrid",
+      "transmission": "e-CVT",
+      "engine_cc": 1497,
+      "power_bhp": 140,
+      "torque_nm": 144,
+      "arai_kmpl": 19,
+      "realworld_kmpl": 16.5,
+      "ex_showroom_jodhpur": 2130000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1420,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "dual_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 945,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 48,
+      "reliability_score": 80,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 9,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8.3,
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 9,
+      "rating_service_quality": 8,
+      "ratings_total": 8,
+      "annual_insurance_estimate": 56000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "Hybrid battery service costs higher than petrol after 8 years",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Best Creta fuel efficiency",
+        "Smooth e-CVT",
+        "Future-proof hybrid"
+      ],
+      "cons": [
+        "Most expensive Creta petrol variant",
+        "Hybrid service costs long-term"
+      ],
+      "waiting_weeks_jodhpur": 6,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Robust Emerald",
+          "hex": "#1e6641"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1c2b80"
+        },
+        {
+          "name": "Titan Grey",
+          "hex": "#5e7585"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Pawan+Motors+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Shri+Balaji+Motors+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+    },
+    {
+      "id": "tata-nexon-smart-plus-petrol-mt",
+      "brand": "Tata",
+      "model": "Nexon",
+      "variant": "Smart+ Petrol MT",
+      "platform": "ALFA",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1199,
+      "power_bhp": 120,
+      "torque_nm": 170,
+      "arai_kmpl": 17,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1020000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 208,
+      "kerb_weight_kg": 1193,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Tata iRA",
+      "climate_control": "single_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1740,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 43,
+      "reliability_score": 72,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.6,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.5,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 7,
+      "ratings_total": 7,
+      "annual_insurance_estimate": 26000,
+      "annual_maintenance_estimate": 11000,
+      "known_issues": [
+        {
+          "issue": "Rattles from dashboard at highway speeds",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Gear shift quality unrefined vs competition",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Best-in-class ground clearance 208mm",
+        "Most affordable Nexon entry",
+        "Tata iRA connected"
+      ],
+      "cons": [
+        "Smaller boot vs competition",
+        "No sunroof at this price",
+        "Service quality inconsistent"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 12
+        }
+      ],
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
+    },
+    {
+      "id": "tata-nexon-creative-plus-diesel-mt",
+      "brand": "Tata",
+      "model": "Nexon",
+      "variant": "Creative+ Diesel MT",
+      "platform": "ALFA",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 115,
+      "torque_nm": 260,
+      "arai_kmpl": 24,
+      "realworld_kmpl": 18.5,
+      "ex_showroom_jodhpur": 1220000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 208,
+      "kerb_weight_kg": 1250,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Tata iRA",
+      "climate_control": "single_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1740,
+      "resale_3yr_pct": 57,
+      "resale_5yr_pct": 45,
+      "reliability_score": 74,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.6,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.7,
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 7,
+      "ratings_total": 7,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 14000,
+      "known_issues": [
+        {
+          "issue": "Diesel engine NVH louder than competition at idle",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Rattles from dashboard at highway speeds",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Excellent 24 kmpl ARAI diesel",
+        "Best ground clearance 208mm",
+        "Affordable diesel entry"
+      ],
+      "cons": [
+        "Diesel NVH not refined",
+        "Limited service network in Jodhpur",
+        "No automatic option at this price"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 12
+        }
+      ],
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
+    },
+    {
+      "id": "maruti-grand-vitara-delta-plus-mild-hybrid-mt",
+      "brand": "Maruti Suzuki",
+      "model": "Grand Vitara",
+      "variant": "Delta+ Mild Hybrid MT",
+      "platform": "TNGA-B",
+      "fuel": "mild_hybrid",
+      "transmission": "MT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 20.6,
+      "realworld_kmpl": 15.5,
+      "ex_showroom_jodhpur": 1130000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1150,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Maruti Suzuki Connect",
+      "climate_control": "single_zone",
+      "infotainment_inches": 9,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 49,
+      "reliability_score": 85,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 7,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 8,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 9,
+      "ratings_total": 7.6,
+      "annual_insurance_estimate": 29000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Mild hybrid assist limited vs strong hybrid — marginal fuel savings only",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Most affordable Grand Vitara entry",
+        "Maruti service network best-in-class Jodhpur",
+        "TNGA-B platform rigidity",
+        "Excellent resale"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats at this trim",
+        "Mild hybrid — not same savings as strong hybrid",
+        "3-star NCAP"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": "previews/suzuki_grand_vitara.glb",
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f4f4f0"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Splendid Silver",
+          "hex": "#a0a4a8"
+        },
+        {
+          "name": "Opulent Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Grandeur Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Khaki Green",
+          "hex": "#5a6642"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki True Value - Basni",
+          "area": "Basni Phase 2",
+          "phone": "0291-2744000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki Arena - Shastri Nagar",
+          "area": "Shastri Nagar",
+          "phone": "0291-5200000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Arena+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "news": [
+        {
+          "title": "Grand Vitara hybrid gets revised pricing — now from ₹10.70L",
+          "date": "2025-08-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Grand Vitara CNG variant introduced; mild-hybrid dropped from lineup",
+          "date": "2024-11-12",
+          "type": "launch"
+        },
+        {
+          "title": "Ertiga CNG gets factory-fitted kit update; mileage up to 26.08 km/kg",
+          "date": "2024-07-18",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://press.maruti.co.in"
+    },
+    {
+      "id": "maruti-grand-vitara-alpha-plus-mild-hybrid-at",
+      "brand": "Maruti Suzuki",
+      "model": "Grand Vitara",
+      "variant": "Alpha+ Mild Hybrid AT",
+      "platform": "TNGA-B",
+      "fuel": "mild_hybrid",
+      "transmission": "AT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 19.38,
+      "realworld_kmpl": 14.8,
+      "ex_showroom_jodhpur": 1730000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1185,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Maruti Suzuki Connect",
+      "climate_control": "dual_zone",
+      "infotainment_inches": 9,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "resale_3yr_pct": 61,
+      "resale_5yr_pct": 50,
+      "reliability_score": 85,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 7,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 8.2,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 9,
+      "ratings_total": 7.9,
+      "annual_insurance_estimate": 45000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Mild hybrid assist limited vs strong hybrid",
+          "severity": "Minor"
+        },
+        {
+          "issue": "AT variant has slight torque lag at low speeds",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Full features with Maruti reliability",
+        "Best service network in Jodhpur",
+        "Panoramic sunroof + ADAS",
+        "Excellent resale"
+      ],
+      "cons": [
+        "Mild hybrid — not as efficient as strong hybrid",
+        "3-star NCAP"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": "previews/suzuki_grand_vitara.glb",
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f4f4f0"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Splendid Silver",
+          "hex": "#a0a4a8"
+        },
+        {
+          "name": "Opulent Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Grandeur Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Khaki Green",
+          "hex": "#5a6642"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki True Value - Basni",
+          "area": "Basni Phase 2",
+          "phone": "0291-2744000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki Arena - Shastri Nagar",
+          "area": "Shastri Nagar",
+          "phone": "0291-5200000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Arena+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "news": [
+        {
+          "title": "Grand Vitara hybrid gets revised pricing — now from ₹10.70L",
+          "date": "2025-08-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Grand Vitara CNG variant introduced; mild-hybrid dropped from lineup",
+          "date": "2024-11-12",
+          "type": "launch"
+        },
+        {
+          "title": "Ertiga CNG gets factory-fitted kit update; mileage up to 26.08 km/kg",
+          "date": "2024-07-18",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://press.maruti.co.in"
+    },
+    {
+      "id": "toyota-hyryder-g-mild-hybrid-mt",
+      "brand": "Toyota",
+      "model": "Urban Cruiser Hyryder",
+      "variant": "G Mild Hybrid MT",
+      "platform": "TNGA-B",
+      "fuel": "mild_hybrid",
+      "transmission": "MT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 20.4,
+      "realworld_kmpl": 15.3,
+      "ex_showroom_jodhpur": 1160000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1155,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Toyota iConnect",
+      "climate_control": "single_zone",
+      "infotainment_inches": 9,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "resale_3yr_pct": 61,
+      "resale_5yr_pct": 50,
+      "reliability_score": 86,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 9,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 7.6,
+      "annual_insurance_estimate": 30000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Single Toyota dealer in Jodhpur — capacity limited",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Toyota reliability reputation",
+        "TNGA-B platform",
+        "Good resale",
+        "Affordable entry"
+      ],
+      "cons": [
+        "Only 1 Toyota dealer Jodhpur",
+        "No sunroof at this trim",
+        "3-star NCAP"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Enticing Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Cafe White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Sporting Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Lush Forest Green",
+          "hex": "#2a5040"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Toyota Jodhpur - Shri Ram Auto",
+          "area": "MIA Road",
+          "phone": "0291-5500000",
+          "maps_url": "https://maps.google.com/?q=Toyota+Service+Jodhpur",
+          "rating": 4,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Hyryder facelift: updated grille, 6 airbags standard, new Cafe White colour",
+          "date": "2024-10-10",
+          "type": "upgrade"
+        },
+        {
+          "title": "Toyota Hyryder wins 5-Star JNCAP safety rating in Japan spec",
+          "date": "2023-09-22",
+          "type": "award"
+        },
+        {
+          "title": "Toyota Urban Cruiser Taisor launched at ₹7.74L — Maruti Fronx twin",
+          "date": "2024-04-03",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.toyotabharat.com/news-events/"
+    },
+    {
+      "id": "toyota-hyryder-s-mild-hybrid-at",
+      "brand": "Toyota",
+      "model": "Urban Cruiser Hyryder",
+      "variant": "S Mild Hybrid AT",
+      "platform": "TNGA-B",
+      "fuel": "mild_hybrid",
+      "transmission": "AT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 19.18,
+      "realworld_kmpl": 14.5,
+      "ex_showroom_jodhpur": 1590000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1185,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Toyota iConnect",
+      "climate_control": "single_zone",
+      "infotainment_inches": 9,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "resale_3yr_pct": 62,
+      "resale_5yr_pct": 51,
+      "reliability_score": 86,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 9,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8.1,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 7.7,
+      "annual_insurance_estimate": 41000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Single Toyota dealer Jodhpur — waiting period can stretch",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Toyota reliability",
+        "TNGA-B platform",
+        "Automatic convenience mid-range price",
+        "Strong resale"
+      ],
+      "cons": [
+        "Only 1 Toyota dealer Jodhpur",
+        "3-star NCAP",
+        "Not as efficient as strong hybrid"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Enticing Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Cafe White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Sporting Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Lush Forest Green",
+          "hex": "#2a5040"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Toyota Jodhpur - Shri Ram Auto",
+          "area": "MIA Road",
+          "phone": "0291-5500000",
+          "maps_url": "https://maps.google.com/?q=Toyota+Service+Jodhpur",
+          "rating": 4,
+          "turnaround_hours": 24
+        }
+      ],
+      "news": [
+        {
+          "title": "Hyryder facelift: updated grille, 6 airbags standard, new Cafe White colour",
+          "date": "2024-10-10",
+          "type": "upgrade"
+        },
+        {
+          "title": "Toyota Hyryder wins 5-Star JNCAP safety rating in Japan spec",
+          "date": "2023-09-22",
+          "type": "award"
+        },
+        {
+          "title": "Toyota Urban Cruiser Taisor launched at ₹7.74L — Maruti Fronx twin",
+          "date": "2024-04-03",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.toyotabharat.com/news-events/"
+    },
+    {
+      "id": "volkswagen-taigun-comfortline-10-tsi-mt",
+      "brand": "Volkswagen",
+      "model": "Taigun",
+      "variant": "Comfortline 1.0 TSI MT",
+      "platform": "MQB-A0-IN",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 999,
+      "power_bhp": 115,
+      "torque_nm": 178,
+      "arai_kmpl": 16.5,
+      "realworld_kmpl": 12.8,
+      "ex_showroom_jodhpur": 1220000,
+      "boot_litres": 385,
+      "ground_clearance_mm": 188,
+      "kerb_weight_kg": 1170,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 905,
+      "cabin_width_mm": 1760,
+      "resale_3yr_pct": 50,
+      "resale_5yr_pct": 39,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 6,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.5,
+      "rating_engine": 8,
+      "rating_ride_handling": 9,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 6,
+      "ratings_total": 7.4,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 16000,
+      "known_issues": [
+        {
+          "issue": "Service costs among highest in segment",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Limited VW service network in Jodhpur — 1 dealer only",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Best handling dynamics in segment",
+        "European build quality",
+        "Entry price for MQB platform"
+      ],
+      "cons": [
+        "Expensive servicing",
+        "Only 1 dealer Jodhpur",
+        "Poor resale vs Japanese brands"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Reflex Silver",
+          "hex": "#a8aaae"
+        },
+        {
+          "name": "Deep Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "White Silver",
+          "hex": "#e8e8e4"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Rising Blue",
+          "hex": "#1a3a6b"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "VW Jodhpur - Bagga Link Motors",
+          "area": "MIA Basni",
+          "phone": "0291-2741000",
+          "maps_url": "https://maps.google.com/?q=VW+Service+Jodhpur",
+          "rating": 3.4,
+          "turnaround_hours": 48
+        }
+      ],
+      "news": [
+        {
+          "title": "Taigun GT Plus Sport launched with 10 airbags and larger 10-inch screen",
+          "date": "2024-09-25",
+          "type": "upgrade"
+        },
+        {
+          "title": "Taigun 2025 BS6 Phase 2 update; price revised from ₹11.56L",
+          "date": "2025-03-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "VW ID.4 EV confirmed for India — Taigun platform sibling expected 2026",
+          "date": "2025-07-10",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
+    },
+    {
+      "id": "volkswagen-taigun-highline-10-tsi-at",
+      "brand": "Volkswagen",
+      "model": "Taigun",
+      "variant": "Highline 1.0 TSI AT",
+      "platform": "MQB-A0-IN",
+      "fuel": "petrol_turbo",
+      "transmission": "AT",
+      "engine_cc": 999,
+      "power_bhp": 115,
+      "torque_nm": 178,
+      "arai_kmpl": 15.3,
+      "realworld_kmpl": 12,
+      "ex_showroom_jodhpur": 1590000,
+      "boot_litres": 385,
+      "ground_clearance_mm": 188,
+      "kerb_weight_kg": 1190,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 10,
+      "rear_legroom_mm": 905,
+      "cabin_width_mm": 1760,
+      "resale_3yr_pct": 51,
+      "resale_5yr_pct": 40,
+      "reliability_score": 72,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 6,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.7,
+      "rating_engine": 8,
+      "rating_ride_handling": 9,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.6,
+      "annual_insurance_estimate": 41000,
+      "annual_maintenance_estimate": 17000,
+      "known_issues": [
+        {
+          "issue": "Torque converter AT can feel sluggish vs DSG at low speeds",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Service costs among highest in segment",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Excellent ride + handling",
+        "Automatic with sunroof mid-budget"
+      ],
+      "cons": [
+        "Expensive service",
+        "AT less responsive than 1.5 DSG",
+        "Only 1 dealer Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Reflex Silver",
+          "hex": "#a8aaae"
+        },
+        {
+          "name": "Deep Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "White Silver",
+          "hex": "#e8e8e4"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Rising Blue",
+          "hex": "#1a3a6b"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "VW Jodhpur - Bagga Link Motors",
+          "area": "MIA Basni",
+          "phone": "0291-2741000",
+          "maps_url": "https://maps.google.com/?q=VW+Service+Jodhpur",
+          "rating": 3.4,
+          "turnaround_hours": 48
+        }
+      ],
+      "news": [
+        {
+          "title": "Taigun GT Plus Sport launched with 10 airbags and larger 10-inch screen",
+          "date": "2024-09-25",
+          "type": "upgrade"
+        },
+        {
+          "title": "Taigun 2025 BS6 Phase 2 update; price revised from ₹11.56L",
+          "date": "2025-03-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "VW ID.4 EV confirmed for India — Taigun platform sibling expected 2026",
+          "date": "2025-07-10",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
+    },
+    {
+      "id": "skoda-kushaq-active-10-tsi-mt",
+      "brand": "Skoda",
+      "model": "Kushaq",
+      "variant": "Active 1.0 TSI MT",
+      "platform": "MQB-A0-IN",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 999,
+      "power_bhp": 115,
+      "torque_nm": 178,
+      "arai_kmpl": 16.5,
+      "realworld_kmpl": 12.8,
+      "ex_showroom_jodhpur": 1250000,
+      "boot_litres": 385,
+      "ground_clearance_mm": 188,
+      "kerb_weight_kg": 1175,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 905,
+      "cabin_width_mm": 1760,
+      "resale_3yr_pct": 50,
+      "resale_5yr_pct": 39,
+      "reliability_score": 73,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 6,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.5,
+      "rating_engine": 8,
+      "rating_ride_handling": 9,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 6,
+      "ratings_total": 7.4,
+      "annual_insurance_estimate": 32000,
+      "annual_maintenance_estimate": 16000,
+      "known_issues": [
+        {
+          "issue": "Service costs expensive",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Skoda + VW share single dealer Jodhpur — overloaded",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "European handling + build",
+        "MQB-A0-IN platform",
+        "Entry price"
+      ],
+      "cons": [
+        "Expensive service",
+        "Skoda + VW share 1 dealer Jodhpur",
+        "Poor resale vs Japanese"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Candy White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Brilliant Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Carbon Steel",
+          "hex": "#4a5058"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Magnetic Brown",
+          "hex": "#5c4033"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Skoda Jodhpur - Bagga Link Motors",
+          "area": "MIA Basni",
+          "phone": "0291-2741100",
+          "maps_url": "https://maps.google.com/?q=Skoda+Service+Jodhpur",
+          "rating": 3.5,
+          "turnaround_hours": 36
+        }
+      ],
+      "news": [
+        {
+          "title": "Kushaq Monte Carlo edition launched: black accents, 1.5 TSI standard",
+          "date": "2024-12-05",
+          "type": "launch"
+        },
+        {
+          "title": "Kushaq 2025: new Velvet Red colour, updated infotainment with wireless AA",
+          "date": "2025-02-20",
+          "type": "upgrade"
+        },
+        {
+          "title": "Skoda Kylaq sub-4m SUV launched at Rs7.89L — Kushaq smaller sibling",
+          "date": "2024-11-27",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
+    },
+    {
+      "id": "skoda-kushaq-ambition-10-tsi-at",
+      "brand": "Skoda",
+      "model": "Kushaq",
+      "variant": "Ambition 1.0 TSI AT",
+      "platform": "MQB-A0-IN",
+      "fuel": "petrol_turbo",
+      "transmission": "AT",
+      "engine_cc": 999,
+      "power_bhp": 115,
+      "torque_nm": 178,
+      "arai_kmpl": 15.1,
+      "realworld_kmpl": 11.8,
+      "ex_showroom_jodhpur": 1630000,
+      "boot_litres": 385,
+      "ground_clearance_mm": 188,
+      "kerb_weight_kg": 1192,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 10,
+      "rear_legroom_mm": 905,
+      "cabin_width_mm": 1760,
+      "resale_3yr_pct": 51,
+      "resale_5yr_pct": 40,
+      "reliability_score": 73,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 6,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.6,
+      "rating_engine": 8,
+      "rating_ride_handling": 9,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.6,
+      "annual_insurance_estimate": 42000,
+      "annual_maintenance_estimate": 17000,
+      "known_issues": [
+        {
+          "issue": "Service costs expensive",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Automatic + sunroof under Creta price",
+        "European refinement"
+      ],
+      "cons": [
+        "Expensive service",
+        "Only 1 dealer Jodhpur",
+        "Poor resale vs Japanese"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Candy White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Brilliant Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Carbon Steel",
+          "hex": "#4a5058"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Magnetic Brown",
+          "hex": "#5c4033"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Skoda Jodhpur - Bagga Link Motors",
+          "area": "MIA Basni",
+          "phone": "0291-2741100",
+          "maps_url": "https://maps.google.com/?q=Skoda+Service+Jodhpur",
+          "rating": 3.5,
+          "turnaround_hours": 36
+        }
+      ],
+      "news": [
+        {
+          "title": "Kushaq Monte Carlo edition launched: black accents, 1.5 TSI standard",
+          "date": "2024-12-05",
+          "type": "launch"
+        },
+        {
+          "title": "Kushaq 2025: new Velvet Red colour, updated infotainment with wireless AA",
+          "date": "2025-02-20",
+          "type": "upgrade"
+        },
+        {
+          "title": "Skoda Kylaq sub-4m SUV launched at Rs7.89L — Kushaq smaller sibling",
+          "date": "2024-11-27",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
+    },
+    {
+      "id": "honda-elevate-v-mt",
+      "brand": "Honda",
+      "model": "Elevate",
+      "variant": "V MT",
+      "platform": "Honda FC",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1498,
+      "power_bhp": 121,
+      "torque_nm": 145,
+      "arai_kmpl": 15.3,
+      "realworld_kmpl": 12.5,
+      "ex_showroom_jodhpur": 1205000,
+      "boot_litres": 458,
+      "ground_clearance_mm": 220,
+      "kerb_weight_kg": 1165,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 910,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 82,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 7,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.9,
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 9,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 7.7,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 11000,
+      "known_issues": [
+        {
+          "issue": "NA engine feels underpowered above 80 kmph",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Largest boot 458L in class",
+        "Best-in-class ground clearance 220mm",
+        "Honda reliability",
+        "Entry price"
+      ],
+      "cons": [
+        "NA engine — no turbo punch",
+        "No sunroof at this trim",
+        "Limited features"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Platinum White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Meteoroid Grey",
+          "hex": "#5a5e64"
+        },
+        {
+          "name": "Lunar Silver",
+          "hex": "#aab0b4"
+        },
+        {
+          "name": "Radiant Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Obsidian Blue",
+          "hex": "#1a2a5a"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Honda Cars Jodhpur - Sangam Auto",
+          "area": "Residency Road",
+          "phone": "0291-5100100",
+          "maps_url": "https://maps.google.com/?q=Honda+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "news": [
+        {
+          "title": "Honda Elevate achieves 5-star Global NCAP rating — safest Honda SUV",
+          "date": "2024-02-28",
+          "type": "award"
+        },
+        {
+          "title": "Elevate price revised: base variant now starts at ₹11.69L (2025)",
+          "date": "2025-04-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Honda Elevate hybrid variant under evaluation for India — launch 2026",
+          "date": "2025-11-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.hondacarindia.com/newsroom"
+    },
+    {
+      "id": "hyundai-venue-s-petrol-mt",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "S Petrol MT",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 17.3,
+      "realworld_kmpl": 13.5,
+      "ex_showroom_jodhpur": 1025000,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 26000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+    },
+    {
+      "id": "mahindra-xuv-3xo-ax5-petrol-mt",
+      "brand": "Mahindra",
+      "model": "XUV 3XO",
+      "variant": "AX5 Petrol MT",
+      "platform": "MX Gen2",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 110,
+      "torque_nm": 200,
+      "arai_kmpl": 18,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1180000,
+      "boot_litres": 364,
+      "ground_clearance_mm": 201,
+      "kerb_weight_kg": 1220,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Forward Collision Warning",
+        "Lane Keep Assist"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Mahindra AdrenoX",
+      "climate_control": "single_zone",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1750,
+      "resale_3yr_pct": 53,
+      "resale_5yr_pct": 41,
+      "reliability_score": 70,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 8,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.5,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.2,
+      "annual_insurance_estimate": 30000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "Turbo petrol NVH not as refined as competition",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Service network limited in Jodhpur",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Panoramic sunroof + ADAS at this price",
+        "Most features per rupee",
+        "Mahindra AdrenoX infotainment"
+      ],
+      "cons": [
+        "Reliability concerns vs Hyundai/Maruti",
+        "Limited Mahindra service Jodhpur",
+        "Heavier than peers"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Nebula Blue",
+          "hex": "#1a2f5e"
+        },
+        {
+          "name": "Tango Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Blazing Bronze",
+          "hex": "#8b6914"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
+    },
+    {
+      "id": "mahindra-scorpio-n-z4-diesel-mt",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z4 Diesel MT",
+      "platform": "Gen3 BOF",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 2184,
+      "power_bhp": 132,
+      "torque_nm": 300,
+      "arai_kmpl": 15.8,
+      "realworld_kmpl": 12.5,
+      "ex_showroom_jodhpur": 1530000,
+      "boot_litres": 522,
+      "ground_clearance_mm": 200,
+      "kerb_weight_kg": 1960,
+      "seating": 7,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Mahindra AdrenoX",
+      "climate_control": "single_zone",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 975,
+      "cabin_width_mm": 1900,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 47,
+      "reliability_score": 74,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 8,
+      "rating_engine": 8,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 9,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.4,
+      "annual_insurance_estimate": 39000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "BOF chassis — body roll higher than monocoque SUVs",
+          "severity": "Minor"
+        },
+        {
+          "issue": "NVH not refined vs competition at this price",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP despite BOF",
+        "7-seater",
+        "Diesel torque excellent",
+        "Most affordable Scorpio-N",
+        "Road presence"
+      ],
+      "cons": [
+        "Body-on-frame — more body roll",
+        "NVH not refined",
+        "Heavy — 1960kg",
+        "Limited service Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
     }
   ]
 }

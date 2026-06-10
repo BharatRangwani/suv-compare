@@ -656,6 +656,7 @@ export async function renderCompare(container) {
       </div>
     </div>
     <div id="compare-controls-root"></div>
+    <p class="variant-disclaimer">EMI assumes 20% DP · 8.5% p.a. · 5yr. Each model shows selected powertrains — use the picker below to swap variants.</p>
     <div id="compare-table-root"></div>
     <div id="compare-chart-root"></div>
     <div id="compare-picker-root"></div>

@@ -124,6 +124,12 @@ export async function renderHome(container) {
   ].map(t => `<span class="mchip">${t}</span>`).join('');
   container.appendChild(chipsRow);
 
+  // ── Variant disclaimer ───────────────────────────────────────────────────────
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'variant-disclaimer';
+  disclaimer.innerHTML = 'Showing best-ranked variant per model. Use filters to see all variants &amp; powertrains.';
+  container.appendChild(disclaimer);
+
   // ── Sort + filter bar ────────────────────────────────────────────────────────
   const filterContainer = document.createElement('div');
   filterContainer.className = 'filter-bar-wrapper';
