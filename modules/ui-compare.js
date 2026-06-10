@@ -482,7 +482,8 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
     // Section header row
     if (row._section) {
       html += `<tr class="compare-section-header">
-        <td colspan="${totalCols}">${row._section}</td>
+        <td class="compare-sticky-col">${row._section}</td>
+        <td colspan="${totalCols - 1}"></td>
       </tr>`;
       continue;
     }

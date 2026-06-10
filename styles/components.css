@@ -628,6 +628,11 @@
   letter-spacing: 0.08em;
   padding: 0.4rem 0.75rem;
 }
+.compare-section-header .compare-sticky-col {
+  background: var(--blue);
+  color: white;
+  z-index: 2;
+}
 .compare-better { background: var(--green-bg); color: var(--green); font-weight: 600; }
 .compare-worse  { background: var(--red-bg);   color: var(--red); }
 .compare-score-row td {
