@@ -144,7 +144,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -270,7 +288,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -411,7 +447,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Kia Seltos facelift (2026) on K3 platform announced; launch expected Q3 2026",
+          "date": "2026-04-15",
+          "type": "launch"
+        },
+        {
+          "title": "Seltos gets 5-star BNCAP rating — safest in segment",
+          "date": "2023-10-05",
+          "type": "award"
+        },
+        {
+          "title": "Kia Syros sub-4m SUV launched; prices from ₹8.99L",
+          "date": "2025-01-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -541,7 +595,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Kia Seltos facelift (2026) on K3 platform announced; launch expected Q3 2026",
+          "date": "2026-04-15",
+          "type": "launch"
+        },
+        {
+          "title": "Seltos gets 5-star BNCAP rating — safest in segment",
+          "date": "2023-10-05",
+          "type": "award"
+        },
+        {
+          "title": "Kia Syros sub-4m SUV launched; prices from ₹8.99L",
+          "date": "2025-01-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -655,7 +727,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": false,
-      "rear_camera": false
+      "rear_camera": false,
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-strong-hybrid",
@@ -794,7 +884,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Grand Vitara hybrid gets revised pricing — now from ₹10.70L",
+          "date": "2025-08-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Grand Vitara CNG variant introduced; mild-hybrid dropped from lineup",
+          "date": "2024-11-12",
+          "type": "launch"
+        },
+        {
+          "title": "Ertiga CNG gets factory-fitted kit update; mileage up to 26.08 km/kg",
+          "date": "2024-07-18",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://press.maruti.co.in"
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -921,7 +1029,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Hyryder facelift: updated grille, 6 airbags standard, new Cafe White colour",
+          "date": "2024-10-10",
+          "type": "upgrade"
+        },
+        {
+          "title": "Toyota Hyryder wins 5-Star JNCAP safety rating in Japan spec",
+          "date": "2023-09-22",
+          "type": "award"
+        },
+        {
+          "title": "Toyota Urban Cruiser Taisor launched at ₹7.74L — Maruti Fronx twin",
+          "date": "2024-04-03",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.toyotabharat.com/news-events/"
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -1047,7 +1173,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1178,7 +1322,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "MG Windsor EV launched at ₹13.50L; battery-on-subscription option",
+          "date": "2024-10-11",
+          "type": "launch"
+        },
+        {
+          "title": "Astor facelift: price cut by up to ₹1.5L, now from ₹10.99L",
+          "date": "2025-01-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "MG ZS EV gets 50.3 kWh battery; range extended to 461 km",
+          "date": "2024-08-28",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.mgmotor.co.in/news"
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1308,7 +1470,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Honda Elevate achieves 5-star Global NCAP rating — safest Honda SUV",
+          "date": "2024-02-28",
+          "type": "award"
+        },
+        {
+          "title": "Elevate price revised: base variant now starts at ₹11.69L (2025)",
+          "date": "2025-04-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Honda Elevate hybrid variant under evaluation for India — launch 2026",
+          "date": "2025-11-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.hondacarindia.com/newsroom"
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1435,7 +1615,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Taigun GT Plus Sport launched with 10 airbags and larger 10-inch screen",
+          "date": "2024-09-25",
+          "type": "upgrade"
+        },
+        {
+          "title": "Taigun 2025 BS6 Phase 2 update; price revised from ₹11.56L",
+          "date": "2025-03-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "VW ID.4 EV confirmed for India — Taigun platform sibling expected 2026",
+          "date": "2025-07-10",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1567,7 +1765,25 @@
       "dash_cam": true,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1695,7 +1911,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -1826,7 +2060,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -1962,7 +2214,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2089,7 +2359,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Kushaq Monte Carlo edition launched: black accents, 1.5 TSI standard",
+          "date": "2024-12-05",
+          "type": "launch"
+        },
+        {
+          "title": "Kushaq 2025: new Velvet Red colour, updated infotainment with wireless AA",
+          "date": "2025-02-20",
+          "type": "upgrade"
+        },
+        {
+          "title": "Skoda Kylaq sub-4m SUV launched at Rs7.89L — Kushaq smaller sibling",
+          "date": "2024-11-27",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2227,7 +2515,25 @@
       "dash_cam": true,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -2366,14 +2672,31 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
     },
     {
       "id": "mg-zs-ev-excite-pro",
       "brand": "MG",
       "model": "ZS EV",
       "variant": "Excite Pro",
-      "platform": "SGMW EV",
       "platform": "SGMW EV",
       "fuel": "electric",
       "transmission": "AT",
@@ -2496,7 +2819,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "MG Windsor EV launched at ₹13.50L; battery-on-subscription option",
+          "date": "2024-10-11",
+          "type": "launch"
+        },
+        {
+          "title": "Astor facelift: price cut by up to ₹1.5L, now from ₹10.99L",
+          "date": "2025-01-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "MG ZS EV gets 50.3 kWh battery; range extended to 461 km",
+          "date": "2024-08-28",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.mgmotor.co.in/news"
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -2621,7 +2962,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": false,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
     },
     {
       "id": "maruti-ertiga-cng-vxi",
@@ -2759,7 +3118,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": false,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Grand Vitara hybrid gets revised pricing — now from ₹10.70L",
+          "date": "2025-08-01",
+          "type": "price_drop"
+        },
+        {
+          "title": "Grand Vitara CNG variant introduced; mild-hybrid dropped from lineup",
+          "date": "2024-11-12",
+          "type": "launch"
+        },
+        {
+          "title": "Ertiga CNG gets factory-fitted kit update; mileage up to 26.08 km/kg",
+          "date": "2024-07-18",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://press.maruti.co.in"
     },
     {
       "id": "kia-seltos-htx-plus-diesel-at",
@@ -2887,7 +3264,25 @@
       "dash_cam": false,
       "drive_modes": false,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Kia Seltos facelift (2026) on K3 platform announced; launch expected Q3 2026",
+          "date": "2026-04-15",
+          "type": "launch"
+        },
+        {
+          "title": "Seltos gets 5-star BNCAP rating — safest in segment",
+          "date": "2023-10-05",
+          "type": "award"
+        },
+        {
+          "title": "Kia Syros sub-4m SUV launched; prices from ₹8.99L",
+          "date": "2025-01-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -3015,7 +3410,25 @@
       "dash_cam": true,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/"
     },
     {
       "id": "mahindra-scorpio-n-z8-diesel-at",
@@ -3139,7 +3552,25 @@
       "dash_cam": false,
       "drive_modes": true,
       "clutchless": true,
-      "rear_camera": true
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Mahindra XUV 3XO gets updated ADAS and 6 airbags as standard",
+          "date": "2025-06-01",
+          "type": "upgrade"
+        },
+        {
+          "title": "Scorpio-N BS6 Phase 2 update: prices revised, new variants added",
+          "date": "2024-03-20",
+          "type": "price_drop"
+        },
+        {
+          "title": "Mahindra BE 6 electric SUV launched; Scorpio-N gets electric sibling",
+          "date": "2025-02-14",
+          "type": "launch"
+        }
+      ],
+      "news_url": "https://media.mahindra.com/news"
     }
   ]
 }

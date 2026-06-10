@@ -435,6 +435,43 @@ function buildProsConsSection(car) {
     </section>`;
 }
 
+function buildNewsSection(car) {
+  const items = car.news || [];
+  const url = car.news_url || '';
+  if (!items.length && !url) return '';
+
+  const TYPE_LABELS = {
+    launch: { label: 'Launch', cls: 'news-tag-launch' },
+    upgrade: { label: 'Upgrade', cls: 'news-tag-upgrade' },
+    price_drop: { label: 'Price Drop', cls: 'news-tag-price' },
+    award: { label: 'Award', cls: 'news-tag-award' }
+  };
+
+  const itemsHtml = items.slice(0, 3).map(item => {
+    const tag = TYPE_LABELS[item.type] || { label: item.type, cls: 'news-tag-launch' };
+    const dateStr = item.date ? new Date(item.date).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' }) : '';
+    return `
+      <div class="news-item">
+        <span class="news-tag ${tag.cls}">${tag.label}</span>
+        <span class="news-title">${item.title}</span>
+        ${dateStr ? `<span class="news-date">${dateStr}</span>` : ''}
+      </div>`;
+  }).join('');
+
+  const readMoreHtml = url
+    ? `<a class="news-read-more" href="${url}" target="_blank" rel="noopener">Read more news →</a>`
+    : '';
+
+  return `
+    <section class="detail-section">
+      <div class="dp-sec-hd"><span>Latest News — ${car.brand}</span></div>
+      <div class="news-list">
+        ${itemsHtml}
+        ${readMoreHtml}
+      </div>
+    </section>`;
+}
+
 function buildActionsSection(car) {
   const waText = car
     ? `Check out the ${car.brand} ${car.model} on the Jodhpur SUV Comparison app: ${window.location.href}`
@@ -626,6 +663,7 @@ export function renderDetailPanel(car, allRanked, baseline) {
       ${buildOwnershipSection(car)}
       ${buildServiceCentersSection(car)}
       ${buildProsConsSection(car)}
+      ${buildNewsSection(car)}
       ${buildActionsSection(car)}
     </div>`;
 
