@@ -580,25 +580,31 @@ async function renderRankingPlaceholder() {
   pane.innerHTML = '<p style="padding:2rem 1.25rem;color:var(--text-muted);font-size:0.85rem">Loading…</p>';
 
   try {
-    const { getCarsForRanking, getBaselineCar } = await import('./modules/data.js');
-    const { getProfile }                         = await import('./modules/profile.js');
+    const { getCarsForRanking, getBaselineCar, invalidateCache } = await import('./modules/data.js');
+    const { getProfile, saveProfile }                            = await import('./modules/profile.js');
     const { rankCars, getBestVariantPerBrand, getBetterVFMVariant } = await import('./modules/ranking.js');
     const { calcOnRoadPrice, calcEMI }           = await import('./modules/emi.js');
     const { renderFilters, applyFilters, getStoredFilters } = await import('./modules/ui-filters.js');
 
-    const data    = await loadCarsData();
-    const profile = getProfile();
-    const baseline = getBaselineCar(data);
-    const allVariantsRanked = rankCars(getCarsForRanking(data), profile, baseline);
-    const allRanked = getBestVariantPerBrand(allVariantsRanked);
+    const ANNUAL_KM_MAP = { '8k': 22, '12k': 33, '18k': 49, '25k': 68, '35k': 96 };
 
-    const seen = new Set();
-    const fullRanked = allRanked.filter(c => {
-      const key = `${c.brand}||${c.model}`;
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
+    const data = await loadCarsData();
+    let profile  = getProfile();
+    const baseline = getBaselineCar(data);
+
+    function rerank() {
+      const allVariantsRanked = rankCars(getCarsForRanking(data), profile, baseline);
+      const allRanked = getBestVariantPerBrand(allVariantsRanked);
+      const seen = new Set();
+      return { allVariantsRanked, fullRanked: allRanked.filter(c => {
+        const key = `${c.brand}||${c.model}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })};
+    }
+
+    let { allVariantsRanked, fullRanked } = rerank();
 
     pane.innerHTML = '';
 
@@ -785,15 +791,38 @@ async function renderRankingPlaceholder() {
       });
     }
 
-    // Store injectable so the profile/settings sheet can mount filters inside it
+    // ── Inline filter bar (same as home tab) ────────────────────────────────
+    const filterWrapper = document.createElement('div');
+    filterWrapper.className = 'filter-bar-wrapper';
+    pane.insertBefore(filterWrapper, countEl);
+
+    let lastAnnualKm = 'all';
+
+    async function onRankingFilterChange(filters) {
+      // annual_km: update profile daily_km and re-rank
+      if (filters.annual_km !== lastAnnualKm) {
+        lastAnnualKm = filters.annual_km;
+        const dailyKm = ANNUAL_KM_MAP[filters.annual_km];
+        if (filters.annual_km !== 'all' && dailyKm) {
+          saveProfile({ ...profile, daily_km: dailyKm });
+          profile = { ...profile, daily_km: dailyKm };
+        } else {
+          profile = getProfile();
+        }
+        invalidateCache();
+        ({ allVariantsRanked, fullRanked } = rerank());
+      }
+      renderList(applyFilters(fullRanked, filters));
+    }
+
+    renderFilters(filterWrapper, onRankingFilterChange);
+
+    // Store injectable so the profile/settings sheet can also mount filters
     _injectRankingFilters = (container) => {
-      renderFilters(container, filters => {
-        const filtered = applyFilters(fullRanked, filters);
-        renderList(filtered);
-      });
+      renderFilters(container, onRankingFilterChange);
     };
 
-    // Initial render (no filter active = show all)
+    // Initial render using stored filters
     renderList(applyFilters(fullRanked, getStoredFilters()));
 
   } catch (e) {
