@@ -67,7 +67,8 @@ async function renderFinanceTab() {
   const topCar = [...cars].sort((a, b) => b.score - a.score)[0];
 
   // ── EMI + exchange state ─────────────────────────────────────────────────────
-  let selectedCarId = topCar ? topCar.id : null;
+  const defaultFinCar = cars.find(c => c.model === 'Seltos') || topCar;
+  let selectedCarId = defaultFinCar ? defaultFinCar.id : null;
   let dpPct         = 20;
   let rate          = 8.5;
   let tenureMonths  = 60;
