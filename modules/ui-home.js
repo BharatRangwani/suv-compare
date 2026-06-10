@@ -399,10 +399,11 @@ function renderCarCard(car, allRanked, baseline) {
     nocEl.title = 'Net Ownership Cost: road tax + registration + 5yr insurance + 5yr fuel + 5yr maintenance − resale value';
     nocEl.textContent = car.noc != null ? `NOC ₹${formatLakh(car.noc)}L` : '';
 
-    // Per-km cost
+    // Per-km cost (running costs only: fuel + insurance + maintenance)
     const pkmEl = document.createElement('div');
     pkmEl.style.cssText = 'font-size:0.62rem;color:var(--text-dim);margin-top:0.06rem';
-    pkmEl.textContent = car.perKmCost != null ? `₹${car.perKmCost.toFixed(1)}/km` : '';
+    pkmEl.title = 'Running cost per km: fuel + insurance + maintenance (excludes purchase price)';
+    pkmEl.textContent = car.perKmCost != null ? `₹${car.perKmCost.toFixed(1)}/km running` : '';
 
     const weeks = car.waiting_weeks_jodhpur;
     right.appendChild(scoreEl);

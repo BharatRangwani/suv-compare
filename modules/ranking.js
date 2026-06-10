@@ -59,8 +59,11 @@ export function calcNOC(car, profile) {
   const resaleValue = car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100);
 
   const noc = Math.round(purchaseOutlay + fiveYrInsurance + fiveYrFuel + fiveYrMaintenance - resaleValue);
+  // Per-km = running costs only (fuel + insurance + maintenance), not capital cost.
+  // This matches user intuition: "how much does it cost me to drive 1 km?"
+  const annualRunning = annualFuel + (car.annual_insurance_estimate || car.ex_showroom_jodhpur * 0.03) + (car.annual_maintenance_estimate || 12000);
   const perKmCost = annualKm > 0
-    ? Math.round((noc / (annualKm * 5)) * 100) / 100
+    ? Math.round((annualRunning / annualKm) * 100) / 100
     : 0;
   return { noc, perKmCost };
 }
