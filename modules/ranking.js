@@ -51,14 +51,14 @@ export function calcNOC(car, profile) {
     annualFuel = (annualKm / (car.realworld_kmpl || 15)) * profile.petrol_price_jodhpur;
   }
 
-  // Road tax + registration only (annual_insurance_estimate is the 5yr blended average)
-  const roadTaxAndReg = car.ex_showroom_jodhpur * 0.11 + 15000;
+  // Purchase outlay: ex-showroom + road tax (11%) + registration
+  const purchaseOutlay = car.ex_showroom_jodhpur * 1.11 + 15000;
   const fiveYrInsurance = (car.annual_insurance_estimate || car.ex_showroom_jodhpur * 0.03) * 5;
   const fiveYrFuel = annualFuel * 5;
   const fiveYrMaintenance = (car.annual_maintenance_estimate || 12000) * 5;
   const resaleValue = car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100);
 
-  const noc = Math.round(roadTaxAndReg + fiveYrInsurance + fiveYrFuel + fiveYrMaintenance - resaleValue);
+  const noc = Math.round(purchaseOutlay + fiveYrInsurance + fiveYrFuel + fiveYrMaintenance - resaleValue);
   const perKmCost = annualKm > 0
     ? Math.round((noc / (annualKm * 5)) * 100) / 100
     : 0;
