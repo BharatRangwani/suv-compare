@@ -791,14 +791,9 @@ async function renderRankingPlaceholder() {
       });
     }
 
-    // ── Inline filter bar (same as home tab) ────────────────────────────────
-    const filterWrapper = document.createElement('div');
-    filterWrapper.className = 'filter-bar-wrapper';
-    pane.insertBefore(filterWrapper, countEl);
-
     let lastAnnualKm = 'all';
 
-    async function onRankingFilterChange(filters) {
+    function onRankingFilterChange(filters) {
       // annual_km: update profile daily_km and re-rank
       if (filters.annual_km !== lastAnnualKm) {
         lastAnnualKm = filters.annual_km;
@@ -812,18 +807,25 @@ async function renderRankingPlaceholder() {
         invalidateCache();
         ({ allVariantsRanked, fullRanked } = rerank());
       }
-      renderList(applyFilters(fullRanked, filters));
+      // Filter ALL variants first, then dedup to best-per-brand (same as home tab)
+      const filtered = applyFilters(allVariantsRanked, filters);
+      const seen2 = new Set();
+      const deduped = filtered.filter(c => {
+        const key = `${c.brand}||${c.model}`;
+        if (seen2.has(key)) return false;
+        seen2.add(key);
+        return true;
+      });
+      renderList(deduped);
     }
 
-    renderFilters(filterWrapper, onRankingFilterChange);
-
-    // Store injectable so the profile/settings sheet can also mount filters
+    // Filter via settings gear only (no inline bar on ranking page)
     _injectRankingFilters = (container) => {
       renderFilters(container, onRankingFilterChange);
     };
 
     // Initial render using stored filters
-    renderList(applyFilters(fullRanked, getStoredFilters()));
+    onRankingFilterChange(getStoredFilters());
 
   } catch (e) {
     pane.innerHTML = `<p style="padding:2rem 1.25rem;color:var(--red)">Failed to load: ${e.message}</p>`;
