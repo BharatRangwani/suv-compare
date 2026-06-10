@@ -134,6 +134,10 @@ async function renderFinanceTab() {
           <div class="fin-ar-val" id="fin-emi-val">—</div>
         </div>
         <div class="fin-ar-cell">
+          <div class="fin-ar-lbl">Total Interest</div>
+          <div class="fin-ar-val" id="fin-int-val">—</div>
+        </div>
+        <div class="fin-ar-cell">
           <div class="fin-ar-lbl">After exchange</div>
           <div class="fin-ar-val" id="fin-net-val">—</div>
         </div>
@@ -216,7 +220,10 @@ async function renderFinanceTab() {
     const onRoad = getOnRoad(car);
     const net   = onRoad - getExch().dealerExchange;
     const dpAmt = Math.round(onRoad * dpPct / 100);
+    const principal = Math.round(onRoad * (1 - dpPct / 100));
+    const totalInt = Math.round(emi * tenureMonths - principal);
     adjWrap.querySelector('#fin-emi-val').textContent = '₹' + emi.toLocaleString('en-IN');
+    adjWrap.querySelector('#fin-int-val').textContent = fLshort(totalInt);
     adjWrap.querySelector('#fin-net-val').textContent = fL(net);
     const dpAmtEl = adjWrap.querySelector('#fin-dp-amt');
     if (dpAmtEl) dpAmtEl.textContent = '₹' + dpAmt.toLocaleString('en-IN');
