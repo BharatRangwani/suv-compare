@@ -211,6 +211,17 @@
   color: #fbbf24;
   border-color: rgba(251,191,36,0.25);
 }
+.btag.btag-ethanol {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: rgba(21,128,61,0.25);
+  cursor: help;
+}
+[data-theme="dark"] .btag.btag-ethanol {
+  background: rgba(21,128,61,0.15);
+  color: #4ade80;
+  border-color: rgba(74,222,128,0.25);
+}
 .rnk-tag.better-vfm {
   background: #fefce8;
   color: #a16207;

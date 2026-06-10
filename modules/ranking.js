@@ -35,6 +35,36 @@ export function calcTCO(car, profile) {
   return Math.round(onRoad + operatingCosts - resaleValue);
 }
 
+export function calcNOC(car, profile) {
+  const annualKm = profile.daily_km * profile.days_per_week * 52;
+
+  let annualFuel;
+  if (car.fuel === 'electric') {
+    const kmPerKwh = car.realworld_range_km && car.battery_kwh
+      ? car.realworld_range_km / car.battery_kwh
+      : 6;
+    annualFuel = (annualKm / kmPerKwh) * 8;
+  } else if (car.fuel === 'cng') {
+    const kmPerKg = car.realworld_cng_kmkg || 20;
+    annualFuel = (annualKm / kmPerKg) * 83;
+  } else {
+    annualFuel = (annualKm / (car.realworld_kmpl || 15)) * profile.petrol_price_jodhpur;
+  }
+
+  // Road tax + registration only (annual_insurance_estimate is the 5yr blended average)
+  const roadTaxAndReg = car.ex_showroom_jodhpur * 0.11 + 15000;
+  const fiveYrInsurance = (car.annual_insurance_estimate || car.ex_showroom_jodhpur * 0.03) * 5;
+  const fiveYrFuel = annualFuel * 5;
+  const fiveYrMaintenance = (car.annual_maintenance_estimate || 12000) * 5;
+  const resaleValue = car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100);
+
+  const noc = Math.round(roadTaxAndReg + fiveYrInsurance + fiveYrFuel + fiveYrMaintenance - resaleValue);
+  const perKmCost = annualKm > 0
+    ? Math.round((noc / (annualKm * 5)) * 100) / 100
+    : 0;
+  return { noc, perKmCost };
+}
+
 function safetyScore(car) {
   const starScore = (car.ncap_stars / 5) * 60;
   const airbagScore = Math.min(car.airbags / 6, 1) * 25;
@@ -106,7 +136,8 @@ export function scoreCar(car, profile, baseline) {
 export function rankCars(cars, profile, baseline) {
   const scored = cars.map(car => {
     const { total, breakdown, tco } = scoreCar(car, profile, baseline);
-    return { ...car, score: total, breakdown, tco };
+    const { noc, perKmCost } = calcNOC(car, profile);
+    return { ...car, score: total, breakdown, tco, noc, perKmCost };
   });
   scored.sort((a, b) => b.score - a.score);
   const ranked = scored.map((car, i) => ({ ...car, rank: i + 1 }));

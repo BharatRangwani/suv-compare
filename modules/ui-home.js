@@ -1,10 +1,18 @@
 // modules/ui-home.js
 
-import { loadCarsData, getBaselineCar, getCarsForRanking } from './data.js';
-import { getProfile } from './profile.js';
-import { rankCars, getVFMTag, getBestVariantPerBrand, getBetterVFMVariant } from './ranking.js';
+import { loadCarsData, getBaselineCar, getCarsForRanking, invalidateCache } from './data.js';
+import { getProfile, saveProfile } from './profile.js';
+import { rankCars, calcNOC, getVFMTag, getBestVariantPerBrand, getBetterVFMVariant } from './ranking.js';
 import { renderFilters, applyFilters, getStoredFilters } from './ui-filters.js';
 import { renderDetailPanel } from './ui-detail.js';
+
+const ANNUAL_KM_MAP = {
+  '8k': 22,   // 8,000 km/yr ÷ (365 × 7/7) → daily_km
+  '12k': 33,
+  '18k': 49,
+  '25k': 68,
+  '35k': 96,
+};
 
 // ─── Public entry point ───────────────────────────────────────────────────────
 
@@ -190,7 +198,26 @@ export async function renderHome(container) {
     renderCarList(listContainer, sortedFiltered, baseline, allRanked);
   }
 
-  renderFilters(filterContainer, (filters) => {
+  let lastAnnualKm = 'all';
+
+  renderFilters(filterContainer, async (filters) => {
+    // Annual KM filter: update profile daily_km, re-rank, then refresh
+    if (filters.annual_km !== lastAnnualKm) {
+      lastAnnualKm = filters.annual_km;
+      const dailyKm = ANNUAL_KM_MAP[filters.annual_km] || profile.daily_km;
+      if (filters.annual_km !== 'all') {
+        saveProfile({ ...profile, daily_km: dailyKm });
+        profile = { ...profile, daily_km: dailyKm };
+      } else {
+        // reset to default profile daily_km
+        const freshProfile = getProfile();
+        profile = freshProfile;
+      }
+      invalidateCache();
+      const carsForRanking = getCarsForRanking(data);
+      const ranked = rankCars(carsForRanking, profile, baseline);
+      allRanked = getBestVariantPerBrand(ranked);
+    }
     refresh(filters);
   });
 
@@ -327,6 +354,15 @@ function renderCarCard(car, allRanked, baseline) {
       bv.textContent = '↓ Better VFM variant';
       tagsRow.appendChild(bv);
     }
+
+    // Ethanol badge
+    if (car.ethanol_compatible) {
+      const etag = document.createElement('span');
+      etag.className = 'btag btag-ethanol';
+      etag.title = 'Engine supports up to E20 ethanol-blended petrol (as per BS6 Phase 2 mandate)';
+      etag.textContent = `⛽ ${car.ethanol_compatible}`;
+      tagsRow.appendChild(etag);
+    }
   } else {
     const fuel = FUEL_LABELS[car.fuel] || car.fuel || '';
     [fuel, `${car.engine_cc || 0}cc`, 'Baseline'].forEach(t => {
@@ -357,9 +393,22 @@ function renderCarCard(car, allRanked, baseline) {
     priceEl.style.cssText = 'font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem';
     priceEl.textContent = exSR ? `₹${formatLakh(onRoad)}L` : '—';
 
+    // NOC label
+    const nocEl = document.createElement('div');
+    nocEl.style.cssText = 'font-size:0.65rem;color:var(--text-dim);margin-top:0.18rem;font-weight:500';
+    nocEl.title = 'Net Ownership Cost: road tax + registration + 5yr insurance + 5yr fuel + 5yr maintenance − resale value';
+    nocEl.textContent = car.noc != null ? `NOC ₹${formatLakh(car.noc)}L` : '';
+
+    // Per-km cost
+    const pkmEl = document.createElement('div');
+    pkmEl.style.cssText = 'font-size:0.62rem;color:var(--text-dim);margin-top:0.06rem';
+    pkmEl.textContent = car.perKmCost != null ? `₹${car.perKmCost.toFixed(1)}/km` : '';
+
     const weeks = car.waiting_weeks_jodhpur;
     right.appendChild(scoreEl);
     right.appendChild(priceEl);
+    right.appendChild(nocEl);
+    right.appendChild(pkmEl);
     if (weeks != null) {
       const waitEl = document.createElement('div');
       waitEl.style.cssText = `font-size:0.65rem;margin-top:0.2rem;font-weight:600;color:var(--${waitingColor(weeks) === 'green' ? 'green' : waitingColor(weeks) === 'yellow' ? 'yellow' : 'orange'})`;

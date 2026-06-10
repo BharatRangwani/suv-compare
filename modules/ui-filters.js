@@ -11,6 +11,8 @@ const DEFAULT_FILTERS = {
   budget:           'all',
   ncap:             'all',
   mileage:          'all',
+  annual_km:        'all',
+  ev_charging:      'all',
   adas:             'all',
   ventilated:       'all',
   sunroof:          'all',
@@ -26,6 +28,7 @@ const DEFAULT_FILTERS = {
   vfm:              'all',
   platform:         'all',
   service_avail:    'all',
+  parts_avail:      'all',
   after_sales:      'all',
   waiting:          'all',
 };
@@ -124,6 +127,19 @@ export function applyFilters(cars, filters) {
       }
     }
 
+    // Annual KM — updates conceptual usage tier; filters out cars that are poor value at that usage
+    // This is a display/informational filter: we show it but don't hard-exclude cars here.
+    // The actual re-ranking based on profile.daily_km happens when annual_km filter triggers re-rank.
+    // (No car exclusion for annual_km — it drives profile, not a hard filter.)
+
+    // EV Charging — single (only filters EV cars)
+    if (filters.ev_charging !== 'all' && car.fuel === 'electric') {
+      const ct = car.charging_type || 'both';
+      if (filters.ev_charging === 'home'   && ct !== 'home'   && ct !== 'both') return false;
+      if (filters.ev_charging === 'public' && ct !== 'public' && ct !== 'both') return false;
+      if (filters.ev_charging === 'both'   && ct !== 'both')                    return false;
+    }
+
     // ADAS — single
     if (filters.adas === 'yes' && !car.adas)  return false;
     if (filters.adas === 'no'  &&  car.adas)  return false;
@@ -196,6 +212,13 @@ export function applyFilters(cars, filters) {
       if (filters.service_avail === '1plus' && count < 1) return false;
     }
 
+    // Parts availability score — single
+    if (filters.parts_avail !== 'all') {
+      const pa = car.parts_availability_score || 0;
+      if (filters.parts_avail === '8plus' && pa < 8) return false;
+      if (filters.parts_avail === '6plus' && pa < 6) return false;
+    }
+
     // After-sales service rating — single
     if (filters.after_sales !== 'all') {
       const rating = car.post_sale_service_rating || 0;
@@ -254,6 +277,26 @@ export function renderFilters(container, onFilterChange) {
         { value: 'over15', label: '> 15 kmpl' },
         { value: 'over18', label: '> 18 kmpl' },
         { value: 'over20', label: '> 20 kmpl' },
+      ]
+    },
+    {
+      group: 'annual_km', label: 'Annual KM', multi: false,
+      options: [
+        { value: 'all',  label: 'Any' },
+        { value: '8k',   label: '~8k km/yr' },
+        { value: '12k',  label: '~12k km/yr' },
+        { value: '18k',  label: '~18k km/yr' },
+        { value: '25k',  label: '~25k km/yr' },
+        { value: '35k',  label: '35k+ km/yr' },
+      ]
+    },
+    {
+      group: 'ev_charging', label: 'EV Charging', multi: false,
+      options: [
+        { value: 'all',    label: 'Any' },
+        { value: 'home',   label: 'Home Charging' },
+        { value: 'public', label: 'Public Charging' },
+        { value: 'both',   label: 'Home + Public' },
       ]
     },
     {
@@ -381,6 +424,14 @@ export function renderFilters(container, onFilterChange) {
         { value: 'all',   label: 'Any' },
         { value: '1plus', label: '1+ in Jodhpur' },
         { value: '2plus', label: '2+ in Jodhpur' },
+      ]
+    },
+    {
+      group: 'parts_avail', label: 'Parts Availability', multi: false,
+      options: [
+        { value: 'all',   label: 'Any' },
+        { value: '6plus', label: 'Score 6+/10' },
+        { value: '8plus', label: 'Score 8+/10' },
       ]
     },
     {

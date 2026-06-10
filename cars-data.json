@@ -6,6 +6,7 @@
       "id": "hyundai-creta-sx-opt-petrol-dct",
       "brand": "Hyundai",
       "model": "Creta",
+      "ethanol_compatible": "E20",
       "variant": "SX(O) Petrol DCT",
       "platform": "K2/SP2",
       "fuel": "petrol_turbo",
@@ -306,7 +307,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -465,7 +467,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -613,7 +616,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -902,7 +906,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://press.maruti.co.in"
+      "news_url": "https://press.maruti.co.in",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -1047,7 +1052,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.toyotabharat.com/news-events/"
+      "news_url": "https://www.toyotabharat.com/news-events/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -1191,7 +1197,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1340,7 +1347,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.mgmotor.co.in/news"
+      "news_url": "https://www.mgmotor.co.in/news",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1488,7 +1496,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.hondacarindia.com/newsroom"
+      "news_url": "https://www.hondacarindia.com/newsroom",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1633,7 +1642,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1783,7 +1793,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1929,7 +1940,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://media.mahindra.com/news"
+      "news_url": "https://media.mahindra.com/news",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -2078,7 +2090,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://media.mahindra.com/news"
+      "news_url": "https://media.mahindra.com/news",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -2232,7 +2245,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2377,7 +2391,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2386,6 +2401,7 @@
       "variant": "Empowered+ Long Range",
       "platform": "ALFA EV",
       "fuel": "electric",
+      "charging_type": "both",
       "transmission": "AT",
       "engine_cc": null,
       "power_bhp": 143,
@@ -2542,6 +2558,7 @@
       "variant": "Excellence Long Range",
       "platform": "E-GMP (BEV)",
       "fuel": "electric",
+      "charging_type": "both",
       "transmission": "AT",
       "engine_cc": null,
       "power_bhp": 171,
@@ -2699,6 +2716,7 @@
       "variant": "Excite Pro",
       "platform": "SGMW EV",
       "fuel": "electric",
+      "charging_type": "both",
       "transmission": "AT",
       "engine_cc": null,
       "power_bhp": 176,
@@ -3709,7 +3727,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "hyundai-creta-sxo-diesel-mt",
@@ -4140,7 +4159,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "tata-nexon-smart-plus-petrol-mt",
@@ -4272,7 +4292,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "tata-nexon-creative-plus-diesel-mt",
@@ -4544,7 +4565,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://press.maruti.co.in"
+      "news_url": "https://press.maruti.co.in",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-mild-hybrid-at",
@@ -4691,7 +4713,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://press.maruti.co.in"
+      "news_url": "https://press.maruti.co.in",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "toyota-hyryder-g-mild-hybrid-mt",
@@ -4819,7 +4842,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.toyotabharat.com/news-events/"
+      "news_url": "https://www.toyotabharat.com/news-events/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "toyota-hyryder-s-mild-hybrid-at",
@@ -4947,7 +4971,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.toyotabharat.com/news-events/"
+      "news_url": "https://www.toyotabharat.com/news-events/",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "volkswagen-taigun-comfortline-10-tsi-mt",
@@ -5079,7 +5104,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "volkswagen-taigun-highline-10-tsi-at",
@@ -5210,7 +5236,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html"
+      "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "skoda-kushaq-active-10-tsi-mt",
@@ -5342,7 +5369,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "skoda-kushaq-ambition-10-tsi-at",
@@ -5469,7 +5497,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases"
+      "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "honda-elevate-v-mt",
@@ -5598,7 +5627,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.hondacarindia.com/newsroom"
+      "news_url": "https://www.hondacarindia.com/newsroom",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "hyundai-venue-s-petrol-mt",
@@ -5734,7 +5764,8 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mahindra-xuv-3xo-ax5-petrol-mt",
@@ -5870,7 +5901,8 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://media.mahindra.com/news"
+      "news_url": "https://media.mahindra.com/news",
+      "ethanol_compatible": "E20"
     },
     {
       "id": "mahindra-scorpio-n-z4-diesel-mt",
