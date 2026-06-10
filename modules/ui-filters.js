@@ -31,6 +31,13 @@ const DEFAULT_FILTERS = {
   parts_avail:      'all',
   after_sales:      'all',
   waiting:          'all',
+  headlights:       'all',
+  turn_indicator:   'all',
+  engine_ss:        'all',
+  electric_seats:   'all',
+  climate_ctrl:     'all',
+  paddle_shifters:  'all',
+  cruise_ctrl:      'all',
 };
 
 // Groups that store arrays (multi-select)
@@ -234,6 +241,44 @@ export function applyFilters(cars, filters) {
       if (filters.waiting === 'under8' && weeks > 8)   return false;
     }
 
+    // Headlights — single
+    if (filters.headlights !== 'all') {
+      const hl = car.headlights || 'halogen';
+      if (filters.headlights === 'led'              && hl === 'halogen')          return false;
+      if (filters.headlights === 'led'              && hl === 'projector_halogen') return false;
+      if (filters.headlights === 'projector_halogen'&& hl === 'halogen')          return false;
+      if (filters.headlights === 'led_4chamber'     && car.headlight_chambers !== 4) return false;
+      if (filters.headlights === 'led_3chamber'     && car.headlight_chambers !== 3) return false;
+    }
+
+    // Turn indicator type — single
+    if (filters.turn_indicator === 'led'     && (car.turn_indicator_type || 'halogen') !== 'led')     return false;
+    if (filters.turn_indicator === 'halogen' && (car.turn_indicator_type || 'halogen') !== 'halogen') return false;
+
+    // Engine start/stop (push-button) — single
+    if (filters.engine_ss === 'yes' && !car.engine_start_stop) return false;
+    if (filters.engine_ss === 'no'  &&  car.engine_start_stop) return false;
+
+    // Electric adjustable seats — single
+    if (filters.electric_seats === 'yes' && !car.electric_adj_seats) return false;
+
+    // Climate control — single
+    if (filters.climate_ctrl !== 'all') {
+      const cc = car.climate_control || 'manual';
+      if (filters.climate_ctrl === 'auto'      && cc === 'manual')      return false;
+      if (filters.climate_ctrl === 'auto_dual' && cc !== 'auto_dual')   return false;
+    }
+
+    // Paddle shifters — single
+    if (filters.paddle_shifters === 'yes' && !car.paddle_shifters) return false;
+
+    // Cruise control — single
+    if (filters.cruise_ctrl !== 'all') {
+      const cc = car.cruise_control;
+      if (filters.cruise_ctrl === 'any'      && !cc)              return false;
+      if (filters.cruise_ctrl === 'adaptive' && cc !== 'adaptive') return false;
+    }
+
     return true;
   });
 }
@@ -416,6 +461,62 @@ export function renderFilters(container, onFilterChange) {
         { value: 'k2sp2',  label: 'Hyundai-Kia K2' },
         { value: 'bof',    label: 'Body-on-Frame' },
         { value: 'ev_only',label: 'EV Platform' },
+      ]
+    },
+    {
+      group: 'headlights', label: 'Headlights', multi: false,
+      options: [
+        { value: 'all',              label: 'Any' },
+        { value: 'led',              label: 'LED / Full LED' },
+        { value: 'projector_halogen',label: 'Projector Halogen' },
+        { value: 'led_4chamber',     label: '4-Chamber LED' },
+        { value: 'led_3chamber',     label: '3-Chamber LED' },
+      ]
+    },
+    {
+      group: 'turn_indicator', label: 'Turn Indicator', multi: false,
+      options: [
+        { value: 'all',     label: 'Any' },
+        { value: 'led',     label: 'LED' },
+        { value: 'halogen', label: 'Halogen' },
+      ]
+    },
+    {
+      group: 'engine_ss', label: 'Push Start', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Push Button Start' },
+        { value: 'no',  label: 'Key Start' },
+      ]
+    },
+    {
+      group: 'electric_seats', label: 'Electric Seats', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Electric Adj.' },
+      ]
+    },
+    {
+      group: 'climate_ctrl', label: 'Climate Control', multi: false,
+      options: [
+        { value: 'all',      label: 'Any' },
+        { value: 'auto',     label: 'Auto AC' },
+        { value: 'auto_dual',label: 'Dual-Zone Auto' },
+      ]
+    },
+    {
+      group: 'paddle_shifters', label: 'Paddle Shifters', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Yes' },
+      ]
+    },
+    {
+      group: 'cruise_ctrl', label: 'Cruise Control', multi: false,
+      options: [
+        { value: 'all',      label: 'Any' },
+        { value: 'any',      label: 'Any Cruise' },
+        { value: 'adaptive', label: 'Adaptive / ACC' },
       ]
     },
     {

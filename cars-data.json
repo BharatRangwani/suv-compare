@@ -36,7 +36,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -163,7 +163,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "headlights": "led",
+      "headlight_chambers": 4,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -190,10 +197,10 @@
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": false,
-      "sunroof": "single_pane",
+      "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -308,7 +315,14 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -344,7 +358,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Kia Connect",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_dual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 950,
       "cabin_width_mm": 1800,
@@ -468,7 +482,14 @@
         }
       ],
       "news_url": "https://www.kia.com/in/about-kia/newsroom.html",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -496,10 +517,10 @@
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
-      "sunroof": "single_pane",
+      "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Kia Connect",
-      "climate_control": "automatic",
+      "climate_control": "auto_dual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 950,
       "cabin_width_mm": 1800,
@@ -591,9 +612,9 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
-      "parking_sensors_front": false,
+      "parking_sensors_front": true,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
@@ -617,7 +638,14 @@
         }
       ],
       "news_url": "https://www.kia.com/in/about-kia/newsroom.html",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -779,7 +807,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Suzuki Connect",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 9,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1765,
@@ -881,9 +909,9 @@
           "turnaround_hours": 8
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
-      "parking_sensors_front": true,
+      "parking_sensors_front": false,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
@@ -907,7 +935,14 @@
         }
       ],
       "news_url": "https://press.maruti.co.in",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -937,7 +972,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Toyota Connected",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 9,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1765,
@@ -1027,7 +1062,7 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
       "parking_sensors_front": true,
       "parking_sensors_rear": true,
@@ -1053,7 +1088,14 @@
         }
       ],
       "news_url": "https://www.toyotabharat.com/news-events/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -1083,7 +1125,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "iRA Connected Car",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 860,
       "cabin_width_mm": 1730,
@@ -1172,9 +1214,9 @@
           "turnaround_hours": 12
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
-      "parking_sensors_front": false,
+      "parking_sensors_front": true,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
@@ -1198,7 +1240,14 @@
         }
       ],
       "news_url": "https://www.tatamotors.com/press-releases/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1233,7 +1282,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "iSmart Connected",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.1,
       "rear_legroom_mm": 920,
       "cabin_width_mm": 1770,
@@ -1322,7 +1371,7 @@
           "turnaround_hours": 24
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
       "parking_sensors_front": true,
       "parking_sensors_rear": true,
@@ -1348,7 +1397,14 @@
         }
       ],
       "news_url": "https://www.mgmotor.co.in/news",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "adaptive"
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1379,7 +1435,7 @@
       "sunroof": "single_pane",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 8,
       "rear_legroom_mm": 982,
       "cabin_width_mm": 1790,
@@ -1497,7 +1553,14 @@
         }
       ],
       "news_url": "https://www.hondacarindia.com/newsroom",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1524,10 +1587,10 @@
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": false,
-      "sunroof": "single_pane",
+      "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "VW Connect",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10,
       "rear_legroom_mm": 890,
       "cabin_width_mm": 1760,
@@ -1643,7 +1706,14 @@
         }
       ],
       "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1678,7 +1748,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "iRA Connected Car",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 12.3,
       "rear_legroom_mm": 930,
       "cabin_width_mm": 1820,
@@ -1794,7 +1864,14 @@
         }
       ],
       "news_url": "https://www.tatamotors.com/press-releases/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -1824,7 +1901,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "AdrenoX Connected",
-      "climate_control": "automatic",
+      "climate_control": "auto_dual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1900,
@@ -1941,7 +2018,14 @@
         }
       ],
       "news_url": "https://media.mahindra.com/news",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -1976,7 +2060,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "AdrenoX Connected",
-      "climate_control": "automatic",
+      "climate_control": "auto_dual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 840,
       "cabin_width_mm": 1760,
@@ -2065,7 +2149,7 @@
           "turnaround_hours": 10
         }
       ],
-      "camera_360": true,
+      "camera_360": false,
       "alloy_wheels": true,
       "parking_sensors_front": true,
       "parking_sensors_rear": true,
@@ -2091,7 +2175,14 @@
         }
       ],
       "news_url": "https://media.mahindra.com/news",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "adaptive"
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -2122,7 +2213,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "BlueLink Connected Car",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 8,
       "rear_legroom_mm": 800,
       "cabin_width_mm": 1700,
@@ -2246,7 +2337,14 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2276,7 +2374,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "Skoda Connect",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10,
       "rear_legroom_mm": 870,
       "cabin_width_mm": 1780,
@@ -2368,7 +2466,7 @@
       ],
       "camera_360": false,
       "alloy_wheels": true,
-      "parking_sensors_front": true,
+      "parking_sensors_front": false,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
@@ -2392,7 +2490,14 @@
         }
       ],
       "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2433,7 +2538,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "iRA Connected Car",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 12.3,
       "rear_legroom_mm": 850,
       "cabin_width_mm": 1750,
@@ -2524,7 +2629,7 @@
           "turnaround_hours": 12
         }
       ],
-      "camera_360": false,
+      "camera_360": true,
       "alloy_wheels": true,
       "parking_sensors_front": true,
       "parking_sensors_rear": true,
@@ -2549,7 +2654,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -2591,7 +2703,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 880,
       "cabin_width_mm": 1790,
@@ -2707,7 +2819,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "headlights": "led",
+      "headlight_chambers": 4,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "adaptive"
     },
     {
       "id": "mg-zs-ev-excite-pro",
@@ -2743,7 +2862,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "MG iSmart",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.1,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1780,
@@ -2832,7 +2951,7 @@
       ],
       "camera_360": true,
       "alloy_wheels": true,
-      "parking_sensors_front": false,
+      "parking_sensors_front": true,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
@@ -2855,7 +2974,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.mgmotor.co.in/news"
+      "news_url": "https://www.mgmotor.co.in/news",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -2998,7 +3124,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "maruti-ertiga-cng-vxi",
@@ -3154,7 +3287,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://press.maruti.co.in"
+      "news_url": "https://press.maruti.co.in",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "kia-seltos-htx-plus-diesel-at",
@@ -3182,10 +3322,10 @@
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": true,
-      "sunroof": "single_pane",
+      "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Kia Connect",
-      "climate_control": "automatic",
+      "climate_control": "auto_dual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1800,
@@ -3243,7 +3383,7 @@
       "launch_year": 2023,
       "is_new_model": false,
       "glb": "previews/kia-seltos.glb",
-      "camera_360": false,
+      "camera_360": true,
       "colors": [
         {
           "name": "Glacier White Pearl",
@@ -3277,7 +3417,7 @@
         }
       ],
       "alloy_wheels": true,
-      "parking_sensors_front": false,
+      "parking_sensors_front": true,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": false,
@@ -3300,7 +3440,14 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://www.kia.com/in/about-kia/newsroom.html"
+      "news_url": "https://www.kia.com/in/about-kia/newsroom.html",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -3335,7 +3482,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "iRA Connected Car",
-      "climate_control": "automatic",
+      "climate_control": "auto_single",
       "infotainment_inches": 12.3,
       "rear_legroom_mm": 930,
       "cabin_width_mm": 1820,
@@ -3446,7 +3593,14 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "mahindra-scorpio-n-z8-diesel-at",
@@ -3476,7 +3630,7 @@
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "AdrenoX Connected",
-      "climate_control": "automatic",
+      "climate_control": "auto_dual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 900,
       "cabin_width_mm": 1900,
@@ -3535,7 +3689,7 @@
       "launch_year": 2022,
       "is_new_model": false,
       "glb": null,
-      "camera_360": false,
+      "camera_360": true,
       "colors": [
         {
           "name": "Dune Beige",
@@ -3588,7 +3742,14 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://media.mahindra.com/news"
+      "news_url": "https://media.mahindra.com/news",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "hyundai-creta-s-petrol-mt",
@@ -3618,7 +3779,7 @@
       "sunroof": "none",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 8,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -3728,7 +3889,19 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "hyundai-creta-sxo-diesel-mt",
@@ -3762,7 +3935,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -3874,7 +4047,21 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "headlights": "led",
+      "headlight_chambers": 4,
+      "turn_indicator_type": "led",
+      "camera_360": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": true,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "hyundai-creta-sxo-diesel-at",
@@ -3909,7 +4096,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -4017,7 +4204,21 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.hyundai.com/in/en/media/press-releases"
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "headlights": "led",
+      "headlight_chambers": 4,
+      "turn_indicator_type": "led",
+      "camera_360": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "adaptive"
     },
     {
       "id": "hyundai-creta-sx-strong-hybrid",
@@ -4051,7 +4252,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 945,
       "cabin_width_mm": 1790,
@@ -4160,7 +4361,21 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "tata-nexon-smart-plus-petrol-mt",
@@ -4187,10 +4402,10 @@
       "wireless_carplay": false,
       "wireless_aa": false,
       "ventilated_seats": false,
-      "sunroof": "none",
+      "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "Tata iRA",
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 857,
       "cabin_width_mm": 1740,
@@ -4293,7 +4508,21 @@
         }
       ],
       "news_url": "https://www.tatamotors.com/press-releases/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "tata-nexon-creative-plus-diesel-mt",
@@ -4323,7 +4552,7 @@
       "sunroof": "none",
       "connected_car": true,
       "connected_system": "Tata iRA",
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 857,
       "cabin_width_mm": 1740,
@@ -4425,7 +4654,21 @@
           "type": "upgrade"
         }
       ],
-      "news_url": "https://www.tatamotors.com/press-releases/"
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "maruti-grand-vitara-delta-plus-mild-hybrid-mt",
@@ -4445,7 +4688,7 @@
       "ground_clearance_mm": 210,
       "kerb_weight_kg": 1150,
       "seating": 5,
-      "airbags": 6,
+      "airbags": 2,
       "ncap_stars": 3,
       "adas": false,
       "adas_features": [],
@@ -4455,7 +4698,7 @@
       "sunroof": "none",
       "connected_car": true,
       "connected_system": "Maruti Suzuki Connect",
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 9,
       "rear_legroom_mm": 885,
       "cabin_width_mm": 1770,
@@ -4566,7 +4809,21 @@
         }
       ],
       "news_url": "https://press.maruti.co.in",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-mild-hybrid-at",
@@ -4600,7 +4857,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Maruti Suzuki Connect",
-      "climate_control": "dual_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 9,
       "rear_legroom_mm": 885,
       "cabin_width_mm": 1770,
@@ -4714,7 +4971,21 @@
         }
       ],
       "news_url": "https://press.maruti.co.in",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "toyota-hyryder-g-mild-hybrid-mt",
@@ -4744,7 +5015,7 @@
       "sunroof": "none",
       "connected_car": true,
       "connected_system": "Toyota iConnect",
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 9,
       "rear_legroom_mm": 885,
       "cabin_width_mm": 1770,
@@ -4843,7 +5114,21 @@
         }
       ],
       "news_url": "https://www.toyotabharat.com/news-events/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "toyota-hyryder-s-mild-hybrid-at",
@@ -4870,10 +5155,10 @@
       "wireless_carplay": true,
       "wireless_aa": true,
       "ventilated_seats": false,
-      "sunroof": "single_pane",
+      "sunroof": "none",
       "connected_car": true,
       "connected_system": "Toyota iConnect",
-      "climate_control": "single_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 9,
       "rear_legroom_mm": 885,
       "cabin_width_mm": 1770,
@@ -4972,7 +5257,21 @@
         }
       ],
       "news_url": "https://www.toyotabharat.com/news-events/",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "volkswagen-taigun-comfortline-10-tsi-mt",
@@ -5002,7 +5301,7 @@
       "sunroof": "none",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 905,
       "cabin_width_mm": 1760,
@@ -5105,7 +5404,21 @@
         }
       ],
       "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "volkswagen-taigun-highline-10-tsi-at",
@@ -5135,7 +5448,7 @@
       "sunroof": "single_pane",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10,
       "rear_legroom_mm": 905,
       "cabin_width_mm": 1760,
@@ -5237,7 +5550,21 @@
         }
       ],
       "news_url": "https://www.volkswagen.co.in/en/world-of-vw/news.html",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard"
     },
     {
       "id": "skoda-kushaq-active-10-tsi-mt",
@@ -5267,7 +5594,7 @@
       "sunroof": "none",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 905,
       "cabin_width_mm": 1760,
@@ -5370,7 +5697,21 @@
         }
       ],
       "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "skoda-kushaq-ambition-10-tsi-at",
@@ -5400,7 +5741,7 @@
       "sunroof": "single_pane",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 10,
       "rear_legroom_mm": 905,
       "cabin_width_mm": 1760,
@@ -5498,7 +5839,21 @@
         }
       ],
       "news_url": "https://www.skoda-auto.co.in/en/news/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": true,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard"
     },
     {
       "id": "honda-elevate-v-mt",
@@ -5528,7 +5883,7 @@
       "sunroof": "none",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "auto_single",
       "infotainment_inches": 8,
       "rear_legroom_mm": 910,
       "cabin_width_mm": 1790,
@@ -5628,7 +5983,21 @@
         }
       ],
       "news_url": "https://www.hondacarindia.com/newsroom",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "hyundai-venue-s-petrol-mt",
@@ -5658,7 +6027,7 @@
       "sunroof": "none",
       "connected_car": false,
       "connected_system": null,
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 855,
       "cabin_width_mm": 1690,
@@ -5765,7 +6134,21 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "mahindra-xuv-3xo-ax5-petrol-mt",
@@ -5799,7 +6182,7 @@
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Mahindra AdrenoX",
-      "climate_control": "single_zone",
+      "climate_control": "auto_dual",
       "infotainment_inches": 10.25,
       "rear_legroom_mm": 885,
       "cabin_width_mm": 1750,
@@ -5902,7 +6285,21 @@
         }
       ],
       "news_url": "https://media.mahindra.com/news",
-      "ethanol_compatible": "E20"
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     },
     {
       "id": "mahindra-scorpio-n-z4-diesel-mt",
@@ -5922,7 +6319,7 @@
       "ground_clearance_mm": 200,
       "kerb_weight_kg": 1960,
       "seating": 7,
-      "airbags": 6,
+      "airbags": 2,
       "ncap_stars": 5,
       "adas": false,
       "adas_features": [],
@@ -5932,7 +6329,7 @@
       "sunroof": "none",
       "connected_car": true,
       "connected_system": "Mahindra AdrenoX",
-      "climate_control": "single_zone",
+      "climate_control": "manual",
       "infotainment_inches": 8,
       "rear_legroom_mm": 975,
       "cabin_width_mm": 1900,
@@ -6032,7 +6429,21 @@
           "type": "launch"
         }
       ],
-      "news_url": "https://media.mahindra.com/news"
+      "news_url": "https://media.mahindra.com/news",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false
     }
   ]
 }
