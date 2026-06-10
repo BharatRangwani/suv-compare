@@ -89,7 +89,7 @@ function buildRowDefs() {
       direction: LOWER_IS_BETTER,
     },
     {
-      label: 'Monthly EMI (₹)',
+      label: 'Monthly EMI (20% DP · 8.5% · 5yr)',
       getValue: (car) => {
         const onRoad = calcOnRoadPrice(car.ex_showroom_jodhpur);
         const principal = Math.round(onRoad * 0.80);

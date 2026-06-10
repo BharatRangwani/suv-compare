@@ -114,7 +114,7 @@ async function renderFinanceTab() {
       </div>
       <div class="fin-ac-nums">
         <div class="fin-ac-num"><div class="fin-ac-val">${fL(net)}</div><div class="fin-ac-lbl">Net after exchange</div></div>
-        <div class="fin-ac-num"><div class="fin-ac-val">₹${emi.toLocaleString('en-IN')}</div><div class="fin-ac-lbl">EMI / month</div></div>
+        <div class="fin-ac-num"><div class="fin-ac-val">₹${emi.toLocaleString('en-IN')}</div><div class="fin-ac-lbl">EMI / month (${tenureMonths / 12}yr)</div></div>
         <div class="fin-ac-num"><div class="fin-ac-val">${waitTxt}</div><div class="fin-ac-lbl">Wait time</div></div>
       </div>
     `;

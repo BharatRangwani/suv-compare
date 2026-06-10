@@ -31,10 +31,7 @@ export function calcTCO(car, profile) {
 
   const annualService = car.fuel === 'electric' ? 4000 : car.fuel === 'cng' ? 7000 : 12000;
   const operatingCosts = (annualFuel * 5) + (annualService * 5);
-  const resaleValue = Math.min(
-    car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100),
-    operatingCosts * 0.9
-  );
+  const resaleValue = car.ex_showroom_jodhpur * (car.resale_5yr_pct / 100);
   return Math.round(onRoad + operatingCosts - resaleValue);
 }
 

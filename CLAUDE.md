@@ -70,7 +70,7 @@ tests/
 ### Scoring
 - 6 weighted categories: safety 20%, VFM 20%, features 20%, service 15%, comfort 15%, reliability 10%.
 - All sub-scores normalized 0–100. Total capped at 100.
-- TCO resale deduction capped at `Math.min(resale, operatingCosts × 0.9)` to prevent negative TCO.
+- TCO resale deduction uses full resale value: `ex_showroom × resale_5yr_pct`. No cap — on-road price always exceeds resale so TCO cannot go negative.
 - `getBestVariantPerBrand()` must be called after `rankCars()` — it uses `.score`.
 
 ### CSS classes (already defined — do not recreate)

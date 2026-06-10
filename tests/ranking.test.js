@@ -69,10 +69,14 @@ describe('ranking engine', () => {
     expect(tco).toBeGreaterThan(0);
   });
 
-  test('calcTCO for Creta is greater than on-road price', () => {
+  test('calcTCO for Creta is less than on-road price plus operating costs (resale reduces TCO)', () => {
     const tco = calcTCO(mockCreta, DEFAULT_PROFILE);
     const onRoad = mockCreta.ex_showroom_jodhpur * 1.145 + 15000;
-    expect(tco).toBeGreaterThan(onRoad);
+    const annualKm = DEFAULT_PROFILE.daily_km * DEFAULT_PROFILE.days_per_week * 52;
+    const annualFuel = (annualKm / mockCreta.realworld_kmpl) * DEFAULT_PROFILE.petrol_price_jodhpur;
+    const opCosts = (annualFuel + 12000) * 5;
+    expect(tco).toBeGreaterThan(0);
+    expect(tco).toBeLessThan(onRoad + opCosts);
   });
 
   test('getVFMTag returns one of three valid tags', () => {
