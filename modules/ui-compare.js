@@ -215,6 +215,30 @@ function buildRowDefs() {
       direction: HIGHER_IS_BETTER,
     },
     {
+      label: 'Rear Sunshades',
+      format: (car) => fmtYesNo(car.rear_sunshades),
+      rawVal: (car) => car.rear_sunshades ? 1 : 0,
+      direction: HIGHER_IS_BETTER,
+    },
+    {
+      label: 'Climate Control',
+      format: (car) => fmtYesNo(car.climate_control),
+      rawVal: (car) => car.climate_control ? 1 : 0,
+      direction: HIGHER_IS_BETTER,
+    },
+    {
+      label: 'Auto Fold ORVM',
+      format: (car) => fmtYesNo(car.auto_fold_orvm),
+      rawVal: (car) => car.auto_fold_orvm ? 1 : 0,
+      direction: HIGHER_IS_BETTER,
+    },
+    {
+      label: 'TPMS',
+      format: (car) => fmtYesNo(car.tpms),
+      rawVal: (car) => car.tpms ? 1 : 0,
+      direction: HIGHER_IS_BETTER,
+    },
+    {
       label: 'Connected car',
       format: (car) => fmtConnected(car.connected_car, car.connected_system),
       rawVal: (car) => car.connected_car ? 1 : 0,
@@ -227,10 +251,27 @@ function buildRowDefs() {
       direction: HIGHER_IS_BETTER,
     },
     {
+      label: 'Wireless Android Auto',
+      format: (car) => fmtYesNo(car.wireless_aa),
+      rawVal: (car) => car.wireless_aa ? 1 : 0,
+      direction: HIGHER_IS_BETTER,
+    },
+    {
       label: 'Infotainment (inches)',
       format: (car) => car.infotainment_inches ? String(car.infotainment_inches) + '"' : '—',
       rawVal: (car) => car.infotainment_inches || 0,
       direction: HIGHER_IS_BETTER,
+    },
+    {
+      label: 'Best for driving',
+      format: (car) => {
+        const v = car.driving_use;
+        if (!v) return '—';
+        const map = { city: 'City', highway: 'Highway', mixed: 'Mixed' };
+        return map[v] || v;
+      },
+      rawVal: (car) => car.driving_use || '',
+      direction: null,
     },
 
     // SPACE
@@ -461,7 +502,10 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
     <br><span class="locked-badge">Your Car</span>
   </th>`;
   for (const car of selectedCars) {
-    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small></th>`;
+    const cityBadge = car.driving_use === 'city'
+      ? `<span class="city-best-badge" title="Best for city driving">🏙 City Pick</span>`
+      : '';
+    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}</th>`;
   }
   html += `</tr>`;
   // Score summary row pinned below the header
@@ -521,9 +565,9 @@ function buildControls(selectedCars, showDiffOnly) {
     </div>
   `).join('');
 
-  const canAdd = selectedCars.length < 4;
+  const MAX_COMPARE = 8;
+  const canAdd = selectedCars.length < MAX_COMPARE;
 
-  // Build empty slot placeholders
   const emptySlots = canAdd
     ? `<button class="cmp-slot cmp-slot-empty" id="cmp-add-slot">
         <span class="cmp-slot-plus">+</span>
@@ -542,6 +586,7 @@ function buildControls(selectedCars, showDiffOnly) {
           <input type="checkbox" id="diff-toggle" ${showDiffOnly ? 'checked' : ''}>
           Show differences only
         </label>
+        <button class="btn-compare-all" id="cmp-all-variants-btn" title="Add all variants of same model">Compare All Variants</button>
       </div>
     </div>
   `;
@@ -888,6 +933,24 @@ export async function renderCompare(container) {
         _render();
       });
     }
+
+    // Compare All Variants — add every variant of the currently viewed model (up to limit)
+    const cmpAllBtn = controlsRoot.querySelector('#cmp-all-variants-btn');
+    if (cmpAllBtn) {
+      cmpAllBtn.addEventListener('click', () => {
+        const refCar = viewerActiveCar || selectedCars[0];
+        if (!refCar) return;
+        const variants = allVariants.filter(c =>
+          c.model === refCar.model && c.brand === refCar.brand && !c.is_baseline
+        );
+        variants.forEach(v => {
+          if (selectedCars.length < 8 && !selectedCars.find(c => c.id === v.id)) {
+            selectedCars.push(v);
+          }
+        });
+        _render();
+      });
+    }
   }
 
   // ── picker ──
@@ -915,7 +978,7 @@ export async function renderCompare(container) {
       if (!item || item.classList.contains('disabled')) return;
       const id = item.dataset.id;
       const car = allVariants.find(c => c.id === id);
-      if (car && selectedCars.length < 4 && !selectedCars.find(c => c.id === id)) {
+      if (car && selectedCars.length < 8 && !selectedCars.find(c => c.id === id)) {
         selectedCars.push(car);
       }
       _closePicker();
@@ -947,7 +1010,7 @@ export async function renderCompare(container) {
   function _handleAddToCompare(e) {
     const car = e.detail && e.detail.car;
     if (!car) return;
-    if (selectedCars.length >= 4) return;
+    if (selectedCars.length >= 8) return;
     if (selectedCars.find(c => c.id === car.id)) return;
     if (car.id === baselineWithTCO.id) return;
 

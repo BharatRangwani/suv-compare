@@ -200,7 +200,8 @@ export function createCarViewer(containerEl) {
   }
 
   function _detectPaint(model) {
-    const matCount = {};
+    // Pass 1: score materials by name to identify the paint "family"
+    const matScore = {};
     const matRefs  = {};
 
     model.traverse((child) => {
@@ -211,28 +212,28 @@ export function createCarViewer(containerEl) {
       mats.forEach(m => {
         if (!m || !m.color) return;
         const name = (m.name || '').toLowerCase();
-        // Explicit paint material names — highest priority
         if (name.includes('carpaint') || name.includes('car_paint') ||
             name.includes('body_paint') || name.includes('carosserie') ||
-            name.includes('carcolor') || name.includes('body') ||
-            name.includes('exterior') || name.includes('paint')) {
-          matCount[m.name] = (matCount[m.name] || 0) + 99;
-          matRefs[m.name]  = m;
+            name.includes('carcolor') || name.includes('exterior') ||
+            name.includes('paint')) {
+          matScore[m.uuid] = (matScore[m.uuid] || 0) + 99;
+          matRefs[m.uuid]  = m;
           return;
         }
         if (SKIP_MAT.test(name)) return;
         const brightness = m.color.r + m.color.g + m.color.b;
         if (brightness < 0.08) return;
-        matCount[m.name] = (matCount[m.name] || 0) + 1;
-        matRefs[m.name]  = m;
+        matScore[m.uuid] = (matScore[m.uuid] || 0) + 1;
+        matRefs[m.uuid]  = m;
       });
     });
 
-    const best = Object.keys(matCount).sort((a, b) => matCount[b] - matCount[a])[0];
-    let mat = best ? matRefs[best] : null;
+    // Identify the winning paint material by score
+    const bestUuid = Object.keys(matScore).sort((a, b) => matScore[b] - matScore[a])[0];
+    let paintRef = bestUuid ? matRefs[bestUuid] : null;
 
-    // Fallback: largest mesh by vertex count (likely the car body)
-    if (!mat) {
+    // Fallback: largest mesh by vertex count (most likely the car body)
+    if (!paintRef) {
       let maxVerts = 0;
       model.traverse(child => {
         if (!child.isMesh || !child.geometry) return;
@@ -240,18 +241,44 @@ export function createCarViewer(containerEl) {
         if (count > maxVerts) {
           maxVerts = count;
           const m = Array.isArray(child.material) ? child.material[0] : child.material;
-          if (m && m.color) mat = m;
+          if (m && m.color) paintRef = m;
         }
       });
     }
 
-    if (mat) {
-      mat.metalness = 0.7;
-      mat.roughness = 0.25;
-      if (mat.map) { mat._originalMap = mat.map; mat.map = null; }
-      mat.needsUpdate = true;
-      paintMeshes.push({ material: mat, _isMaterialRef: true });
-    }
+    if (!paintRef) return;
+
+    // Pass 2: collect ALL material instances that look like the winning paint
+    // (same hue family and not in SKIP_MAT) — GLBs often duplicate material
+    // instances per mesh so updating one object only recolors one panel.
+    const paintColor = paintRef.color.clone();
+    const seen = new Set();
+
+    model.traverse((child) => {
+      if (!child.isMesh) return;
+      const mats = Array.isArray(child.material) ? child.material : [child.material];
+      mats.forEach(m => {
+        if (!m || !m.color || seen.has(m.uuid)) return;
+        const name = (m.name || '').toLowerCase();
+        if (SKIP_MAT.test(name)) return;
+
+        // Accept: (a) exact same uuid as winner, (b) similar color hue (within 0.15 per channel)
+        const dr = Math.abs(m.color.r - paintColor.r);
+        const dg = Math.abs(m.color.g - paintColor.g);
+        const db = Math.abs(m.color.b - paintColor.b);
+        const colorMatch = dr < 0.15 && dg < 0.15 && db < 0.15;
+        const isWinner   = m.uuid === paintRef.uuid;
+
+        if (isWinner || colorMatch) {
+          seen.add(m.uuid);
+          m.metalness = 0.7;
+          m.roughness = 0.25;
+          if (m.map) { m._originalMap = m.map; m.map = null; }
+          m.needsUpdate = true;
+          paintMeshes.push({ material: m, _isMaterialRef: true });
+        }
+      });
+    });
   }
 
   function _buildFallbackCar() {

@@ -38,6 +38,10 @@ const DEFAULT_FILTERS = {
   climate_ctrl:     'all',
   paddle_shifters:  'all',
   cruise_ctrl:      'all',
+  tpms:             'all',
+  rear_sunshades:   'all',
+  auto_fold_orvm:   'all',
+  driving_use:      'all',
 };
 
 // Groups that store arrays (multi-select)
@@ -284,6 +288,23 @@ export function applyFilters(cars, filters) {
       if (filters.cruise_ctrl === 'adaptive' && cc !== 'adaptive') return false;
     }
 
+    // TPMS — single
+    if (filters.tpms === 'yes' && !car.tpms) return false;
+
+    // Rear sunshades — single
+    if (filters.rear_sunshades === 'yes' && !car.rear_sunshades) return false;
+
+    // Auto fold ORVM — single
+    if (filters.auto_fold_orvm === 'yes' && !car.auto_fold_orvm) return false;
+
+    // Driving use case — single
+    if (filters.driving_use !== 'all') {
+      const use = car.driving_use || 'mixed';
+      if (filters.driving_use === 'city'    && use !== 'city'    && use !== 'mixed') return false;
+      if (filters.driving_use === 'highway' && use !== 'highway' && use !== 'mixed') return false;
+      if (filters.driving_use === 'mixed'   && use !== 'mixed')                      return false;
+    }
+
     return true;
   });
 }
@@ -524,6 +545,36 @@ export function renderFilters(container, onFilterChange) {
         { value: 'all',      label: 'Any' },
         { value: 'any',      label: 'Any Cruise' },
         { value: 'adaptive', label: 'Adaptive / ACC' },
+      ]
+    },
+    {
+      group: 'tpms', label: 'TPMS', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Has TPMS' },
+      ]
+    },
+    {
+      group: 'rear_sunshades', label: 'Rear Sunshades', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Has Sunshades' },
+      ]
+    },
+    {
+      group: 'auto_fold_orvm', label: 'Auto Fold ORVM', multi: false,
+      options: [
+        { value: 'all', label: 'Any' },
+        { value: 'yes', label: 'Auto Fold' },
+      ]
+    },
+    {
+      group: 'driving_use', label: 'Best For', multi: false,
+      options: [
+        { value: 'all',     label: 'Any' },
+        { value: 'city',    label: 'City Driving' },
+        { value: 'highway', label: 'Highway' },
+        { value: 'mixed',   label: 'Mixed Use' },
       ]
     },
     {

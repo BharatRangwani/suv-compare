@@ -170,7 +170,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -322,7 +326,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -489,7 +497,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -645,7 +657,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -942,7 +958,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "toyota-hyryder-v-strong-hybrid-at",
@@ -1095,7 +1115,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-fearless-plus-petrol-amt",
@@ -1247,7 +1271,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1278,7 +1306,7 @@
       ],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": false,
+      "ventilated_seats": true,
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "iSmart Connected",
@@ -1404,7 +1432,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "honda-elevate-zx-cvt",
@@ -1560,7 +1592,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "volkswagen-taigun-topline-tsi-dsg",
@@ -1713,7 +1749,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1871,7 +1911,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -2025,7 +2069,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -2182,7 +2230,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-venue-sx-opt-petrol-dct",
@@ -2344,7 +2396,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2497,7 +2553,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -2534,7 +2594,7 @@
       ],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": true,
+      "ventilated_seats": false,
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "iRA Connected Car",
@@ -2661,7 +2721,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-creta-electric-excellence-long-range",
@@ -2826,7 +2890,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": false,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "mg-zs-ev-excite-pro",
@@ -2981,7 +3049,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -3131,7 +3203,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "maruti-ertiga-cng-vxi",
@@ -3294,7 +3370,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": true,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "kia-seltos-htx-plus-diesel-at",
@@ -3321,7 +3401,7 @@
       "adas_features": [],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": true,
+      "ventilated_seats": false,
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Kia Connect",
@@ -3447,7 +3527,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -3600,7 +3684,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "mahindra-scorpio-n-z8-diesel-at",
@@ -3749,7 +3837,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "hyundai-creta-s-petrol-mt",
@@ -3901,7 +3993,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-creta-sxo-diesel-mt",
@@ -4061,7 +4157,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": true,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "hyundai-creta-sxo-diesel-at",
@@ -4218,7 +4318,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": true,
       "paddle_shifters": true,
-      "cruise_control": "adaptive"
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "hyundai-creta-sx-strong-hybrid",
@@ -4375,7 +4479,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-smart-plus-petrol-mt",
@@ -4522,7 +4630,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-creative-plus-diesel-mt",
@@ -4668,7 +4780,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "maruti-grand-vitara-delta-plus-mild-hybrid-mt",
@@ -4823,7 +4939,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "mixed"
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-mild-hybrid-at",
@@ -4853,7 +4973,7 @@
       ],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": true,
+      "ventilated_seats": false,
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Maruti Suzuki Connect",
@@ -4985,7 +5105,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "toyota-hyryder-g-mild-hybrid-mt",
@@ -5128,7 +5252,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "mixed"
     },
     {
       "id": "toyota-hyryder-s-mild-hybrid-at",
@@ -5271,7 +5399,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "volkswagen-taigun-comfortline-10-tsi-mt",
@@ -5418,7 +5550,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "volkswagen-taigun-highline-10-tsi-at",
@@ -5564,7 +5700,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": true,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "skoda-kushaq-active-10-tsi-mt",
@@ -5711,7 +5851,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "skoda-kushaq-ambition-10-tsi-at",
@@ -5853,7 +5997,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": "standard"
+      "cruise_control": "standard",
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "honda-elevate-v-mt",
@@ -5997,7 +6145,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-venue-s-petrol-mt",
@@ -6148,7 +6300,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "mahindra-xuv-3xo-ax5-petrol-mt",
@@ -6299,7 +6455,11 @@
       "engine_start_stop": true,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "mahindra-scorpio-n-z4-diesel-mt",
@@ -6443,7 +6603,11 @@
       "engine_start_stop": false,
       "electric_adj_seats": false,
       "paddle_shifters": false,
-      "cruise_control": false
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "highway"
     },
     {
       "id": "kia-seltos-htk-plus-petrol-mt",
@@ -6562,7 +6726,11 @@
           "name": "Beige Gold",
           "hex": "#c9a96e"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "kia-seltos-htk-plus-petrol-cvt",
@@ -6681,7 +6849,11 @@
           "name": "Beige Gold",
           "hex": "#c9a96e"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "kia-seltos-htx-petrol-mt",
@@ -6801,7 +6973,11 @@
           "name": "Beige Gold",
           "hex": "#c9a96e"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "kia-seltos-htx-plus-diesel-mt",
@@ -6828,7 +7004,7 @@
       "adas_features": [],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": true,
+      "ventilated_seats": false,
       "sunroof": "panoramic",
       "connected_car": true,
       "connected_system": "Kia Connect",
@@ -6921,7 +7097,11 @@
           "name": "Beige Gold",
           "hex": "#c9a96e"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "hyundai-venue-sx-petrol-dct",
@@ -7041,7 +7221,11 @@
           "name": "Typhoon Silver",
           "hex": "#9a9fa8"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-venue-s-diesel-mt",
@@ -7161,7 +7345,11 @@
           "name": "Typhoon Silver",
           "hex": "#9a9fa8"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-venue-sx-plus-petrol-dct",
@@ -7281,7 +7469,11 @@
           "name": "Typhoon Silver",
           "hex": "#9a9fa8"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-smart-petrol-mt",
@@ -7392,7 +7584,11 @@
           "name": "Seaweed Green",
           "hex": "#2a5a4a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-fearless-petrol-mt",
@@ -7503,7 +7699,11 @@
           "name": "Seaweed Green",
           "hex": "#2a5a4a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-fearless-plus-diesel-mt",
@@ -7615,7 +7815,11 @@
           "name": "Seaweed Green",
           "hex": "#2a5a4a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "tata-harrier-fearless-petrol-at",
@@ -7726,7 +7930,11 @@
           "name": "Calisto Copper",
           "hex": "#9c5f2a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-harrier-fearless-diesel-mt",
@@ -7838,7 +8046,11 @@
           "name": "Calisto Copper",
           "hex": "#9c5f2a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "highway"
     },
     {
       "id": "tata-harrier-adventure-diesel-mt",
@@ -7950,7 +8162,11 @@
           "name": "Calisto Copper",
           "hex": "#9c5f2a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "maruti-grand-vitara-zeta-plus-mild-hybrid-mt",
@@ -8070,7 +8286,11 @@
           "name": "Khaki Green",
           "hex": "#5a6642"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "maruti-grand-vitara-sigma-petrol-mt",
@@ -8195,7 +8415,11 @@
           "name": "Khaki Green",
           "hex": "#5a6642"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "honda-elevate-sx-mt",
@@ -8307,7 +8531,11 @@
           "name": "Obsidian Blue",
           "hex": "#1a2a5a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "honda-elevate-vx-cvt",
@@ -8419,7 +8647,11 @@
           "name": "Obsidian Blue",
           "hex": "#1a2a5a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "mg-astor-sharp-cvt",
@@ -8536,7 +8768,11 @@
           "name": "Fossil Grey",
           "hex": "#6a6e72"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "mg-astor-savvy-mt",
@@ -8653,7 +8889,11 @@
           "name": "Fossil Grey",
           "hex": "#6a6e72"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "mahindra-xuv-3xo-ax5-diesel-mt",
@@ -8768,7 +9008,11 @@
           "name": "Blazing Bronze",
           "hex": "#8b6914"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "mixed"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-diesel-at",
@@ -8884,7 +9128,11 @@
           "name": "Blazing Bronze",
           "hex": "#8b6914"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "mixed"
     },
     {
       "id": "mahindra-scorpio-n-z4-petrol-mt",
@@ -9001,7 +9249,11 @@
           "name": "Grand Canyon Red",
           "hex": "#8b1a1a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "highway"
     },
     {
       "id": "mahindra-scorpio-n-z6-diesel-mt",
@@ -9114,7 +9366,11 @@
           "name": "Grand Canyon Red",
           "hex": "#8b1a1a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "highway"
     },
     {
       "id": "mahindra-scorpio-n-z6-diesel-at",
@@ -9227,7 +9483,11 @@
           "name": "Grand Canyon Red",
           "hex": "#8b1a1a"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     },
     {
       "id": "tata-nexon-ev-smart-plus-long-range",
@@ -9345,7 +9605,11 @@
           "name": "Fearless Red",
           "hex": "#c01a1a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-ev-fearless-long-range",
@@ -9459,7 +9723,11 @@
           "name": "Fearless Red",
           "hex": "#c01a1a"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-creta-electric-executive",
@@ -9578,7 +9846,11 @@
           "name": "Typhoon Silver",
           "hex": "#9a9fa8"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "hyundai-creta-electric-premium",
@@ -9608,7 +9880,7 @@
       "adas_features": [],
       "wireless_carplay": true,
       "wireless_aa": true,
-      "ventilated_seats": false,
+      "ventilated_seats": true,
       "sunroof": "single_pane",
       "connected_car": true,
       "connected_system": "Hyundai BlueLink",
@@ -9693,7 +9965,11 @@
           "name": "Typhoon Silver",
           "hex": "#9a9fa8"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "tata-nexon-cng-fearless-plus",
@@ -9805,7 +10081,11 @@
           "name": "Pristine White",
           "hex": "#f2f0ec"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city"
     },
     {
       "id": "maruti-ertiga-cng-zxi",
@@ -9930,7 +10210,11 @@
           "name": "Dignity Brown",
           "hex": "#5c4033"
         }
-      ]
+      ],
+      "tpms": false,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "city"
     },
     {
       "id": "skoda-kushaq-monte-carlo-15-tsi-dsg",
@@ -10047,7 +10331,11 @@
           "name": "Magnetic Brown",
           "hex": "#5c4033"
         }
-      ]
+      ],
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "highway"
     }
   ]
 }
