@@ -116,14 +116,39 @@ export function createCarViewer(containerEl) {
   let paintMeshes  = [];
   let currentColor = new THREE.Color(0xf0f0f0);
 
-  // ── Render loop ──
-  let _rafId;
-  function animate() {
-    _rafId = requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
+  // ── Render loop — paused when tab/page is hidden ──
+  let _rafId = null;
+  let _running = false;
+
+  function _startLoop() {
+    if (_running) return;
+    _running = true;
+    function animate() {
+      if (!_running) return;
+      _rafId = requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
   }
-  animate();
+
+  function _stopLoop() {
+    _running = false;
+    if (_rafId != null) { cancelAnimationFrame(_rafId); _rafId = null; }
+  }
+
+  // Pause when page is hidden (user switches browser tab / minimises)
+  const _onVisibility = () => document.hidden ? _stopLoop() : _startLoop();
+  document.addEventListener('visibilitychange', _onVisibility);
+
+  // Use IntersectionObserver to pause when the viewer scrolls off-screen or
+  // the compare tab is hidden (container has height 0 / display none)
+  const _intersectObs = new IntersectionObserver((entries) => {
+    entries[0].isIntersecting ? _startLoop() : _stopLoop();
+  }, { threshold: 0 });
+  _intersectObs.observe(containerEl);
+
+  _startLoop();
 
   // ── Resize ──
   const _resizeObs = new ResizeObserver(() => {
@@ -186,16 +211,18 @@ export function createCarViewer(containerEl) {
       mats.forEach(m => {
         if (!m || !m.color) return;
         const name = (m.name || '').toLowerCase();
+        // Explicit paint material names — highest priority
         if (name.includes('carpaint') || name.includes('car_paint') ||
             name.includes('body_paint') || name.includes('carosserie') ||
-            name.includes('carcolor')) {
+            name.includes('carcolor') || name.includes('body') ||
+            name.includes('exterior') || name.includes('paint')) {
           matCount[m.name] = (matCount[m.name] || 0) + 99;
           matRefs[m.name]  = m;
           return;
         }
         if (SKIP_MAT.test(name)) return;
         const brightness = m.color.r + m.color.g + m.color.b;
-        if (brightness < 0.15) return;
+        if (brightness < 0.08) return;
         matCount[m.name] = (matCount[m.name] || 0) + 1;
         matRefs[m.name]  = m;
       });
@@ -204,12 +231,17 @@ export function createCarViewer(containerEl) {
     const best = Object.keys(matCount).sort((a, b) => matCount[b] - matCount[a])[0];
     let mat = best ? matRefs[best] : null;
 
-    // Fallback: first mesh material
+    // Fallback: largest mesh by vertex count (likely the car body)
     if (!mat) {
+      let maxVerts = 0;
       model.traverse(child => {
-        if (mat || !child.isMesh) return;
-        const m = Array.isArray(child.material) ? child.material[0] : child.material;
-        if (m) mat = m;
+        if (!child.isMesh || !child.geometry) return;
+        const count = child.geometry.attributes?.position?.count || 0;
+        if (count > maxVerts) {
+          maxVerts = count;
+          const m = Array.isArray(child.material) ? child.material[0] : child.material;
+          if (m && m.color) mat = m;
+        }
       });
     }
 
@@ -353,7 +385,9 @@ export function createCarViewer(containerEl) {
   }
 
   function destroy() {
-    cancelAnimationFrame(_rafId);
+    _stopLoop();
+    document.removeEventListener('visibilitychange', _onVisibility);
+    _intersectObs.disconnect();
     _resizeObs.disconnect();
     controls.dispose();
     renderer.dispose();

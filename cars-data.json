@@ -93,7 +93,7 @@
       "waiting_weeks_jodhpur": 5,
       "launch_year": 2023,
       "is_new_model": false,
-      "glb": "previews/hyundai creta.glb",
+      "glb": "previews/hyundai-creta.glb",
       "colors": [
         {
           "name": "Atlas White",
@@ -252,7 +252,7 @@
       "waiting_weeks_jodhpur": 3,
       "launch_year": 2023,
       "is_new_model": false,
-      "glb": "previews/hyundai creta.glb",
+      "glb": "previews/hyundai-creta.glb",
       "colors": [
         {
           "name": "Atlas White",
@@ -654,7 +654,7 @@
       "variant": "C8 Diesel (Your current car)",
       "platform": "Mahindra Legacy BOF",
       "fuel": "diesel",
-      "transmission": "manual",
+      "transmission": "MT",
       "engine_cc": 1493,
       "power_bhp": 100,
       "torque_nm": 240,
@@ -2990,7 +2990,7 @@
       "variant": "Smart+ CNG",
       "platform": "ALFA",
       "fuel": "cng",
-      "transmission": "Manual",
+      "transmission": "MT",
       "engine_cc": 1199,
       "power_bhp": 100,
       "torque_nm": 170,
@@ -3140,7 +3140,7 @@
       "variant": "VXi CNG",
       "platform": "Heartect",
       "fuel": "cng",
-      "transmission": "Manual",
+      "transmission": "MT",
       "engine_cc": 1462,
       "power_bhp": 88,
       "torque_nm": 122,
@@ -6444,6 +6444,3610 @@
       "electric_adj_seats": false,
       "paddle_shifters": false,
       "cruise_control": false
+    },
+    {
+      "id": "kia-seltos-htk-plus-petrol-mt",
+      "brand": "Kia",
+      "model": "Seltos",
+      "variant": "HTK+ Petrol MT",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 115,
+      "torque_nm": 144,
+      "arai_kmpl": 17.7,
+      "realworld_kmpl": 14.5,
+      "ex_showroom_jodhpur": 1769000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1310,
+      "seating": 5,
+      "rear_legroom_mm": 950,
+      "cabin_width_mm": 1800,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Kia Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 44,
+      "reliability_score": 74,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.7,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.6,
+      "annual_insurance_estimate": 36000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "NA petrol lacks punch on highway overtakes",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Only one Kia service center in Jodhpur",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Good fuel efficiency NA petrol",
+        "Spacious cabin",
+        "Kia Connect app"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "Single Kia service center Jodhpur",
+        "NA engine less punchy than turbo"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/kia-seltos.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Kia Jodhpur - Shree Motors",
+          "area": "Pal Road",
+          "phone": "0291-6600000",
+          "maps_url": "https://maps.google.com/?q=Kia+Shree+Motors+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
+      ]
+    },
+    {
+      "id": "kia-seltos-htk-plus-petrol-cvt",
+      "brand": "Kia",
+      "model": "Seltos",
+      "variant": "HTK+ Petrol CVT",
+      "fuel": "petrol",
+      "transmission": "CVT",
+      "engine_cc": 1497,
+      "power_bhp": 115,
+      "torque_nm": 144,
+      "arai_kmpl": 16.5,
+      "realworld_kmpl": 13.5,
+      "ex_showroom_jodhpur": 1859000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1335,
+      "seating": 5,
+      "rear_legroom_mm": 950,
+      "cabin_width_mm": 1800,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Kia Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 57,
+      "resale_5yr_pct": 43,
+      "reliability_score": 74,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.7,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.5,
+      "annual_insurance_estimate": 38000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "CVT rubber-band feel during aggressive acceleration",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Only one Kia service center in Jodhpur",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Automatic convenience",
+        "Spacious cabin",
+        "Kia Connect"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "CVT not as responsive as DCT",
+        "Single Kia service center Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/kia-seltos.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Kia Jodhpur - Shree Motors",
+          "area": "Pal Road",
+          "phone": "0291-6600000",
+          "maps_url": "https://maps.google.com/?q=Kia+Shree+Motors+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
+      ]
+    },
+    {
+      "id": "kia-seltos-htx-petrol-mt",
+      "brand": "Kia",
+      "model": "Seltos",
+      "variant": "HTX Petrol MT",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 115,
+      "torque_nm": 144,
+      "arai_kmpl": 17.7,
+      "realworld_kmpl": 14.5,
+      "ex_showroom_jodhpur": 1909000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1320,
+      "seating": 5,
+      "rear_legroom_mm": 950,
+      "cabin_width_mm": 1800,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Kia Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 59,
+      "resale_5yr_pct": 45,
+      "reliability_score": 75,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.7,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 39000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "NA engine less punchy than turbo on highways",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Only one Kia service center in Jodhpur",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Panoramic sunroof",
+        "Wireless CarPlay/AA",
+        "Kia Connect",
+        "Good mileage"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "NA engine loses to turbo on highways",
+        "Single Kia SC Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/kia-seltos.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Kia Jodhpur - Shree Motors",
+          "area": "Pal Road",
+          "phone": "0291-6600000",
+          "maps_url": "https://maps.google.com/?q=Kia+Shree+Motors+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
+      ]
+    },
+    {
+      "id": "kia-seltos-htx-plus-diesel-mt",
+      "brand": "Kia",
+      "model": "Seltos",
+      "variant": "HTX+ Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1493,
+      "power_bhp": 116,
+      "torque_nm": 250,
+      "arai_kmpl": 21.5,
+      "realworld_kmpl": 17,
+      "ex_showroom_jodhpur": 2089000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1390,
+      "seating": 5,
+      "rear_legroom_mm": 950,
+      "cabin_width_mm": 1800,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Kia Connect",
+      "climate_control": "auto_dual",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 47,
+      "reliability_score": 73,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.7,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.9,
+      "annual_insurance_estimate": 43000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "Diesel NVH slightly elevated vs petrol variants",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Only one Kia service center in Jodhpur",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Best real-world mileage (~17 kmpl)",
+        "Ventilated seats",
+        "Panoramic sunroof",
+        "Diesel torque for highway"
+      ],
+      "cons": [
+        "No ADAS",
+        "Single Kia SC Jodhpur",
+        "Diesel servicing costlier"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/kia-seltos.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Kia Jodhpur - Shree Motors",
+          "area": "Pal Road",
+          "phone": "0291-6600000",
+          "maps_url": "https://maps.google.com/?q=Kia+Shree+Motors+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Glacier White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Aurora Black Pearl",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Imperial Blue",
+          "hex": "#1a3a6b"
+        },
+        {
+          "name": "Pewter Olive",
+          "hex": "#5a5e3a"
+        },
+        {
+          "name": "Gravity Grey",
+          "hex": "#4a4e52"
+        },
+        {
+          "name": "Beige Gold",
+          "hex": "#c9a96e"
+        }
+      ]
+    },
+    {
+      "id": "hyundai-venue-sx-petrol-dct",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "SX Petrol DCT",
+      "fuel": "petrol_turbo",
+      "transmission": "DCT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 18.15,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1289000,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1200,
+      "seating": 5,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "BlueLink Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 45,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "DCT hesitation in bumper-to-bumper city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "3-cyl idle rougher than 4-cyl rivals",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Automatic convenience",
+        "BlueLink connected",
+        "Hyundai service network",
+        "Sunroof"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "DCT quirks in city",
+        "Cramped for tall adults"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ]
+    },
+    {
+      "id": "hyundai-venue-s-diesel-mt",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "S Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1493,
+      "power_bhp": 100,
+      "torque_nm": 240,
+      "arai_kmpl": 23.4,
+      "realworld_kmpl": 18,
+      "ex_showroom_jodhpur": 1179000,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1210,
+      "seating": 5,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "manual",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 56,
+      "resale_5yr_pct": 44,
+      "reliability_score": 74,
+      "owner_rating": 4,
+      "post_sale_service_rating": 4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 5,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.6,
+      "annual_insurance_estimate": 28000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Diesel clatter at idle",
+          "severity": "Minor"
+        },
+        {
+          "issue": "No sunroof or connected features at this trim",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Best-in-class diesel mileage 18 kmpl real-world",
+        "Low running cost",
+        "Hyundai service network"
+      ],
+      "cons": [
+        "No sunroof",
+        "No connected car",
+        "Manual only",
+        "Spartan features"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ]
+    },
+    {
+      "id": "hyundai-venue-sx-plus-petrol-dct",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "SX+ Petrol DCT",
+      "fuel": "petrol_turbo",
+      "transmission": "DCT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 18.15,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1459000,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1215,
+      "seating": 5,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "BlueLink Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 59,
+      "resale_5yr_pct": 46,
+      "reliability_score": 72,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8,
+      "annual_insurance_estimate": 35000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "DCT hesitation in slow city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Smallest cabin in sub-4m segment",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Top Venue variant — best features",
+        "Sunroof",
+        "BlueLink connected",
+        "Wireless CarPlay/AA"
+      ],
+      "cons": [
+        "No ADAS",
+        "DCT quirks in city",
+        "Compact cabin"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-smart-petrol-mt",
+      "brand": "Tata",
+      "model": "Nexon",
+      "variant": "Smart Petrol MT",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1199,
+      "power_bhp": 120,
+      "torque_nm": 170,
+      "arai_kmpl": 17.01,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 849000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 208,
+      "kerb_weight_kg": 1183,
+      "seating": 5,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1730,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "manual",
+      "infotainment_inches": 7,
+      "resale_3yr_pct": 52,
+      "resale_5yr_pct": 41,
+      "reliability_score": 70,
+      "owner_rating": 3.9,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.2,
+      "annual_insurance_estimate": 22000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Very basic features — no sunroof, no connected car at entry trim",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Tata NVH not refined at this price vs competition",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Highest GC 208mm",
+        "Lowest Nexon entry price",
+        "Turbo engine even at base"
+      ],
+      "cons": [
+        "Bare-bones features",
+        "No sunroof or connected features",
+        "Smaller cabin than Creta/Seltos"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 12
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-fearless-petrol-mt",
+      "brand": "Tata",
+      "model": "Nexon",
+      "variant": "Fearless Petrol MT",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1199,
+      "power_bhp": 120,
+      "torque_nm": 170,
+      "arai_kmpl": 17.01,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1105000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 208,
+      "kerb_weight_kg": 1260,
+      "seating": 5,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1730,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 42,
+      "reliability_score": 71,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.5,
+      "annual_insurance_estimate": 28000,
+      "annual_maintenance_estimate": 11000,
+      "known_issues": [
+        {
+          "issue": "Build quality inconsistency on panel gaps some units",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Infotainment software bugs — improve with OTA",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Sunroof + iRA connected at this price",
+        "208mm ground clearance",
+        "Good features-per-rupee"
+      ],
+      "cons": [
+        "No wireless CarPlay/AA",
+        "No ventilated seats",
+        "Manual only"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 12
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-fearless-plus-diesel-mt",
+      "brand": "Tata",
+      "model": "Nexon",
+      "variant": "Fearless+ Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 115,
+      "torque_nm": 260,
+      "arai_kmpl": 24,
+      "realworld_kmpl": 18.5,
+      "ex_showroom_jodhpur": 1395000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 208,
+      "kerb_weight_kg": 1310,
+      "seating": 5,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1730,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 56,
+      "resale_5yr_pct": 43,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 35000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "Diesel NVH louder than petrol at idle",
+          "severity": "Minor"
+        },
+        {
+          "issue": "No sunroof glass option — fixed pane",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Excellent diesel mileage 18.5 kmpl",
+        "208mm ground clearance",
+        "Wireless CarPlay/AA",
+        "Good all-rounder"
+      ],
+      "cons": [
+        "No ventilated seats",
+        "Manual only",
+        "Diesel servicing adds cost"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 12
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Flame Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Seaweed Green",
+          "hex": "#2a5a4a"
+        }
+      ]
+    },
+    {
+      "id": "tata-harrier-fearless-petrol-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless Petrol AT",
+      "fuel": "petrol_turbo",
+      "transmission": "AT",
+      "engine_cc": 1497,
+      "power_bhp": 170,
+      "torque_nm": 280,
+      "arai_kmpl": 14.6,
+      "realworld_kmpl": 11.5,
+      "ex_showroom_jodhpur": 1549000,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1660,
+      "seating": 5,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 41,
+      "reliability_score": 65,
+      "owner_rating": 3.9,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 6,
+      "long_term_reliability_score": 5,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.5,
+      "annual_insurance_estimate": 40000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "Petrol AT variant is new — limited long-term data",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large heavy body — poor city fuel efficiency",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Largest cabin in segment",
+        "205mm ground clearance",
+        "Petrol AT convenience"
+      ],
+      "cons": [
+        "Petrol reliability data still building",
+        "Heavy — poor city mileage",
+        "No ADAS at this trim"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "colors": [
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Calisto Copper",
+          "hex": "#9c5f2a"
+        }
+      ]
+    },
+    {
+      "id": "tata-harrier-fearless-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.8,
+      "realworld_kmpl": 13.5,
+      "ex_showroom_jodhpur": 1629000,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1700,
+      "seating": 5,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 57,
+      "resale_5yr_pct": 43,
+      "reliability_score": 67,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 6,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.6,
+      "annual_insurance_estimate": 42000,
+      "annual_maintenance_estimate": 14000,
+      "known_issues": [
+        {
+          "issue": "Heavy body — maneuverability in old Jodhpur city areas difficult",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Diesel clatter at idle",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "350Nm diesel torque for Rajasthan roads",
+        "Largest cabin",
+        "Good highway fuel economy"
+      ],
+      "cons": [
+        "No ADAS",
+        "No ventilated seats",
+        "Heaviest SUV in segment",
+        "Single Tata SC in Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "colors": [
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Calisto Copper",
+          "hex": "#9c5f2a"
+        }
+      ]
+    },
+    {
+      "id": "tata-harrier-adventure-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.8,
+      "realworld_kmpl": 13.5,
+      "ex_showroom_jodhpur": 1899000,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1720,
+      "seating": 5,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 43,
+      "reliability_score": 68,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 47000,
+      "annual_maintenance_estimate": 14000,
+      "known_issues": [
+        {
+          "issue": "Tata Harrier diesel parts wait times can be long",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Heavy body affects city fuel efficiency significantly",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Panoramic sunroof + large 12.3 screen",
+        "350Nm diesel torque",
+        "205mm ground clearance"
+      ],
+      "cons": [
+        "No ADAS",
+        "No ventilated seats at this trim",
+        "Heaviest in class",
+        "Limited Tata SC Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "colors": [
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Calisto Copper",
+          "hex": "#9c5f2a"
+        }
+      ]
+    },
+    {
+      "id": "maruti-grand-vitara-zeta-plus-mild-hybrid-mt",
+      "brand": "Maruti Suzuki",
+      "model": "Grand Vitara",
+      "variant": "Zeta+ Mild Hybrid MT",
+      "fuel": "mild_hybrid",
+      "transmission": "MT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 20.6,
+      "realworld_kmpl": 15.5,
+      "ex_showroom_jodhpur": 1299000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1160,
+      "seating": 5,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "airbags": 6,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Suzuki Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 9,
+      "resale_3yr_pct": 62,
+      "resale_5yr_pct": 50,
+      "reliability_score": 85,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 7,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 8,
+      "annual_insurance_estimate": 34000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Mild hybrid fuel savings modest vs strong hybrid",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Best Maruti service network Jodhpur",
+        "Good fuel economy 15.5 kmpl real-world",
+        "Sunroof + wireless CarPlay",
+        "210mm ground clearance",
+        "Excellent resale"
+      ],
+      "cons": [
+        "3-star NCAP",
+        "Mild hybrid — not as efficient as strong hybrid",
+        "No ADAS"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": "previews/suzuki_grand_vitara.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki True Value - Basni",
+          "area": "Basni Phase 2",
+          "phone": "0291-2744000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki Arena - Shastri Nagar",
+          "area": "Shastri Nagar",
+          "phone": "0291-5200000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Arena+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f4f4f0"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Splendid Silver",
+          "hex": "#a0a4a8"
+        },
+        {
+          "name": "Opulent Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Grandeur Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Khaki Green",
+          "hex": "#5a6642"
+        }
+      ]
+    },
+    {
+      "id": "maruti-grand-vitara-sigma-petrol-mt",
+      "brand": "Maruti Suzuki",
+      "model": "Grand Vitara",
+      "variant": "Sigma Petrol MT",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1462,
+      "power_bhp": 103,
+      "torque_nm": 137,
+      "arai_kmpl": 21.11,
+      "realworld_kmpl": 15.8,
+      "ex_showroom_jodhpur": 1099000,
+      "boot_litres": 373,
+      "ground_clearance_mm": 210,
+      "kerb_weight_kg": 1130,
+      "seating": 5,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1770,
+      "airbags": 2,
+      "ncap_stars": 3,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "manual",
+      "infotainment_inches": 7,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 48,
+      "reliability_score": 84,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 6,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 6,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 28000,
+      "annual_maintenance_estimate": 8000,
+      "known_issues": [
+        {
+          "issue": "Only 2 airbags at base trim — safety concern",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Very basic features — no sunroof, no connected car",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "Lowest Grand Vitara entry price",
+        "210mm ground clearance",
+        "Maruti service network",
+        "Best resale in segment",
+        "Excellent TNGA-B platform"
+      ],
+      "cons": [
+        "Only 2 airbags",
+        "No sunroof or connected features",
+        "3-star NCAP",
+        "Spartan interior"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": "previews/suzuki_grand_vitara.glb",
+      "ethanol_compatible": "E20",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki True Value - Basni",
+          "area": "Basni Phase 2",
+          "phone": "0291-2744000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki Arena - Shastri Nagar",
+          "area": "Shastri Nagar",
+          "phone": "0291-5200000",
+          "maps_url": "https://maps.google.com/?q=Maruti+Arena+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f4f4f0"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Splendid Silver",
+          "hex": "#a0a4a8"
+        },
+        {
+          "name": "Opulent Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Grandeur Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Khaki Green",
+          "hex": "#5a6642"
+        }
+      ]
+    },
+    {
+      "id": "honda-elevate-sx-mt",
+      "brand": "Honda",
+      "model": "Elevate",
+      "variant": "SX MT",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1498,
+      "power_bhp": 121,
+      "torque_nm": 145,
+      "arai_kmpl": 15.3,
+      "realworld_kmpl": 12.5,
+      "ex_showroom_jodhpur": 1139000,
+      "boot_litres": 458,
+      "ground_clearance_mm": 220,
+      "kerb_weight_kg": 1155,
+      "seating": 5,
+      "rear_legroom_mm": 975,
+      "cabin_width_mm": 1790,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "manual",
+      "infotainment_inches": 7,
+      "resale_3yr_pct": 57,
+      "resale_5yr_pct": 44,
+      "reliability_score": 82,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.1,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 29000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Very basic infotainment — 7-inch non-touchscreen",
+          "severity": "Minor"
+        },
+        {
+          "issue": "No connected car features at this trim",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Best-in-class GC 220mm",
+        "Largest boot 458L",
+        "Honda reliability",
+        "Most affordable Elevate entry"
+      ],
+      "cons": [
+        "Bare-bones features",
+        "No sunroof or connected car",
+        "NA engine feels underpowered at highways"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Honda Cars Jodhpur - Sangam Auto",
+          "area": "Residency Road",
+          "phone": "0291-5100100",
+          "maps_url": "https://maps.google.com/?q=Honda+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "colors": [
+        {
+          "name": "Platinum White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Meteoroid Grey",
+          "hex": "#5a5e64"
+        },
+        {
+          "name": "Lunar Silver",
+          "hex": "#aab0b4"
+        },
+        {
+          "name": "Radiant Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Obsidian Blue",
+          "hex": "#1a2a5a"
+        }
+      ]
+    },
+    {
+      "id": "honda-elevate-vx-cvt",
+      "brand": "Honda",
+      "model": "Elevate",
+      "variant": "VX CVT",
+      "fuel": "petrol",
+      "transmission": "CVT",
+      "engine_cc": 1498,
+      "power_bhp": 121,
+      "torque_nm": 145,
+      "arai_kmpl": 15.26,
+      "realworld_kmpl": 12.5,
+      "ex_showroom_jodhpur": 1589000,
+      "boot_litres": 458,
+      "ground_clearance_mm": 220,
+      "kerb_weight_kg": 1310,
+      "seating": 5,
+      "rear_legroom_mm": 982,
+      "cabin_width_mm": 1790,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 45,
+      "reliability_score": 80,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.1,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 6,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "annual_insurance_estimate": 41000,
+      "annual_maintenance_estimate": 11000,
+      "known_issues": [
+        {
+          "issue": "No connected car system at any Elevate trim",
+          "severity": "Watch"
+        },
+        {
+          "issue": "CVT rubber-band sensation on aggressive overtaking",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star Global NCAP",
+        "Best GC 220mm",
+        "Largest boot 458L",
+        "Sunroof + wireless CarPlay",
+        "Honda reliability"
+      ],
+      "cons": [
+        "No connected car",
+        "CVT only option for automatic",
+        "No ventilated seats"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Honda Cars Jodhpur - Sangam Auto",
+          "area": "Residency Road",
+          "phone": "0291-5100100",
+          "maps_url": "https://maps.google.com/?q=Honda+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "colors": [
+        {
+          "name": "Platinum White Pearl",
+          "hex": "#f0efeb"
+        },
+        {
+          "name": "Meteoroid Grey",
+          "hex": "#5a5e64"
+        },
+        {
+          "name": "Lunar Silver",
+          "hex": "#aab0b4"
+        },
+        {
+          "name": "Radiant Red",
+          "hex": "#9e1a1a"
+        },
+        {
+          "name": "Obsidian Blue",
+          "hex": "#1a2a5a"
+        }
+      ]
+    },
+    {
+      "id": "mg-astor-sharp-cvt",
+      "brand": "MG",
+      "model": "Astor",
+      "variant": "Sharp CVT",
+      "fuel": "petrol_turbo",
+      "transmission": "CVT",
+      "engine_cc": 1349,
+      "power_bhp": 143,
+      "torque_nm": 220,
+      "arai_kmpl": 15.64,
+      "realworld_kmpl": 12,
+      "ex_showroom_jodhpur": 1489000,
+      "boot_litres": 448,
+      "ground_clearance_mm": 178,
+      "kerb_weight_kg": 1375,
+      "seating": 5,
+      "rear_legroom_mm": 920,
+      "cabin_width_mm": 1770,
+      "airbags": 6,
+      "ncap_stars": 0,
+      "adas": true,
+      "adas_features": [
+        "Autonomous Emergency Braking",
+        "Lane Departure Warning",
+        "Forward Collision Warning",
+        "AI Personal Assistant"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iSmart Connected",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.1,
+      "resale_3yr_pct": 51,
+      "resale_5yr_pct": 37,
+      "reliability_score": 66,
+      "owner_rating": 3.8,
+      "post_sale_service_rating": 3.4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 6,
+      "long_term_reliability_score": 5,
+      "future_proof_score": 5,
+      "parts_availability_score": 5,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7,
+      "annual_insurance_estimate": 38000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "MG (SAIC) brand long-term resale and parts uncertainty",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Low ground clearance 178mm scrapes on Jodhpur speed bumps",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Largest boot 448L",
+        "ADAS + sunroof",
+        "AI assistant",
+        "Good value mid-spec"
+      ],
+      "cons": [
+        "MG brand trust concerns",
+        "Lowest GC in class",
+        "Lower resale",
+        "Single SC Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "MG Motors Jodhpur",
+          "area": "Chopasni Road",
+          "phone": "0291-5900000",
+          "maps_url": "https://maps.google.com/?q=MG+Motors+Jodhpur",
+          "rating": 3.5,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Candy White",
+          "hex": "#f2f2f0"
+        },
+        {
+          "name": "Starry Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Aurora Silver",
+          "hex": "#a8acb0"
+        },
+        {
+          "name": "Glaze Red",
+          "hex": "#b01a1a"
+        },
+        {
+          "name": "Fossil Grey",
+          "hex": "#6a6e72"
+        }
+      ]
+    },
+    {
+      "id": "mg-astor-savvy-mt",
+      "brand": "MG",
+      "model": "Astor",
+      "variant": "Savvy MT",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1349,
+      "power_bhp": 143,
+      "torque_nm": 220,
+      "arai_kmpl": 16.5,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1389000,
+      "boot_litres": 448,
+      "ground_clearance_mm": 178,
+      "kerb_weight_kg": 1355,
+      "seating": 5,
+      "rear_legroom_mm": 920,
+      "cabin_width_mm": 1770,
+      "airbags": 6,
+      "ncap_stars": 0,
+      "adas": true,
+      "adas_features": [
+        "Autonomous Emergency Braking",
+        "Lane Departure Warning",
+        "Forward Collision Warning",
+        "AI Personal Assistant"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iSmart Connected",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.1,
+      "resale_3yr_pct": 51,
+      "resale_5yr_pct": 37,
+      "reliability_score": 67,
+      "owner_rating": 3.8,
+      "post_sale_service_rating": 3.4,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 5,
+      "future_proof_score": 5,
+      "parts_availability_score": 5,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.1,
+      "annual_insurance_estimate": 35000,
+      "annual_maintenance_estimate": 12000,
+      "known_issues": [
+        {
+          "issue": "MG (SAIC) brand trust concerns long-term",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Low ground clearance 178mm — issue on Jodhpur roads",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Most affordable Savvy-feature Astor",
+        "ADAS + AI assistant",
+        "Largest boot 448L",
+        "Manual for budget-conscious buyers"
+      ],
+      "cons": [
+        "MG brand concerns",
+        "Lowest GC class",
+        "Single SC Jodhpur",
+        "Low resale"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "MG Motors Jodhpur",
+          "area": "Chopasni Road",
+          "phone": "0291-5900000",
+          "maps_url": "https://maps.google.com/?q=MG+Motors+Jodhpur",
+          "rating": 3.5,
+          "turnaround_hours": 24
+        }
+      ],
+      "colors": [
+        {
+          "name": "Candy White",
+          "hex": "#f2f2f0"
+        },
+        {
+          "name": "Starry Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Aurora Silver",
+          "hex": "#a8acb0"
+        },
+        {
+          "name": "Glaze Red",
+          "hex": "#b01a1a"
+        },
+        {
+          "name": "Fossil Grey",
+          "hex": "#6a6e72"
+        }
+      ]
+    },
+    {
+      "id": "mahindra-xuv-3xo-ax5-diesel-mt",
+      "brand": "Mahindra",
+      "model": "XUV 3XO",
+      "variant": "AX5 Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1497,
+      "power_bhp": 117,
+      "torque_nm": 300,
+      "arai_kmpl": 20.1,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 1299000,
+      "boot_litres": 364,
+      "ground_clearance_mm": 201,
+      "kerb_weight_kg": 1250,
+      "seating": 5,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1750,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Forward Collision Warning",
+        "Lane Keep Assist"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Mahindra AdrenoX",
+      "climate_control": "auto_dual",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 54,
+      "resale_5yr_pct": 42,
+      "reliability_score": 68,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 6,
+      "overall_customer_rating": 7.6,
+      "annual_insurance_estimate": 33000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "New model — limited long-term reliability data",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Diesel NVH not as refined as competition",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Panoramic sunroof + ADAS",
+        "Good diesel mileage 16 kmpl",
+        "AdrenoX connected"
+      ],
+      "cons": [
+        "New model reliability unproven",
+        "Mahindra SC limited in Jodhpur",
+        "Diesel adds weight"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Nebula Blue",
+          "hex": "#1a2f5e"
+        },
+        {
+          "name": "Tango Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Blazing Bronze",
+          "hex": "#8b6914"
+        }
+      ]
+    },
+    {
+      "id": "mahindra-xuv-3xo-ax7-diesel-at",
+      "brand": "Mahindra",
+      "model": "XUV 3XO",
+      "variant": "AX7 Diesel AT",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1497,
+      "power_bhp": 117,
+      "torque_nm": 300,
+      "arai_kmpl": 18.3,
+      "realworld_kmpl": 14.5,
+      "ex_showroom_jodhpur": 1599000,
+      "boot_litres": 364,
+      "ground_clearance_mm": 201,
+      "kerb_weight_kg": 1300,
+      "seating": 5,
+      "rear_legroom_mm": 885,
+      "cabin_width_mm": 1760,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Forward Collision Warning",
+        "Driver Drowsiness Alert"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "AdrenoX Connected",
+      "climate_control": "auto_dual",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 41,
+      "reliability_score": 65,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 8,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.7,
+      "annual_insurance_estimate": 40000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "New model — diesel AT reliability data still building",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Diesel AT service more expensive",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS + panoramic sunroof + ventilated seats",
+        "Diesel AT convenience",
+        "Good value-for-features"
+      ],
+      "cons": [
+        "New model reliability unproven",
+        "Limited Mahindra SC Jodhpur",
+        "Lower resale than Hyundai/Maruti"
+      ],
+      "waiting_weeks_jodhpur": 5,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "adaptive",
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Nebula Blue",
+          "hex": "#1a2f5e"
+        },
+        {
+          "name": "Tango Red",
+          "hex": "#c01a1a"
+        },
+        {
+          "name": "Blazing Bronze",
+          "hex": "#8b6914"
+        }
+      ]
+    },
+    {
+      "id": "mahindra-scorpio-n-z4-petrol-mt",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z4 Petrol MT",
+      "fuel": "petrol_turbo",
+      "transmission": "MT",
+      "engine_cc": 1997,
+      "power_bhp": 200,
+      "torque_nm": 380,
+      "arai_kmpl": 13,
+      "realworld_kmpl": 10.5,
+      "ex_showroom_jodhpur": 1399000,
+      "boot_litres": 189,
+      "ground_clearance_mm": 200,
+      "kerb_weight_kg": 1890,
+      "seating": 7,
+      "rear_legroom_mm": 900,
+      "cabin_width_mm": 1900,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "AdrenoX Connected",
+      "climate_control": "manual",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 58,
+      "resale_5yr_pct": 45,
+      "reliability_score": 63,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 5,
+      "long_term_reliability_score": 5,
+      "future_proof_score": 5,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.8,
+      "annual_insurance_estimate": 35000,
+      "annual_maintenance_estimate": 13000,
+      "known_issues": [
+        {
+          "issue": "Body-on-frame — hard ride on city roads",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Thirstiest engine in segment — petrol especially",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Boot tiny in 7-seat config",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "200bhp most powerful in segment",
+        "7-seater",
+        "Road presence",
+        "Most affordable Scorpio-N petrol"
+      ],
+      "cons": [
+        "Fuel guzzler — 10.5 kmpl",
+        "Hard BOF ride",
+        "Tiny boot in 7-seat mode",
+        "Large hard to park Jodhpur"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Grand Canyon Red",
+          "hex": "#8b1a1a"
+        }
+      ]
+    },
+    {
+      "id": "mahindra-scorpio-n-z6-diesel-mt",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z6 Diesel MT",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 2184,
+      "power_bhp": 175,
+      "torque_nm": 400,
+      "arai_kmpl": 15.8,
+      "realworld_kmpl": 12.5,
+      "ex_showroom_jodhpur": 1849000,
+      "boot_litres": 189,
+      "ground_clearance_mm": 200,
+      "kerb_weight_kg": 1990,
+      "seating": 7,
+      "rear_legroom_mm": 900,
+      "cabin_width_mm": 1900,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "AdrenoX Connected",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 61,
+      "resale_5yr_pct": 47,
+      "reliability_score": 66,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 6,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "annual_insurance_estimate": 46000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "BOF ride quality harsh on city potholes",
+          "severity": "Watch"
+        },
+        {
+          "issue": "400Nm torque needs careful throttle control in slippery conditions",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "400Nm diesel — best for highway/desert roads",
+        "7-seater",
+        "Sunroof",
+        "Better fuel than petrol"
+      ],
+      "cons": [
+        "Hard BOF ride",
+        "No ADAS",
+        "Heavy 1990kg",
+        "Tiny boot 7-seat config"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Grand Canyon Red",
+          "hex": "#8b1a1a"
+        }
+      ]
+    },
+    {
+      "id": "mahindra-scorpio-n-z6-diesel-at",
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "variant": "Z6 Diesel AT",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 2184,
+      "power_bhp": 175,
+      "torque_nm": 400,
+      "arai_kmpl": 14.5,
+      "realworld_kmpl": 11.5,
+      "ex_showroom_jodhpur": 1999000,
+      "boot_litres": 189,
+      "ground_clearance_mm": 200,
+      "kerb_weight_kg": 2010,
+      "seating": 7,
+      "rear_legroom_mm": 900,
+      "cabin_width_mm": 1900,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "AdrenoX Connected",
+      "climate_control": "auto_dual",
+      "infotainment_inches": 8,
+      "resale_3yr_pct": 62,
+      "resale_5yr_pct": 48,
+      "reliability_score": 67,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 5,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 6,
+      "parts_availability_score": 8,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "annual_insurance_estimate": 50000,
+      "annual_maintenance_estimate": 16000,
+      "known_issues": [
+        {
+          "issue": "BOF ride harsh — especially rear passengers on city roads",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Heaviest in segment at 2010kg",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "400Nm diesel AT convenience",
+        "7-seater",
+        "Sunroof",
+        "Best Scorpio-N resale"
+      ],
+      "cons": [
+        "Fuel guzzler for weight",
+        "Hard BOF ride",
+        "Tiny boot 7-seat",
+        "Most expensive Scorpio-N non-Z8"
+      ],
+      "waiting_weeks_jodhpur": 5,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Mahindra First Choice - Jodhpur",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2740500",
+          "maps_url": "https://maps.google.com/?q=Mahindra+Service+Jodhpur",
+          "rating": 3.9,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Dune Beige",
+          "hex": "#c8b89a"
+        },
+        {
+          "name": "Deep Forest",
+          "hex": "#2a4a35"
+        },
+        {
+          "name": "Everest White",
+          "hex": "#f0eeea"
+        },
+        {
+          "name": "Napoli Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Grand Canyon Red",
+          "hex": "#8b1a1a"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-ev-smart-plus-long-range",
+      "brand": "Tata",
+      "model": "Nexon EV",
+      "variant": "Smart+ Long Range",
+      "fuel": "electric",
+      "transmission": "AT",
+      "engine_cc": null,
+      "power_bhp": 129,
+      "torque_nm": 215,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_range_km": 350,
+      "battery_kwh": 40.5,
+      "charging_type": "both",
+      "ex_showroom_jodhpur": 1399000,
+      "boot_litres": 350,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1510,
+      "seating": 5,
+      "rear_legroom_mm": 850,
+      "cabin_width_mm": 1750,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "manual",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 48,
+      "resale_5yr_pct": 36,
+      "reliability_score": 70,
+      "owner_rating": 4,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 10,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 8,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.8,
+      "annual_insurance_estimate": 33000,
+      "annual_maintenance_estimate": 4500,
+      "known_issues": [
+        {
+          "issue": "Fast charging sparse on Rajasthan highways",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Range drops 20-25% in Rajasthan summer heat",
+          "severity": "Watch"
+        },
+        {
+          "issue": "EV resale market less established than petrol",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Zero fuel cost (~₹1.5/km)",
+        "Extremely low maintenance",
+        "Entry EV price",
+        "Good range for city use"
+      ],
+      "cons": [
+        "Charging anxiety on Jodhpur-Jaisalmer/Udaipur highways",
+        "Basic features at entry",
+        "EV resale uncertainty"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata EV Service - Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+EV+Service+Jodhpur",
+          "rating": 3.6,
+          "turnaround_hours": 12
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Teal",
+          "hex": "#1a6b6b"
+        },
+        {
+          "name": "Fearless Red",
+          "hex": "#c01a1a"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-ev-fearless-long-range",
+      "brand": "Tata",
+      "model": "Nexon EV",
+      "variant": "Fearless Long Range",
+      "fuel": "electric",
+      "transmission": "AT",
+      "engine_cc": null,
+      "power_bhp": 143,
+      "torque_nm": 215,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_range_km": 350,
+      "battery_kwh": 40.5,
+      "charging_type": "both",
+      "ex_showroom_jodhpur": 1599000,
+      "boot_litres": 382,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1530,
+      "seating": 5,
+      "rear_legroom_mm": 850,
+      "cabin_width_mm": 1750,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 50,
+      "resale_5yr_pct": 37,
+      "reliability_score": 71,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 10,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 8,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "annual_insurance_estimate": 38000,
+      "annual_maintenance_estimate": 4500,
+      "known_issues": [
+        {
+          "issue": "Fast charging sparse on Rajasthan highways",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Range drops 20-25% in peak Rajasthan summer",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Sunroof + wireless CarPlay",
+        "Zero fuel cost",
+        "Low maintenance",
+        "Good mid-spec EV value"
+      ],
+      "cons": [
+        "No ADAS",
+        "Charging anxiety on long highways",
+        "EV resale uncertainty"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata EV Service - Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+EV+Service+Jodhpur",
+          "rating": 3.6,
+          "turnaround_hours": 12
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Intense Teal",
+          "hex": "#1a6b6b"
+        },
+        {
+          "name": "Fearless Red",
+          "hex": "#c01a1a"
+        }
+      ]
+    },
+    {
+      "id": "hyundai-creta-electric-executive",
+      "brand": "Hyundai",
+      "model": "Creta Electric",
+      "variant": "Executive",
+      "fuel": "electric",
+      "transmission": "AT",
+      "engine_cc": null,
+      "power_bhp": 135,
+      "torque_nm": 255,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_range_km": 290,
+      "battery_kwh": 42,
+      "charging_type": "both",
+      "ex_showroom_jodhpur": 1829000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1565,
+      "seating": 5,
+      "rear_legroom_mm": 880,
+      "cabin_width_mm": 1790,
+      "airbags": 6,
+      "ncap_stars": 0,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 47,
+      "resale_5yr_pct": 34,
+      "reliability_score": 65,
+      "owner_rating": 4,
+      "post_sale_service_rating": 4,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 10,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 8,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.6,
+      "annual_insurance_estimate": 43000,
+      "annual_maintenance_estimate": 4000,
+      "known_issues": [
+        {
+          "issue": "Fast charging infrastructure sparse in Rajasthan",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Smaller 42kWh battery — shorter range than long range variant",
+          "severity": "Watch"
+        },
+        {
+          "issue": "NCAP not yet rated for this EV generation",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Most affordable Creta Electric",
+        "Hyundai service network",
+        "BlueLink connected",
+        "Zero fuel cost",
+        "Wireless CarPlay/AA"
+      ],
+      "cons": [
+        "NCAP unrated",
+        "Shorter range 42kWh",
+        "No sunroof or ventilated seats",
+        "Charging infra gap Rajasthan"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors - EV Ready",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1a2a4a"
+        },
+        {
+          "name": "Amazonas Green",
+          "hex": "#1a4a2a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ]
+    },
+    {
+      "id": "hyundai-creta-electric-premium",
+      "brand": "Hyundai",
+      "model": "Creta Electric",
+      "variant": "Premium",
+      "fuel": "electric",
+      "transmission": "AT",
+      "engine_cc": null,
+      "power_bhp": 171,
+      "torque_nm": 255,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_range_km": 365,
+      "battery_kwh": 51.4,
+      "charging_type": "both",
+      "ex_showroom_jodhpur": 1999000,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1600,
+      "seating": 5,
+      "rear_legroom_mm": 880,
+      "cabin_width_mm": 1790,
+      "airbags": 6,
+      "ncap_stars": 0,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 49,
+      "resale_5yr_pct": 35,
+      "reliability_score": 66,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 10,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 9,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.8,
+      "annual_insurance_estimate": 47000,
+      "annual_maintenance_estimate": 4000,
+      "known_issues": [
+        {
+          "issue": "Fast charging infrastructure sparse on Rajasthan highways",
+          "severity": "Critical"
+        },
+        {
+          "issue": "NCAP not yet rated for this EV generation",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Full 51.4kWh long-range battery",
+        "Sunroof",
+        "BlueLink connected",
+        "Zero fuel cost",
+        "Hyundai service network"
+      ],
+      "cons": [
+        "No ADAS",
+        "No ventilated seats",
+        "NCAP unrated",
+        "Charging infra gap Rajasthan"
+      ],
+      "waiting_weeks_jodhpur": 5,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors - EV Ready",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 10
+        }
+      ],
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1a2a4a"
+        },
+        {
+          "name": "Amazonas Green",
+          "hex": "#1a4a2a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ]
+    },
+    {
+      "id": "tata-nexon-cng-fearless-plus",
+      "brand": "Tata",
+      "model": "Nexon CNG",
+      "variant": "Fearless+ CNG",
+      "fuel": "cng",
+      "transmission": "AMT",
+      "engine_cc": 1199,
+      "power_bhp": 100,
+      "torque_nm": 170,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_cng_kmkg": 19,
+      "ex_showroom_jodhpur": 1289000,
+      "boot_litres": 290,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1310,
+      "seating": 5,
+      "rear_legroom_mm": 857,
+      "cabin_width_mm": 1750,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "resale_3yr_pct": 56,
+      "resale_5yr_pct": 43,
+      "reliability_score": 68,
+      "owner_rating": 3.9,
+      "post_sale_service_rating": 3.8,
+      "engine_rating": 6,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 5,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 7.5,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 7000,
+      "known_issues": [
+        {
+          "issue": "CNG filling stations sparse on Jodhpur highways (Barmer, Jaisalmer routes)",
+          "severity": "Critical"
+        },
+        {
+          "issue": "AMT gear hunting can be abrupt in CNG mode",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Boot significantly reduced by CNG tank",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Cheapest running cost ~₹2.5/km",
+        "AMT convenience",
+        "Sunroof + wireless CarPlay",
+        "iRA connected"
+      ],
+      "cons": [
+        "No CNG on major Rajasthan highways",
+        "Reduced boot space",
+        "Power drops ~15% in CNG mode"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pure Grey",
+          "hex": "#9a9fa8"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        }
+      ]
+    },
+    {
+      "id": "maruti-ertiga-cng-zxi",
+      "brand": "Maruti Suzuki",
+      "model": "Ertiga CNG",
+      "variant": "ZXi CNG",
+      "fuel": "cng",
+      "transmission": "MT",
+      "engine_cc": 1462,
+      "power_bhp": 88,
+      "torque_nm": 122,
+      "arai_kmpl": null,
+      "realworld_kmpl": null,
+      "realworld_cng_kmkg": 21,
+      "ex_showroom_jodhpur": 1299000,
+      "boot_litres": 135,
+      "ground_clearance_mm": 180,
+      "kerb_weight_kg": 1210,
+      "seating": 7,
+      "rear_legroom_mm": 960,
+      "cabin_width_mm": 1735,
+      "airbags": 2,
+      "ncap_stars": 0,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Suzuki Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 9,
+      "resale_3yr_pct": 65,
+      "resale_5yr_pct": 51,
+      "reliability_score": 80,
+      "owner_rating": 4.3,
+      "post_sale_service_rating": 4.4,
+      "engine_rating": 6,
+      "fuel_efficiency_rating": 9,
+      "long_term_reliability_score": 8,
+      "future_proof_score": 5,
+      "parts_availability_score": 10,
+      "ease_of_servicing_score": 9,
+      "overall_customer_rating": 8.2,
+      "annual_insurance_estimate": 27000,
+      "annual_maintenance_estimate": 11000,
+      "known_issues": [
+        {
+          "issue": "Only 2 airbags — safety concern vs 6-airbag rivals",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Boot space very limited with CNG tank in 7-seater",
+          "severity": "Watch"
+        },
+        {
+          "issue": "No CNG stations on major Rajasthan highways",
+          "severity": "Critical"
+        }
+      ],
+      "pros": [
+        "Best-in-class CNG mileage 26 km/kg",
+        "Maruti service everywhere Jodhpur",
+        "7-seater",
+        "Wireless CarPlay/AA at top trim",
+        "Best resale CNG segment"
+      ],
+      "cons": [
+        "Only 2 airbags",
+        "No sunroof",
+        "CNG sparse on highways",
+        "Very underpowered 88bhp"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2022,
+      "is_new_model": false,
+      "glb": null,
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "service_centers_jodhpur": [
+        {
+          "name": "Maruti Suzuki Arena - Basni",
+          "area": "Basni Industrial Area",
+          "phone": "0291-2741500",
+          "maps_url": "https://maps.google.com/?q=Maruti+Suzuki+Service+Jodhpur",
+          "rating": 4.3,
+          "turnaround_hours": 6
+        },
+        {
+          "name": "Maruti Suzuki NEXA - Jodhpur",
+          "area": "Residency Road",
+          "phone": "0291-2742000",
+          "maps_url": "https://maps.google.com/?q=Maruti+NEXA+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        }
+      ],
+      "colors": [
+        {
+          "name": "Pearl Arctic White",
+          "hex": "#f5f5f0"
+        },
+        {
+          "name": "Granite Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Magma Grey",
+          "hex": "#3a3d40"
+        },
+        {
+          "name": "Auburn Red",
+          "hex": "#8b1a1a"
+        },
+        {
+          "name": "Dignity Brown",
+          "hex": "#5c4033"
+        }
+      ]
+    },
+    {
+      "id": "skoda-kushaq-monte-carlo-15-tsi-dsg",
+      "brand": "Skoda",
+      "model": "Kushaq",
+      "variant": "Monte Carlo 1.5 TSI DSG",
+      "fuel": "petrol_turbo",
+      "transmission": "DSG",
+      "engine_cc": 1498,
+      "power_bhp": 150,
+      "torque_nm": 250,
+      "arai_kmpl": 16.5,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2009000,
+      "boot_litres": 385,
+      "ground_clearance_mm": 188,
+      "kerb_weight_kg": 1265,
+      "seating": 5,
+      "rear_legroom_mm": 870,
+      "cabin_width_mm": 1780,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "Skoda Connect",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10,
+      "resale_3yr_pct": 54,
+      "resale_5yr_pct": 40,
+      "reliability_score": 66,
+      "owner_rating": 4.2,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 7,
+      "parts_availability_score": 6,
+      "ease_of_servicing_score": 5,
+      "overall_customer_rating": 7.9,
+      "annual_insurance_estimate": 51000,
+      "annual_maintenance_estimate": 18000,
+      "known_issues": [
+        {
+          "issue": "DSG clutch pack service at 40k km — expensive (~₹15-20k)",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Skoda + VW share single dealer Jodhpur — wait times long",
+          "severity": "Critical"
+        },
+        {
+          "issue": "Monte Carlo sporty suspension can feel stiff on broken roads",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "Sportiest Kushaq — Monte Carlo edition",
+        "Panoramic sunroof",
+        "Best handling in segment",
+        "European build quality"
+      ],
+      "cons": [
+        "VW Group service expensive",
+        "1 dealer shared with VW Jodhpur",
+        "No ventilated seats",
+        "Lower resale vs Japanese"
+      ],
+      "waiting_weeks_jodhpur": 3,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "ethanol_compatible": "E20",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "service_centers_jodhpur": [
+        {
+          "name": "Skoda Jodhpur - Bagga Link Motors",
+          "area": "MIA Basni",
+          "phone": "0291-2741100",
+          "maps_url": "https://maps.google.com/?q=Skoda+Service+Jodhpur",
+          "rating": 3.5,
+          "turnaround_hours": 36
+        }
+      ],
+      "colors": [
+        {
+          "name": "Candy White",
+          "hex": "#f0f0ec"
+        },
+        {
+          "name": "Brilliant Silver",
+          "hex": "#b0b4b8"
+        },
+        {
+          "name": "Carbon Steel",
+          "hex": "#4a5058"
+        },
+        {
+          "name": "Tornado Red",
+          "hex": "#b81c1c"
+        },
+        {
+          "name": "Magnetic Brown",
+          "hex": "#5c4033"
+        }
+      ]
     }
   ]
 }

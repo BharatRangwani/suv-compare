@@ -168,9 +168,6 @@ export async function renderHome(container) {
     refresh(getStoredFilters());
   });
 
-  const countEl = document.createElement('p');
-  countEl.className = 'results-count';
-  container.appendChild(countEl);
 
   const listContainer = document.createElement('div');
   listContainer.className = 'car-list';
@@ -193,7 +190,6 @@ export async function renderHome(container) {
   function refresh(filters) {
     const filtered = applyFilters(allRanked, filters);
     const nonBaselineCount = filtered.filter(c => !c.is_baseline).length;
-    countEl.textContent = `${nonBaselineCount} car${nonBaselineCount !== 1 ? 's' : ''} shown`;
     const sortedFiltered = applySortOrder(filtered);
     renderCarList(listContainer, sortedFiltered, baseline, allRanked);
   }

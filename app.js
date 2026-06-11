@@ -23,6 +23,7 @@ function switchTab(tabId) {
     btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
   activeTab = tabId;
+  history.replaceState(null, '', '#' + tabId);
 
   if (tabId === 'home' && !homeRendered) {
     homeRendered = true;
@@ -608,10 +609,6 @@ async function renderRankingPlaceholder() {
 
     pane.innerHTML = '';
 
-    const countEl = document.createElement('p');
-    countEl.className = 'results-count';
-    pane.appendChild(countEl);
-
     const CATS = [
       { key: 'safety',          label: 'Safety',      w: 20 },
       { key: 'value_for_money', label: 'VFM',         w: 20 },
@@ -691,8 +688,7 @@ async function renderRankingPlaceholder() {
         podiumEl.className = '';
       }
 
-      // Count + section label
-      countEl.textContent = `${ranked.length} car${ranked.length !== 1 ? 's' : ''} shown`;
+      // Section label
       secLbl.textContent = ranked.length ? 'All rankings · tap to expand' : 'No cars match the selected filters';
 
       // Expandable list
@@ -922,7 +918,9 @@ function init() {
     }
   }).catch(() => {});
 
-  switchTab('home');
+  const VALID_TABS = new Set(TABS);
+  const hashTab = location.hash.replace('#', '');
+  switchTab(VALID_TABS.has(hashTab) ? hashTab : 'home');
 
   // Auto-open detail panel if ?car=id is in URL (for shareable links)
   const carId = new URLSearchParams(window.location.search).get('car');

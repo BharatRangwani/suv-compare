@@ -765,18 +765,21 @@ export async function renderCompare(container) {
       container.querySelector('.cmp-cv-row'),
     ]);
 
-    // Mock-render label: show for cars using the Seltos proxy model
+    // Find GLB: prefer car's own, then any same-model variant's (search all variants), then proxy
+    const PROXY_GLB  = 'previews/kia-seltos.glb';
+    const modelGlb   = car.glb
+      || allVariants.find(c => c.model === car.model && c.glb)?.glb
+      || PROXY_GLB;
+
     const mockLabelEl = container.querySelector('#cmp-mock-label');
     const noModelEl   = container.querySelector('#cmp-no-model');
     const hintEl      = container.querySelector('#cmp-drag-hint');
-    const isMock      = !car.glb;
-    if (mockLabelEl) mockLabelEl.style.display = isMock ? 'flex' : 'none';
+    if (mockLabelEl) mockLabelEl.style.display = 'none';
     if (noModelEl)   noModelEl.style.display   = 'none';
     if (hintEl)      hintEl.style.display      = '';
 
-    // Load 3D model — use Seltos proxy for cars without their own GLB
-    const PROXY_GLB = 'previews/kia-seltos.glb';
-    const glb       = car.glb || PROXY_GLB;
+    // Load 3D model
+    const glb = modelGlb;
     const loadToken = {};
     _selectCar._pendingToken = loadToken;
     function _doLoad() {

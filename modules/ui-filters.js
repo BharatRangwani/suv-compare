@@ -66,6 +66,9 @@ export function getStoredFilters() {
         migrated[g] = migrated[g] && migrated[g] !== 'all' ? [migrated[g]] : [];
       }
     }
+    // Remove stale transmission values from old filter format (automatic → at/dct/cvt)
+    const VALID_TX = new Set(['manual','amt','cvt','at','dct']);
+    migrated.transmission = migrated.transmission.filter(v => VALID_TX.has(v));
     return migrated;
   } catch {
     return { ...DEFAULT_FILTERS };
@@ -91,8 +94,10 @@ export function applyFilters(cars, filters) {
     if (filters.transmission.length > 0) {
       const tx = (car.transmission || '').toUpperCase();
       const match = filters.transmission.some(sel => {
-        if (sel === 'automatic') return ['DCT','CVT','DSG','AT','E-CVT'].some(t => tx.includes(t));
-        if (sel === 'manual')    return tx.includes('MANUAL');
+        if (sel === 'dct')       return tx === 'DCT' || tx.includes('DCT') || tx.includes('DSG');
+        if (sel === 'at')        return tx === 'AT'  || (tx.includes('AT') && !tx.includes('AMT') && !tx.includes('DCT') && !tx.includes('DSG'));
+        if (sel === 'cvt')       return tx.includes('CVT');
+        if (sel === 'manual')    return tx === 'MT'  || tx === 'MANUAL' || tx.includes('MT') && !tx.includes('AMT');
         if (sel === 'amt')       return tx.includes('AMT');
         return false;
       });
@@ -299,9 +304,11 @@ export function renderFilters(container, onFilterChange) {
     {
       group: 'transmission', label: 'Transmission', multi: true,
       options: [
-        { value: 'automatic', label: 'Auto / DCT' },
-        { value: 'manual',    label: 'Manual' },
-        { value: 'amt',       label: 'AMT / Semi-Auto' },
+        { value: 'manual', label: 'MT (Manual)' },
+        { value: 'amt',    label: 'AMT' },
+        { value: 'cvt',    label: 'CVT' },
+        { value: 'at',     label: 'AT (Torque Conv.)' },
+        { value: 'dct',    label: 'DCT / DSG' },
       ]
     },
     {
