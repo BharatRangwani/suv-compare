@@ -427,35 +427,6 @@ async function renderFinanceTab() {
     updateExchange();
   });
 
-  // ── 4. On-road prices ────────────────────────────────────────────────────────
-  const pricesWrap = document.createElement('div');
-  pricesWrap.className = 'fin-section';
-  pricesWrap.innerHTML = `<div class="fin-sec-hd"><span>On-road prices · all cars</span></div>`;
-  const priceList = document.createElement('div');
-  priceList.className = 'fin-price-list';
-  cars
-    .slice()
-    .sort((a, b) => a.ex_showroom_jodhpur - b.ex_showroom_jodhpur)
-    .forEach(car => {
-      const onRoad   = getOnRoad(car);
-      const isTop    = car.id === (topCar && topCar.id);
-      const row = document.createElement('div');
-      row.className = 'fin-price-row' + (isTop ? ' top-pick' : '');
-      row.innerHTML = `
-        <div class="fin-pr-car">
-          ${car.brand} ${car.model}
-          <small>${car.variant}</small>
-        </div>
-        <div class="fin-pr-right">
-          <div class="fin-pr-exsh">Ex-sh ${fL(car.ex_showroom_jodhpur)}</div>
-          <div class="fin-pr-onroad">${fL(onRoad)}</div>
-        </div>
-      `;
-      priceList.appendChild(row);
-    });
-  pricesWrap.appendChild(priceList);
-  pane.appendChild(pricesWrap);
-
   // ── 5. Recommended purchase plan ────────────────────────────────────────────
   const planWrap = document.createElement('div');
   planWrap.className = 'fin-section';
