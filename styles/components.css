@@ -2175,6 +2175,7 @@
   scrollbar-width: none;
   padding: 0.75rem 0.85rem;
   border-bottom: 1px solid var(--border);
+  align-items: center;
 }
 .fin-car-sel::-webkit-scrollbar { display: none; }
 .fin-car-opt {
@@ -2200,6 +2201,23 @@
 .fin-co-model { font-size: 0.75rem; font-weight: 700; color: var(--text); line-height: 1.2; }
 .fin-co-price { font-size: 0.65rem; color: var(--blue); font-weight: 600; font-family: 'Geist Mono', monospace; margin-top: 0.1rem; }
 .fin-car-opt.sel .fin-co-brand { color: var(--blue); }
+
+.fin-car-dropdown {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: auto;
+}
+.fin-car-dropdown:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
 
 /* Live result cells */
 .fin-adj-result {

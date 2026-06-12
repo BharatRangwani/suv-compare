@@ -53,18 +53,18 @@ async function renderFinanceTab() {
   const data     = await loadCarsData();
   let profile    = getProfile();
   const baseline = getBaselineCar(data);
-  const allRanked = getBestVariantPerBrand(rankCars(getCarsForRanking(data), profile, baseline));
 
-  // Deduplicate by brand+model for the car selector
-  const seen = new Set();
-  const cars = allRanked.filter(c => {
-    const key = `${c.brand}||${c.model}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  }).sort((a, b) => a.ex_showroom_jodhpur - b.ex_showroom_jodhpur);
+  // All active variants ranked — no dedup, so every variant is selectable
+  const cars = rankCars(getCarsForRanking(data), profile, baseline)
+    .sort((a, b) => {
+      const brandCmp = a.brand.localeCompare(b.brand);
+      if (brandCmp !== 0) return brandCmp;
+      const modelCmp = a.model.localeCompare(b.model);
+      if (modelCmp !== 0) return modelCmp;
+      return a.ex_showroom_jodhpur - b.ex_showroom_jodhpur;
+    });
 
-  // Top pick (highest score, already rank 1 after dedup)
+  // Top pick: best score across all variants
   const topCar = [...cars].sort((a, b) => b.score - a.score)[0];
 
   // ── EMI + exchange state ─────────────────────────────────────────────────────
@@ -106,9 +106,9 @@ async function renderFinanceTab() {
       ? (car.waiting_weeks_jodhpur === 0 ? 'In stock' : `${car.waiting_weeks_jodhpur} wks`)
       : '—';
     answerCard.innerHTML = `
-      <div class="fin-ac-eyebrow">Your buying picture · ${car.brand} ${car.model}</div>
+      <div class="fin-ac-eyebrow">Your buying picture · ${car.brand} ${car.model} ${car.variant || ''}</div>
       <div class="fin-ac-sentence">
-        <strong>${car.brand} ${car.model}</strong> costs <strong>${fLshort(onRoad)} on-road</strong>.
+        <strong>${car.brand} ${car.model} ${car.variant || ''}</strong> costs <strong>${fLshort(onRoad)} on-road</strong>.
         After trading your Quanto (~${fL(exch.dealerExchange)}), net cost is
         <strong>${fL(net)}</strong>.
         At ${dpPct}% down + ${rate}% p.a., that's
@@ -192,25 +192,26 @@ async function renderFinanceTab() {
   `;
   pane.appendChild(adjWrap);
 
-  // Build car selector
+  // Build car selector — grouped <select> with all variants
   function buildCarSel() {
     const track = adjWrap.querySelector('#fin-car-sel');
-    track.innerHTML = cars.map(c => `
-      <button class="fin-car-opt${c.id === selectedCarId ? ' sel' : ''}" data-id="${c.id}">
-        <div class="fin-co-brand">${c.brand}</div>
-        <div class="fin-co-model">${c.model}</div>
-        <div class="fin-co-price">${fLshort(getOnRoad(c))}</div>
-      </button>
-    `).join('');
-    track.querySelectorAll('.fin-car-opt').forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectedCarId = btn.dataset.id;
-        track.querySelectorAll('.fin-car-opt').forEach(b => b.classList.remove('sel'));
-        btn.classList.add('sel');
-        updateLoanResult();
-        updateAnswerCard();
-        if (typeof updatePurchasePlan === 'function') updatePurchasePlan();
-      });
+    const brands = [...new Set(cars.map(c => c.brand))];
+    const optgroups = brands.map(brand => {
+      const opts = cars
+        .filter(c => c.brand === brand)
+        .map(c => {
+          const label = `${c.model} ${c.variant} · ${fLshort(c.ex_showroom_jodhpur)} ex-sh`;
+          const sel = c.id === selectedCarId ? ' selected' : '';
+          return `<option value="${c.id}"${sel}>${label}</option>`;
+        }).join('');
+      return `<optgroup label="${brand}">${opts}</optgroup>`;
+    }).join('');
+    track.innerHTML = `<select id="fin-car-dropdown" class="fin-car-dropdown">${optgroups}</select>`;
+    track.querySelector('#fin-car-dropdown').addEventListener('change', e => {
+      selectedCarId = e.target.value;
+      updateLoanResult();
+      updateAnswerCard();
+      if (typeof updatePurchasePlan === 'function') updatePurchasePlan();
     });
   }
   buildCarSel();
