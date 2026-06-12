@@ -599,7 +599,10 @@ function buildControls(selectedCars, showDiffOnly, hideBaseline) {
           <input type="checkbox" id="baseline-toggle" ${hideBaseline ? 'checked' : ''}>
           Hide Quanto
         </label>
-        <button class="btn-compare-all" id="cmp-all-variants-btn" title="Add all variants of same model">Compare All Variants</button>
+        <button class="btn-compare-all" id="cmp-all-variants-btn" title="Add all variants of same model">All Variants</button>
+        <button class="btn-compare-all" id="cmp-petrol-btn" title="Add petrol variants of same model">Petrol</button>
+        <button class="btn-compare-all" id="cmp-diesel-btn" title="Add diesel variants of same model">Diesel</button>
+        <button class="btn-compare-all" id="cmp-ev-btn" title="Add EV variants of same model">EV</button>
       </div>
     </div>
   `;
@@ -826,14 +829,14 @@ export async function renderCompare(container) {
 
     // Find GLB: prefer car's own, then any same-model variant's (search all variants), then proxy
     const PROXY_GLB  = 'previews/kia-seltos.glb';
-    const modelGlb   = car.glb
-      || allVariants.find(c => c.model === car.model && c.glb)?.glb
-      || PROXY_GLB;
+    const ownGlb     = car.glb || allVariants.find(c => c.model === car.model && c.glb)?.glb;
+    const modelGlb   = ownGlb || PROXY_GLB;
+    const isProxy    = !ownGlb;
 
     const mockLabelEl = container.querySelector('#cmp-mock-label');
     const noModelEl   = container.querySelector('#cmp-no-model');
     const hintEl      = container.querySelector('#cmp-drag-hint');
-    if (mockLabelEl) mockLabelEl.style.display = 'none';
+    if (mockLabelEl) mockLabelEl.style.display = isProxy ? '' : 'none';
     if (noModelEl)   noModelEl.style.display   = 'none';
     if (hintEl)      hintEl.style.display      = '';
 
@@ -956,23 +959,37 @@ export async function renderCompare(container) {
       });
     }
 
-    // Compare All Variants — add every variant of the currently viewed model (up to limit)
-    const cmpAllBtn = controlsRoot.querySelector('#cmp-all-variants-btn');
-    if (cmpAllBtn) {
-      cmpAllBtn.addEventListener('click', () => {
-        const refCar = viewerActiveCar || selectedCars[0];
-        if (!refCar) return;
-        const variants = allVariants.filter(c =>
-          c.model === refCar.model && c.brand === refCar.brand && !c.is_baseline
-        );
-        variants.forEach(v => {
-          if (selectedCars.length < 8 && !selectedCars.find(c => c.id === v.id)) {
-            selectedCars.push(v);
-          }
-        });
-        _render();
+    // Fuel-type filter helpers
+    const PETROL_FUELS = new Set(['petrol', 'petrol_turbo', 'mild_hybrid', 'strong_hybrid', 'cng']);
+    const DIESEL_FUELS = new Set(['diesel']);
+    const EV_FUELS     = new Set(['electric']);
+
+    function _addVariantsByFuel(fuelSet) {
+      const refCar = viewerActiveCar || selectedCars[0];
+      if (!refCar) return;
+      const variants = allVariants.filter(c =>
+        c.model === refCar.model && c.brand === refCar.brand && !c.is_baseline &&
+        (fuelSet === null || fuelSet.has(c.fuel))
+      );
+      variants.forEach(v => {
+        if (selectedCars.length < 8 && !selectedCars.find(c => c.id === v.id)) {
+          selectedCars.push(v);
+        }
       });
+      _render();
     }
+
+    const cmpAllBtn = controlsRoot.querySelector('#cmp-all-variants-btn');
+    if (cmpAllBtn) cmpAllBtn.addEventListener('click', () => _addVariantsByFuel(null));
+
+    const cmpPetrolBtn = controlsRoot.querySelector('#cmp-petrol-btn');
+    if (cmpPetrolBtn) cmpPetrolBtn.addEventListener('click', () => _addVariantsByFuel(PETROL_FUELS));
+
+    const cmpDieselBtn = controlsRoot.querySelector('#cmp-diesel-btn');
+    if (cmpDieselBtn) cmpDieselBtn.addEventListener('click', () => _addVariantsByFuel(DIESEL_FUELS));
+
+    const cmpEvBtn = controlsRoot.querySelector('#cmp-ev-btn');
+    if (cmpEvBtn) cmpEvBtn.addEventListener('click', () => _addVariantsByFuel(EV_FUELS));
   }
 
   // ── picker ──

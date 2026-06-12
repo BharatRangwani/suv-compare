@@ -6730,7 +6730,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 9,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 9,
+      "rating_boot_space": 8,
+      "rating_features_tech": 6,
+      "rating_service_quality": 6,
+      "ratings_total": 7.6
     },
     {
       "id": "kia-seltos-htk-plus-petrol-cvt",
@@ -6853,7 +6863,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 9,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 9,
+      "rating_boot_space": 8,
+      "rating_features_tech": 6,
+      "rating_service_quality": 6,
+      "ratings_total": 7.6
     },
     {
       "id": "kia-seltos-htx-petrol-mt",
@@ -6977,7 +6997,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "mixed"
+      "driving_use": "mixed",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 9,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 9,
+      "rating_boot_space": 8,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8
     },
     {
       "id": "kia-seltos-htx-plus-diesel-mt",
@@ -7101,7 +7131,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 7,
+      "rating_service_quality": 7,
+      "ratings_total": 7.7
     },
     {
       "id": "hyundai-venue-sx-petrol-dct",
@@ -7225,7 +7265,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 8,
+      "rating_service_quality": 8,
+      "ratings_total": 7.8
     },
     {
       "id": "hyundai-venue-s-diesel-mt",
@@ -7349,7 +7399,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9
     },
     {
       "id": "hyundai-venue-sx-plus-petrol-dct",
@@ -7473,7 +7533,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 6.7
     },
     {
       "id": "tata-nexon-smart-petrol-mt",
@@ -7588,7 +7658,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 7,
+      "ratings_total": 7.2
     },
     {
       "id": "tata-nexon-fearless-petrol-mt",
@@ -7703,7 +7783,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 6,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.5
     },
     {
       "id": "tata-nexon-fearless-plus-diesel-mt",
@@ -7819,7 +7909,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "mixed"
+      "driving_use": "mixed",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 7,
+      "ratings_total": 7.5
     },
     {
       "id": "tata-harrier-fearless-petrol-at",
@@ -7934,7 +8034,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.9
     },
     {
       "id": "tata-harrier-fearless-diesel-mt",
@@ -8050,7 +8160,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.7
     },
     {
       "id": "tata-harrier-adventure-diesel-mt",
@@ -8166,7 +8286,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 6,
+      "ratings_total": 7.4
     },
     {
       "id": "maruti-grand-vitara-zeta-plus-mild-hybrid-mt",
@@ -8290,7 +8420,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 9,
+      "ratings_total": 7.6
     },
     {
       "id": "maruti-grand-vitara-sigma-petrol-mt",
@@ -8419,7 +8559,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 6,
+      "rating_service_quality": 9,
+      "ratings_total": 7.3
     },
     {
       "id": "honda-elevate-sx-mt",
@@ -8535,7 +8685,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 9,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 7.5
     },
     {
       "id": "honda-elevate-vx-cvt",
@@ -8651,7 +8811,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 8,
+      "rating_nvh": 8,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 9,
+      "rating_features_tech": 8,
+      "rating_service_quality": 8,
+      "ratings_total": 7.8
     },
     {
       "id": "mg-astor-sharp-cvt",
@@ -8772,7 +8942,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 6,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 9,
+      "rating_features_tech": 8,
+      "rating_service_quality": 5,
+      "ratings_total": 7.8
     },
     {
       "id": "mg-astor-savvy-mt",
@@ -8893,7 +9073,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 6,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 9,
+      "rating_features_tech": 8,
+      "rating_service_quality": 5,
+      "ratings_total": 6.9
     },
     {
       "id": "mahindra-xuv-3xo-ax5-diesel-mt",
@@ -9012,7 +9202,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "mixed"
+      "driving_use": "mixed",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.2
     },
     {
       "id": "mahindra-xuv-3xo-ax7-diesel-at",
@@ -9132,7 +9332,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "mixed"
+      "driving_use": "mixed",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 7,
+      "ratings_total": 7
     },
     {
       "id": "mahindra-scorpio-n-z4-petrol-mt",
@@ -9253,7 +9463,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 8,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 9,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.4
     },
     {
       "id": "mahindra-scorpio-n-z6-diesel-mt",
@@ -9370,7 +9590,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 8,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 9,
+      "rating_features_tech": 7,
+      "rating_service_quality": 6,
+      "ratings_total": 7.7
     },
     {
       "id": "mahindra-scorpio-n-z6-diesel-at",
@@ -9487,7 +9717,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 9,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 9,
+      "rating_boot_space": 5,
+      "rating_features_tech": 8,
+      "rating_service_quality": 7,
+      "ratings_total": 7.9
     },
     {
       "id": "tata-nexon-ev-smart-plus-long-range",
@@ -9609,7 +9849,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 9,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 7,
+      "rating_service_quality": 7,
+      "ratings_total": 7.6
     },
     {
       "id": "tata-nexon-ev-fearless-long-range",
@@ -9727,7 +9977,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 9,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 7,
+      "ratings_total": 7.9
     },
     {
       "id": "hyundai-creta-electric-executive",
@@ -9850,7 +10110,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 9,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 7.6
     },
     {
       "id": "hyundai-creta-electric-premium",
@@ -9969,7 +10239,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 9,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 8,
+      "rating_service_quality": 8,
+      "ratings_total": 7.9
     },
     {
       "id": "tata-nexon-cng-fearless-plus",
@@ -10085,7 +10365,17 @@
       "tpms": false,
       "rear_sunshades": false,
       "auto_fold_orvm": false,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 7,
+      "rating_boot_space": 6,
+      "rating_features_tech": 7,
+      "rating_service_quality": 7,
+      "ratings_total": 7.5
     },
     {
       "id": "maruti-ertiga-cng-zxi",
@@ -10214,7 +10504,17 @@
       "tpms": false,
       "rear_sunshades": true,
       "auto_fold_orvm": true,
-      "driving_use": "city"
+      "driving_use": "city",
+      "rating_engine": 6,
+      "rating_ride_handling": 6,
+      "rating_nvh": 6,
+      "rating_fit_finish": 6,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 9,
+      "rating_boot_space": 4,
+      "rating_features_tech": 8,
+      "rating_service_quality": 9,
+      "ratings_total": 7.8
     },
     {
       "id": "skoda-kushaq-monte-carlo-15-tsi-dsg",
@@ -10335,7 +10635,17 @@
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
-      "driving_use": "highway"
+      "driving_use": "highway",
+      "rating_engine": 8,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 7,
+      "rating_boot_space": 7,
+      "rating_features_tech": 9,
+      "rating_service_quality": 6,
+      "ratings_total": 8.2
     }
   ]
 }
