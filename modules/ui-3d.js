@@ -248,10 +248,13 @@ export function createCarViewer(containerEl) {
 
     if (!paintRef) return;
 
-    // Pass 2: collect ALL material instances that look like the winning paint
-    // (same hue family and not in SKIP_MAT) — GLBs often duplicate material
-    // instances per mesh so updating one object only recolors one panel.
+    // Pass 2: collect ALL material instances that look like the winning paint.
+    // GLBs often duplicate material instances per mesh so updating one only recolors one panel.
     const paintColor = paintRef.color.clone();
+    const paintBrightness = paintColor.r + paintColor.g + paintColor.b;
+    // When the detected paint is near-white (brightness > 2.4), color proximity matching
+    // is unreliable — almost every material qualifies. Fall back to name-based matching only.
+    const useColorProximity = paintBrightness <= 2.4;
     const seen = new Set();
 
     model.traverse((child) => {
@@ -262,14 +265,20 @@ export function createCarViewer(containerEl) {
         const name = (m.name || '').toLowerCase();
         if (SKIP_MAT.test(name)) return;
 
-        // Accept: (a) exact same uuid as winner, (b) similar color hue (within 0.15 per channel)
-        const dr = Math.abs(m.color.r - paintColor.r);
-        const dg = Math.abs(m.color.g - paintColor.g);
-        const db = Math.abs(m.color.b - paintColor.b);
-        const colorMatch = dr < 0.15 && dg < 0.15 && db < 0.15;
-        const isWinner   = m.uuid === paintRef.uuid;
+        const isWinner = m.uuid === paintRef.uuid;
+        const isNamedPaint = name.includes('carpaint') || name.includes('car_paint') ||
+          name.includes('body_paint') || name.includes('carosserie') ||
+          name.includes('carcolor') || name.includes('exterior') || name.includes('paint');
 
-        if (isWinner || colorMatch) {
+        let colorMatch = false;
+        if (useColorProximity) {
+          const dr = Math.abs(m.color.r - paintColor.r);
+          const dg = Math.abs(m.color.g - paintColor.g);
+          const db = Math.abs(m.color.b - paintColor.b);
+          colorMatch = dr < 0.15 && dg < 0.15 && db < 0.15;
+        }
+
+        if (isWinner || isNamedPaint || colorMatch) {
           seen.add(m.uuid);
           m.metalness = 0.7;
           m.roughness = 0.25;
