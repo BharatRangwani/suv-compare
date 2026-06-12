@@ -622,6 +622,7 @@ function buildControls(selectedCars, showDiffOnly, hideBaseline) {
         <button class="btn-compare-all" id="cmp-diesel-btn" title="Add diesel variants of same model">Diesel</button>
         <button class="btn-compare-all" id="cmp-ev-btn" title="Add EV variants of same model">EV</button>
       </div>
+      <div class="price-update-note">Prices updated June 2026 · Jodhpur ex-showroom</div>
     </div>
   `;
 }

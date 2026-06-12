@@ -646,6 +646,16 @@
   color: #fde68a;
 }
 
+.price-update-note {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #6b7280);
+  margin-top: 0.5rem;
+  padding: 0 0.25rem;
+}
+[data-theme="dark"] .price-update-note {
+  color: #9ca3af;
+}
+
 /* ── Compare table ── */
 .compare-wrapper {
   overflow-x: auto;
