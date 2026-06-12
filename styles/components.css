@@ -454,6 +454,7 @@
 }
 .filter-chip:hover  { border-color: var(--blue); color: var(--blue); }
 .filter-chip.active { border-color: var(--blue); background: var(--blue-light); color: var(--blue); font-weight: 600; }
+.filter-chip.unavailable { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
 .filter-chip.clear-filters { color: var(--red); border-color: var(--red-bg); background: var(--red-bg); align-self: flex-start; margin-top: 0.1rem; }
 
 /* ── Buttons ── */

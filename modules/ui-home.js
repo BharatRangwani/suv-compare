@@ -196,7 +196,7 @@ export async function renderHome(container) {
 
   let lastAnnualKm = 'all';
 
-  renderFilters(filterContainer, async (filters) => {
+  const { updateAvailability } = renderFilters(filterContainer, async (filters) => {
     // Annual KM filter: update profile daily_km, re-rank, then refresh
     if (filters.annual_km !== lastAnnualKm) {
       lastAnnualKm = filters.annual_km;
@@ -215,9 +215,11 @@ export async function renderHome(container) {
       allRanked = getBestVariantPerBrand(ranked);
     }
     refresh(filters);
+    if (updateAvailability) updateAvailability(allRanked);
   });
 
   refresh(getStoredFilters());
+  if (updateAvailability) updateAvailability(allRanked);
 }
 
 // ─── Car list renderer ────────────────────────────────────────────────────────

@@ -309,11 +309,27 @@ export function applyFilters(cars, filters) {
   });
 }
 
+// Returns count of cars that would match if `group` were set to `value`
+// (all other current filters still apply, this one overrides)
+function countWithFilter(cars, filters, group, value, multi) {
+  const trial = { ...filters };
+  if (multi) {
+    const arr = filters[group].includes(value)
+      ? filters[group].filter(v => v !== value)   // toggling off
+      : [...filters[group], value];               // toggling on
+    trial[group] = arr;
+  } else {
+    trial[group] = value;
+  }
+  return applyFilters(cars, trial).length;
+}
+
 export function renderFilters(container, onFilterChange) {
   const FILTER_GROUPS = [
     {
       group: 'fuel', label: 'Fuel', multi: true,
       options: [
+        { value: 'petrol',        label: 'Petrol NA' },
         { value: 'petrol_turbo',  label: 'Petrol Turbo' },
         { value: 'diesel',        label: 'Diesel' },
         { value: 'cng',           label: 'CNG' },
@@ -675,6 +691,7 @@ export function renderFilters(container, onFilterChange) {
           updateActiveStates();
           updateClearButton();
           onFilterChange({ ...currentFilters });
+          if (lastKnownCars) updateAvailability(lastKnownCars);
         });
         chipsEl.appendChild(btn);
       });
@@ -695,6 +712,7 @@ export function renderFilters(container, onFilterChange) {
       updateActiveStates();
       updateClearButton();
       onFilterChange({ ...currentFilters });
+      if (lastKnownCars) updateAvailability(lastKnownCars);
     });
     bar.appendChild(clearBtn);
 
@@ -702,6 +720,7 @@ export function renderFilters(container, onFilterChange) {
   }
 
   let syncToggleLabel = null; // set after toggle header is built
+  let lastKnownCars = null;  // updated by updateAvailability()
 
   function updateActiveStates() {
     container.querySelectorAll('.filter-chip[data-group]').forEach(chip => {
@@ -710,6 +729,26 @@ export function renderFilters(container, onFilterChange) {
       chip.classList.toggle('active', isActive(currentFilters, group, value));
     });
     if (syncToggleLabel) syncToggleLabel();
+  }
+
+  // Called by the home/ranking screen after each filter change with the full (pre-filter) car list.
+  // Greys out chips that would yield zero results if selected.
+  function updateAvailability(allCars) {
+    lastKnownCars = allCars;
+    if (!allCars || !allCars.length) return;
+    container.querySelectorAll('.filter-chip[data-group]').forEach(chip => {
+      const group = chip.dataset.group;
+      const value = chip.dataset.value;
+      if (value === 'all') { chip.classList.remove('unavailable'); return; }
+      const multi = MULTI_GROUPS.has(group);
+      // If this chip is already active, never grey it out
+      if (isActive(currentFilters, group, value)) {
+        chip.classList.remove('unavailable');
+        return;
+      }
+      const count = countWithFilter(allCars, currentFilters, group, value, multi);
+      chip.classList.toggle('unavailable', count === 0);
+    });
   }
 
   function updateClearButton() {
@@ -760,4 +799,6 @@ export function renderFilters(container, onFilterChange) {
   const bar = buildFilterBar();
   if (collapsed) bar.classList.add('filter-bar-hidden');
   container.appendChild(bar);
+
+  return { updateAvailability };
 }
