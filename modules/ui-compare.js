@@ -845,11 +845,9 @@ export async function renderCompare(container) {
       if (_selectCar._pendingToken !== loadToken) return;
       if (!viewer) { setTimeout(_doLoad, 100); return; }
       viewer.load(glb);
-      // Pick a visually distinct default color so the paint is obviously applied.
-      // Prefer a non-white color; fall back to white if that's all there is.
       const colors = car.colors || [];
-      const nonWhite = colors.find(c => !/white/i.test(c.name));
-      viewer.setColor(nonWhite ? nonWhite.hex : (colors.length ? colors[0].hex : '#c0392b'));
+      const white = colors.find(c => /white/i.test(c.name));
+      viewer.setColor(white ? white.hex : (colors.length ? colors[0].hex : '#f2f2f2'));
     }
     _doLoad();
   }
@@ -857,8 +855,8 @@ export async function renderCompare(container) {
   function _renderColorDots(car) {
     const dotsEl = container.querySelector('#cmp-color-dots');
     const colors = car.colors || [];
-    const nonWhiteIdx = colors.findIndex(c => !/white/i.test(c.name));
-    const defaultIdx = nonWhiteIdx >= 0 ? nonWhiteIdx : 0;
+    const whiteIdx = colors.findIndex(c => /white/i.test(c.name));
+    const defaultIdx = whiteIdx >= 0 ? whiteIdx : 0;
     dotsEl.innerHTML = colors.map((c, i) => `
       <button class="cmp-cdot${i === defaultIdx ? ' active' : ''}"
         style="background:${c.hex}"
