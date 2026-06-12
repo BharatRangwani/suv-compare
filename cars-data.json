@@ -14422,103 +14422,81 @@
       "is_new_variant": true
     },
     {
-      "id": "hyundai-creta-electric-executive",
+      "id": "hyundai-venue-hx2",
       "brand": "Hyundai",
-      "model": "Creta Electric",
-      "variant": "Executive",
-      "platform": "E-GMP (BEV)",
-      "fuel": "electric",
-      "charging_type": "both",
-      "transmission": "AT",
-      "engine_cc": null,
-      "power_bhp": 171,
-      "torque_nm": 255,
-      "arai_kmpl": null,
-      "arai_range_km": 473,
-      "realworld_range_km": 370,
-      "realworld_kmpl": null,
-      "battery_kwh": 51.4,
-      "charging_fast_kw": 50,
-      "charging_home_hours": 10.5,
-      "ex_showroom_jodhpur": null,
-      "boot_litres": 433,
-      "ground_clearance_mm": 190,
-      "kerb_weight_kg": 1620,
+      "model": "Venue",
+      "variant": "HX 2",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 83,
+      "torque_nm": 114,
+      "arai_kmpl": 19.4,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 799900,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
       "seating": 5,
-      "airbags": 6,
-      "ncap_stars": 0,
+      "airbags": 2,
+      "ncap_stars": 5,
       "adas": false,
-      "adas_features": [
-        "Auto Emergency Braking",
-        "Lane Keep Assist",
-        "Blind Spot Collision Warning",
-        "Driver Attention Warning",
-        "Rear Cross-Traffic Alert"
-      ],
+      "adas_features": [],
       "wireless_carplay": false,
       "wireless_aa": false,
       "ventilated_seats": false,
       "sunroof": "none",
-      "connected_car": true,
-      "connected_system": "Hyundai BlueLink",
-      "climate_control": "auto_single",
-      "infotainment_inches": 10.25,
-      "rear_legroom_mm": 880,
-      "cabin_width_mm": 1790,
-      "resale_3yr_pct": 50,
-      "resale_5yr_pct": 36,
-      "reliability_score": 68,
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "manual",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
       "owner_rating": 4.1,
-      "post_sale_service_rating": 4,
-      "engine_rating": 9,
-      "fuel_efficiency_rating": 10,
-      "long_term_reliability_score": 6,
-      "future_proof_score": 9,
-      "parts_availability_score": 7,
-      "ease_of_servicing_score": 7,
-      "overall_customer_rating": 8,
-      "rating_engine": 9,
-      "rating_ride_handling": 8,
-      "rating_nvh": 9,
-      "rating_fit_finish": 8,
-      "rating_interior_quality": 8,
-      "rating_interior_space": 8,
-      "rating_boot_space": 8,
-      "rating_features_tech": 9,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
       "rating_service_quality": 8,
-      "ratings_total": 8.3,
-      "annual_insurance_estimate": 52000,
-      "annual_maintenance_estimate": 4500,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 22000,
+      "annual_maintenance_estimate": 10000,
       "known_issues": [
         {
-          "issue": "New model — long-term battery health data not yet available",
-          "severity": "Watch"
-        },
-        {
-          "issue": "Fast-charging infrastructure sparse in Rajasthan highways",
-          "severity": "Critical"
-        },
-        {
-          "issue": "NCAP not yet rated for this generation EV variant",
-          "severity": "Watch"
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
         }
       ],
       "pros": [
-        "Best-in-class EV range (473km ARAI)",
-        "Full ADAS suite",
-        "Hyundai's trusted service network",
-        "Panoramic sunroof + ventilated seats",
-        "V2L (vehicle to load) charging"
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
       ],
       "cons": [
-        "Most expensive in EV segment",
-        "NCAP unrated",
-        "Charging infra gap in Rajasthan",
-        "Newer model — less long-term data"
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
       ],
-      "waiting_weeks_jodhpur": 6,
+      "waiting_weeks_jodhpur": 1,
       "launch_year": 2024,
-      "is_new_model": true,
+      "is_new_model": false,
       "glb": null,
       "colors": [
         {
@@ -14530,12 +14508,12 @@
           "hex": "#1e1e1e"
         },
         {
-          "name": "Starry Night",
-          "hex": "#1a2a4a"
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
         },
         {
-          "name": "Amazonas Green",
-          "hex": "#1a4a2a"
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
         },
         {
           "name": "Typhoon Silver",
@@ -14544,17 +14522,820 @@
       ],
       "service_centers_jodhpur": [
         {
-          "name": "Hyundai Pawan Motors - EV Ready",
+          "name": "Hyundai Pawan Motors",
           "area": "Basni Area",
           "phone": "0291-2740000",
           "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
           "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
           "turnaround_hours": 10
         }
       ],
-      "camera_360": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
       "alloy_wheels": true,
-      "parking_sensors_front": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx4",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 4",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 83,
+      "torque_nm": 114,
+      "arai_kmpl": 19.4,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 899900,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
+      "seating": 5,
+      "airbags": 4,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": false,
+      "connected_system": null,
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 25000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "tpms": false,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx5",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 5",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 83,
+      "torque_nm": 114,
+      "arai_kmpl": 19.4,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 955600,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": null,
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 27000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx5-plus",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 5 Plus",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 83,
+      "torque_nm": 114,
+      "arai_kmpl": 19.4,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 999900,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": null,
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 28000,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx5-knight",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 5 Knight",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol",
+      "transmission": "MT",
+      "engine_cc": 1197,
+      "power_bhp": 83,
+      "torque_nm": 114,
+      "arai_kmpl": 19.4,
+      "realworld_kmpl": 16,
+      "ex_showroom_jodhpur": 970500,
+      "boot_litres": 350,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1090,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": null,
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 855,
+      "cabin_width_mm": 1690,
+      "resale_3yr_pct": 55,
+      "resale_5yr_pct": 44,
+      "reliability_score": 78,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.9,
+      "engine_rating": 8,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 7.8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 7,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 7,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 6,
+      "rating_service_quality": 8,
+      "ratings_total": 6.9,
+      "annual_insurance_estimate": 27500,
+      "annual_maintenance_estimate": 10000,
+      "known_issues": [
+        {
+          "issue": "Rear space tight for 3 adults",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP",
+        "Most affordable Venue entry",
+        "Hyundai reliability",
+        "Peppy 1.0T engine"
+      ],
+      "cons": [
+        "No sunroof or ventilated seats",
+        "Tight rear space",
+        "Sub-4m — not a full SUV"
+      ],
+      "waiting_weeks_jodhpur": 1,
+      "launch_year": 2024,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "halogen",
+      "camera_360": false,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "alloy_wheels": true,
+      "rear_camera": true,
+      "drive_modes": false,
+      "clutchless": false,
+      "engine_start_stop": false,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": false,
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": false,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx5-turbo",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 5 Turbo",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol_turbo",
+      "transmission": "DCT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 18.15,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1091600,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1215,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "ncap_body": "BNCAP",
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "BlueLink Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 46,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 6.7,
+      "annual_insurance_estimate": 31000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Smaller cabin than Creta — feels cramped for tall adults",
+          "severity": "Watch"
+        },
+        {
+          "issue": "DCT hesitation at low speeds in city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Turbo 3-cyl can feel rough at idle compared to 4-cyl rivals",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP safety rating",
+        "Best fuel efficiency in class",
+        "Hyundai reliability + service network",
+        "Compact — easy to park in Jodhpur",
+        "BlueLink connected features"
+      ],
+      "cons": [
+        "Smaller cabin than Creta",
+        "No ADAS",
+        "3-cyl engine less refined"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
       "parking_sensors_rear": true,
       "dash_cam": false,
       "drive_modes": true,
@@ -14578,17 +15359,1626 @@
         }
       ],
       "news_url": "https://www.hyundai.com/in/en/media/press-releases",
-      "headlights": "led",
-      "headlight_chambers": 4,
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
       "turn_indicator_type": "led",
       "engine_start_stop": true,
-      "electric_adj_seats": true,
-      "paddle_shifters": false,
-      "cruise_control": "adaptive",
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
       "tpms": true,
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx6-turbo",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 6 Turbo",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol_turbo",
+      "transmission": "DCT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 18.15,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1217500,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1215,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "ncap_body": "BNCAP",
+      "adas": true,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "BlueLink Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 46,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 6.7,
+      "annual_insurance_estimate": 34000,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Smaller cabin than Creta — feels cramped for tall adults",
+          "severity": "Watch"
+        },
+        {
+          "issue": "DCT hesitation at low speeds in city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Turbo 3-cyl can feel rough at idle compared to 4-cyl rivals",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP safety rating",
+        "Best fuel efficiency in class",
+        "Hyundai reliability + service network",
+        "Compact — easy to park in Jodhpur",
+        "BlueLink connected features"
+      ],
+      "cons": [
+        "Smaller cabin than Creta",
+        "No ADAS",
+        "3-cyl engine less refined"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-venue-hx6t-knight",
+      "brand": "Hyundai",
+      "model": "Venue",
+      "variant": "HX 6T Knight",
+      "platform": "K2 Sub-4m",
+      "fuel": "petrol_turbo",
+      "transmission": "DCT",
+      "engine_cc": 998,
+      "power_bhp": 120,
+      "torque_nm": 172,
+      "arai_kmpl": 18.15,
+      "realworld_kmpl": 14,
+      "ex_showroom_jodhpur": 1103900,
+      "boot_litres": 355,
+      "ground_clearance_mm": 195,
+      "kerb_weight_kg": 1215,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "ncap_body": "BNCAP",
+      "adas": false,
+      "adas_features": [],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "BlueLink Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 8,
+      "rear_legroom_mm": 800,
+      "cabin_width_mm": 1700,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 46,
+      "reliability_score": 72,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4.2,
+      "engine_rating": 7,
+      "fuel_efficiency_rating": 8,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 6,
+      "parts_availability_score": 9,
+      "ease_of_servicing_score": 8,
+      "overall_customer_rating": 8,
+      "rating_engine": 7,
+      "rating_ride_handling": 7,
+      "rating_nvh": 6,
+      "rating_fit_finish": 7,
+      "rating_interior_quality": 6,
+      "rating_interior_space": 6,
+      "rating_boot_space": 6,
+      "rating_features_tech": 7,
+      "rating_service_quality": 8,
+      "ratings_total": 6.7,
+      "annual_insurance_estimate": 31500,
+      "annual_maintenance_estimate": 9000,
+      "known_issues": [
+        {
+          "issue": "Smaller cabin than Creta — feels cramped for tall adults",
+          "severity": "Watch"
+        },
+        {
+          "issue": "DCT hesitation at low speeds in city traffic",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Turbo 3-cyl can feel rough at idle compared to 4-cyl rivals",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star BNCAP safety rating",
+        "Best fuel efficiency in class",
+        "Hyundai reliability + service network",
+        "Compact — easy to park in Jodhpur",
+        "BlueLink connected features"
+      ],
+      "cons": [
+        "Smaller cabin than Creta",
+        "No ADAS",
+        "3-cyl engine less refined"
+      ],
+      "waiting_weeks_jodhpur": 2,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Fiery Red",
+          "hex": "#cc1a1a"
+        },
+        {
+          "name": "Ranger Khaki",
+          "hex": "#7a6a4a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 8
+        },
+        {
+          "name": "Hyundai Shri Balaji Motors",
+          "area": "Residency Road",
+          "phone": "0291-5100000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Balaji+Jodhpur",
+          "rating": 3.8,
+          "turnaround_hours": 10
+        }
+      ],
+      "camera_360": false,
+      "alloy_wheels": true,
+      "parking_sensors_front": false,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "ethanol_compatible": "E20",
+      "headlights": "projector_halogen",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-adventure-x-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure X Diesel MT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1814990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 50000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": false,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-adventure-x-plus-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure X Plus Diesel MT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1844990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 51000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": false,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-adventure-x-diesel-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure X Diesel AT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1964990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "single_pane",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 54000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-adventure-x-plus-diesel-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Adventure X Plus Diesel AT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 1999990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": false,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 55000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": false,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-fearless-x-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless X Diesel MT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2124990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 58000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": false,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-fearless-x-plus-diesel-mt",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless X Plus Diesel MT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "MT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2324990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 62000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": false,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-fearless-x-diesel-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless X Diesel AT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2279990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 61000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "tata-harrier-fearless-x-plus-diesel-at",
+      "brand": "Tata",
+      "model": "Harrier",
+      "variant": "Fearless X Plus Diesel AT",
+      "platform": "OMEGA",
+      "fuel": "diesel",
+      "transmission": "AT",
+      "engine_cc": 1956,
+      "power_bhp": 170,
+      "torque_nm": 350,
+      "arai_kmpl": 16.35,
+      "realworld_kmpl": 13,
+      "ex_showroom_jodhpur": 2469990,
+      "boot_litres": 425,
+      "ground_clearance_mm": 205,
+      "kerb_weight_kg": 1755,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 5,
+      "adas": true,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Departure Warning",
+        "Blind Spot Detection",
+        "Traffic Sign Recognition"
+      ],
+      "wireless_carplay": true,
+      "wireless_aa": true,
+      "ventilated_seats": true,
+      "sunroof": "panoramic",
+      "connected_car": true,
+      "connected_system": "iRA Connected Car",
+      "climate_control": "auto_single",
+      "infotainment_inches": 12.3,
+      "rear_legroom_mm": 930,
+      "cabin_width_mm": 1820,
+      "resale_3yr_pct": 60,
+      "resale_5yr_pct": 45,
+      "reliability_score": 70,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 3.5,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 7,
+      "long_term_reliability_score": 7,
+      "future_proof_score": 7,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 7,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 7,
+      "rating_features_tech": 8,
+      "rating_service_quality": 6,
+      "ratings_total": 7.8,
+      "annual_insurance_estimate": 65000,
+      "annual_maintenance_estimate": 15000,
+      "known_issues": [
+        {
+          "issue": "Tata service wait times can be long for diesel engine parts",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Large size and weight — tight maneuverability in old city Jodhpur",
+          "severity": "Minor"
+        },
+        {
+          "issue": "Higher road tax on diesel in some RTO zones",
+          "severity": "Minor"
+        }
+      ],
+      "pros": [
+        "5-star NCAP",
+        "ADAS",
+        "Best diesel torque (350Nm) for highway and desert roads",
+        "Panoramic sunroof",
+        "Highest ground clearance (205mm)"
+      ],
+      "cons": [
+        "Heaviest in class",
+        "Service center wait times",
+        "Premium price for diesel variant"
+      ],
+      "waiting_weeks_jodhpur": 4,
+      "launch_year": 2023,
+      "is_new_model": false,
+      "glb": "previews/tata-harrier.glb",
+      "camera_360": true,
+      "colors": [
+        {
+          "name": "Pristine White",
+          "hex": "#f2f0ec"
+        },
+        {
+          "name": "Daytona Grey",
+          "hex": "#5a5e62"
+        },
+        {
+          "name": "Oberon Black",
+          "hex": "#1a1a1a"
+        },
+        {
+          "name": "Supernova Copper",
+          "hex": "#b87333"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Tata Motors - Authorized Jodhpur",
+          "area": "Pali Road",
+          "phone": "0291-6700000",
+          "maps_url": "https://maps.google.com/?q=Tata+Motors+Service+Jodhpur",
+          "rating": 3.7,
+          "turnaround_hours": 14
+        }
+      ],
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": true,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Tata Harrier petrol (1.5T) launched; first petrol Harrier ever",
+          "date": "2025-09-05",
+          "type": "launch"
+        },
+        {
+          "title": "Nexon EV gets 40.5 kWh battery; range up to 465 km ARAI",
+          "date": "2024-06-07",
+          "type": "upgrade"
+        },
+        {
+          "title": "Tata Nexon facelift 2023: new face, better ADAS, Harman sound system",
+          "date": "2023-09-14",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.tatamotors.com/press-releases/",
+      "headlights": "led",
+      "headlight_chambers": null,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": true,
+      "cruise_control": "standard",
+      "tpms": true,
+      "rear_sunshades": true,
+      "auto_fold_orvm": true,
+      "driving_use": "highway",
       "price_updated": "Jun 2026",
       "is_new_variant": true
     }
