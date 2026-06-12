@@ -51,7 +51,7 @@ export async function renderHome(container) {
 
   // Slides: each has a label, big number, sub text
   const slides = [
-    { eyebrow: 'Top Pick', num: topCar ? `${topCar.brand} ${topCar.model}` : '—',
+    { eyebrow: 'Top Pick', num: topCar ? `${topCar.brand} ${topCar.model}` : '-',
       sub: topCar ? `Score ${topCar.score} · ₹${formatLakh(topCar.ex_showroom_jodhpur * 1.11 + 15000 + topCar.ex_showroom_jodhpur * 0.035)}L on-road` : '' },
     { eyebrow: 'SUVs Ranked', num: String(nonBaseline.length),
       sub: `₹${minL}L to ₹${maxL}L · 6 scored criteria` },
@@ -381,13 +381,13 @@ function renderCarCard(car, allRanked, baseline) {
   if (!isBaseline) {
     const scoreEl = document.createElement('div');
     scoreEl.className = 'car-score';
-    scoreEl.textContent = car.score != null ? Math.round(car.score) : '—';
+    scoreEl.textContent = car.score != null ? Math.round(car.score) : '-';
 
     const exSR = car.ex_showroom_jodhpur || 0;
     const onRoad = exSR * 1.11 + 15000 + exSR * 0.035;
     const priceEl = document.createElement('div');
     priceEl.style.cssText = 'font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem';
-    priceEl.textContent = exSR ? `₹${formatLakh(onRoad)}L` : '—';
+    priceEl.textContent = exSR ? `₹${formatLakh(onRoad)}L` : '-';
 
     // NOC label
     const nocEl = document.createElement('div');
@@ -458,10 +458,10 @@ export function bestTimeToBuy(car) {
   const launchAge = now - (car.launch_year || now);
   const isNew = !!car.is_new_model;
 
-  if (isNew) return { label: 'Prices settling', color: 'yellow', tip: 'New model — wait 2–3 months for prices and offers to stabilise.' };
-  if (wait >= 8) return { label: 'Wait for stock', color: 'orange', tip: `${wait}w wait in Jodhpur — high demand. Dealers less likely to negotiate.` };
+  if (isNew) return { label: 'Prices settling', color: 'yellow', tip: 'New model - wait 2-3 months for prices and offers to stabilise.' };
+  if (wait >= 8) return { label: 'Wait for stock', color: 'orange', tip: `${wait}w wait in Jodhpur - high demand. Dealers less likely to negotiate.` };
   if (wait === 0 && launchAge >= 2) return { label: 'Buy Now ✓', color: 'green', tip: 'In stock + mature model. Best chance for dealer discounts and exchange offers.' };
   if (wait <= 2 && launchAge >= 1) return { label: 'Good time', color: 'green', tip: 'Low wait time and settled market. Dealers are open to negotiation.' };
-  if (launchAge === 0) return { label: 'Just launched', color: 'yellow', tip: 'Launched this year — prices and variants are still stabilising.' };
+  if (launchAge === 0) return { label: 'Just launched', color: 'yellow', tip: 'Launched this year - prices and variants are still stabilising.' };
   return { label: 'Anytime', color: 'blue', tip: 'No strong reason to wait or rush. Negotiate on accessories and insurance.' };
 }

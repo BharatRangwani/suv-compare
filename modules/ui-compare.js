@@ -10,22 +10,22 @@ import { createCarViewer } from './ui-3d.js';
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
 function fmtLakh(paise) {
-  if (paise == null || isNaN(paise)) return '—';
+  if (paise == null || isNaN(paise)) return '-';
   return '₹' + (paise / 100000).toFixed(2) + ' L';
 }
 
 function fmtRating(val) {
-  if (val == null || val === '') return '—';
+  if (val == null || val === '') return '-';
   return val + '/10';
 }
 
 function fmtYesNo(val) {
-  if (val == null) return '—';
+  if (val == null) return '-';
   return val ? 'Yes' : 'No';
 }
 
 function fmtStars(n) {
-  if (n == null || n === '') return '—';
+  if (n == null || n === '') return '-';
   const stars = Math.round(Number(n));
   if (stars <= 0) return 'Unrated';
   return '★'.repeat(stars) + '☆'.repeat(Math.max(0, 5 - stars));
@@ -46,7 +46,7 @@ function fmtFuel(val) {
     strong_hybrid: 'Strong Hybrid',
     mild_hybrid: 'Mild Hybrid',
   };
-  return map[val] || (val || '—');
+  return map[val] || (val || '-');
 }
 
 function fmtConnected(val, system) {
@@ -84,7 +84,7 @@ function buildRowDefs() {
     {
       label: '5-yr TCO (₹L)',
       getValue: (car) => car.tco != null ? car.tco : null,
-      format: (car) => car.tco != null ? fmtLakh(car.tco) : '—',
+      format: (car) => car.tco != null ? fmtLakh(car.tco) : '-',
       rawVal: (car) => car.tco,
       direction: LOWER_IS_BETTER,
     },
@@ -113,7 +113,7 @@ function buildRowDefs() {
       getValue: (car) => car.annual_insurance_estimate,
       format: (car) => car.annual_insurance_estimate != null
         ? '₹' + car.annual_insurance_estimate.toLocaleString('en-IN')
-        : '—',
+        : '-',
       rawVal: (car) => car.annual_insurance_estimate,
       direction: LOWER_IS_BETTER,
     },
@@ -122,7 +122,7 @@ function buildRowDefs() {
       getValue: (car) => car.annual_maintenance_estimate,
       format: (car) => car.annual_maintenance_estimate != null
         ? '₹' + car.annual_maintenance_estimate.toLocaleString('en-IN')
-        : '—',
+        : '-',
       rawVal: (car) => car.annual_maintenance_estimate,
       direction: LOWER_IS_BETTER,
     },
@@ -131,19 +131,19 @@ function buildRowDefs() {
     { _section: 'ENGINE' },
     {
       label: 'Engine (cc)',
-      format: (car) => car.engine_cc != null ? String(car.engine_cc) : '—',
+      format: (car) => car.engine_cc != null ? String(car.engine_cc) : '-',
       rawVal: (car) => car.engine_cc,
       direction: null,
     },
     {
       label: 'Power (bhp)',
-      format: (car) => car.power_bhp != null ? String(car.power_bhp) : '—',
+      format: (car) => car.power_bhp != null ? String(car.power_bhp) : '-',
       rawVal: (car) => car.power_bhp,
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Torque (Nm)',
-      format: (car) => car.torque_nm != null ? String(car.torque_nm) : '—',
+      format: (car) => car.torque_nm != null ? String(car.torque_nm) : '-',
       rawVal: (car) => car.torque_nm,
       direction: HIGHER_IS_BETTER,
     },
@@ -155,23 +155,23 @@ function buildRowDefs() {
     },
     {
       label: 'Transmission',
-      format: (car) => car.transmission || '—',
+      format: (car) => car.transmission || '-',
       rawVal: (car) => car.transmission,
       direction: null,
     },
     {
       label: 'ARAI mileage / range',
       format: (car) => car.fuel === 'electric'
-        ? (car.arai_range_km ? car.arai_range_km + ' km' : '—')
-        : (car.arai_kmpl != null ? car.arai_kmpl + ' kmpl' : '—'),
+        ? (car.arai_range_km ? car.arai_range_km + ' km' : '-')
+        : (car.arai_kmpl != null ? car.arai_kmpl + ' kmpl' : '-'),
       rawVal: (car) => car.fuel === 'electric' ? (car.arai_range_km || 0) : (car.arai_kmpl || 0),
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Real-world mileage / range',
       format: (car) => car.fuel === 'electric'
-        ? (car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '—')
-        : (car.realworld_kmpl != null ? car.realworld_kmpl + ' kmpl' : '—'),
+        ? (car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '-')
+        : (car.realworld_kmpl != null ? car.realworld_kmpl + ' kmpl' : '-'),
       rawVal: (car) => car.fuel === 'electric' ? (car.realworld_range_km || 0) : (car.realworld_kmpl || 0),
       direction: HIGHER_IS_BETTER,
     },
@@ -180,7 +180,7 @@ function buildRowDefs() {
     { _section: 'SAFETY' },
     {
       label: 'Airbags',
-      format: (car) => car.airbags != null ? String(car.airbags) : '—',
+      format: (car) => car.airbags != null ? String(car.airbags) : '-',
       rawVal: (car) => car.airbags,
       direction: HIGHER_IS_BETTER,
     },
@@ -258,7 +258,7 @@ function buildRowDefs() {
     },
     {
       label: 'Infotainment (inches)',
-      format: (car) => car.infotainment_inches ? String(car.infotainment_inches) + '"' : '—',
+      format: (car) => car.infotainment_inches ? String(car.infotainment_inches) + '"' : '-',
       rawVal: (car) => car.infotainment_inches || 0,
       direction: HIGHER_IS_BETTER,
     },
@@ -266,7 +266,7 @@ function buildRowDefs() {
       label: 'Best for driving',
       format: (car) => {
         const v = car.driving_use;
-        if (!v) return '—';
+        if (!v) return '-';
         const map = { city: 'City', highway: 'Highway', mixed: 'Mixed' };
         return map[v] || v;
       },
@@ -278,25 +278,25 @@ function buildRowDefs() {
     { _section: 'SPACE' },
     {
       label: 'Boot (litres)',
-      format: (car) => car.boot_litres != null ? String(car.boot_litres) : '—',
+      format: (car) => car.boot_litres != null ? String(car.boot_litres) : '-',
       rawVal: (car) => car.boot_litres,
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Ground clearance (mm)',
-      format: (car) => car.ground_clearance_mm != null ? String(car.ground_clearance_mm) : '—',
+      format: (car) => car.ground_clearance_mm != null ? String(car.ground_clearance_mm) : '-',
       rawVal: (car) => car.ground_clearance_mm,
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Rear legroom (mm)',
-      format: (car) => car.rear_legroom_mm != null ? String(car.rear_legroom_mm) : '—',
+      format: (car) => car.rear_legroom_mm != null ? String(car.rear_legroom_mm) : '-',
       rawVal: (car) => car.rear_legroom_mm,
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Cabin width (mm)',
-      format: (car) => car.cabin_width_mm != null ? String(car.cabin_width_mm) : '—',
+      format: (car) => car.cabin_width_mm != null ? String(car.cabin_width_mm) : '-',
       rawVal: (car) => car.cabin_width_mm,
       direction: HIGHER_IS_BETTER,
     },
@@ -305,19 +305,19 @@ function buildRowDefs() {
     { _section: 'OWNERSHIP' },
     {
       label: 'Waiting period (weeks)',
-      format: (car) => car.waiting_weeks_jodhpur != null ? String(car.waiting_weeks_jodhpur) : '—',
+      format: (car) => car.waiting_weeks_jodhpur != null ? String(car.waiting_weeks_jodhpur) : '-',
       rawVal: (car) => car.waiting_weeks_jodhpur,
       direction: LOWER_IS_BETTER,
     },
     {
       label: 'Resale 3yr (%)',
-      format: (car) => car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '—',
+      format: (car) => car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '-',
       rawVal: (car) => car.resale_3yr_pct,
       direction: HIGHER_IS_BETTER,
     },
     {
       label: 'Resale 5yr (%)',
-      format: (car) => car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '—',
+      format: (car) => car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '-',
       rawVal: (car) => car.resale_5yr_pct,
       direction: HIGHER_IS_BETTER,
     },
@@ -437,7 +437,7 @@ function renderTCOChart(container, baselineCar, selectedCars) {
   }
 
   if (!window.Chart) {
-    chartDiv.innerHTML = '<p style="padding:1rem;color:var(--text-secondary)">Chart.js not loaded — TCO chart unavailable.</p>';
+    chartDiv.innerHTML = '<p style="padding:1rem;color:var(--text-secondary)">Chart.js not loaded - TCO chart unavailable.</p>';
     return;
   }
 
@@ -520,11 +520,11 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
   const maxScore = Math.max(...scores, 0);
   html += `<tr class="compare-score-row">`;
   html += `<td class="compare-sticky-col compare-score-lbl">Match Score</td>`;
-  if (!hideBaseline) html += `<td class="compare-baseline-col">—</td>`;
+  if (!hideBaseline) html += `<td class="compare-baseline-col">-</td>`;
   for (const car of selectedCars) {
     const score = car.score != null ? Math.round(car.score) : null;
     const isTop = score === maxScore && score > 0 && selectedCars.length > 1;
-    html += `<td class="compare-score-cell${isTop ? ' compare-winner' : ''}">${score ?? '—'}</td>`;
+    html += `<td class="compare-score-cell${isTop ? ' compare-winner' : ''}">${score ?? '-'}</td>`;
   }
   html += `</tr>`;
   html += `</thead><tbody>`;
@@ -569,7 +569,7 @@ function buildControls(selectedCars, showDiffOnly, hideBaseline) {
     <div class="cmp-slot cmp-slot-filled">
       <div class="cmp-slot-brand">${car.brand}</div>
       <div class="cmp-slot-model">${car.model}</div>
-      <div class="cmp-slot-score">${car.score != null ? Math.round(car.score) : '—'}</div>
+      <div class="cmp-slot-score">${car.score != null ? Math.round(car.score) : '-'}</div>
       <button class="remove-car-btn" data-index="${i}" aria-label="Remove ${car.brand} ${car.model}">×</button>
     </div>
   `).join('');
@@ -618,7 +618,7 @@ function buildPickerModal(allCars, baselineCar, selectedCars) {
     .map(car => {
       const disabled = selectedIds.has(car.id);
       const price = car.ex_showroom_jodhpur
-        ? ' — ₹' + (car.ex_showroom_jodhpur / 100000).toFixed(2) + ' L'
+        ? ' · ₹' + (car.ex_showroom_jodhpur / 100000).toFixed(2) + ' L'
         : '';
       const betterVFM = getBetterVFMVariant(car, allCars);
       const vfmBadge = betterVFM
@@ -628,7 +628,7 @@ function buildPickerModal(allCars, baselineCar, selectedCars) {
                data-id="${car.id}"
                role="option"
                aria-disabled="${disabled}">
-        ${car.brand} ${car.model} — ${car.variant || ''}${price}${vfmBadge}
+        ${car.brand} ${car.model} · ${car.variant || ''}${price}${vfmBadge}
       </div>`;
     })
     .join('');
@@ -712,13 +712,13 @@ export async function renderCompare(container) {
         </div>
       </div>
       <div class="cmp-score-strip" id="cmp-score-strip">
-        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-price">—</div><div class="cmp-ss-label">On-road</div></div>
-        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-score">—</div><div class="cmp-ss-label">Match score</div></div>
-        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-wait">—</div><div class="cmp-ss-label">Wait time</div></div>
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-price">-</div><div class="cmp-ss-label">On-road</div></div>
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-score">-</div><div class="cmp-ss-label">Match score</div></div>
+        <div class="cmp-ss-cell"><div class="cmp-ss-num" id="cmp-ss-wait">-</div><div class="cmp-ss-label">Wait time</div></div>
       </div>
     </div>
     <div id="compare-controls-root"></div>
-    <p class="variant-disclaimer">EMI assumes 20% DP · 8.5% p.a. · 5yr. Each model shows selected powertrains — use the picker below to swap variants.</p>
+    <p class="variant-disclaimer">EMI assumes 20% DP · 8.5% p.a. · 5yr. Each model shows selected powertrains. Use the picker below to swap variants.</p>
     <div id="compare-table-root"></div>
     <div id="compare-chart-root"></div>
     <div id="compare-picker-root"></div>
@@ -756,7 +756,7 @@ export async function renderCompare(container) {
       <button class="cmp-csel-btn${i === 0 ? ' active' : ''}" data-car-id="${car.id}">
         <div class="cmp-csel-brand">${car.brand}</div>
         <div class="cmp-csel-model">${car.model}</div>
-        <div class="cmp-csel-score">${car.score != null ? Math.round(car.score) : '—'}</div>
+        <div class="cmp-csel-score">${car.score != null ? Math.round(car.score) : '-'}</div>
       </button>
     `).join('');
 
@@ -881,7 +881,7 @@ export async function renderCompare(container) {
     const chipsEl = container.querySelector('#cmp-variant-chips');
     const modelVariants = allCars.filter(c => c.model === car.model && c.brand === car.brand);
     if (modelVariants.length <= 1) {
-      chipsEl.innerHTML = `<span class="cmp-vchip active">${car.variant || '—'}</span>`;
+      chipsEl.innerHTML = `<span class="cmp-vchip active">${car.variant || '-'}</span>`;
       return;
     }
     chipsEl.innerHTML = modelVariants.map((v, i) => `
@@ -904,11 +904,11 @@ export async function renderCompare(container) {
     const waitEl  = container.querySelector('#cmp-ss-wait');
 
     const onRoad = car.ex_showroom_jodhpur ? calcOnRoadPrice(car.ex_showroom_jodhpur) : null;
-    priceEl.textContent = onRoad ? '₹' + (onRoad / 100000).toFixed(1) + 'L' : '—';
-    scoreEl.textContent = car.score != null ? Math.round(car.score) : '—';
+    priceEl.textContent = onRoad ? '₹' + (onRoad / 100000).toFixed(1) + 'L' : '-';
+    scoreEl.textContent = car.score != null ? Math.round(car.score) : '-';
     waitEl.textContent  = car.waiting_weeks_jodhpur != null
       ? car.waiting_weeks_jodhpur + ' wks'
-      : '—';
+      : '-';
   }
 
   _buildCarTabs();

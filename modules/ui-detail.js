@@ -238,22 +238,22 @@ function buildRatingsSection(car, baseline) {
 }
 
 function buildSpecsSection(car) {
-  const fuelLabel = FUEL_LABELS[car.fuel] || (car.fuel || '—');
+  const fuelLabel = FUEL_LABELS[car.fuel] || (car.fuel || '-');
   const txLabel = car.transmission === 'automatic' ? 'Automatic' :
-                  car.transmission === 'manual' ? 'Manual' : (car.transmission || '—');
+                  car.transmission === 'manual' ? 'Manual' : (car.transmission || '-');
   const ncapText = car.ncap_stars ? formatStars(car.ncap_stars) + ` (${car.ncap_stars}★)` : 'Unrated';
   const isEV = car.fuel === 'electric';
   const isCNG = car.fuel === 'cng';
 
   const mileageRow = isEV
-    ? `<dt>ARAI Range</dt><dd>${car.arai_range_km || '—'} km</dd>
-       <dt>Real-World Range</dt><dd>${car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '—'}</dd>
-       <dt>Battery</dt><dd>${car.battery_kwh || '—'} kWh</dd>`
+    ? `<dt>ARAI Range</dt><dd>${car.arai_range_km || '-'} km</dd>
+       <dt>Real-World Range</dt><dd>${car.realworld_range_km ? '~' + car.realworld_range_km + ' km' : '-'}</dd>
+       <dt>Battery</dt><dd>${car.battery_kwh || '-'} kWh</dd>`
     : isCNG
-    ? `<dt>ARAI Mileage (CNG)</dt><dd>${car.arai_cng_kmkg || '—'} km/kg</dd>
-       <dt>Real-World (CNG)</dt><dd>${car.realworld_cng_kmkg ? '~' + car.realworld_cng_kmkg + ' km/kg' : '—'}</dd>`
-    : `<dt>ARAI Mileage</dt><dd>${car.arai_kmpl || '—'} kmpl</dd>
-       <dt>Real-World Mileage</dt><dd>${car.realworld_kmpl || '—'} kmpl</dd>`;
+    ? `<dt>ARAI Mileage (CNG)</dt><dd>${car.arai_cng_kmkg || '-'} km/kg</dd>
+       <dt>Real-World (CNG)</dt><dd>${car.realworld_cng_kmkg ? '~' + car.realworld_cng_kmkg + ' km/kg' : '-'}</dd>`
+    : `<dt>ARAI Mileage</dt><dd>${car.arai_kmpl || '-'} kmpl</dd>
+       <dt>Real-World Mileage</dt><dd>${car.realworld_kmpl || '-'} kmpl</dd>`;
 
   const adasFeaturesHtml = car.adas && car.adas_features && car.adas_features.length
     ? `<dt>ADAS</dt><dd>
@@ -266,17 +266,17 @@ function buildSpecsSection(car) {
     <section class="detail-section">
       <div class="dp-sec-hd"><span>Specifications</span></div>
       <dl class="specs-grid">
-        ${isEV ? '' : `<dt>Engine</dt><dd>${car.engine_cc || '—'} cc</dd>`}
-        <dt>Power</dt><dd>${car.power_bhp || '—'} bhp</dd>
-        <dt>Torque</dt><dd>${car.torque_nm || '—'} Nm</dd>
+        ${isEV ? '' : `<dt>Engine</dt><dd>${car.engine_cc || '-'} cc</dd>`}
+        <dt>Power</dt><dd>${car.power_bhp || '-'} bhp</dd>
+        <dt>Torque</dt><dd>${car.torque_nm || '-'} Nm</dd>
         <dt>Fuel Type</dt><dd>${fuelLabel}</dd>
         <dt>Transmission</dt><dd>${txLabel}</dd>
         ${mileageRow}
-        <dt>Boot Space</dt><dd>${car.boot_litres || '—'} L</dd>
-        <dt>Ground Clearance</dt><dd>${car.ground_clearance_mm || '—'} mm</dd>
-        <dt>Cabin Width</dt><dd>${car.cabin_width_mm || '—'} mm</dd>
-        <dt>Rear Legroom</dt><dd>${car.rear_legroom_mm || '—'} mm</dd>
-        <dt>Airbags</dt><dd>${car.airbags || '—'}</dd>
+        <dt>Boot Space</dt><dd>${car.boot_litres || '-'} L</dd>
+        <dt>Ground Clearance</dt><dd>${car.ground_clearance_mm || '-'} mm</dd>
+        <dt>Cabin Width</dt><dd>${car.cabin_width_mm || '-'} mm</dd>
+        <dt>Rear Legroom</dt><dd>${car.rear_legroom_mm || '-'} mm</dd>
+        <dt>Airbags</dt><dd>${car.airbags || '-'}</dd>
         <dt>NCAP Rating</dt><dd>${ncapText}${car.ncap_body ? ` <span style="font-size:0.65em;color:var(--text-muted)">(${car.ncap_body})</span>` : ''}</dd>
         ${adasFeaturesHtml}
         <dt>360° Camera</dt><dd>${car.camera_360 ? '<span class="spec-yes">Yes</span>' : 'No'}</dd>
@@ -288,26 +288,26 @@ function buildSpecsSection(car) {
 
 function buildEVChargingSection(car) {
   if (car.fuel !== 'electric') return '';
-  const fast = car.charging_fast_kw ? `${car.charging_fast_kw} kW DC fast charge` : '—';
-  const home = car.charging_home_hours ? `~${car.charging_home_hours} hrs (7.2kW AC home)` : '—';
-  const range = car.realworld_range_km ? `~${car.realworld_range_km} km` : '—';
+  const fast = car.charging_fast_kw ? `${car.charging_fast_kw} kW DC fast charge` : '-';
+  const home = car.charging_home_hours ? `~${car.charging_home_hours} hrs (7.2kW AC home)` : '-';
+  const range = car.realworld_range_km ? `~${car.realworld_range_km} km` : '-';
   const costPer100 = car.realworld_range_km && car.battery_kwh
     ? '₹' + Math.round((car.battery_kwh / car.realworld_range_km) * 100 * 8) + '/100 km'
-    : '—';
+    : '-';
 
   return `
     <section class="detail-section">
       <div class="dp-sec-hd"><span>⚡ Charging &amp; Range</span></div>
       <dl class="specs-grid">
         <dt>Real-World Range</dt><dd>${range}</dd>
-        <dt>Battery Pack</dt><dd>${car.battery_kwh || '—'} kWh</dd>
+        <dt>Battery Pack</dt><dd>${car.battery_kwh || '-'} kWh</dd>
         <dt>Fast Charging</dt><dd>${fast}</dd>
         <dt>Home Charging</dt><dd>${home}</dd>
         <dt>Running Cost</dt><dd>${costPer100} (vs ~₹700/100km petrol)</dd>
       </dl>
       <div class="ev-charging-note">
         <strong>Jodhpur charging:</strong> Tata Power EV charger at MIA Basni, EESL charger at Circuit House,
-        Statiq charger at Jodhpur Airport. Highway coverage thin — plan charging stops on Jaipur / Udaipur routes.
+        Statiq charger at Jodhpur Airport. Highway coverage thin - plan charging stops on Jaipur / Udaipur routes.
       </div>
     </section>`;
 }
@@ -363,27 +363,27 @@ function buildOwnershipSection(car) {
       <div class="dp-sec-hd"><span>Ownership &amp; Reliability</span></div>
       <div class="dp-stat-grid">
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.long_term_reliability_score != null ? car.long_term_reliability_score + '/10' : '—'}</div>
+          <div class="dp-stat-val">${car.long_term_reliability_score != null ? car.long_term_reliability_score + '/10' : '-'}</div>
           <div class="dp-stat-lbl">Long-Term Reliability</div>
         </div>
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.future_proof_score != null ? car.future_proof_score + '/10' : '—'}</div>
+          <div class="dp-stat-val">${car.future_proof_score != null ? car.future_proof_score + '/10' : '-'}</div>
           <div class="dp-stat-lbl">Future-Proof</div>
         </div>
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.parts_availability_score != null ? car.parts_availability_score + '/10' : '—'}</div>
+          <div class="dp-stat-val">${car.parts_availability_score != null ? car.parts_availability_score + '/10' : '-'}</div>
           <div class="dp-stat-lbl">Parts Availability</div>
         </div>
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.ease_of_servicing_score != null ? car.ease_of_servicing_score + '/10' : '—'}</div>
+          <div class="dp-stat-val">${car.ease_of_servicing_score != null ? car.ease_of_servicing_score + '/10' : '-'}</div>
           <div class="dp-stat-lbl">Ease of Servicing</div>
         </div>
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '—'}</div>
+          <div class="dp-stat-val">${car.resale_3yr_pct != null ? car.resale_3yr_pct + '%' : '-'}</div>
           <div class="dp-stat-lbl">Resale 3yr</div>
         </div>
         <div class="dp-stat-cell">
-          <div class="dp-stat-val">${car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '—'}</div>
+          <div class="dp-stat-val">${car.resale_5yr_pct != null ? car.resale_5yr_pct + '%' : '-'}</div>
           <div class="dp-stat-lbl">Resale 5yr</div>
         </div>
       </div>
@@ -464,7 +464,7 @@ function buildNewsSection(car) {
 
   return `
     <section class="detail-section">
-      <div class="dp-sec-hd"><span>Latest News — ${car.brand}</span></div>
+      <div class="dp-sec-hd"><span>Latest News: ${car.brand}</span></div>
       <div class="news-list">
         ${itemsHtml}
         ${readMoreHtml}
