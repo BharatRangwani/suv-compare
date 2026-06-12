@@ -614,11 +614,12 @@
   color: #fff;
 }
 .city-best-badge {
-  display: inline-block;
-  margin-top: 0.25rem;
+  display: block;
+  margin: 0.3rem auto 0;
+  width: fit-content;
   font-size: 0.62rem;
   font-weight: 600;
-  padding: 0.1rem 0.4rem;
+  padding: 0.1rem 0.5rem;
   border-radius: 999px;
   background: #e0f2fe;
   color: #0369a1;

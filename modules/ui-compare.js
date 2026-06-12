@@ -509,7 +509,7 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
   }
   for (const car of selectedCars) {
     const cityBadge = car.driving_use === 'city'
-      ? `<span class="city-best-badge" title="Best for city driving">🏙 City Pick</span>`
+      ? `<div class="city-best-badge" title="Best for city driving">🏙 City Pick</div>`
       : '';
     html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}</th>`;
   }
