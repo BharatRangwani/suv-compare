@@ -496,6 +496,19 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
   // When baseline is hidden, compare against the first selected car instead
   const refCar = hideBaseline ? (selectedCars[0] || baselineCar) : baselineCar;
 
+  // Best VFM: among selected cars, lowest on-road price per score point
+  let vfmBestId = null;
+  if (selectedCars.length > 1) {
+    let bestRatio = Infinity;
+    selectedCars.forEach(car => {
+      const score = car.score;
+      const price = calcOnRoadPrice(car.ex_showroom_jodhpur);
+      if (!score || !price) return;
+      const ratio = price / score;
+      if (ratio < bestRatio) { bestRatio = ratio; vfmBestId = car.id; }
+    });
+  }
+
   let html = `<div class="compare-wrapper"><table class="compare-table">`;
 
   // thead
@@ -511,7 +524,10 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
     const cityBadge = car.driving_use === 'city'
       ? `<div class="city-best-badge" title="Best for city driving">🏙 City Pick</div>`
       : '';
-    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}</th>`;
+    const vfmBadge = car.id === vfmBestId
+      ? `<div class="vfm-best-badge" title="Best value for money among compared variants">★ Best VFM</div>`
+      : '';
+    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}${vfmBadge}</th>`;
   }
   html += `</tr>`;
 
