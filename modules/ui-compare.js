@@ -529,7 +529,11 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
     const vfmBadge = car.id === vfmBestId
       ? `<div class="vfm-best-badge" title="Lowest 5-yr total cost per score point among compared variants">★ Best VFM</div>`
       : '';
-    const discBadge = car.discontinued
+    const discBadge = car.status === 'renamed'
+      ? `<div class="compare-disc-badge renamed" title="${car.status_note || 'Trim renamed in current lineup'}">Renamed</div>`
+      : car.status === 'invalid'
+      ? `<div class="compare-disc-badge invalid" title="${car.status_note || 'Variant name not confirmed in current lineup'}">Unverified</div>`
+      : car.discontinued
       ? `<div class="compare-disc-badge" title="This trim is no longer sold in the current lineup">Discontinued</div>`
       : '';
     html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}${vfmBadge}${discBadge}</th>`;
@@ -646,7 +650,11 @@ function buildPickerModal(allCars, baselineCar, selectedCars) {
       const vfmBadge = betterVFM
         ? ` <span class="picker-vfm-badge" title="Cheaper ${betterVFM.variant} has better value">↓ Better VFM available</span>`
         : (car.vfm_tag === 'excellent' ? ' <span class="picker-vfm-badge excellent">★ Best VFM</span>' : '');
-      const discBadge = car.discontinued
+      const discBadge = car.status === 'renamed'
+        ? ` <span class="picker-disc-badge renamed" title="${car.status_note || 'Trim renamed in current lineup'}">Renamed</span>`
+        : car.status === 'invalid'
+        ? ` <span class="picker-disc-badge invalid" title="${car.status_note || 'Variant name not confirmed'}">Unverified</span>`
+        : car.discontinued
         ? ` <span class="picker-disc-badge" title="This trim is no longer sold in the current lineup">Discontinued</span>`
         : '';
       return `<div class="car-picker-item${disabled ? ' disabled' : ''}${car.discontinued ? ' discontinued' : ''}"

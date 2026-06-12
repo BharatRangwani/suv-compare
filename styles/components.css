@@ -680,6 +680,25 @@
   background: #450a0a;
   color: #fca5a5;
 }
+/* Renamed = amber; invalid = grey */
+.picker-disc-badge.renamed, .compare-disc-badge.renamed {
+  background: #fef3c7;
+  color: #92400e;
+}
+[data-theme="dark"] .picker-disc-badge.renamed,
+[data-theme="dark"] .compare-disc-badge.renamed {
+  background: #451a03;
+  color: #fcd34d;
+}
+.picker-disc-badge.invalid, .compare-disc-badge.invalid {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+[data-theme="dark"] .picker-disc-badge.invalid,
+[data-theme="dark"] .compare-disc-badge.invalid {
+  background: #1f2937;
+  color: #9ca3af;
+}
 
 .price-update-note {
   font-size: 0.72rem;

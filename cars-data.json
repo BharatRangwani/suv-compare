@@ -175,7 +175,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX(O) naming dropped; replaced by King Turbo DCT / SX Premium in 2025 lineup"
     },
     {
       "id": "hyundai-creta-s-petrol-dct",
@@ -332,7 +334,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "invalid",
+      "status_note": "S Petrol DCT not visible in any current Creta source; likely data entry error — Creta petrol auto is iVT"
     },
     {
       "id": "kia-seltos-gtx-plus-petrol-dct",
@@ -504,7 +508,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by GTX TGDi DCT / GTX A TGDi DCT in 2025 lineup"
     },
     {
       "id": "kia-seltos-htx-plus-petrol-dct",
@@ -665,7 +671,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by HTX TGDi DCT / HTX A TGDi DCT in 2025 lineup"
     },
     {
       "id": "mahindra-quanto-c8-diesel",
@@ -1281,7 +1289,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Fearless+ AMT replaced by Fearless Plus DCA variants in current lineup"
     },
     {
       "id": "mg-astor-savvy-cvt",
@@ -1762,7 +1772,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Topline 1.5 renamed/replaced; check GT Plus Chrome/Sport DSG in 2026 facelift"
     },
     {
       "id": "tata-harrier-adventure-plus-petrol-at",
@@ -1925,7 +1937,9 @@
       "rear_sunshades": true,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Petrol Harrier launched 2026; Adventure+ replaced by Adventure X equivalents"
     },
     {
       "id": "mahindra-scorpio-n-z8-petrol-at",
@@ -2084,7 +2098,8 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true
+      "status": "current",
+      "status_note": "Z8 Petrol AT remains a known current configuration"
     },
     {
       "id": "mahindra-xuv-3xo-ax7-petrol-at",
@@ -2413,7 +2428,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX(O) naming replaced by HX turbo DCT variants (HX 5 Turbo DCT / HX 6T) in 2026 lineup"
     },
     {
       "id": "skoda-kushaq-ambition-plus-tsi-dsg",
@@ -2571,7 +2588,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Ambition+ replaced by Sportline / Prestige in 2026 facelift lineup"
     },
     {
       "id": "tata-nexon-ev-empowered-plus-long-range",
@@ -3070,7 +3089,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "ZS EV lineup revised; Excite Pro may map to Executive in current lineup — dealer confirmation needed"
     },
     {
       "id": "tata-nexon-cng-smart-plus",
@@ -3551,7 +3572,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by HTX Diesel AT / HTX A Diesel AT in 2025 lineup"
     },
     {
       "id": "tata-harrier-adventure-plus-diesel-at",
@@ -3863,7 +3886,8 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true
+      "status": "current",
+      "status_note": "Z8 Diesel AT remains a known current configuration"
     },
     {
       "id": "hyundai-creta-s-petrol-mt",
@@ -4020,7 +4044,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": false,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by S(O) Petrol MT / EX(O) Petrol MT in 2025 lineup"
     },
     {
       "id": "hyundai-creta-sxo-diesel-mt",
@@ -4185,7 +4211,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX(O) naming dropped; replaced by SX Premium Diesel MT in 2025 lineup"
     },
     {
       "id": "hyundai-creta-sxo-diesel-at",
@@ -4347,7 +4375,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX(O) naming dropped; replaced by S(O) Diesel AT in 2025 lineup"
     },
     {
       "id": "hyundai-creta-sx-strong-hybrid",
@@ -4509,7 +4539,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "invalid",
+      "status_note": "Regular Creta ICE has no strong hybrid variant; strong hybrid is Grand Vitara/Hyryder — data entry error"
     },
     {
       "id": "tata-nexon-smart-plus-petrol-mt",
@@ -4812,7 +4844,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Creative+ Diesel MT replaced by Creative Plus S Diesel AMT in current lineup"
     },
     {
       "id": "maruti-grand-vitara-delta-plus-mild-hybrid-mt",
@@ -4972,7 +5006,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": false,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Delta+ mild hybrid MT; current visible rows show Delta/Delta AT/Delta CNG — dealer confirmation needed"
     },
     {
       "id": "maruti-grand-vitara-alpha-plus-mild-hybrid-at",
@@ -5139,7 +5175,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Alpha+ mild hybrid AT; may map to Alpha AT/Alpha Opt AT — dealer confirmation needed"
     },
     {
       "id": "toyota-hyryder-g-mild-hybrid-mt",
@@ -5888,7 +5926,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": false,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Active replaced by Classic Plus 1.0 TSI MT in 2026 facelift lineup"
     },
     {
       "id": "skoda-kushaq-ambition-10-tsi-at",
@@ -6035,7 +6075,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": false,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Ambition replaced by Signature 1.0 TSI AT in 2026 facelift lineup"
     },
     {
       "id": "honda-elevate-v-mt",
@@ -6340,7 +6382,9 @@
       "rear_sunshades": false,
       "auto_fold_orvm": false,
       "driving_use": "city",
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "S Petrol MT replaced by HX 2/4/5 Petrol MT in 2026 lineup"
     },
     {
       "id": "mahindra-xuv-3xo-ax5-petrol-mt",
@@ -6778,7 +6822,9 @@
       "rating_features_tech": 6,
       "rating_service_quality": 6,
       "ratings_total": 7.6,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by HTK Petrol MT / HTK Opt Petrol MT in 2025 lineup"
     },
     {
       "id": "kia-seltos-htk-plus-petrol-cvt",
@@ -6912,7 +6958,9 @@
       "rating_features_tech": 6,
       "rating_service_quality": 6,
       "ratings_total": 7.6,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by HTK iVT / HTK Opt iVT (Kia uses iVT naming) in 2025 lineup"
     },
     {
       "id": "kia-seltos-htx-petrol-mt",
@@ -6926,7 +6974,7 @@
       "torque_nm": 144,
       "arai_kmpl": 17.7,
       "realworld_kmpl": 14.5,
-      "ex_showroom_jodhpur": 1561401,
+      "ex_showroom_jodhpur": 1523910,
       "boot_litres": 433,
       "ground_clearance_mm": 190,
       "kerb_weight_kg": 1320,
@@ -7182,7 +7230,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 7,
       "ratings_total": 7.7,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by HTX Diesel MT / HTX A Diesel MT in 2025 lineup"
     },
     {
       "id": "hyundai-venue-sx-petrol-dct",
@@ -7317,7 +7367,9 @@
       "rating_features_tech": 8,
       "rating_service_quality": 8,
       "ratings_total": 7.8,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX Petrol DCT replaced by HX 5 Turbo DCT in 2026 lineup"
     },
     {
       "id": "hyundai-venue-s-diesel-mt",
@@ -7452,7 +7504,9 @@
       "rating_features_tech": 6,
       "rating_service_quality": 8,
       "ratings_total": 6.9,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "S Diesel MT replaced by HX 2 Diesel MT in 2026 lineup"
     },
     {
       "id": "hyundai-venue-sx-plus-petrol-dct",
@@ -7587,7 +7641,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 8,
       "ratings_total": 6.7,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "SX+ Petrol DCT; map to top HX turbo DCT variants in 2026 lineup"
     },
     {
       "id": "tata-nexon-smart-petrol-mt",
@@ -7839,7 +7895,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 6,
       "ratings_total": 7.5,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Fearless Petrol MT continues as Fearless Plus PS DT in current lineup; confirm exact suffix with dealer"
     },
     {
       "id": "tata-nexon-fearless-plus-diesel-mt",
@@ -8092,7 +8150,9 @@
       "rating_features_tech": 8,
       "rating_service_quality": 6,
       "ratings_total": 7.9,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Petrol Harrier launched 2026; Fearless replaced by Fearless X equivalents"
     },
     {
       "id": "tata-harrier-fearless-diesel-mt",
@@ -8219,7 +8279,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 6,
       "ratings_total": 7.7,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Replaced by Fearless X Diesel MT in current lineup"
     },
     {
       "id": "tata-harrier-adventure-diesel-mt",
@@ -8346,7 +8408,9 @@
       "rating_features_tech": 6,
       "rating_service_quality": 6,
       "ratings_total": 7.4,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Tata uses X suffix now; Adventure Diesel MT likely maps to Adventure X Diesel MT"
     },
     {
       "id": "maruti-grand-vitara-zeta-plus-mild-hybrid-mt",
@@ -8481,7 +8545,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 9,
       "ratings_total": 7.6,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Zeta+ mild hybrid MT; current visible rows show Zeta/Zeta Opt — dealer confirmation needed"
     },
     {
       "id": "maruti-grand-vitara-sigma-petrol-mt",
@@ -8748,7 +8814,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 8,
       "ratings_total": 7.5,
-      "discontinued": true
+      "discontinued": true,
+      "status": "invalid",
+      "status_note": "Honda Elevate has no SX trim; trims are SV/V/VX/ZX/Black/ADV — data entry error"
     },
     {
       "id": "honda-elevate-vx-cvt",
@@ -9139,7 +9207,9 @@
       "rating_features_tech": 8,
       "rating_service_quality": 5,
       "ratings_total": 6.9,
-      "discontinued": true
+      "discontinued": true,
+      "status": "discontinued",
+      "status_note": "Savvy MT has no current equivalent; Savvy Pro lineup is CVT only"
     },
     {
       "id": "mahindra-xuv-3xo-ax5-diesel-mt",
@@ -9277,7 +9347,7 @@
       "model": "XUV 3XO",
       "variant": "AX7 Diesel AT",
       "fuel": "diesel",
-      "transmission": "AT",
+      "transmission": "AMT",
       "engine_cc": 1497,
       "power_bhp": 117,
       "torque_nm": 300,
@@ -9400,7 +9470,10 @@
       "rating_features_tech": 8,
       "rating_service_quality": 7,
       "ratings_total": 7,
-      "price_updated": "Jun 2026"
+      "price_updated": "Jun 2026",
+      "clutchless": true,
+      "status": "invalid_name",
+      "status_note": "XUV 3XO diesel auto is AMT/AutoSHIFT+, not torque-converter AT — ID retained for compatibility"
     },
     {
       "id": "mahindra-scorpio-n-z4-petrol-mt",
@@ -9920,7 +9993,9 @@
       "rating_features_tech": 7,
       "rating_service_quality": 7,
       "ratings_total": 7.6,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Smart+ LR naming may have been revised; confirm current EV price page"
     },
     {
       "id": "tata-nexon-ev-fearless-long-range",
@@ -10049,7 +10124,9 @@
       "rating_features_tech": 8,
       "rating_service_quality": 7,
       "ratings_total": 7.9,
-      "discontinued": true
+      "discontinued": true,
+      "status": "renamed",
+      "status_note": "Fearless LR family continues; confirm exact suffix PS/S/DT with dealer"
     },
     {
       "id": "hyundai-creta-electric-executive",
