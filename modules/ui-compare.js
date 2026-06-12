@@ -488,19 +488,25 @@ function renderTCOChart(container, baselineCar, selectedCars) {
 
 // ─── table builder ────────────────────────────────────────────────────────────
 
-function buildTable(baselineCar, selectedCars, showDiffOnly) {
+function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
   const rowDefs = buildRowDefs();
-  const totalCols = 1 + 1 + selectedCars.length; // label + baseline + selected
+  const baselineCols = hideBaseline ? 0 : 1;
+  const totalCols = 1 + baselineCols + selectedCars.length;
+
+  // When baseline is hidden, compare against the first selected car instead
+  const refCar = hideBaseline ? (selectedCars[0] || baselineCar) : baselineCar;
 
   let html = `<div class="compare-wrapper"><table class="compare-table">`;
 
   // thead
   html += `<thead><tr>`;
   html += `<th class="compare-sticky-col"></th>`;
-  html += `<th class="compare-baseline-col">
-    ${baselineCar.brand} ${baselineCar.model}
-    <br><span class="locked-badge">Your Car</span>
-  </th>`;
+  if (!hideBaseline) {
+    html += `<th class="compare-baseline-col">
+      ${baselineCar.brand} ${baselineCar.model}
+      <br><span class="locked-badge">Your Car</span>
+    </th>`;
+  }
   for (const car of selectedCars) {
     const cityBadge = car.driving_use === 'city'
       ? `<span class="city-best-badge" title="Best for city driving">🏙 City Pick</span>`
@@ -508,12 +514,13 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
     html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}</th>`;
   }
   html += `</tr>`;
-  // Score summary row pinned below the header
+
+  // Score row
   const scores = selectedCars.map(c => c.score ?? 0);
   const maxScore = Math.max(...scores, 0);
   html += `<tr class="compare-score-row">`;
   html += `<td class="compare-sticky-col compare-score-lbl">Match Score</td>`;
-  html += `<td class="compare-baseline-col">—</td>`;
+  if (!hideBaseline) html += `<td class="compare-baseline-col">—</td>`;
   for (const car of selectedCars) {
     const score = car.score != null ? Math.round(car.score) : null;
     const isTop = score === maxScore && score > 0 && selectedCars.length > 1;
@@ -523,7 +530,6 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
   html += `</thead><tbody>`;
 
   for (const row of rowDefs) {
-    // Section header row
     if (row._section) {
       html += `<tr class="compare-section-header">
         <td class="compare-sticky-col">${row._section}</td>
@@ -532,18 +538,21 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
       continue;
     }
 
-    // If "show differences only" is active, skip rows where all selected match baseline
+    // "Show differences only" — skip rows where all selected match the ref car
     if (showDiffOnly && selectedCars.length > 0) {
-      const baseVal = row.rawVal(baselineCar);
-      const allSame = selectedCars.every(c => row.rawVal(c) === baseVal);
+      const refVal = row.rawVal(refCar);
+      const carsToCheck = hideBaseline ? selectedCars.slice(1) : selectedCars;
+      const allSame = carsToCheck.every(c => row.rawVal(c) === refVal);
       if (allSame) continue;
     }
 
     html += `<tr>`;
     html += `<td class="compare-sticky-col">${row.label}</td>`;
-    html += `<td class="compare-baseline-col">${row.format(baselineCar)}</td>`;
+    if (!hideBaseline) {
+      html += `<td class="compare-baseline-col">${row.format(baselineCar)}</td>`;
+    }
     for (const car of selectedCars) {
-      const cls = getCellClass(row, baselineCar, car);
+      const cls = getCellClass(row, refCar, car);
       html += `<td${cls ? ` class="${cls}"` : ''}>${row.format(car)}</td>`;
     }
     html += `</tr>`;
@@ -555,7 +564,7 @@ function buildTable(baselineCar, selectedCars, showDiffOnly) {
 
 // ─── controls row ─────────────────────────────────────────────────────────────
 
-function buildControls(selectedCars, showDiffOnly) {
+function buildControls(selectedCars, showDiffOnly, hideBaseline) {
   const slots = selectedCars.map((car, i) => `
     <div class="cmp-slot cmp-slot-filled">
       <div class="cmp-slot-brand">${car.brand}</div>
@@ -585,6 +594,10 @@ function buildControls(selectedCars, showDiffOnly) {
         <label class="diff-toggle-row">
           <input type="checkbox" id="diff-toggle" ${showDiffOnly ? 'checked' : ''}>
           Show differences only
+        </label>
+        <label class="diff-toggle-row">
+          <input type="checkbox" id="baseline-toggle" ${hideBaseline ? 'checked' : ''}>
+          Hide Quanto
         </label>
         <button class="btn-compare-all" id="cmp-all-variants-btn" title="Add all variants of same model">Compare All Variants</button>
       </div>
@@ -656,6 +669,7 @@ export async function renderCompare(container) {
   // ── state — pre-select top-ranked car so table isn't empty on first load ──
   let selectedCars  = allCars.length > 0 ? [allCars[0]] : [];
   let showDiffOnly  = false;
+  let hideBaseline  = false;
   let pickerOpen    = false;
 
   // ── outer structure ──
@@ -900,10 +914,10 @@ export async function renderCompare(container) {
   // ── internal render ──
   function _render() {
     // Controls
-    controlsRoot.innerHTML = buildControls(selectedCars, showDiffOnly);
+    controlsRoot.innerHTML = buildControls(selectedCars, showDiffOnly, hideBaseline);
 
     // Table
-    tableRoot.innerHTML = buildTable(baselineWithTCO, selectedCars, showDiffOnly);
+    tableRoot.innerHTML = buildTable(baselineWithTCO, selectedCars, showDiffOnly, hideBaseline);
 
     // TCO chart
     renderTCOChart(chartRoot, baselineWithTCO, selectedCars);
@@ -930,6 +944,15 @@ export async function renderCompare(container) {
     if (diffToggle) {
       diffToggle.addEventListener('change', (e) => {
         showDiffOnly = e.target.checked;
+        _render();
+      });
+    }
+
+    // Hide baseline toggle
+    const baselineToggle = controlsRoot.querySelector('#baseline-toggle');
+    if (baselineToggle) {
+      baselineToggle.addEventListener('change', (e) => {
+        hideBaseline = e.target.checked;
         _render();
       });
     }
