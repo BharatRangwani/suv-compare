@@ -529,7 +529,10 @@ function buildTable(baselineCar, selectedCars, showDiffOnly, hideBaseline) {
     const vfmBadge = car.id === vfmBestId
       ? `<div class="vfm-best-badge" title="Lowest 5-yr total cost per score point among compared variants">★ Best VFM</div>`
       : '';
-    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}${vfmBadge}</th>`;
+    const discBadge = car.discontinued
+      ? `<div class="compare-disc-badge" title="This trim is no longer sold in the current lineup">Discontinued</div>`
+      : '';
+    html += `<th>${car.brand} ${car.model}<br><small>${car.variant || ''}</small>${cityBadge}${vfmBadge}${discBadge}</th>`;
   }
   html += `</tr>`;
 
@@ -643,11 +646,14 @@ function buildPickerModal(allCars, baselineCar, selectedCars) {
       const vfmBadge = betterVFM
         ? ` <span class="picker-vfm-badge" title="Cheaper ${betterVFM.variant} has better value">↓ Better VFM available</span>`
         : (car.vfm_tag === 'excellent' ? ' <span class="picker-vfm-badge excellent">★ Best VFM</span>' : '');
-      return `<div class="car-picker-item${disabled ? ' disabled' : ''}"
+      const discBadge = car.discontinued
+        ? ` <span class="picker-disc-badge" title="This trim is no longer sold in the current lineup">Discontinued</span>`
+        : '';
+      return `<div class="car-picker-item${disabled ? ' disabled' : ''}${car.discontinued ? ' discontinued' : ''}"
                data-id="${car.id}"
                role="option"
                aria-disabled="${disabled}">
-        ${car.brand} ${car.model} · ${car.variant || ''}${price}${vfmBadge}
+        ${car.brand} ${car.model} · ${car.variant || ''}${price}${vfmBadge}${discBadge}
       </div>`;
     })
     .join('');

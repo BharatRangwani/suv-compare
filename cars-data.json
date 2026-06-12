@@ -11548,7 +11548,6 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true,
       "price_updated": "Jun 2026",
       "is_new_variant": true
     },
@@ -11707,7 +11706,6 @@
       "rear_sunshades": true,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true,
       "price_updated": "Jun 2026",
       "is_new_variant": true
     },
@@ -13699,7 +13697,6 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "highway",
-      "discontinued": true,
       "price_updated": "Jun 2026",
       "is_new_variant": true
     },
@@ -13861,7 +13858,6 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "city",
-      "discontinued": true,
       "price_updated": "Jun 2026",
       "is_new_variant": true
     },
@@ -14023,7 +14019,6 @@
       "rear_sunshades": false,
       "auto_fold_orvm": true,
       "driving_use": "mixed",
-      "discontinued": true,
       "price_updated": "Jun 2026",
       "is_new_variant": true
     },
@@ -14423,6 +14418,177 @@
       "rating_features_tech": 9,
       "rating_service_quality": 6,
       "ratings_total": 8.2,
+      "price_updated": "Jun 2026",
+      "is_new_variant": true
+    },
+    {
+      "id": "hyundai-creta-electric-executive",
+      "brand": "Hyundai",
+      "model": "Creta Electric",
+      "variant": "Executive",
+      "platform": "E-GMP (BEV)",
+      "fuel": "electric",
+      "charging_type": "both",
+      "transmission": "AT",
+      "engine_cc": null,
+      "power_bhp": 171,
+      "torque_nm": 255,
+      "arai_kmpl": null,
+      "arai_range_km": 473,
+      "realworld_range_km": 370,
+      "realworld_kmpl": null,
+      "battery_kwh": 51.4,
+      "charging_fast_kw": 50,
+      "charging_home_hours": 10.5,
+      "ex_showroom_jodhpur": null,
+      "boot_litres": 433,
+      "ground_clearance_mm": 190,
+      "kerb_weight_kg": 1620,
+      "seating": 5,
+      "airbags": 6,
+      "ncap_stars": 0,
+      "adas": false,
+      "adas_features": [
+        "Auto Emergency Braking",
+        "Lane Keep Assist",
+        "Blind Spot Collision Warning",
+        "Driver Attention Warning",
+        "Rear Cross-Traffic Alert"
+      ],
+      "wireless_carplay": false,
+      "wireless_aa": false,
+      "ventilated_seats": false,
+      "sunroof": "none",
+      "connected_car": true,
+      "connected_system": "Hyundai BlueLink",
+      "climate_control": "auto_single",
+      "infotainment_inches": 10.25,
+      "rear_legroom_mm": 880,
+      "cabin_width_mm": 1790,
+      "resale_3yr_pct": 50,
+      "resale_5yr_pct": 36,
+      "reliability_score": 68,
+      "owner_rating": 4.1,
+      "post_sale_service_rating": 4,
+      "engine_rating": 9,
+      "fuel_efficiency_rating": 10,
+      "long_term_reliability_score": 6,
+      "future_proof_score": 9,
+      "parts_availability_score": 7,
+      "ease_of_servicing_score": 7,
+      "overall_customer_rating": 8,
+      "rating_engine": 9,
+      "rating_ride_handling": 8,
+      "rating_nvh": 9,
+      "rating_fit_finish": 8,
+      "rating_interior_quality": 8,
+      "rating_interior_space": 8,
+      "rating_boot_space": 8,
+      "rating_features_tech": 9,
+      "rating_service_quality": 8,
+      "ratings_total": 8.3,
+      "annual_insurance_estimate": 52000,
+      "annual_maintenance_estimate": 4500,
+      "known_issues": [
+        {
+          "issue": "New model — long-term battery health data not yet available",
+          "severity": "Watch"
+        },
+        {
+          "issue": "Fast-charging infrastructure sparse in Rajasthan highways",
+          "severity": "Critical"
+        },
+        {
+          "issue": "NCAP not yet rated for this generation EV variant",
+          "severity": "Watch"
+        }
+      ],
+      "pros": [
+        "Best-in-class EV range (473km ARAI)",
+        "Full ADAS suite",
+        "Hyundai's trusted service network",
+        "Panoramic sunroof + ventilated seats",
+        "V2L (vehicle to load) charging"
+      ],
+      "cons": [
+        "Most expensive in EV segment",
+        "NCAP unrated",
+        "Charging infra gap in Rajasthan",
+        "Newer model — less long-term data"
+      ],
+      "waiting_weeks_jodhpur": 6,
+      "launch_year": 2024,
+      "is_new_model": true,
+      "glb": null,
+      "colors": [
+        {
+          "name": "Atlas White",
+          "hex": "#f2f2f2"
+        },
+        {
+          "name": "Abyss Black",
+          "hex": "#1e1e1e"
+        },
+        {
+          "name": "Starry Night",
+          "hex": "#1a2a4a"
+        },
+        {
+          "name": "Amazonas Green",
+          "hex": "#1a4a2a"
+        },
+        {
+          "name": "Typhoon Silver",
+          "hex": "#9a9fa8"
+        }
+      ],
+      "service_centers_jodhpur": [
+        {
+          "name": "Hyundai Pawan Motors - EV Ready",
+          "area": "Basni Area",
+          "phone": "0291-2740000",
+          "maps_url": "https://maps.google.com/?q=Hyundai+Service+Jodhpur",
+          "rating": 4.1,
+          "turnaround_hours": 10
+        }
+      ],
+      "camera_360": true,
+      "alloy_wheels": true,
+      "parking_sensors_front": true,
+      "parking_sensors_rear": true,
+      "dash_cam": false,
+      "drive_modes": true,
+      "clutchless": true,
+      "rear_camera": true,
+      "news": [
+        {
+          "title": "Creta EV launched with up to 473 km range; prices from ₹17.99L",
+          "date": "2025-01-17",
+          "type": "launch"
+        },
+        {
+          "title": "Creta facelift (2024) gets new ADAS suite and updated interior",
+          "date": "2024-01-16",
+          "type": "upgrade"
+        },
+        {
+          "title": "Hyundai Venue facelift: 5-star BNCAP rating confirmed, prices revised",
+          "date": "2024-07-04",
+          "type": "upgrade"
+        }
+      ],
+      "news_url": "https://www.hyundai.com/in/en/media/press-releases",
+      "headlights": "led",
+      "headlight_chambers": 4,
+      "turn_indicator_type": "led",
+      "engine_start_stop": true,
+      "electric_adj_seats": true,
+      "paddle_shifters": false,
+      "cruise_control": "adaptive",
+      "tpms": true,
+      "rear_sunshades": false,
+      "auto_fold_orvm": true,
+      "driving_use": "city",
       "price_updated": "Jun 2026",
       "is_new_variant": true
     }

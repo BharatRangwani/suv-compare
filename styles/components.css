@@ -645,6 +645,41 @@
   background: #422006;
   color: #fde68a;
 }
+.picker-disc-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+[data-theme="dark"] .picker-disc-badge {
+  background: #450a0a;
+  color: #fca5a5;
+}
+.car-picker-item.discontinued {
+  opacity: 0.65;
+}
+.compare-disc-badge {
+  display: block;
+  margin: 0.25rem auto 0;
+  width: fit-content;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  white-space: nowrap;
+}
+[data-theme="dark"] .compare-disc-badge {
+  background: #450a0a;
+  color: #fca5a5;
+}
 
 .price-update-note {
   font-size: 0.72rem;
